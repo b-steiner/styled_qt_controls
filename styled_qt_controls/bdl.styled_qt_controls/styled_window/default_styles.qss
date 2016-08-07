@@ -1,0 +1,221 @@
+QLabel
+{
+	color: @font;
+}
+
+QSplitter::handle
+{
+	background-color: @normal;
+}
+QSplitter::handle:horizontal
+{
+	width: 4px;
+}
+QSplitter::handle:vertical
+{
+	height: 4px;
+}
+
+QWidget
+{
+	background: transparent;
+}
+
+
+QScrollBar:horizontal
+{
+    background: @dark;
+    height: 17px;
+    margin: 0px 17px 0px 17px;
+}
+QScrollBar:vertical
+{
+    background: @dark;
+    width: 17px;
+    margin: 17px 0px 17px 0px;
+}
+
+
+QScrollBar::handle:horizontal
+{
+    background: @light;
+    min-width: 20px;
+	margin: 3px 0px 3px 0px;
+}
+QScrollBar::handle:vertical
+{
+    background: @light;
+    min-height: 20px;
+	margin: 0px 3px 0px 3px;
+}
+
+QScrollBar::handle:hover
+{
+	background: @light_highlight;
+}
+QScrollBar::handle:pressed
+{
+	background: @selection;
+}
+
+
+QScrollBar::add-line:horizontal
+{
+    background: @dark;
+    width: 17px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::add-line:vertical
+{
+    background: @dark;
+    height: 17px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal
+{
+    background: @dark;
+    width: 17px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical
+{
+    background: @dark;
+    height: 17px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar::left-arrow:horizontal { image: url(  :/images/scroll_arrow_left.png); }
+QScrollBar::right-arrow:horizontal { image: url(:/images/scroll_arrow_right.png); }
+QScrollBar::down-arrow:vertical { image: url(   :/images/scroll_arrow_down.png); }
+QScrollBar::up-arrow:vertical { image: url(    :/images/scroll_arrow_up.png); }
+QScrollBar::left-arrow:horizontal:hover { image: url(:/images/scroll_arrow_left_hover.png); }
+QScrollBar::right-arrow:horizontal:hover { image: url(:/images/scroll_arrow_right_hover.png); }
+QScrollBar::down-arrow:vertical:hover { image: url(:/images/scroll_arrow_down_hover.png); }
+QScrollBar::up-arrow:vertical:hover { image: url(:/images/scroll_arrow_up_hover.png); }
+QScrollBar::left-arrow:horizontal:pressed { image: url(:/images/scroll_arrow_left_pressed.png); }
+QScrollBar::right-arrow:horizontal:pressed { image: url(:/images/scroll_arrow_right_pressed.png); }
+QScrollBar::down-arrow:vertical:pressed { image: url(:/images/scroll_arrow_down_pressed.png); }
+QScrollBar::up-arrow:vertical:pressed { image: url(:/images/scroll_arrow_up_pressed.png); }
+
+QScrollBar::add-page, QScrollBar::sub-page 
+{
+    background: none;
+}
+
+
+
+QScrollArea
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}
+
+
+
+
+
+QLineEdit
+{
+	border: 1px solid @border;
+	background: solid @dark;
+	color: @font;
+	selection-background-color: @selection;
+}
+QLineEdit:hover:!focus
+{
+	border: 1px solid @light;
+}
+QLineEdit:focus:!read-only
+{
+	border: 1px solid @selection_border;
+}
+QLineEdit:hover:focus:read-only
+{
+	border: 1px solid @light;
+}
+
+
+QCheckBox::indicator
+{
+	border: 1px solid @border;
+	background: solid @dark;
+	padding: 1px 1px 1px 1px;
+}
+QCheckBox::indicator:hover:!focus
+{
+	border: 1px solid @light;
+}
+QCheckBox::indicator:focus
+{
+	border: 1px solid @selection_border;
+}
+QCheckBox::indicator:checked
+{
+	image: url(:/images/checkbox_check.png);
+}
+
+
+
+tpengine--editor--common--styled_controls--styled_pushbutton
+{
+	qproperty-topline_color: @normal_highlight;
+}
+tpengine--editor--common--styled_controls--styled_pushbutton[hover=true]
+{
+	qproperty-topline_color: @light_highlight;
+}
+tpengine--editor--common--styled_controls--styled_pushbutton[pressed=true]
+{
+	qproperty-topline_color: transparent;
+}
+tpengine--editor--common--styled_controls--styled_pushbutton[checked=true]
+{
+	qproperty-topline_color: transparent;
+}
+
+
+QPushButton
+{
+	background: solid @normal;
+	border: 1px solid @border;
+	color: @font;
+	padding: 2px 10px 3px 10px;
+}
+QPushButton:hover
+{
+	background: solid @light;
+}
+QPushButton:pressed
+{
+	qproperty-topline_color: transparent;
+	background: solid @dark;
+}
+QPushButton:checked
+{
+	qproperty-topline_color: transparent;
+	background: solid @dark;
+}
+
+
+
+QSlider
+{
+	background: transparent;
+}
+QSlider::groove:horizontal
+{
+	border: 1px solid @border;
+	background: solid @normal;
+	height: 4px;
+	margin: 0px 4px;
+}
+QSlider::handle
+{
+	image: url(:/images/slider_handle.png);
+	margin: 0px -4px -7px -4px;
+}

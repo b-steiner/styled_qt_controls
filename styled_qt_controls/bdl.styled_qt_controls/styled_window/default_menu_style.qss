@@ -1,0 +1,52 @@
+QMenu
+{
+	background-color: @dark;
+	border: 1px solid @border;
+	color: @font;
+}
+QMenu:disabled
+{
+	background-color: @dark;
+	border: 1px solid @border;
+	color: @font_inactive;
+}
+QMenu::item
+{
+	padding: 4px;
+	padding-left: 30px;
+	padding-right: 50px;
+}
+QMenu::item:selected
+{
+	background-color: @selection;
+}
+QMenu::item:pressed:enabled
+{
+	background-color: @selection_dark;
+}
+
+
+QMenuBar
+{
+	padding-left: 10px;
+	background-color: transparent;
+}
+QMenuBar::item
+{
+	background-color: transparent;
+	color: @font;
+	border: 1px solid transparent;
+	padding: 1px 12px 2px 12px;
+	margin-top: 1px;
+}
+QMenuBar::item:selected
+{
+	background-color: @light;
+	border: 1px solid @border;
+}
+QMenuBar::item:pressed
+{
+	background-color: @dark;
+	border: 1px solid @border;
+	border-bottom: none;
+}

@@ -1,0 +1,101 @@
+QWidget#part_window_widget
+{
+	qproperty-topline_color: @normal_highlight;
+	background: solid @normal;
+	border: 1px solid @border;
+}
+QWidget#part_window_widget[selected=true]
+{
+	border: 1px solid @transparency_key;
+}
+
+QLabel#part_icon
+{
+	background-image: url(:/images/tp_icon_editor.png);
+}
+
+QPushButton#part_close_button
+{
+	background-image: url(:/images/window_close.png);
+	border: 1px solid @border;
+	border-top: none;
+	border-left: none;
+	border-bottom-right-radius: 3px;
+}
+QPushButton#part_close_button:hover
+{
+	background-image: url(:/images/window_close_hover.png);
+}
+QPushButton#part_close_button:pressed
+{
+	background-image: url(:/images/window_close_pressed.png);
+}
+
+QPushButton#part_dialog_close_button
+{
+	background-image: url(:/images/window_close.png);
+	border: 1px solid @border;
+	border-top: none;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+QPushButton#part_dialog_close_button:hover
+{
+	background-image: url(:/images/window_close_hover.png);
+}
+QPushButton#part_dialog_close_button:pressed
+{
+	background-image: url(:/images/window_close_pressed.png);
+}
+
+QPushButton#part_minimize_button
+{
+	background-image: url(:/images/window_minimize.png);
+	border: 1px solid @border;
+	border-top: none;
+	border-right: none;
+	border-bottom-left-radius: 3px;
+}
+QPushButton#part_minimize_button:hover
+{
+	background-image: url(:/images/window_minimize_hover.png);
+}
+QPushButton#part_minimize_button:pressed
+{
+	background-image: url(:/images/window_minimize_pressed.png);
+}
+
+QPushButton#part_maximize_button
+{
+	background-image: url(:/images/window_maximize.png);
+	border: 1px solid @border;
+	border-top: none;
+}
+QPushButton#part_maximize_button:hover
+{
+	background-image: url(:/images/window_maximize_hover.png);
+}
+QPushButton#part_maximize_button:pressed
+{
+	background-image: url(:/images/window_maximize_pressed.png);
+}
+
+QPushButton#part_restore_button
+{
+	background-image: url(:/images/window_restore.png);
+	border: 1px solid @border;
+	border-top: none;
+}
+QPushButton#part_restore_button:hover
+{
+	background-image: url(:/images/window_restore_hover.png);
+}
+QPushButton#part_restore_button:pressed
+{
+	background-image: url(:/images/window_restore_pressed.png);
+}
+
+QLabel#part_title_label
+{
+	font-weight: bold;
+}

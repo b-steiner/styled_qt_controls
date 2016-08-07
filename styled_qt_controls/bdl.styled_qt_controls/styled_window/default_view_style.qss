@@ -1,0 +1,60 @@
+QTreeView
+{
+	border: none;
+	background: solid @content_control;
+	outline: 0;
+	qproperty-selected_background: @selection;
+	qproperty-selected_background_nofocus: @light;
+}
+
+QTreeView::item
+{
+	color: @font;
+	background-color: transparent;
+}
+
+QTreeView::branch:closed:has-children
+{
+	image: url(:/images/tree_view_branch_closed.png);
+}
+QTreeView::branch:open:has-children
+{
+	image: url(:/images/tree_view_branch_open.png);
+}
+
+
+
+
+
+
+
+
+QListView
+{
+	background-color: @content_control;
+	color: @font;
+	border: 1px solid @border;
+	outline: 0;
+}
+QListView::item
+{
+	background: transparent;
+	border: 1px transparent;
+}
+QListView::item:selected
+{
+	background: solid @light;
+	border: 1px @border;
+	color: @font;
+}
+QListView::item:selected:focus
+{
+	background: solid @selection;
+	border: 1px @selection_border;
+	color: @font;
+}
+QListView QLineEdit
+{
+	min-height: 18px;
+	padding: -5px 0px 0px 0px;
+}

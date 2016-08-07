@@ -1,0 +1,28 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>styled_window/styled_window.qss</file>
+	<file>styled_window/default_menu_style.qss</file>
+	<file>styled_window/default_styles.qss</file>
+	<file>styled_window/default_view_style.qss</file>
+	
+	<file>images/window_close.png</file>
+	<file>images/window_close_hover.png</file>
+	<file>images/window_close_pressed.png</file>
+	<file>images/window_maximize.png</file>
+	<file>images/window_maximize_hover.png</file>
+	<file>images/window_maximize_pressed.png</file>
+	<file>images/window_minimize.png</file>
+	<file>images/window_minimize_hover.png</file>
+	<file>images/window_minimize_pressed.png</file>
+	<file>images/window_restore.png</file>
+	<file>images/window_restore_hover.png</file>
+	<file>images/window_restore_pressed.png</file>
+	<file>images/expand.png</file>
+	<file>images/collapse.png</file>
+	<file>images/expand_2.png</file>
+	<file>images/collapse_2.png</file>
+	<file>images/connect_bound.png</file>
+	<file>images/connect_unbound.png</file>
+	<file>images/checkbox_check.png</file>
+</qresource>														
+</RCC>								

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A8FF09E2-C5AB-4455-8F55-326CF2ED9950}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>styled_qt_controls</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)build\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;BDL_SQTC_BUILD;WIN32;_DEBUG;_WINDOWS;_USRDLL;STYLED_QT_CONTROLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile>bdl.styled_qt_controls\styled_qt_controls.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(ProjectDir)scripts/pre_build.cmd" "$(SolutionDir)\" "$(ProjectDir)\" "$(ProjectFileName)"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>pre-build script</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;BDL_SQTC_BUILD;WIN32;NDEBUG;_WINDOWS;_USRDLL;STYLED_QT_CONTROLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile>bdl.styled_qt_controls\styled_qt_controls.hpp</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>"$(ProjectDir)scripts/pre_build.cmd" "$(SolutionDir)\" "$(ProjectDir)\" "$(ProjectFileName)"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>pre-build script</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="bdl.styled_qt_controls\resources.qrc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">java -jar $(SolutionDir)tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(SolutionDir)qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">asdf.hpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">java -jar $(SolutionDir)tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(SolutionDir)qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">asdf.hpp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Message>
+    </CustomBuild>
+    <None Include="bdl.styled_qt_controls\styled_window\default_menu_style.qss" />
+    <None Include="bdl.styled_qt_controls\styled_window\default_styles.qss" />
+    <None Include="bdl.styled_qt_controls\styled_window\default_view_style.qss" />
+    <None Include="bdl.styled_qt_controls\styled_window\styled_window.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_frame.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_widget.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\os\file_icon_loader.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\os\file_system_watcher.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\qt_helper_functions.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_group.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_io.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_qt_controls.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bdl.styled_qt_controls/styled_qt_controls.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bdl.styled_qt_controls/styled_qt_controls.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="bdl.styled_qt_controls\util\style_loader.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\theme_colors.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_widget.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_qt_controls.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\os\file_icon_loader.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\os\file_system_watcher.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\properties.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\property_extension.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\qt_helper_functions.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\i_settings_provider.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_group.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_io.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\style_loader.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\theme_colors.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
