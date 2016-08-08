@@ -1,0 +1,142 @@
+QFrame#part_sdw_tabbar
+{
+	qproperty-topline_color: @dark_highlight;
+	background: solid @dark;
+	border: 1px solid @border;
+	border-bottom: none;
+	padding: 1px 0px 0px 0px;
+}
+QFrame#part_sdw_tabbar[selected=true]
+{
+	qproperty-topline_color: @transparency_key;
+	background: solid @transparency_key;
+	border: none;
+	padding: 1px 0px 0px 0px;
+}
+
+
+QFrame#part_sdw_tab
+{
+	qproperty-topline_color: transparent;
+	background: transparent;
+	border: 1px transparent;
+	border-bottom: none;
+	padding: 3px 3px 2px 8px;
+}
+QFrame#part_sdw_tab[hover=true]
+{
+	qproperty-topline_color: @normal_highlight;
+	background: solid @normal;
+	border: 1px solid @border;
+	border-bottom: none;
+	padding: 2px 2px 2px 7px;
+}
+QFrame#part_sdw_tab[selected=true][custom_data_1=true]
+{
+	background: solid @selection;
+	qproperty-topline_color: @selection_highlight;
+	border: 1px solid @border;
+	border-bottom: none;
+	padding: 2px 2px 2px 7px;
+}
+QFrame#part_sdw_tab[selected=true][custom_data_1=false]
+{
+	background: solid @normal;
+	qproperty-topline_color: @normal_highlight;
+	border: 1px solid @border;
+	border-bottom: none;
+	padding: 2px 2px 2px 7px;
+}
+
+QPushButton#part_sdw_tab_closebutton
+{
+	qproperty-topline_color: transparent;
+	background: transparent;
+	border: 1px transparent;
+	qproperty-inner_border_color: transparent;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=false][hover=false][parent_hover=true]
+{
+	background: solid @normal;
+	qproperty-inner_border_color: transparent;
+	border: 1px transparent;
+	background-image: url(:/images/close_icon_small_nofocus.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=false][hover=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @light;
+	background-image: url(:/images/close_icon_small_nofocus.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=false][pressed=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @dark;
+	background-image: url(:/images/close_icon_small_nofocus.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=true][hover=false][custom_data_1=true]
+{
+	border: 1px transparent;
+	qproperty-inner_border_color: transparent;
+	background-color: @selection;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=true][hover=true][custom_data_1=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @selection_highlight;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=true][pressed=true][custom_data_1=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: @selection_border;
+	background-color: @selection_dark;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+QPushButton#part_sdw_tab_closebutton[selected=true][hover=false][custom_data_1=false]
+{
+	background: solid @normal;
+	qproperty-inner_border_color: transparent;
+	border: 1px transparent;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=true][hover=true][custom_data_1=false]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @light;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_tab_closebutton[selected=true][pressed=true][custom_data_1=false]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @dark;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}

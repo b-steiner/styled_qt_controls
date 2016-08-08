@@ -1,0 +1,122 @@
+QFrame#part_sdw_titlebar_frame
+{
+	background: solid @selection;
+	qproperty-topline_color: @selection_highlight;
+	border: 1px solid @border;
+	border-bottom: none;
+}
+QFrame#part_sdw_titlebar_frame[custom_data_1=false]
+{
+	background: solid @normal;
+	qproperty-topline_color: @normal_highlight;
+	border: 1px solid @border;
+	border-bottom: none;
+}
+QLabel#part_sdw_titlebar_text
+{
+	padding: 5px 0px 5px 7px;
+}
+
+
+
+QPushButton#part_sdw_title_closebutton[custom_data_1=true]
+{
+	qproperty-topline_color: transparent;
+	background: solid @selection;
+	qproperty-inner_border_color: transparent;
+	border: 1px transparent;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_title_closebutton[hover=true][custom_data_1=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @selection_highlight;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_title_closebutton[pressed=true][custom_data_1=true]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: selection_border;
+	background-color: @selection_dark;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_title_closebutton[custom_data_1=false]
+{
+	qproperty-topline_color: transparent;
+	background: solid @normal;
+	qproperty-inner_border_color: transparent;
+	border: 1px transparent;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_title_closebutton[hover=true][custom_data_1=false]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @light;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_title_closebutton[pressed=true][custom_data_1=false]
+{
+	border: 1px solid @border;
+	qproperty-inner_border_color: transparent;
+	background-color: @dark;
+	background-image: url(:/images/close_icon_small.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+
+QFrame#part_sdw_tabbar
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_padding_top: 0;
+	qproperty-inner_padding_side: 0;
+	background: solid @dark;
+	border: none;
+	border: 1px solid @border;
+	border-top: none;
+	padding: 0px 0px 1px 0px;
+}
+QFrame#part_sdw_tabbar[selected=true]
+{
+	qproperty-inner_padding_top: 0;
+	qproperty-inner_padding_side: 0;
+	background: solid @transparency_key;
+	border: none;
+	padding: 0px 0px 1px 0px;
+}
+
+
+QFrame#part_sdw_tab
+{
+	background: transparent;
+	border: 1px transparent;
+	border-bottom: none;
+	padding: 3px 8px 4px 8px;
+}
+QFrame#part_sdw_tab[hover=true]
+{
+	background: solid @normal;
+	border: 1px solid @border;
+	border-top: none;
+	padding: 3px 8px 4px 8px;
+}
+QFrame#part_sdw_tab[selected=true]
+{
+	background: solid @normal;
+	border: 1px solid @border;
+	border-top: none;
+	padding: 3px 8px 4px 8px;
+}

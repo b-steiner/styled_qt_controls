@@ -1,0 +1,142 @@
+QFrame#part_sdw_background
+{
+	border: none;
+	background: solid @content_control;
+}
+QFrame#part_sdw_background[selected=true]
+{
+	border: none;
+	background: solid @transparency_key;
+}
+
+
+
+QFrame#part_sdw_contentframe
+{
+	border: 1px solid @border;
+	background: transparent;
+}
+
+
+
+QLabel#part_sdw_tabtext
+{
+	color: @font_inactive;
+}
+QLabel#part_sdw_tabtext[selected=true]
+{
+	color: @font;
+}
+
+
+QPushButton#part_sdw_overflow_button::menu-indicator
+{
+	image: none;
+	width: 0px;
+}
+
+QPushButton#part_sdw_overflow_button
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_border_color: transparent;
+	background: transparent;
+	border: 1px solid transparent;
+	background-image: url(:/images/tabwidget_tablist.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[hover=true][custom_data_1=true]
+{
+	qproperty-topline_color: @selection_highlight;
+	qproperty-inner_border_color: transparent;
+	background: @selection;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[pressed=true][custom_data_1=true]
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_border_color: @selection_border;
+	background: @selection_dark;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[hover=true][custom_data_1=false]
+{
+	qproperty-topline_color: @normal_highlight;
+	qproperty-inner_border_color: transparent;
+	background: @normal;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[pressed=true][custom_data_1=false]
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_border_color: transparent;
+	background: @dark;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+QPushButton#part_sdw_overflow_button[selected=true]
+{
+	background-image: url(:/images/tabwidget_tablist_overflow.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[hover=true][custom_data_1=true][selected=true]
+{
+	qproperty-topline_color: @selection_highlight;
+	qproperty-inner_border_color: transparent;
+	background: @selection;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist_overflow.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[pressed=true][custom_data_1=true][selected=true]
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_border_color: @selection_border;
+	background: @selection_dark;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist_overflow.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[hover=true][custom_data_1=false][selected=true]
+{
+	qproperty-topline_color: @normal_highlight;
+	qproperty-inner_border_color: transparent;
+	background: @normal;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist_overflow.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+QPushButton#part_sdw_overflow_button[pressed=true][custom_data_1=false][selected=true]
+{
+	qproperty-topline_color: transparent;
+	qproperty-inner_border_color: transparent;
+	background: @dark;
+	border: 1px solid @border;
+	background-image: url(:/images/tabwidget_tablist_overflow.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+QMenu#part_sdw_overflow_menu::item
+{
+	padding: 3px;
+	padding-left: 15px;
+	padding-right: 15px;
+}

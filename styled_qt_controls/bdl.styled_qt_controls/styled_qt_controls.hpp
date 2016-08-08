@@ -20,6 +20,7 @@
 #include <QtWidgets\QGridlayout>
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QMenubar>
+#include <QtWidgets\QSplitter>
 
 #include <QtXml\QDomDocument>
 

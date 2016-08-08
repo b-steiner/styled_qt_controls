@@ -161,19 +161,19 @@ QCheckBox::indicator:checked
 
 
 
-tpengine--editor--common--styled_controls--styled_pushbutton
+bdl--styled_qt_controls--styled_pushbutton
 {
 	qproperty-topline_color: @normal_highlight;
 }
-tpengine--editor--common--styled_controls--styled_pushbutton[hover=true]
+bdl--styled_qt_controls--styled_pushbutton[hover=true]
 {
 	qproperty-topline_color: @light_highlight;
 }
-tpengine--editor--common--styled_controls--styled_pushbutton[pressed=true]
+bdl--styled_qt_controls--styled_pushbutton[pressed=true]
 {
 	qproperty-topline_color: transparent;
 }
-tpengine--editor--common--styled_controls--styled_pushbutton[checked=true]
+bdl--styled_qt_controls--styled_pushbutton[checked=true]
 {
 	qproperty-topline_color: transparent;
 }

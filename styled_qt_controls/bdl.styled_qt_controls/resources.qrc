@@ -4,6 +4,10 @@
 	<file>styled_window/default_menu_style.qss</file>
 	<file>styled_window/default_styles.qss</file>
 	<file>styled_window/default_view_style.qss</file>
+
+	<file>styled_dock_widget/styled_dock_widget.qss</file>
+	<file>styled_dock_widget/styled_dock_widget_top.qss</file>
+	<file>styled_dock_widget/styled_dock_widget_bottom.qss</file>
 	
 	<file>images/window_close.png</file>
 	<file>images/window_close_hover.png</file>
@@ -24,5 +28,9 @@
 	<file>images/connect_bound.png</file>
 	<file>images/connect_unbound.png</file>
 	<file>images/checkbox_check.png</file>
+	<file>images/close_icon_small.png</file>
+	<file>images/close_icon_small_nofocus.png</file>
+	<file>images/tabwidget_tablist.png</file>
+	<file>images/tabwidget_tablist_overflow.png</file>
 </qresource>														
 </RCC>								
