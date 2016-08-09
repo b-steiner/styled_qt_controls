@@ -23,13 +23,6 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_widget.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_qt_controls.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.cpp" />

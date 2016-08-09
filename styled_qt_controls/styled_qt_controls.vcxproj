@@ -144,14 +144,7 @@
     </ClCompile>
     <ClCompile Include="bdl.styled_qt_controls\util\style_loader.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\util\theme_colors.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/>
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/>
-  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp"/></ItemGroup>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/></ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp"/>

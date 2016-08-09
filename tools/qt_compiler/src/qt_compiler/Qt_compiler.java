@@ -25,17 +25,14 @@ public class Qt_compiler
     static String ProjectDir;
     static String ProjectFile;
     static String MocDir;
-    static String PreCompHeader;
+    static ArrayList<String> PreCompHeader;
     
-    /*
-     args: { $(SolutionDir), $(ProjectDir), $(ProjectFile) }
-     */
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException, InterruptedException
     {
 
-	if (args.length != 5)
+	if (args.length < 4)
 	{
-	    System.out.println("USAGE: qt_compiler [SOLUTION_DIR] [PROJECT_DIR] [PROJECT_FILE_NAME] [MOC_DIR] [PRECOMPILED_HEADER]");
+	    System.out.println("USAGE: qt_compiler SOLUTION_DIR PROJECT_DIR PROJECT_FILE_NAME MOC_DIR [PRECOMPILED_HEADERS]");
 	    System.exit(-1);
 	}
 
@@ -47,7 +44,10 @@ public class Qt_compiler
 	    ProjectDir = args[1];
 	    ProjectFile = args[2];
 	    MocDir = args[3];
-	    PreCompHeader = args[4];
+            
+            PreCompHeader = new ArrayList<>();
+            for (int i = 4; i < args.length; i++)
+                PreCompHeader.add(args[i]);
 
 	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	    DocumentBuilder builder = factory.newDocumentBuilder();
@@ -146,9 +146,12 @@ public class Qt_compiler
 
 			//Invoke MOC
 			String command = MocDir + "\\moc.exe"
-				+ " -o " + target.getCanonicalPath()
-				+ " -f " + PreCompHeader
-				+ " -f " + hppPath
+				+ " -o " + target.getCanonicalPath();
+                        
+                        for (String pch : PreCompHeader)
+				command += " -f " + pch;
+                                        
+			command	+= " -f " + hppPath
 				+ " " + source.getCanonicalPath();
 			Process mocResult = Runtime.getRuntime().exec(command);
 

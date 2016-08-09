@@ -1,0 +1,18 @@
+QFrame#simple_frame
+{
+	qproperty-topline_color: @normal_highlight;
+	background: solid @normal;
+	border: 1px solid @border;
+}
+
+QWidget#simple_widget
+{
+	qproperty-topline_color: @normal_highlight;
+	background: solid @normal;
+	border: 1px solid @border;
+}
+
+QWidget#simple_controls_widget
+{
+	background: solid @normal;
+}

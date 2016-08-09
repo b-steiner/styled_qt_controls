@@ -18,5 +18,26 @@
     <ClCompile Include="bdl.sample_application\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bdl.sample_application\main_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\bdl.sample_application\main_window.generated.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bdl.sample_application\main_window.q.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bdl.sample_application\resources.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\pre_build.cmd" />
+    <None Include="bdl.sample_application\main_window.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="bdl.sample_application\resources.qrc" />
   </ItemGroup>
 </Project>

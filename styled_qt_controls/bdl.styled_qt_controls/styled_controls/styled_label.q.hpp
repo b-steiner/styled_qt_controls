@@ -8,7 +8,7 @@ BEGIN_BDL_SQTC
 	*
 	* \author bdl
 	*/
-class styled_label : public QLabel
+class BDL_SQTC_EXPORT styled_label : public QLabel
 {
 	Q_OBJECT;
 
