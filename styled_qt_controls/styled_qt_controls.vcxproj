@@ -110,6 +110,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </Message>
     </CustomBuild>
+    <None Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.qss"/>
     <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.qss"/>
     <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_bottom.qss"/>
     <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_top.qss"/>
@@ -120,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_frame.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_label.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp"/>
@@ -144,9 +147,24 @@
     </ClCompile>
     <ClCompile Include="bdl.styled_qt_controls\util\style_loader.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\util\theme_colors.cpp"/>
-  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/></ItemGroup>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp"/></ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_label.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.q.hpp"/>

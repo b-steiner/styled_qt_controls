@@ -8,6 +8,8 @@
 	<file>styled_dock_widget/styled_dock_widget.qss</file>
 	<file>styled_dock_widget/styled_dock_widget_top.qss</file>
 	<file>styled_dock_widget/styled_dock_widget_bottom.qss</file>
+
+	<file>styled_controls/clearable_line_edit.qss</file>
 	
 	<file>images/window_close.png</file>
 	<file>images/window_close_hover.png</file>
@@ -32,5 +34,6 @@
 	<file>images/close_icon_small_nofocus.png</file>
 	<file>images/tabwidget_tablist.png</file>
 	<file>images/tabwidget_tablist_overflow.png</file>
+	<file>images/cursor_numeric_drag.png</file>
 </qresource>														
 </RCC>								

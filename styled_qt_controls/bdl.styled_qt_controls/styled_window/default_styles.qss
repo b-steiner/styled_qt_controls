@@ -200,6 +200,10 @@ QPushButton:checked
 	qproperty-topline_color: transparent;
 	background: solid @dark;
 }
+QPushButton:middle
+{
+	border-left: none;
+}
 
 
 

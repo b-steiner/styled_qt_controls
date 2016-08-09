@@ -213,7 +213,7 @@ void styled_window::initialize_widget()
 	loader.append_file(":/styled_window/default_styles.qss");
 	loader.append_file(":/styled_window/default_view_style.qss");
 	//loader.append_file(":/styled_controls/styled_collapse_widget.qss");
-	//loader.append_file(":/styled_controls/clearable_line_edit.qss");
+	loader.append_file(":/styled_controls/clearable_line_edit.qss");
 	m_part_window_widget->setStyleSheet(loader.style_string());
 
 	SetWindowLong((HWND)m_part_window_widget->winId(), GWL_STYLE, WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);

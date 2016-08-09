@@ -21,6 +21,7 @@
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QMenubar>
 #include <QtWidgets\QSplitter>
+#include <QtWidgets\QLineedit>
 
 #include <QtXml\QDomDocument>
 

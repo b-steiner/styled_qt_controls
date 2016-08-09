@@ -1,0 +1,17 @@
+bdl--styled_qt_controls--clearable_line_edit > QPushButton#part_ClearButton
+{
+	background: transparent;
+	border: 1px transparent;
+	image: url(:/images/close_icon_small.png);
+	padding: 0px 0px 0px 0px;
+}
+bdl--styled_qt_controls--clearable_line_edit > QPushButton#part_ClearButton:hover
+{
+	background-color: @light;
+	border: 1px solid @border;
+}
+bdl--styled_qt_controls--clearable_line_edit > QPushButton#part_ClearButton:pressed
+{
+	background-color: @dark;
+	border: 1px solid @border;
+}

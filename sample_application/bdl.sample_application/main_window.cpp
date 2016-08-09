@@ -5,6 +5,10 @@
 #include <bdl.styled_qt_controls\styled_qt_controls.hpp>
 #include <bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.q.hpp>
 #include <bdl.styled_qt_controls/util/style_loader.hpp>
+#include <bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp>
+#include <bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp>
+
+#include <QtWidgets\QButtongroup>
 
 using namespace bdl::sample_application;
 using namespace bdl::styled_qt_controls;
@@ -46,12 +50,63 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		scw_layout->addWidget(button, row, 1);
 		row++;
 
+		l = new styled_label("Button Group");
+		auto button1 = new styled_pushbutton("button1");
+		button1->setObjectName("grp_button1");
+		button1->setCheckable(true);
+		button1->setChecked(true);
+		auto button2 = new styled_pushbutton("button2");
+		button2->setObjectName("grp_button2");
+		button2->setCheckable(true);
+		auto button3 = new styled_pushbutton("button3");
+		button3->setObjectName("grp_button3");
+		button3->setCheckable(true);
+		auto button4 = new styled_pushbutton("button4");
+		button4->setObjectName("grp_button4");
+		button4->setCheckable(true);
+		QButtonGroup* group = new QButtonGroup();
+		group->addButton(button1, 1);
+		group->addButton(button2, 2);
+		group->addButton(button3, 3);
+		group->addButton(button4, 4);
+		scw_layout->addWidget(l, row, 0);
+		QHBoxLayout* btg_layout = new QHBoxLayout();
+		btg_layout->setSpacing(0);
+		btg_layout->setContentsMargins(0, 0, 0, 0);
+		btg_layout->addWidget(button1);
+		btg_layout->addWidget(button2);
+		btg_layout->addWidget(button3);
+		btg_layout->addWidget(button4);
+		scw_layout->addLayout(btg_layout, row, 1);
+		row++;
+
 		l = new styled_label("Widget");
 		auto widget = new styled_widget();
 		widget->setObjectName("simple_widget");
 		widget->setMinimumSize(20, 20);
 		scw_layout->addWidget(l, row, 0);
 		scw_layout->addWidget(widget, row, 1);
+		row++;
+
+		l = new styled_label("Lineedit");
+		auto le = new QLineEdit("Editable Text");
+		scw_layout->addWidget(l, row, 0);
+		scw_layout->addWidget(le, row, 1);
+		row++;
+
+		l = new styled_label("Clearable Lineedit");
+		auto cle = new clearable_line_edit("Editable Text");
+		scw_layout->addWidget(l, row, 0);
+		scw_layout->addWidget(cle, row, 1);
+		row++;
+
+		l = new styled_label("Numeric Lineedit");
+		auto nle = new numeric_line_edit(17.345, 2);
+		nle->tick(0.05);
+		nle->minimum(-2);
+		nle->maximum(25);
+		scw_layout->addWidget(l, row, 0);
+		scw_layout->addWidget(nle, row, 1);
 		row++;
 
 		scw_layout->setColumnStretch(1, 1);

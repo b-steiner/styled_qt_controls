@@ -16,3 +16,8 @@ QWidget#simple_controls_widget
 {
 	background: solid @normal;
 }
+
+QPushButton#grp_button2, QPushButton#grp_button3, QPushButton#grp_button4
+{
+	border-left: none;
+}
