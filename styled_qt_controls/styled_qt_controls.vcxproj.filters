@@ -46,6 +46,10 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
@@ -73,6 +77,8 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_label.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.q.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc" />

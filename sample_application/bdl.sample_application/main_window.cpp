@@ -7,6 +7,8 @@
 #include <bdl.styled_qt_controls/util/style_loader.hpp>
 #include <bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp>
 #include <bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp>
+#include <bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp>
+#include <bdl.styled_qt_controls\util\os\file_icon_loader.hpp>
 
 #include <QtWidgets\QButtongroup>
 
@@ -19,6 +21,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 	styled_dock_splitter* main_splitter = new styled_dock_splitter(Qt::Orientation::Horizontal, false);
 	styled_dock_widget* dw1 = new styled_dock_widget(styled_dock_orientation::top, "dw1", false);
+	styled_dock_widget* dw2 = new styled_dock_widget(styled_dock_orientation::bottom, "dw2", true);
 
 	//Simple controls
 	{
@@ -114,15 +117,23 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		simple_controls_widget->setLayout(scw_layout);
 	}
 
+	//Item Controls
+	{
+		load_fs_model();
+		auto tree_widget = new styled_tree_view();
+
+		tree_widget->setModel(m_model);
+		tree_widget->setExpanded(m_model->index(0, 0), true);
+
+		dw2->add_item(new styled_dock_item("TreeView", tree_widget));
+	}
+
 	//Dummy widgets
 	QWidget* content_widget_2 = new QWidget();
 	content_widget_2->setStyleSheet("background: solid green;");
 	dw1->add_item(new styled_dock_item("Content2", content_widget_2));
 
-	styled_dock_widget* dw2 = new styled_dock_widget(styled_dock_orientation::bottom, "dw2", true);
-	QWidget* content_widget_3 = new QWidget();
-	content_widget_3->setStyleSheet("background: solid blue;");
-	dw2->add_item(new styled_dock_item("Tool1", content_widget_3));
+	//Dummy widgets
 	QWidget* content_widget_4 = new QWidget();
 	content_widget_4->setStyleSheet("background: solid yellow;");
 	dw2->add_item(new styled_dock_item("Tool2", content_widget_4));
@@ -137,4 +148,47 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	this->client_widget()->setLayout(client_widget_layout);
 }
 
-main_window::~main_window() { }
+main_window::~main_window()
+{ 
+	if (m_model != nullptr)
+		delete m_model;
+}
+
+
+
+void main_window::load_fs_model()
+{
+	m_model = new QStandardItemModel();
+
+	QFileInfo f("C:\\");
+	m_model->invisibleRootItem()->appendRow(load_fs_item(f));
+}
+
+QStandardItem* main_window::load_fs_item(QFileInfo file, int depth)
+{
+	QStandardItem* item = new QStandardItem(file.fileName());
+
+	if (depth > 0)
+		item->setIcon(util::file_icon_loader::load(file));
+
+	if (file.isDir())
+	{
+		QList<QIcon> iconList = { QIcon(":/images/pink_smiley") };
+		item->setData(qVariantFromValue(iconList), styled_tree_view::styled_tree_view_role::icon_list);
+
+		if (depth < 2)
+		{
+			QDir dir(file.canonicalFilePath());
+			auto list = dir.entryInfoList(QDir::AllEntries | QDir::NoDot | QDir::NoDotDot, QDir::DirsFirst | QDir::Name);
+			for (auto d : list)
+				item->appendRow(load_fs_item(d, depth+1));
+		}
+	}
+	else
+	{
+		QList<QIcon> iconList = { QIcon(":/images/green_smiley"), QIcon(":/images/pink_smiley") };
+		item->setData(qVariantFromValue(iconList), styled_tree_view::styled_tree_view_role::icon_list);
+	}
+
+	return item;
+}

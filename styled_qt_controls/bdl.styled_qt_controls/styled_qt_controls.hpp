@@ -22,6 +22,9 @@
 #include <QtWidgets\QMenubar>
 #include <QtWidgets\QSplitter>
 #include <QtWidgets\QLineedit>
+#include <QtWidgets\QTreeview>
+#include <QtWidgets\QStyleditemdelegate>
+#include <QtWidgets\QHeaderview>
 
 #include <QtXml\QDomDocument>
 

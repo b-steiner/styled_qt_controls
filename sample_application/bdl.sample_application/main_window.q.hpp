@@ -13,6 +13,11 @@ namespace bdl
 		public:
 			main_window();
 			virtual ~main_window();
+
+		private:
+			QStandardItemModel* m_model;
+			void load_fs_model();
+			QStandardItem* load_fs_item(QFileInfo file, int depth = 0);
 		};
 	}
 }

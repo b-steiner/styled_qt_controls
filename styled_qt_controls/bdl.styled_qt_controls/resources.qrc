@@ -35,5 +35,19 @@
 	<file>images/tabwidget_tablist.png</file>
 	<file>images/tabwidget_tablist_overflow.png</file>
 	<file>images/cursor_numeric_drag.png</file>
+  <file>images/tree_view_branch_closed.png</file>
+  <file>images/tree_view_branch_open.png</file>
+  <file>images/scroll_arrow_left.png</file>
+  <file>images/scroll_arrow_right.png</file>
+  <file>images/scroll_arrow_down.png</file>
+  <file>images/scroll_arrow_up.png</file>
+  <file>images/scroll_arrow_left_hover.png</file>
+  <file>images/scroll_arrow_right_hover.png</file>
+  <file>images/scroll_arrow_down_hover.png</file>
+  <file>images/scroll_arrow_up_hover.png</file>
+  <file>images/scroll_arrow_left_pressed.png</file>
+  <file>images/scroll_arrow_right_pressed.png</file>
+  <file>images/scroll_arrow_down_pressed.png</file>
+  <file>images/scroll_arrow_up_pressed.png</file>
 </qresource>														
 </RCC>								

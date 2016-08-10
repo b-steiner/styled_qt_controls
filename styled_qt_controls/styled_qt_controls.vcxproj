@@ -126,6 +126,8 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_frame.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_label.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_widget.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.cpp"/>
@@ -160,7 +162,9 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/>
-  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp"/></ItemGroup>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp"/>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.generated.cpp"/></ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp"/>
@@ -168,6 +172,8 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_label.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_widget.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.q.hpp"/>

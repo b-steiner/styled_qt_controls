@@ -1,5 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 	<file>main_window.qss</file>
+
+  <file>images/green_smiley.png</file>
+  <file>images/pink_smiley.png</file>
 </qresource>														
 </RCC>	
