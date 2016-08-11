@@ -10,6 +10,10 @@
 	<file>styled_dock_widget/styled_dock_widget_bottom.qss</file>
 
 	<file>styled_controls/clearable_line_edit.qss</file>
+  <file>styled_controls/styled_collapse_widget.qss</file>
+  <file>styled_controls/tree_combobox.qss</file>
+
+  <file>styled_path_widget/styled_path_widget.qss</file>
 	
 	<file>images/window_close.png</file>
 	<file>images/window_close_hover.png</file>
@@ -49,5 +53,12 @@
   <file>images/scroll_arrow_right_pressed.png</file>
   <file>images/scroll_arrow_down_pressed.png</file>
   <file>images/scroll_arrow_up_pressed.png</file>
+  <file>images/triangle_right.png</file>
+  <file>images/triangle_bottom.png</file>
+  <file>images/double_arrow_left.png</file>
+  <file>images/back.png</file>
+  <file>images/back_disabled.png</file>
+  <file>images/forward.png</file>
+  <file>images/forward_disabled.png</file>
 </qresource>														
 </RCC>								

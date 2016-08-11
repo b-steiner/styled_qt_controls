@@ -9,6 +9,12 @@
 #include <bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp>
 #include <bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp>
 #include <bdl.styled_qt_controls\util\os\file_icon_loader.hpp>
+#include <bdl.styled_qt_controls/styled_controls/styled_list_view.q.hpp>
+#include <bdl.styled_qt_controls/styled_controls/styled_list_view_item_delegate.q.hpp>
+#include <bdl.styled_qt_controls/styled_controls/styled_collapse_widget.q.hpp>
+#include <bdl.styled_qt_controls/styled_controls/styled_gradient_frame.q.hpp>
+#include <bdl.styled_qt_controls/styled_controls/tree_combobox.q.hpp>
+#include <bdl.styled_qt_controls/styled_path_widget/styled_path_widget.q.hpp>
 
 #include <QtWidgets\QButtongroup>
 
@@ -112,26 +118,149 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		scw_layout->addWidget(nle, row, 1);
 		row++;
 
+		l = new styled_label("Gradient Frame");
+		auto gf = new styled_gradient_frame();
+		gf->setObjectName("simple_gf_1");
+		scw_layout->addWidget(l, row, 0);
+		scw_layout->addWidget(gf, row, 1);
+		row++;
+
+		l = new styled_label("Collapse Widget");
+		m_scw = new styled_collapse_widget();
+		m_scw->state(styled_collapse_widget::state_t::no_state);
+		scw_layout->addWidget(l, row, 0);
+		scw_layout->addWidget(m_scw, row, 1);
+		row++;
+		
+		m_scw->title_widget(new QLabel(" Open to change state"));
+		QWidget* cw_content_widget = new QWidget();
+		cw_content_widget->setObjectName("simple_cw_content");
+		m_scw->content_widget(cw_content_widget);
+
+		QButtonGroup* state_group = new QButtonGroup();
+		styled_pushbutton* state_btn_1 = new styled_pushbutton("No State");
+		styled_pushbutton* state_btn_2 = new styled_pushbutton("Good");
+		styled_pushbutton* state_btn_3 = new styled_pushbutton("Warn");
+		styled_pushbutton* state_btn_4 = new styled_pushbutton("Error");
+		state_btn_1->setObjectName("state_btn_1");
+		state_btn_1->setObjectName("state_btn_2");
+		state_btn_1->setObjectName("state_btn_3");
+		state_btn_1->setObjectName("state_btn_4");
+		QObject::connect(state_btn_1, SIGNAL(clicked(bool)), this, SLOT(state_btn_1_clicked(bool)));
+		QObject::connect(state_btn_2, SIGNAL(clicked(bool)), this, SLOT(state_btn_2_clicked(bool)));
+		QObject::connect(state_btn_3, SIGNAL(clicked(bool)), this, SLOT(state_btn_3_clicked(bool)));
+		QObject::connect(state_btn_4, SIGNAL(clicked(bool)), this, SLOT(state_btn_4_clicked(bool)));
+		state_group->addButton(state_btn_1);
+		state_group->addButton(state_btn_2);
+		state_group->addButton(state_btn_3);
+		state_group->addButton(state_btn_4);
+		QHBoxLayout* state_layout = new QHBoxLayout();
+		state_layout->setContentsMargins(20, 50, 20, 50);
+		state_layout->setSpacing(0);
+		state_layout->addWidget(state_btn_1);
+		state_layout->addWidget(state_btn_2);
+		state_layout->addWidget(state_btn_3);
+		state_layout->addWidget(state_btn_4);
+		cw_content_widget->setLayout(state_layout);
+
+
+
 		scw_layout->setColumnStretch(1, 1);
 		scw_layout->setRowStretch(row, 1);
 		simple_controls_widget->setLayout(scw_layout);
+
+		
 	}
 
 	//Item Controls
 	{
 		load_fs_model();
-		auto tree_widget = new styled_tree_view();
 
+		QVBoxLayout* layout = new QVBoxLayout();
+		QWidget* ic_widget = new QWidget();
+		ic_widget->setLayout(layout);
+		dw2->add_item(new styled_dock_item("Item Views", ic_widget));
+
+		auto tree_widget = new styled_tree_view();
 		tree_widget->setModel(m_model);
 		tree_widget->setExpanded(m_model->index(0, 0), true);
+		layout->addWidget(tree_widget);
 
-		dw2->add_item(new styled_dock_item("TreeView", tree_widget));
+
+		QButtonGroup* size_group = new QButtonGroup();
+		styled_pushbutton* size_btn_1 = new styled_pushbutton("Detail");
+		styled_pushbutton* size_btn_2 = new styled_pushbutton("Small");
+		styled_pushbutton* size_btn_3 = new styled_pushbutton("Medium");
+		styled_pushbutton* size_btn_4 = new styled_pushbutton("Large");
+		size_btn_1->setObjectName("size_btn_1");
+		size_btn_1->setObjectName("size_btn_2");
+		size_btn_1->setObjectName("size_btn_3");
+		size_btn_1->setObjectName("size_btn_4");
+		QObject::connect(size_btn_1, SIGNAL(clicked(bool)), this, SLOT(size_btn_1_clicked(bool)));
+		QObject::connect(size_btn_2, SIGNAL(clicked(bool)), this, SLOT(size_btn_2_clicked(bool)));
+		QObject::connect(size_btn_3, SIGNAL(clicked(bool)), this, SLOT(size_btn_3_clicked(bool)));
+		QObject::connect(size_btn_4, SIGNAL(clicked(bool)), this, SLOT(size_btn_4_clicked(bool)));
+		size_group->addButton(size_btn_1);
+		size_group->addButton(size_btn_2);
+		size_group->addButton(size_btn_3);
+		size_group->addButton(size_btn_4);
+		QHBoxLayout* size_layout = new QHBoxLayout();
+		size_layout->setSpacing(0);
+		size_layout->addWidget(size_btn_1);
+		size_layout->addWidget(size_btn_2);
+		size_layout->addWidget(size_btn_3);
+		size_layout->addWidget(size_btn_4);
+		layout->addLayout(size_layout);
+
+
+		m_list_view = new styled_list_view();
+		m_list_view->setModel(m_model);
+		m_list_view->setRootIndex(m_model->index(0, 0));
+		layout->addWidget(m_list_view);
 	}
 
-	//Dummy widgets
-	QWidget* content_widget_2 = new QWidget();
-	content_widget_2->setStyleSheet("background: solid green;");
-	dw1->add_item(new styled_dock_item("Content2", content_widget_2));
+	//Combinded Controls
+	{
+		int row = 0;
+
+		QWidget* content_widget_2 = new QWidget();
+		dw1->add_item(new styled_dock_item("More complex controls", content_widget_2));
+
+		QGridLayout* layout = new QGridLayout();
+		content_widget_2->setLayout(layout);
+
+		tree_combobox* tcb = new tree_combobox();
+		tcb->model(m_model);
+		tcb->setExpanded(m_model->index(0, 0), true);
+		layout->addWidget(new QLabel("Tree Combobox"), row, 0);
+		layout->addWidget(tcb, row, 1);
+		row++;
+
+		styled_path_widget* spw = new styled_path_widget();
+		QList<styled_path_widget_item*> item_lst;
+		auto item = new styled_path_widget_item("C:\\");
+		item->menu_items().push_back(new styled_path_widget_item("Folder 1"));
+		item->menu_items().push_back(new styled_path_widget_item("Folder 2"));
+		item->menu_items().push_back(new styled_path_widget_item("Folder 3"));
+		item->menu_items().push_back(new styled_path_widget_item("Folder 4"));
+		item_lst.push_back(item);
+		item = new styled_path_widget_item("Folder 1");
+		item->menu_items().push_back(new styled_path_widget_item("SubFolder 1"));
+		item->menu_items().push_back(new styled_path_widget_item("SubFolder 2"));
+		item->menu_items().push_back(new styled_path_widget_item("SubFolder 3"));
+		item->menu_items().push_back(new styled_path_widget_item("SubFolder 4"));
+		item_lst.push_back(item);
+		spw->items(item_lst);
+		
+		layout->addWidget(new QLabel("Path Widget"), row, 0);
+		layout->addWidget(spw, row, 1);
+		row++;
+
+		layout->setColumnStretch(1, 1);
+		layout->setRowStretch(row, 1);
+	}
+
+	
 
 	//Dummy widgets
 	QWidget* content_widget_4 = new QWidget();
@@ -166,7 +295,12 @@ void main_window::load_fs_model()
 
 QStandardItem* main_window::load_fs_item(QFileInfo file, int depth)
 {
-	QStandardItem* item = new QStandardItem(file.fileName());
+	QStandardItem* item;
+	
+	if (depth == 0)
+		item = new QStandardItem("C:\\");
+	else
+		item = new QStandardItem(file.fileName());
 
 	if (depth > 0)
 		item->setIcon(util::file_icon_loader::load(file));
@@ -191,4 +325,46 @@ QStandardItem* main_window::load_fs_item(QFileInfo file, int depth)
 	}
 
 	return item;
+}
+
+void main_window::size_btn_1_clicked(bool checked)
+{
+	m_list_view->setIconSize(QSize(16, 16));
+	m_list_view->setViewMode(QListView::ViewMode::ListMode);
+	((styled_list_view_item_delegate*)m_list_view->itemDelegate())->preferred_size(0);
+}
+void main_window::size_btn_2_clicked(bool checked)
+{
+	m_list_view->setIconSize(QSize(32, 32));
+	m_list_view->setViewMode(QListView::ViewMode::IconMode);
+	((styled_list_view_item_delegate*)m_list_view->itemDelegate())->preferred_size(96);
+}
+void main_window::size_btn_3_clicked(bool checked)
+{
+	m_list_view->setIconSize(QSize(48, 48));
+	m_list_view->setViewMode(QListView::ViewMode::IconMode);
+	((styled_list_view_item_delegate*)m_list_view->itemDelegate())->preferred_size(96);
+}
+void main_window::size_btn_4_clicked(bool checked)
+{
+	m_list_view->setIconSize(QSize(128, 128));
+	m_list_view->setViewMode(QListView::ViewMode::IconMode);
+	((styled_list_view_item_delegate*)m_list_view->itemDelegate())->preferred_size(148);
+}
+
+void main_window::state_btn_1_clicked(bool checked)
+{
+	m_scw->state(styled_collapse_widget::state_t::no_state);
+}
+void main_window::state_btn_2_clicked(bool checked)
+{
+	m_scw->state(styled_collapse_widget::state_t::good);
+}
+void main_window::state_btn_3_clicked(bool checked)
+{
+	m_scw->state(styled_collapse_widget::state_t::warn);
+}
+void main_window::state_btn_4_clicked(bool checked)
+{
+	m_scw->state(styled_collapse_widget::state_t::error);
 }

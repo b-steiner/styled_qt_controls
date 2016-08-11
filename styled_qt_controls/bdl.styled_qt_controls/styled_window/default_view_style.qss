@@ -1,6 +1,6 @@
 QTreeView
 {
-	border: none;
+	border: 1px solid @border;
 	background: solid @content_control;
 	outline: 0;
 	qproperty-selected_background: @selection;

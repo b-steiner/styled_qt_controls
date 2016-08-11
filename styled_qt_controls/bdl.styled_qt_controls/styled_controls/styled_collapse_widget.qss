@@ -1,0 +1,53 @@
+
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame
+{
+	background: solid @normal;
+	border: 1px solid @border;
+	qproperty-topline_color: @light;
+	qproperty-gradient_bottom_color: rgba(0,0,0,0);
+	qproperty-gradient_top_color: rgba(0,0,0,0);
+	qproperty-gradient_topline_color: rgba(0,0,0,0);
+	qproperty-alpha_transition_start: 0.35;
+	qproperty-alpha_transition_end: 0.65;
+}
+
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame[custom_int_1="1"]
+{
+	qproperty-gradient_bottom_color: rgb(7,90,0);
+	qproperty-gradient_top_color: rgb(16,136,0);
+	qproperty-gradient_topline_color: rgb(23, 197, 0);
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame[custom_int_1="2"]
+{
+	qproperty-gradient_bottom_color: rgb(185,75,0);
+	qproperty-gradient_top_color: rgb(195,104,35);
+	qproperty-gradient_topline_color: rgb(214,139,93);
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame[custom_int_1="3"]
+{
+	qproperty-gradient_bottom_color: rgb(160,4,0);
+	qproperty-gradient_top_color: rgb(198,14,0);
+	qproperty-gradient_topline_color: rgb(255,14,10);
+}
+
+
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_content_frame
+{
+	border: 1px solid @border;
+	border-top: none;
+	background: solid @content_control;
+}
+
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > QPushButton#part_scw_collapse_button
+{
+	background: transparent;
+	image: url(:/images/expand.png);
+	padding: 0px 0px 0px 0px;
+	border: none;
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > QPushButton#part_scw_collapse_button:checked
+{
+	background: transparent;
+	border: none;
+	image: url(:/images/collapse.png);
+}

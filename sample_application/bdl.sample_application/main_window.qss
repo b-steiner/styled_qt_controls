@@ -21,3 +21,26 @@ QPushButton#grp_button2, QPushButton#grp_button3, QPushButton#grp_button4
 {
 	border-left: none;
 }
+
+QPushButton#size_btn_2, QPushButton#size_btn_3, QPushButton#size_btn_4
+{
+	border-left: none;
+}
+
+bdl--styled_qt_controls--styled_gradient_frame#simple_gf_1
+{
+	background: solid @normal;
+	border: 1px solid @border;
+	qproperty-topline_color: @light;
+	qproperty-alpha_transition_start: 0.35;
+	qproperty-alpha_transition_end: 0.65;
+	qproperty-gradient_bottom_color: rgb(198,14,0);
+	qproperty-gradient_top_color: rgb(16,136,0);
+	qproperty-gradient_topline_color: rgb(23, 197, 0);
+}
+
+QWidget#simple_cw_content
+{
+	background: solid @content_control;
+	border: 1px solid @border;
+}

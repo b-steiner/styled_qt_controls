@@ -1,0 +1,116 @@
+QPushButton#part_spw_textbutton
+{
+	qproperty-topline_color: transparent;
+	outline: 0px;
+	background: transparent;
+	border: 1px solid transparent;
+	padding: 4px 6px 4px 6px;
+	color: @font;
+	font-weight: bold;
+}
+QPushButton#part_spw_textbutton:hover
+{
+	outline: 0px;
+	background: solid @light;
+	border: 1px solid @border;
+}
+QPushButton#part_spw_textbutton:pressed
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}
+
+
+
+QPushButton#part_spw_menubutton
+{
+	background: transparent;
+	border: 1px transparent;
+}
+QPushButton#part_spw_menubutton:hover, QPushButton#part_spw_overflowbutton:hover
+{
+	background: solid @light;
+	border: 1px solid @border;
+}
+QPushButton#part_spw_menubutton:pressed, QPushButton#part_spw_overflowbutton:pressed
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}
+QPushButton#part_spw_menubutton::menu-indicator
+{
+	image: url(:/images/triangle_right.png);
+	subcontrol-position: center center;
+}
+QPushButton#part_spw_menubutton::menu-indicator:open
+{
+	image: url(:/common/styled_controls/images/triangle_bottom.png);
+	subcontrol-position: center center;
+}
+
+QPushButton#part_spw_overflowbutton
+{
+	background: transparent;
+	border: 1px transparent;
+	margin: 0px 0px 1px 0px;
+}
+QPushButton#part_spw_overflowbutton::menu-indicator
+{
+	image: url(:/images/double_arrow_left.png);
+	subcontrol-position: center center;
+}
+QPushButton#part_spw_overflowbutton::menu-indicator:open
+{
+	image: url(:/images/triangle_bottom.png);
+	subcontrol-position: center center;
+}
+
+
+
+
+QWidget#part_spw_separatorwidget
+{
+	background-color: blue;
+	border: none;
+	border-left: 1px solid @border;
+	border-right: 1px solid @light;
+	margin: 2px 3px 3px 3px;
+	min-width: 0px;
+}
+
+
+
+QPushButton#part_spw_backbutton
+{
+	background: transparent;
+	border: 1px transparent;
+	image: url(:/images/back.png);
+	padding: 0px 0px 1px 0px;
+}
+QPushButton#part_spw_backbutton:disabled
+{
+	image: url(:/images/back_disabled.png);
+}
+
+QPushButton#part_spw_forwardbutton
+{
+	background: transparent;
+	border: 1px transparent;
+	image: url(:/images/forward.png);
+	padding: 0px 0px 1px 0px;
+}
+QPushButton#part_spw_forwardbutton:disabled
+{
+	image: url(:/images/forward_disabled.png);
+}
+
+QPushButton#part_spw_backbutton:hover, QPushButton#part_spw_forwardbutton:hover
+{
+	background: solid @light;
+	border: 1px solid @border;
+}
+QPushButton#part_spw_backbutton:pressed, QPushButton#part_spw_forwardbutton:pressed
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}

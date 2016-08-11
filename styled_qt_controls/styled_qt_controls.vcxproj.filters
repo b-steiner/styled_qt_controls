@@ -9,6 +9,9 @@
     <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_bottom.qss" />
     <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_top.qss" />
     <None Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.qss" />
+    <None Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.qss" />
+    <None Include="bdl.styled_qt_controls\styled_controls\tree_combobox.qss" />
+    <None Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.qss" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp" />
@@ -50,6 +53,23 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_collapse_widget.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_gradient_frame.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\tree_combobox.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\tree_combobox.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\vertical_scroll_area.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
@@ -79,6 +99,15 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\tree_combobox.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.q.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc" />

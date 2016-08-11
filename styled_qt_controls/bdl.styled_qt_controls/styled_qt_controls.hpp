@@ -25,6 +25,11 @@
 #include <QtWidgets\QTreeview>
 #include <QtWidgets\QStyleditemdelegate>
 #include <QtWidgets\QHeaderview>
+#include <QtWidgets\QListview>
+#include <QtWidgets\QScrollarea>
+#include <QtWidgets\QScrollbar>
+#include <QtWidgets\QWidgetaction>
+#include <QtWidgets\QUndoCommand>
 
 #include <QtXml\QDomDocument>
 

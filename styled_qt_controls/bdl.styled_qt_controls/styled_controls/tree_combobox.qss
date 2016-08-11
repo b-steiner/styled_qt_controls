@@ -1,0 +1,32 @@
+bdl--styled_qt_controls--tree_combobox
+{
+	border: 1px solid @border;
+}
+
+bdl--styled_qt_controls--tree_combobox > bdl--styled_qt_controls--styled_pushbutton
+{
+	border: none;
+	border-left: 1px solid @border;
+	qproperty-topline_offset_right: 0;
+	qproperty-topline_offset_top: 0;
+}
+bdl--styled_qt_controls--tree_combobox > bdl--styled_qt_controls--styled_pushbutton::menu-indicator
+{
+	left: 1px;
+	top: 1px;
+	subcontrol-origin: center center;
+	subcontrol-position: center center;
+}
+
+bdl--styled_qt_controls--tree_combobox > QLabel
+{
+	padding: 0px 0px 0px 3px;
+	background: solid @dark;
+}
+
+bdl--styled_qt_controls--tree_combobox > QLineEdit
+{
+	padding: 0px 0px 0px 3px;
+	background: solid @dark;
+	border: none;
+}
