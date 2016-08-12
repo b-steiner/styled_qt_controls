@@ -30,6 +30,7 @@
 #include <QtWidgets\QScrollbar>
 #include <QtWidgets\QWidgetaction>
 #include <QtWidgets\QUndoCommand>
+#include <QtWidgets\QButtongroup>
 
 #include <QtXml\QDomDocument>
 

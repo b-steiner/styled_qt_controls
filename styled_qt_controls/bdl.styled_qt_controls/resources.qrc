@@ -14,6 +14,7 @@
   <file>styled_controls/tree_combobox.qss</file>
 
   <file>styled_path_widget/styled_path_widget.qss</file>
+  <file>styled_color_picker/styled_color_picker.qss</file>
 	
 	<file>images/window_close.png</file>
 	<file>images/window_close_hover.png</file>
@@ -60,5 +61,7 @@
   <file>images/back_disabled.png</file>
   <file>images/forward.png</file>
   <file>images/forward_disabled.png</file>
+  <file>images/color_pick.png</file>
+  <file>images/color_picker_slider.png</file>
 </qresource>														
 </RCC>								

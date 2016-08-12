@@ -1,0 +1,54 @@
+bdl--styled_qt_controls--styled_color_picker > QFrame#part_scw_title_frame
+{
+	background: solid transparent;
+	border: none;
+	qproperty-topline_color: transparent;
+}
+
+QPushButton#part_scp_connect_button
+{
+	background: transparent;
+	border: none;
+	padding: 0px 0px 0px 0px;
+	image: url(:/images/connect_unbound.png);
+}
+QPushButton#part_scp_connect_button:checked
+{
+	image: url(:/images/connect_bound.png);
+}
+
+QPushButton#part_scp_pick_button
+{
+	border-left: none;
+	padding: 0px 0px 0px 0px;
+	image: url(:/images/color_pick.png);
+}
+
+
+QWidget#part_scp_titlewidget
+{
+	background: solid transparent;
+}
+
+QWidget#part_scp_hs_container
+{
+	padding-left: 2px;
+	padding-right: 2px;
+}
+QFrame#part_scp_hs_picker
+{
+	border: 1px solid @border;
+}
+QFrame#part_scp_l_picker
+{
+	background: solid transparent;
+}
+
+
+QPushButton#part_scp_hsl_mode_button
+{
+	border-left: none;
+	border-right: none;
+	qproperty-topline_offset_left: 0;
+	qproperty-topline_offset_right: 0;
+}

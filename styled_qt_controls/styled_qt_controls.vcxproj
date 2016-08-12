@@ -110,6 +110,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </Message>
     </CustomBuild>
+    <None Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.qss"/>
     <None Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.qss"/>
     <None Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.qss"/>
     <None Include="bdl.styled_qt_controls\styled_controls\tree_combobox.qss"/>
@@ -124,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\l_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.cpp"/>
@@ -184,9 +188,15 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_gradient_frame.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\tree_combobox.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\vertical_scroll_area.generated.cpp"/>
-  <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.generated.cpp"/></ItemGroup>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.generated.cpp"/>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp"/></ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\l_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.q.hpp"/>

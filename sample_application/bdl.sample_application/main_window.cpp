@@ -15,6 +15,7 @@
 #include <bdl.styled_qt_controls/styled_controls/styled_gradient_frame.q.hpp>
 #include <bdl.styled_qt_controls/styled_controls/tree_combobox.q.hpp>
 #include <bdl.styled_qt_controls/styled_path_widget/styled_path_widget.q.hpp>
+#include <bdl.styled_qt_controls/styled_color_picker/styled_color_picker.q.hpp>
 
 #include <QtWidgets\QButtongroup>
 
@@ -256,16 +257,17 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		layout->addWidget(spw, row, 1);
 		row++;
 
+		styled_color_picker* picker = new styled_color_picker("Color Picker");
+		layout->addWidget(picker, row, 0, 1, 2);
+		row++;
+
 		layout->setColumnStretch(1, 1);
 		layout->setRowStretch(row, 1);
+
+		//Dummy widgets
+		QWidget* color_picker_widget = new QWidget();
+		dw2->add_item(new styled_dock_item("Color Picker", color_picker_widget));
 	}
-
-	
-
-	//Dummy widgets
-	QWidget* content_widget_4 = new QWidget();
-	content_widget_4->setStyleSheet("background: solid yellow;");
-	dw2->add_item(new styled_dock_item("Tool2", content_widget_4));
 
 	main_splitter->addWidget(dw1);
 	main_splitter->addWidget(dw2);

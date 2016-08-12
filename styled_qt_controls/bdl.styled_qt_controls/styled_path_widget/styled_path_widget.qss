@@ -44,7 +44,7 @@ QPushButton#part_spw_menubutton::menu-indicator
 }
 QPushButton#part_spw_menubutton::menu-indicator:open
 {
-	image: url(:/common/styled_controls/images/triangle_bottom.png);
+	image: url(:/images/triangle_bottom.png);
 	subcontrol-position: center center;
 }
 
