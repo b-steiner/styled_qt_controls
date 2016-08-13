@@ -121,6 +121,9 @@ public:
 		*/
 	static QList<styled_dock_widget*>& all_dock_widgets();
 
+	//! See QWidget
+	virtual QSize minimumSizeHint() const;
+
 protected:
 	//! See QWidget
 	virtual void paintEvent(QPaintEvent *pe);

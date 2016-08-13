@@ -266,7 +266,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 		//Dummy widgets
 		QWidget* color_picker_widget = new QWidget();
-		dw2->add_item(new styled_dock_item("Color Picker", color_picker_widget));
+		dw2->add_item(new styled_dock_item("Dummy", color_picker_widget));
 	}
 
 	main_splitter->addWidget(dw1);

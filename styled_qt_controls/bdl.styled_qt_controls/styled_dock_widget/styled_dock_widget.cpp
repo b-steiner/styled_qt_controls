@@ -67,6 +67,7 @@ styled_dock_widget::styled_dock_widget(styled_dock_orientation orientation, cons
 	content_frame->setObjectName("part_sdw_contentframe");
 	m_content_layout = new QGridLayout();
 	m_content_layout->setContentsMargins(0, 0, 0, 0);
+	m_content_layout->setSpacing(0);
 	content_frame->setLayout(m_content_layout);
 
 	m_part_titleframe = new styled_frame();
@@ -252,27 +253,24 @@ void styled_dock_widget::select(int idx)
 		m_tabbar_widgets[m_selected_item]->findChild<styled_pushbutton*>("part_sdw_tab_closebutton")->selected(false);
 	}
 
-	if (m_selected_item != item)
+	if (m_selected_item != nullptr)
+		m_selected_item->content()->setVisible(false);
+
+	m_selected_item = item;
+
+	if (item != nullptr)
 	{
-		if (m_selected_item != nullptr)
-			m_selected_item->content()->setParent(nullptr);
+		item->content()->setVisible(true);
+		m_part_titlebar_label->setText(item->title());
 
-		m_selected_item = item;
-
-		if (item != nullptr)
+		if (!m_part_tabbar_layout->isVisible(m_tabbar_widgets[item]))
 		{
-			m_content_layout->addWidget(item->content(), 0, 0);
-			m_part_titlebar_label->setText(item->title());
-
-			if (!m_part_tabbar_layout->isVisible(m_tabbar_widgets[item]))
-			{
-				m_items.removeAt(idx);
-				m_items.push_front(item);
-				items_changed();
-			}
-
-			emit item->selected();
+			m_items.removeAt(idx);
+			m_items.push_front(item);
+			items_changed();
 		}
+
+		emit item->selected();
 	}
 
 	if (m_selected_item != nullptr)
@@ -280,7 +278,6 @@ void styled_dock_widget::select(int idx)
 		m_tabbar_widgets[m_selected_item]->selected(true);
 		m_tabbar_widgets[m_selected_item]->findChild<styled_label*>("part_sdw_tabtext")->selected(true);
 		m_tabbar_widgets[m_selected_item]->findChild<styled_pushbutton*>("part_sdw_tab_closebutton")->selected(true);
-		//m_selected_item->content()->setFocus(Qt::FocusReason::MouseFocusReason);
 		this->setFocusProxy(m_selected_item->content());		
 	}
 	else
@@ -511,12 +508,17 @@ void styled_dock_widget::items_changed()
 		m_part_tabbar->setVisible(false);
 	}
 
+	int row = 0;
 	for (auto item : m_items)
 	{
 		auto widget = tabbar_widget(item);
 		m_tabbar_widgets.insert(item, widget);
 		m_widget_to_item.insert(widget, item);
 		m_part_tabbar_layout->addWidget(widget);
+
+		m_content_layout->addWidget(item->content(), row, 0);
+		row++;
+		item->content()->setVisible(false);
 
 		auto action = m_overflow_menu->addAction(item->title());
 		action->setData(qVariantFromValue((void*)item));
@@ -1004,4 +1006,33 @@ void styled_dock_widget::load_settings(settings_group* group)
 
 	if (select_idx != -1)
 		this->select(select_idx);*/
+}
+
+QSize styled_dock_widget::minimumSizeHint() const
+{
+	QSize originalHint = styled_widget::minimumSizeHint();
+
+	QSize currentTabSize(0,0);
+	if (m_selected_item != nullptr)
+		currentTabSize = m_selected_item->content()->minimumSizeHint();
+
+	int max_tab_height = 0;
+	int max_tab_width = 0;
+
+	for (auto c : this->m_items)
+	{
+		auto csize = c->content()->minimumSizeHint();
+		max_tab_height = max(max_tab_height, csize.height());
+		max_tab_width = max(max_tab_width, csize.width());
+		qDebug() << "dock content" << csize;
+	}
+
+	//The max(..., 0) are necessary when a widget hasn't set the minimum size hint (value == -1 in that case)
+	QSize result(
+		max(max(max_tab_width + 2, 0), originalHint.width()), // 2 seems to be the border
+		originalHint.height() - max(currentTabSize.height(), 0) + max(max_tab_height, 0)
+		);
+	qDebug() << "dock: " << result << ", " << currentTabSize << ", " << originalHint << ", " << max_tab_width;
+
+	return result;
 }
