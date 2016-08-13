@@ -53,9 +53,6 @@ QSize styled_list_view_item_delegate::sizeHint(const QStyleOptionViewItem& _opti
 	}
 
 	int textHeight = _option.fontMetrics.ascent() + _option.fontMetrics.lineSpacing() * (rows - 1) + _option.fontMetrics.descent();
-
-	//qDebug() << text << ", " << availableWidth << ", " << width << ", " << height + textHeight;
-
 	return QSize(width + LEFT_BORDER + RIGHT_BORDER, height + textHeight);
 }
 void styled_list_view_item_delegate::paint(QPainter* _painter, const QStyleOptionViewItem& _option, const QModelIndex& _index) const

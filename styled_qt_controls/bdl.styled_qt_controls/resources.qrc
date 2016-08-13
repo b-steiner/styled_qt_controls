@@ -63,5 +63,6 @@
   <file>images/forward_disabled.png</file>
   <file>images/color_pick.png</file>
   <file>images/color_picker_slider.png</file>
+	<file>images/cursor_pick_color.png</file>
 </qresource>														
 </RCC>								

@@ -16,7 +16,7 @@ using namespace bdl::styled_qt_controls::util;
 
 enum class color_pick_mode { rgb = 0, hsl = 1, hex = 2 };
 
-styled_color_picker::styled_color_picker(const QString& title) : m_color(0.8f, 0.8f, 0.8f, 1.0f)
+styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_widget) : m_color(0.8f, 0.8f, 0.8f, 1.0f), m_pick_widget(pick_widget), m_record_color(false)
 {
 	this->is_button_visible(false);
 
@@ -47,10 +47,16 @@ styled_color_picker::styled_color_picker(const QString& title) : m_color(0.8f, 0
 	m_color_display_frame->setFixedHeight(18);
 	color_box_layout->addWidget(m_color_display_frame, 0, 0);
 
-	QPushButton* pick_button = new QPushButton();
-	pick_button->setObjectName("part_scp_pick_button");
-	pick_button->setFixedSize(18, 18);
-	color_box_layout->addWidget(pick_button, 0, 1);
+	if (m_pick_widget != nullptr)
+	{
+		m_pick_button = new QPushButton();
+		m_pick_button->setObjectName("part_scp_pick_button");
+		m_pick_button->setFixedSize(18, 18);
+		m_pick_button->setCheckable(true);
+		m_pick_button->setChecked(false);
+		color_box_layout->addWidget(m_pick_button, 0, 1);
+		QObject::connect(m_pick_button, SIGNAL(toggled(bool)), this, SLOT(pick_button_toggled(bool)));
+	}
 
 	title_layout->addLayout(color_box_layout, 0, 1);
 
@@ -328,4 +334,63 @@ void styled_color_picker::color_changed_internal(const QColor& color)
 void styled_color_picker::binding_button_toggled(bool value)
 {
 	emit binding_changed(value);
+}
+void styled_color_picker::pick_button_toggled(bool value)
+{
+	if (m_pick_widget != nullptr)
+	{
+		if (value)
+		{
+			m_pick_restore_cursor = m_pick_widget->cursor();
+			m_pick_widget->setCursor(QCursor(QPixmap(":/images/cursor_pick_color.png"), 1, 14));
+			m_pick_widget->installEventFilter(this);
+		}
+		else
+		{
+			m_pick_widget->setCursor(m_pick_restore_cursor);
+			m_pick_widget->removeEventFilter(this);
+		}
+	}
+}
+
+bool styled_color_picker::eventFilter(QObject *obj, QEvent *event)
+{
+	if (event->type() == QEvent::MouseButtonPress)
+	{
+		QMouseEvent* me = (QMouseEvent*)event;
+		if (me->button() == Qt::MouseButton::LeftButton)
+		{
+			color(color_from_pos(me->globalPos()));
+			m_record_color = true;
+			return true;
+		}
+	}
+	else if (event->type() == QEvent::MouseButtonRelease)
+	{
+		QMouseEvent* me = (QMouseEvent*)event;
+		if (me->button() == Qt::MouseButton::LeftButton)
+		{
+			color(color_from_pos(me->globalPos()));
+			m_pick_button->setChecked(false);
+			m_record_color = false;
+			return true;
+		}
+	}
+	else if (event->type() == QEvent::MouseMove)
+	{
+		if (m_record_color)
+		{
+			QMouseEvent* me = (QMouseEvent*)event;
+			color(color_from_pos(me->globalPos()));
+			return true;
+		}
+	}
+
+	return false;
+}
+
+QColor styled_color_picker::color_from_pos(QPoint point)
+{
+	auto img = m_pick_widget->grab().toImage();
+	return img.pixelColor(m_pick_widget->mapFromGlobal(point));
 }

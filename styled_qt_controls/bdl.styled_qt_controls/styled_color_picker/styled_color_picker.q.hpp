@@ -35,13 +35,17 @@ BEGIN_BDL_SQTC
 			PROPERTY0(QLabel*, channel2_label);
 			PROPERTY0(QLabel*, channel3_label);
 			PROPERTY0(QPushButton*, connect_button);
+			PROPERTY0(QWidget*, pick_widget);
+			PROPERTY0(QCursor, pick_restore_cursor);
+			PROPERTY0(QPushButton*, pick_button);
+			PROPERTY0(bool, record_color);
 
 		public:
 			/*! \brief Initializes a new instance of the styled_color_picker class
 			 *
 			 * \param title The title of the collapsable widget
 			 */
-			styled_color_picker(const QString& title);
+			styled_color_picker(const QString& title, QWidget* pick_widget = nullptr);
 			/*! \brief Releases all data associated with an instance of the styled_color_picker class
 			*/
 			~styled_color_picker();
@@ -63,6 +67,9 @@ BEGIN_BDL_SQTC
 
 			void channel_textEdited(const QString &text);
 			void binding_button_toggled(bool value);
+			void pick_button_toggled(bool value);
+
+			bool eventFilter(QObject *obj, QEvent *event);
 
 		signals:
 			/*! \brief Signals when the color is changed
@@ -78,6 +85,8 @@ BEGIN_BDL_SQTC
 
 		private:
 			void color_changed_internal(const QColor& color);
+
+			QColor color_from_pos(QPoint point);
 		};
 
 END_BDL_SQTC

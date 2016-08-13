@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_color_picker_t {
-    QByteArrayData data[13];
-    char stringdata0[186];
+    QByteArrayData data[18];
+    char stringdata0[236];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,14 +42,21 @@ QT_MOC_LITERAL(8, 128, 2), // "id"
 QT_MOC_LITERAL(9, 131, 7), // "checked"
 QT_MOC_LITERAL(10, 139, 18), // "channel_textEdited"
 QT_MOC_LITERAL(11, 158, 4), // "text"
-QT_MOC_LITERAL(12, 163, 22) // "binding_button_toggled"
+QT_MOC_LITERAL(12, 163, 22), // "binding_button_toggled"
+QT_MOC_LITERAL(13, 186, 19), // "pick_button_toggled"
+QT_MOC_LITERAL(14, 206, 11), // "eventFilter"
+QT_MOC_LITERAL(15, 218, 3), // "obj"
+QT_MOC_LITERAL(16, 222, 7), // "QEvent*"
+QT_MOC_LITERAL(17, 230, 5) // "event"
 
     },
     "bdl::styled_qt_controls::styled_color_picker\0"
     "color_changed\0\0color\0binding_changed\0"
     "value\0picker_color_changed\0"
     "mode_buttonToggled\0id\0checked\0"
-    "channel_textEdited\0text\0binding_button_toggled"
+    "channel_textEdited\0text\0binding_button_toggled\0"
+    "pick_button_toggled\0eventFilter\0obj\0"
+    "QEvent*\0event"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +66,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,14 +74,16 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
-       4,    1,   47,    2, 0x06 /* Public */,
+       1,    1,   54,    2, 0x06 /* Public */,
+       4,    1,   57,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   50,    2, 0x08 /* Private */,
-       7,    2,   53,    2, 0x08 /* Private */,
-      10,    1,   58,    2, 0x08 /* Private */,
-      12,    1,   61,    2, 0x08 /* Private */,
+       6,    1,   60,    2, 0x08 /* Private */,
+       7,    2,   63,    2, 0x08 /* Private */,
+      10,    1,   68,    2, 0x08 /* Private */,
+      12,    1,   71,    2, 0x08 /* Private */,
+      13,    1,   74,    2, 0x08 /* Private */,
+      14,    2,   77,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QColor,    3,
@@ -85,6 +94,8 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
     QMetaType::Void, QMetaType::Int, QMetaType::Bool,    8,    9,
     QMetaType::Void, QMetaType::QString,   11,
     QMetaType::Void, QMetaType::Bool,    5,
+    QMetaType::Void, QMetaType::Bool,    5,
+    QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 16,   15,   17,
 
        0        // eod
 };
@@ -101,6 +112,9 @@ void bdl::styled_qt_controls::styled_color_picker::qt_static_metacall(QObject *_
         case 3: _t->mode_buttonToggled((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         case 4: _t->channel_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 5: _t->binding_button_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 6: _t->pick_button_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: { bool _r = _t->eventFilter((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QEvent*(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -148,13 +162,13 @@ int bdl::styled_qt_controls::styled_color_picker::qt_metacall(QMetaObject::Call 
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

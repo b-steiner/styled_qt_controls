@@ -229,6 +229,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 		QGridLayout* layout = new QGridLayout();
 		content_widget_2->setLayout(layout);
+		content_widget_2->setStyleSheet(loader.style_string());
 
 		tree_combobox* tcb = new tree_combobox();
 		tcb->model(m_model);
@@ -257,8 +258,17 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		layout->addWidget(spw, row, 1);
 		row++;
 
-		styled_color_picker* picker = new styled_color_picker("Color Picker");
+		styled_gradient_frame* pick_test_frame = new styled_gradient_frame();
+		pick_test_frame->setObjectName("pick_test_frame");
+		pick_test_frame->setMinimumSize(100, 100);
+
+		styled_color_picker* picker = new styled_color_picker("Color Picker", pick_test_frame);
 		layout->addWidget(picker, row, 0, 1, 2);
+		row++;
+
+
+		layout->addWidget(new QLabel("Click here for color pick"), row, 0);
+		layout->addWidget(pick_test_frame, row, 1);
 		row++;
 
 		layout->setColumnStretch(1, 1);

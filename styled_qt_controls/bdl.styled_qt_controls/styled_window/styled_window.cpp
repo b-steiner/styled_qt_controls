@@ -193,8 +193,6 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 			MINMAXINFO* mmi = (MINMAXINFO*)lParam;
 			mmi->ptMinTrackSize.x = window->m_part_window_widget->minimumSizeHint().width();
 			mmi->ptMinTrackSize.y = window->m_part_window_widget->minimumSizeHint().height();
-
-			qDebug() << window->m_part_window_widget->minimumSizeHint();
 			return 0;
 		}
 

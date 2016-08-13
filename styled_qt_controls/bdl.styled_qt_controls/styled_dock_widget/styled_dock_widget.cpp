@@ -1024,7 +1024,6 @@ QSize styled_dock_widget::minimumSizeHint() const
 		auto csize = c->content()->minimumSizeHint();
 		max_tab_height = max(max_tab_height, csize.height());
 		max_tab_width = max(max_tab_width, csize.width());
-		qDebug() << "dock content" << csize;
 	}
 
 	//The max(..., 0) are necessary when a widget hasn't set the minimum size hint (value == -1 in that case)
@@ -1032,7 +1031,6 @@ QSize styled_dock_widget::minimumSizeHint() const
 		max(max(max_tab_width + 2, 0), originalHint.width()), // 2 seems to be the border
 		originalHint.height() - max(currentTabSize.height(), 0) + max(max_tab_height, 0)
 		);
-	qDebug() << "dock: " << result << ", " << currentTabSize << ", " << originalHint << ", " << max_tab_width;
 
 	return result;
 }
