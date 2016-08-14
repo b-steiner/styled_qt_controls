@@ -64,5 +64,7 @@
   <file>images/color_pick.png</file>
   <file>images/color_picker_slider.png</file>
 	<file>images/cursor_pick_color.png</file>
+	<file>images/add.png</file>
+	<file>images/remove.png</file>
 </qresource>														
 </RCC>								

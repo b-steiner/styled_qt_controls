@@ -225,7 +225,9 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		int row = 0;
 
 		QWidget* content_widget_2 = new QWidget();
-		dw1->add_item(new styled_dock_item("More complex controls", content_widget_2));
+		auto cw2_item = new styled_dock_item("More complex controls", content_widget_2);
+		dw1->add_item(cw2_item);
+		dw1->select(cw2_item);
 
 		QGridLayout* layout = new QGridLayout();
 		content_widget_2->setLayout(layout);

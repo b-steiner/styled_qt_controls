@@ -10,6 +10,9 @@
 #include "../styled_controls/styled_label.q.hpp"
 #include "../styled_controls/styled_frame.q.hpp"
 #include "../styled_controls/styled_widget.q.hpp"
+#include "../styled_controls/styled_list_view.q.hpp"
+#include "color_list_item_model.q.hpp"
+#include "color_item_delegate.q.hpp"
 
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
@@ -108,7 +111,7 @@ styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_wid
 	QObject::connect(m_hs_picker, SIGNAL(color_changed(const QColor&)), this, SLOT(picker_color_changed(const QColor&)));
 	QObject::connect(m_l_picker, SIGNAL(color_changed(const QColor&)), this, SLOT(picker_color_changed(const QColor&)));
 
-	// Recently used colors and RGB-HSL-HEX textboxes
+	// Recently used colors and 
 
 	QWidget* collapse_right_widget = new QWidget();
 	collapse_right_widget->setFixedWidth(150);
@@ -119,20 +122,45 @@ styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_wid
 	collapse_right_widget->setLayout(collapse_right_layout);
 	collapse_layout->addWidget(collapse_right_widget, 0, 1);
 
-	QWidget* placeholder1 = new QWidget();
-	placeholder1->setStyleSheet("background: solid green");
-	placeholder1->setFixedHeight(20);
-	collapse_right_layout->addWidget(placeholder1, 0, 0);
+	QGridLayout* recent_layout = new QGridLayout();
+	recent_layout->setSpacing(0);
+	recent_layout->setContentsMargins(0, 0, 0, 0);
+	recent_layout->setRowStretch(2, 1);
 
-	QWidget* placeholder2 = new QWidget();
-	placeholder2->setStyleSheet("background: solid blue");
-	placeholder2->setFixedHeight(20);
-	collapse_right_layout->addWidget(placeholder2, 1, 0);
+	styled_pushbutton* add_recent_button = new styled_pushbutton();
+	add_recent_button->setFixedSize(19, 20);
+	add_recent_button->setObjectName("part_scp_add_recent_button");
+	recent_layout->addWidget(add_recent_button, 0, 0);
 
-	QWidget* spacer = new QWidget();
-	spacer->setStyleSheet("background: transparent");
-	spacer->setMinimumHeight(0);
-	collapse_right_layout->addWidget(spacer, 2, 0);
+	styled_pushbutton* remove_recent_button = new styled_pushbutton();
+	remove_recent_button->setFixedSize(19, 19);
+	remove_recent_button->setObjectName("part_scp_remove_recent_button");
+	recent_layout->addWidget(remove_recent_button, 1, 0);
+
+	styled_list_view* recent_list = new styled_list_view();
+	recent_list->setFixedHeight(60);
+	recent_list->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOn);
+	recent_list->setItemDelegate(new color_item_delegate(recent_list));
+	recent_layout->addWidget(recent_list, 0, 1, 3, 1);
+	collapse_right_layout->addLayout(recent_layout, 0, 0);
+
+	//Dummy data
+	color_list_item_model* model = new color_list_item_model();
+	model->add_color(QColor(255, 0, 0));
+	model->add_color(QColor(0, 255, 0));
+	model->add_color(QColor(0, 0, 255));
+	model->add_color(QColor(255, 0, 255));
+	model->add_color(QColor(255, 255, 0));
+	model->add_color(QColor(0, 255, 255));
+	model->add_color(QColor(255, 0, 0));
+	model->add_color(QColor(0, 255, 0));
+	model->add_color(QColor(0, 0, 255));
+	model->add_color(QColor(255, 0, 255));
+	model->add_color(QColor(255, 255, 0));
+	model->add_color(QColor(0, 255, 255));
+	recent_list->setModel(model);
+
+	//RGB - HSL - HEX textboxes
 
 	styled_pushbutton* rgb_toggle_button = new styled_pushbutton("RGB");
 	rgb_toggle_button->setCheckable(true);

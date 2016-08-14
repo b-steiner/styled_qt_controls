@@ -52,3 +52,23 @@ QPushButton#part_scp_hsl_mode_button
 	qproperty-topline_offset_left: 0;
 	qproperty-topline_offset_right: 0;
 }
+
+QPushButton#part_scp_add_recent_button
+{
+	border-right:none;
+	image: url(:/images/add.png);
+	padding: 0px 0px 0px 0px;
+	qproperty-topline_offset_right: 0;
+	qproperty-topline_color: transparent;
+}
+
+QPushButton#part_scp_remove_recent_button
+{
+	border-right:none;
+	border-top:none;
+	image: url(:/images/remove.png);
+	padding: 0px 0px 0px 0px;
+	qproperty-topline_offset_right: 0;
+	qproperty-topline_offset_top: 0;
+	qproperty-topline_color: transparent;
+}

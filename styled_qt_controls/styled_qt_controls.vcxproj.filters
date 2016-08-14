@@ -77,6 +77,12 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\l_frame.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_list_item_model.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
@@ -118,6 +124,8 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\l_frame.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.q.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc" />

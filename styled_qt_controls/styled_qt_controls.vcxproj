@@ -125,6 +125,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\l_frame.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.cpp"/>
@@ -191,9 +193,15 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.generated.cpp"/>
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.generated.cpp"/>
-  <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp"/></ItemGroup>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp"/>
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_list_item_model.generated.cpp"/>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_item_delegate.generated.cpp"/></ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\resources\resources.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\l_frame.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp"/>
