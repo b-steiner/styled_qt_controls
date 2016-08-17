@@ -438,3 +438,21 @@ void styled_color_picker::recent_list_double_clicked(const QModelIndex& index)
 		this->color_changed_internal(qvariant_cast<QColor>(m_recent_model->data(index, Qt::DisplayRole)));
 	}
 }
+
+settings_group* styled_color_picker::save_global_settings() const
+{
+	auto grp = new settings_group("styled_color_picker::global");
+
+	auto recent_grp = new settings_group("recent_colors");
+	for (int i = 0; i < m_recent_model->rowCount(); i++)
+	{
+		QColor c = qvariant_cast<QColor>(m_recent_model->data(m_recent_model->index(i, 0), Qt::DisplayRole));
+		recent_grp->values().insert(QString::number(i), c.name());
+	}
+
+	return grp;
+}
+void styled_color_picker::load_global_settings(settings_group* group)
+{
+
+}

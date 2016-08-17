@@ -7,6 +7,7 @@
 #include "../styled_controls/numeric_line_edit.q.hpp"
 #include "../styled_controls/styled_list_view.q.hpp"
 #include "color_list_item_model.q.hpp"
+#include "../util/settings/settings_group.hpp"
 
 
 BEGIN_BDL_SQTC
@@ -65,6 +66,9 @@ BEGIN_BDL_SQTC
 			* \param value Set to True when the button should be checked, False otherwise
 			*/
 			void is_bound(bool value);
+
+			util::settings_group* save_global_settings() const;
+			void load_global_settings(util::settings_group* group);
 
 		private slots:
 			void picker_color_changed(const QColor& color);
