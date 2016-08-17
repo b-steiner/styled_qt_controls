@@ -268,9 +268,12 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 		layout->addWidget(picker, row, 0, 1, 2);
 		row++;
 
-
 		layout->addWidget(new QLabel("Click here for color pick"), row, 0);
 		layout->addWidget(pick_test_frame, row, 1);
+		row++;
+
+		styled_color_picker* picker2 = new styled_color_picker("Color Picker 2", pick_test_frame);
+		layout->addWidget(picker2, row, 0, 1, 2);
 		row++;
 
 		layout->setColumnStretch(1, 1);

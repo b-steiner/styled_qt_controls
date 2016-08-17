@@ -8,11 +8,15 @@ color_list_item_model::~color_list_item_model() { }
 
 void color_list_item_model::add_color(QColor color)
 {
-	m_colors.push_back(color);
+	this->beginInsertRows(QModelIndex(), 0, 0);
+	m_colors.push_front(color.toRgb());
+	this->endInsertRows();
 }
 void color_list_item_model::remove_color(const QModelIndex& index)
 {
-	
+	this->beginRemoveRows(QModelIndex(), index.row(), index.row());
+	m_colors.removeAt(index.row());
+	this->endRemoveRows();
 }
 
 QModelIndex color_list_item_model::index(int row, int column, const QModelIndex &parent) const

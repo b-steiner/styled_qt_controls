@@ -1,6 +1,7 @@
 #include <bdl.styled_qt_controls\styled_qt_controls.hpp>
 #include "styled_color_picker.q.hpp"
 
+#include "../util/qt_helper_functions.hpp"
 #include "../util/style_loader.hpp"
 #include "../util/theme_colors.hpp"
 #include "hs_frame.q.hpp"
@@ -10,17 +11,22 @@
 #include "../styled_controls/styled_label.q.hpp"
 #include "../styled_controls/styled_frame.q.hpp"
 #include "../styled_controls/styled_widget.q.hpp"
-#include "../styled_controls/styled_list_view.q.hpp"
-#include "color_list_item_model.q.hpp"
 #include "color_item_delegate.q.hpp"
 
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
+std::unique_ptr<color_list_item_model> styled_color_picker::m_recent_model(nullptr);
+
 enum class color_pick_mode { rgb = 0, hsl = 1, hex = 2 };
 
-styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_widget) : m_color(0.8f, 0.8f, 0.8f, 1.0f), m_pick_widget(pick_widget), m_record_color(false)
+styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_widget) : m_pick_widget(pick_widget), m_record_color(false)
 {
+	if (!m_recent_model)
+	{
+		m_recent_model = std::make_unique<color_list_item_model>();
+	}
+
 	this->is_button_visible(false);
 
 	//Title Bar
@@ -131,34 +137,23 @@ styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_wid
 	add_recent_button->setFixedSize(19, 20);
 	add_recent_button->setObjectName("part_scp_add_recent_button");
 	recent_layout->addWidget(add_recent_button, 0, 0);
+	QObject::connect(add_recent_button, SIGNAL(clicked(bool)), this, SLOT(add_recent_button_clicked(bool)));
 
 	styled_pushbutton* remove_recent_button = new styled_pushbutton();
 	remove_recent_button->setFixedSize(19, 19);
 	remove_recent_button->setObjectName("part_scp_remove_recent_button");
 	recent_layout->addWidget(remove_recent_button, 1, 0);
+	QObject::connect(remove_recent_button, SIGNAL(clicked(bool)), this, SLOT(remove_recent_button_clicked(bool)));
 
-	styled_list_view* recent_list = new styled_list_view();
-	recent_list->setFixedHeight(60);
-	recent_list->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOn);
-	recent_list->setItemDelegate(new color_item_delegate(recent_list));
-	recent_layout->addWidget(recent_list, 0, 1, 3, 1);
+	m_recent_list = new styled_list_view();
+	m_recent_list->setFixedHeight(60);
+	m_recent_list->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOn);
+	m_recent_list->setItemDelegate(new color_item_delegate(m_recent_list));
+	m_recent_list->setModel(m_recent_model.get());
+	recent_layout->addWidget(m_recent_list, 0, 1, 3, 1);
 	collapse_right_layout->addLayout(recent_layout, 0, 0);
-
-	//Dummy data
-	color_list_item_model* model = new color_list_item_model();
-	model->add_color(QColor(255, 0, 0));
-	model->add_color(QColor(0, 255, 0));
-	model->add_color(QColor(0, 0, 255));
-	model->add_color(QColor(255, 0, 255));
-	model->add_color(QColor(255, 255, 0));
-	model->add_color(QColor(0, 255, 255));
-	model->add_color(QColor(255, 0, 0));
-	model->add_color(QColor(0, 255, 0));
-	model->add_color(QColor(0, 0, 255));
-	model->add_color(QColor(255, 0, 255));
-	model->add_color(QColor(255, 255, 0));
-	model->add_color(QColor(0, 255, 255));
-	recent_list->setModel(model);
+	QObject::connect(m_recent_list, SIGNAL(doubleClicked(const QModelIndex&)), this, SLOT(recent_list_double_clicked(const QModelIndex&)));
+	
 
 	//RGB - HSL - HEX textboxes
 
@@ -226,7 +221,7 @@ styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_wid
 
 	collapse_right_layout->addLayout(lineedit_layout, 4, 0);
 
-	color_changed_internal(QColor::fromHsl(0, 255, 128));
+	color(QColor::fromHsl(0, 255, 128));
 }
 
 styled_color_picker::~styled_color_picker() { }
@@ -237,9 +232,7 @@ const QColor& styled_color_picker::color() const
 }
 void styled_color_picker::color(QColor const & value)
 {
-	m_color = value.toHsl();
-
-	color_changed_internal(m_color);
+	color_changed_internal(value);
 }
 
 bool styled_color_picker::is_bound() const
@@ -287,7 +280,7 @@ void styled_color_picker::channel_textEdited(const QString &text)
 
 void styled_color_picker::color_changed_internal(const QColor& color)
 {
-	//m_color = vec4(color.toRgb().redF(), color.toRgb().greenF(), color.toRgb().blueF(), 1.0f);
+	m_color = color.toHsl();
 
 	m_hs_picker->color(color);
 	m_l_picker->color(color);
@@ -421,4 +414,27 @@ QColor styled_color_picker::color_from_pos(QPoint point)
 {
 	auto img = m_pick_widget->grab().toImage();
 	return img.pixelColor(m_pick_widget->mapFromGlobal(point));
+}
+
+void styled_color_picker::add_recent_button_clicked(bool value)
+{
+	m_recent_model->add_color(this->color());
+}
+void styled_color_picker::remove_recent_button_clicked(bool value)
+{
+	for (int i = 0; i < m_recent_model->rowCount(); ++i)
+	{
+		if (m_recent_list->selectionModel()->isSelected(m_recent_model->index(i, 0)))
+		{
+			m_recent_model->remove_color(m_recent_model->index(i, 0));
+			i--;
+		}
+	}
+}
+void styled_color_picker::recent_list_double_clicked(const QModelIndex& index)
+{
+	if (index.isValid())
+	{
+		this->color_changed_internal(qvariant_cast<QColor>(m_recent_model->data(index, Qt::DisplayRole)));
+	}
 }

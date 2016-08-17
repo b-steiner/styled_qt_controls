@@ -5,6 +5,8 @@
 #include "hs_frame.q.hpp"
 #include "l_frame.q.hpp"
 #include "../styled_controls/numeric_line_edit.q.hpp"
+#include "../styled_controls/styled_list_view.q.hpp"
+#include "color_list_item_model.q.hpp"
 
 
 BEGIN_BDL_SQTC
@@ -39,6 +41,9 @@ BEGIN_BDL_SQTC
 			PROPERTY0(QCursor, pick_restore_cursor);
 			PROPERTY0(QPushButton*, pick_button);
 			PROPERTY0(bool, record_color);
+			PROPERTY0(styled_list_view*, recent_list);
+
+			static std::unique_ptr<color_list_item_model> m_recent_model;
 
 		public:
 			/*! \brief Initializes a new instance of the styled_color_picker class
@@ -68,6 +73,10 @@ BEGIN_BDL_SQTC
 			void channel_textEdited(const QString &text);
 			void binding_button_toggled(bool value);
 			void pick_button_toggled(bool value);
+
+			void add_recent_button_clicked(bool value);
+			void remove_recent_button_clicked(bool value);
+			void recent_list_double_clicked(const QModelIndex& index);
 
 			bool eventFilter(QObject *obj, QEvent *event);
 

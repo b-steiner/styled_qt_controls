@@ -4,6 +4,7 @@
 #include <sstream>
 #include <Windows.h>
 #include <algorithm>
+#include <memory>
 
 #include <QtCore\QHash>
 #include <QtCore\QFile>
