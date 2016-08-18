@@ -32,6 +32,7 @@
 #include <QtWidgets\QWidgetaction>
 #include <QtWidgets\QUndoCommand>
 #include <QtWidgets\QButtongroup>
+#include <QtWidgets\QCheckbox>
 
 #include <QtXml\QDomDocument>
 

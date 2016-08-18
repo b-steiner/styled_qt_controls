@@ -36,7 +36,9 @@ styled_collapse_widget::styled_collapse_widget() : m_button_alignment(Qt::AlignR
 	set_title_layout();
 }
 styled_collapse_widget::~styled_collapse_widget()
-{ }
+{
+	emit deleted();
+}
 
 
 bool styled_collapse_widget::is_collapsed()

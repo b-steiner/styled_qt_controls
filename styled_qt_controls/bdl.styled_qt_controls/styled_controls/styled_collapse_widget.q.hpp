@@ -57,6 +57,9 @@ protected:
 	//! See QWidget
 	virtual void paintEvent(QPaintEvent *pe);
 
+signals:
+	void deleted();
+
 private slots:
 	void title_mousePressed(QMouseEvent* event);
 	void collapse_toggled(bool checked);
