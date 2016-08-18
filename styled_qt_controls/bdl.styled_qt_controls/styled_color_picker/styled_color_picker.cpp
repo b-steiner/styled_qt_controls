@@ -16,17 +16,12 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-std::unique_ptr<color_list_item_model> styled_color_picker::m_recent_model(nullptr);
+std::unique_ptr<color_list_item_model> styled_color_picker::m_recent_model = std::make_unique<color_list_item_model>();
 
 enum class color_pick_mode { rgb = 0, hsl = 1, hex = 2 };
 
 styled_color_picker::styled_color_picker(const QString& title, QWidget* pick_widget) : m_pick_widget(pick_widget), m_record_color(false)
 {
-	if (!m_recent_model)
-	{
-		m_recent_model = std::make_unique<color_list_item_model>();
-	}
-
 	this->is_button_visible(false);
 
 	//Title Bar
@@ -439,7 +434,7 @@ void styled_color_picker::recent_list_double_clicked(const QModelIndex& index)
 	}
 }
 
-settings_group* styled_color_picker::save_global_settings() const
+settings_group* styled_color_picker::save_global_settings()
 {
 	auto grp = new settings_group("styled_color_picker::global");
 
@@ -454,5 +449,10 @@ settings_group* styled_color_picker::save_global_settings() const
 }
 void styled_color_picker::load_global_settings(settings_group* group)
 {
-
+	for (int i = group->values().count() - 1; i >= 0; --i)
+	{
+		QColor c;
+		c.setNamedColor(group->values()[QString::number(i)]);
+		m_recent_model->add_color(c);
+	}
 }

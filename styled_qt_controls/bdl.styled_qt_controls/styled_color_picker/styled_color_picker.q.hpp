@@ -67,8 +67,8 @@ BEGIN_BDL_SQTC
 			*/
 			void is_bound(bool value);
 
-			util::settings_group* save_global_settings() const;
-			void load_global_settings(util::settings_group* group);
+			static util::settings_group* save_global_settings();
+			static void load_global_settings(util::settings_group* group);
 
 		private slots:
 			void picker_color_changed(const QColor& color);
