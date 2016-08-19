@@ -258,7 +258,14 @@ QWidget* main_window::create_item_editor_widget()
 	styled_item_editor* editor = new styled_item_editor();
 	auto group1 = new item_editor_group("Group 1", true, add_opt_menu);
 	group1->add_item(new string_item_editor_item("String", "Initial Value", [](const QString&) { qDebug() << "Text changed"; }, true, true, [](bool) { qDebug() << "Binding changed"; }));
+	group1->add_item(new float_item_editor_item("Float", 0.5, [](float) { qDebug() << "Float changed"; }, 4, 0.1f, -10.0f, 10.0f, true, false, [](bool) { qDebug() << "Binding changed"; }));
 	editor->add_group(group1);
+
+	auto group2 = new item_editor_group("Group 2");
+	group2->add_item(new vector3_item_editor_item("Vector3", 1, 2, 3, [](float, float, float) { qDebug() << "Vector3 changed"; }));
+	group2->add_item(new color_item_editor_item("Color", QColor::fromRgb(255, 128, 0), [](QColor) { qDebug() << "Color changed"; }, true, [](bool) { qDebug() << "Binding changed"; }));
+	editor->add_group(group2);
+
 
 	return editor;
 }
