@@ -13,6 +13,7 @@
     <None Include="bdl.styled_qt_controls\styled_controls\tree_combobox.qss" />
     <None Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.qss" />
     <None Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.qss" />
+    <None Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.qss" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp" />
@@ -83,6 +84,14 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.cpp" />
     <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_list_item_model.generated.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_item_delegate.generated.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\base_editor_group.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_group.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_item.generated.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\styled_item_editor.generated.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
@@ -126,6 +135,10 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\base_editor_group.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.q.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc" />

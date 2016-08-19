@@ -2,14 +2,16 @@
 
 #include "../styled_qt_controls.hpp"
 #include "base_editor_group.q.hpp"
+#include "../styled_controls/vertical_scroll_area.q.hpp"
 
 BEGIN_BDL_SQTC
 
-class styled_item_editor : public QWidget
+class BDL_SQTC_EXPORT styled_item_editor : public vertical_scroll_area
 {
 	Q_OBJECT;
 
 	PROPERTY0(QList<base_editor_group*>, groups);
+	PROPERTY0(QGridLayout*, layout);
 
 public:
 	styled_item_editor();

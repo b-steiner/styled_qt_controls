@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_collapse_widget_t {
-    QByteArrayData data[9];
-    char stringdata0[143];
+    QByteArrayData data[10];
+    char stringdata0[151];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -31,20 +31,21 @@ struct qt_meta_stringdata_bdl__styled_qt_controls__styled_collapse_widget_t {
 static const qt_meta_stringdata_bdl__styled_qt_controls__styled_collapse_widget_t qt_meta_stringdata_bdl__styled_qt_controls__styled_collapse_widget = {
     {
 QT_MOC_LITERAL(0, 0, 47), // "bdl::styled_qt_controls::styl..."
-QT_MOC_LITERAL(1, 48, 18), // "title_mousePressed"
-QT_MOC_LITERAL(2, 67, 0), // ""
-QT_MOC_LITERAL(3, 68, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(4, 81, 5), // "event"
-QT_MOC_LITERAL(5, 87, 16), // "collapse_toggled"
-QT_MOC_LITERAL(6, 104, 7), // "checked"
-QT_MOC_LITERAL(7, 112, 16), // "button_alignment"
-QT_MOC_LITERAL(8, 129, 13) // "Qt::Alignment"
+QT_MOC_LITERAL(1, 48, 7), // "deleted"
+QT_MOC_LITERAL(2, 56, 0), // ""
+QT_MOC_LITERAL(3, 57, 18), // "title_mousePressed"
+QT_MOC_LITERAL(4, 76, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(5, 89, 5), // "event"
+QT_MOC_LITERAL(6, 95, 16), // "collapse_toggled"
+QT_MOC_LITERAL(7, 112, 7), // "checked"
+QT_MOC_LITERAL(8, 120, 16), // "button_alignment"
+QT_MOC_LITERAL(9, 137, 13) // "Qt::Alignment"
 
     },
     "bdl::styled_qt_controls::styled_collapse_widget\0"
-    "title_mousePressed\0\0QMouseEvent*\0event\0"
-    "collapse_toggled\0checked\0button_alignment\0"
-    "Qt::Alignment"
+    "deleted\0\0title_mousePressed\0QMouseEvent*\0"
+    "event\0collapse_toggled\0checked\0"
+    "button_alignment\0Qt::Alignment"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,23 +55,29 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_collapse_widget[]
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
-       1,   30, // properties
+       3,   14, // methods
+       1,   36, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    0,   29,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x08 /* Private */,
-       5,    1,   27,    2, 0x08 /* Private */,
+       3,    1,   30,    2, 0x08 /* Private */,
+       6,    1,   33,    2, 0x08 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
-    QMetaType::Void, QMetaType::Bool,    6,
+    QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void, QMetaType::Bool,    7,
 
  // properties: name, type, flags
-       7, 0x80000000 | 8, 0x0009500b,
+       8, 0x80000000 | 9, 0x0009500b,
 
        0        // eod
 };
@@ -81,9 +88,20 @@ void bdl::styled_qt_controls::styled_collapse_widget::qt_static_metacall(QObject
         styled_collapse_widget *_t = static_cast<styled_collapse_widget *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->title_mousePressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 1: _t->collapse_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 0: _t->deleted(); break;
+        case 1: _t->title_mousePressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 2: _t->collapse_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
+        {
+            typedef void (styled_collapse_widget::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styled_collapse_widget::deleted)) {
+                *result = 0;
+                return;
+            }
         }
     }
 #ifndef QT_NO_PROPERTIES
@@ -133,13 +151,13 @@ int bdl::styled_qt_controls::styled_collapse_widget::qt_metacall(QMetaObject::Ca
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
@@ -159,5 +177,11 @@ int bdl::styled_qt_controls::styled_collapse_widget::qt_metacall(QMetaObject::Ca
     }
 #endif // QT_NO_PROPERTIES
     return _id;
+}
+
+// SIGNAL 0
+void bdl::styled_qt_controls::styled_collapse_widget::deleted()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 QT_END_MOC_NAMESPACE

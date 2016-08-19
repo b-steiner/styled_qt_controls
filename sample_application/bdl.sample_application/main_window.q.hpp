@@ -32,6 +32,11 @@ namespace bdl
 			void state_btn_2_clicked(bool checked);
 			void state_btn_3_clicked(bool checked);
 			void state_btn_4_clicked(bool checked);
+
+			QWidget* create_simple_control_widget();
+			QWidget* create_item_control_widget();
+			QWidget* create_item_editor_widget();
+			QWidget* create_combined_control_widget();
 		};
 	}
 }

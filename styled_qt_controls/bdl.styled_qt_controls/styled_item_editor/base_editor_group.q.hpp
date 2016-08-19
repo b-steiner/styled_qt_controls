@@ -5,7 +5,7 @@
 
 BEGIN_BDL_SQTC
 
-class base_editor_group : public QObject
+class BDL_SQTC_EXPORT base_editor_group : public QObject
 {
 	Q_OBJECT;
 

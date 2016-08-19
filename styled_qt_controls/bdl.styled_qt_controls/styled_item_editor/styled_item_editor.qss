@@ -1,0 +1,70 @@
+bdl--styled_qt_controls--styled_collapse_widget
+{
+	qproperty-button_alignment: AlignLeft;
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame
+{
+	background: solid @content_control;
+	border: none;
+	border-top: 1px solid @border;
+	qproperty-inner_padding_side: 0;
+	qproperty-inner_padding_top: 1;
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_content_frame
+{
+	border: none;
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > QPushButton#part_scw_collapse_button
+{
+	image: url(:/images/expand_2.png);
+}
+bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > QPushButton#part_scw_collapse_button:checked
+{
+	image: url(:/images/collapse_2.png);
+}
+
+QPushButton#part_biei_connect_button
+{
+	background: transparent;
+	border: none;
+	padding: 0px 0px 0px 0px;
+	qproperty-topline_color: transparent;
+	image: url(:/images/connect_unbound.png);
+}
+QPushButton#part_biei_connect_button:checked
+{
+	image: url(:/images/connect_bound.png);
+}
+
+
+
+QPushButton#part_ieg_additional_options_button
+{
+	border: 1px transparent;
+	background: transparent;
+	padding: 0px 0px 0px 0px;
+}
+QPushButton#part_ieg_additional_options_button::menu-indicator
+{
+	image: url(:/images/additional_options.png);
+	subcontrol-position: center center;
+}
+QPushButton#part_ieg_additional_options_button:hover
+{
+	border: 1px solid @border;
+	background: solid @light;
+}
+QPushButton#part_ieg_additional_options_button:pressed
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}
+
+QWidget#part_ieg_body_widget
+{
+	background: solid transparent;
+}
+QLabel#part_ieg_title_label
+{
+	font-weight: bold;
+}

@@ -3,7 +3,7 @@
 
 using namespace bdl::styled_qt_controls;
 
-item_editor_group::item_editor_group(const QString& title, bool show_enable_button, QMenu* additional_options = nullptr)
+item_editor_group::item_editor_group(const QString& title, bool show_enable_button, QMenu* additional_options)
 	: m_title(title), m_show_enable_button(show_enable_button), m_is_expanded(false), m_widget(nullptr), m_additional_options(additional_options)
 { }
 item_editor_group::~item_editor_group()
@@ -34,20 +34,24 @@ QWidget* item_editor_group::widget()
 	}
 		
 	QLabel* title_label = new QLabel(m_title);
+	title_label->setObjectName("part_ieg_title_label");
 	title_label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 	title_layout->addWidget(title_label, 0, 1, Qt::AlignVCenter);
 
 	if (m_additional_options != nullptr)
 	{
+		//m_additional_options->setParent(title_label);
+
 		QPushButton* add_opt_button = new QPushButton();
 		add_opt_button->setObjectName("part_ieg_additional_options_button");
 		add_opt_button->setFixedSize(10, 16);
-		add_opt_button->setVisible(false);
+		add_opt_button->setMenu(m_additional_options);
 		title_layout->addWidget(add_opt_button, 0, 2, Qt::AlignVCenter);
 	}
 
 	//Content
 	QWidget* body_widget = new QWidget();
+	body_widget->setObjectName("part_ieg_body_widget");
 	QGridLayout* body_layout = new QGridLayout();
 	body_layout->setContentsMargins(15, 2, 0, 6);
 	body_layout->setSpacing(4);
@@ -57,6 +61,7 @@ QWidget* item_editor_group::widget()
 	m_widget->content_widget(body_widget);
 
 	items_changed();
+	return m_widget;
 }
 
 void item_editor_group::add_item(base_item_editor_item* item)

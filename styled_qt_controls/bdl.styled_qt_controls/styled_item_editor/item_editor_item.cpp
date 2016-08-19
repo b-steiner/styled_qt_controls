@@ -13,7 +13,7 @@ base_item_editor_item::~base_item_editor_item() { }
 
 void base_item_editor_item::add_binding_button(QGridLayout* layout, int row)
 {
-	styled_pushbutton* binding_button = new styled_pushbutton();
+	QPushButton* binding_button = new QPushButton();
 	binding_button->setCheckable(true);
 	binding_button->setChecked(m_is_bound);
 	binding_button->setFixedSize(20, 20);
@@ -29,7 +29,7 @@ void base_item_editor_item::binding_button_toggled(bool value)
 
 
 string_item_editor_item::string_item_editor_item(const QString& title, const QString& initial_value, std::function<void(const QString&)> value_changed_func,
-						bool show_binding_button, bool is_bound = false, std::function<void(bool)> binding_changed_func)
+						bool show_binding_button, bool is_bound, std::function<void(bool)> binding_changed_func)
 	: base_item_editor_item(show_binding_button, is_bound, binding_changed_func), m_title(title), m_value(initial_value), m_value_changed_func(value_changed_func)
 { }
 string_item_editor_item::~string_item_editor_item() { }

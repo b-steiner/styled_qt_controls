@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__sample_application__main_window_t {
-    QByteArrayData data[11];
-    char stringdata0[202];
+    QByteArrayData data[16];
+    char stringdata0[324];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,7 +39,12 @@ QT_MOC_LITERAL(6, 103, 18), // "size_btn_4_clicked"
 QT_MOC_LITERAL(7, 122, 19), // "state_btn_1_clicked"
 QT_MOC_LITERAL(8, 142, 19), // "state_btn_2_clicked"
 QT_MOC_LITERAL(9, 162, 19), // "state_btn_3_clicked"
-QT_MOC_LITERAL(10, 182, 19) // "state_btn_4_clicked"
+QT_MOC_LITERAL(10, 182, 19), // "state_btn_4_clicked"
+QT_MOC_LITERAL(11, 202, 28), // "create_simple_control_widget"
+QT_MOC_LITERAL(12, 231, 8), // "QWidget*"
+QT_MOC_LITERAL(13, 240, 26), // "create_item_control_widget"
+QT_MOC_LITERAL(14, 267, 25), // "create_item_editor_widget"
+QT_MOC_LITERAL(15, 293, 30) // "create_combined_control_widget"
 
     },
     "bdl::sample_application::main_window\0"
@@ -47,7 +52,10 @@ QT_MOC_LITERAL(10, 182, 19) // "state_btn_4_clicked"
     "size_btn_2_clicked\0size_btn_3_clicked\0"
     "size_btn_4_clicked\0state_btn_1_clicked\0"
     "state_btn_2_clicked\0state_btn_3_clicked\0"
-    "state_btn_4_clicked"
+    "state_btn_4_clicked\0create_simple_control_widget\0"
+    "QWidget*\0create_item_control_widget\0"
+    "create_item_editor_widget\0"
+    "create_combined_control_widget"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +65,7 @@ static const uint qt_meta_data_bdl__sample_application__main_window[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,14 +73,18 @@ static const uint qt_meta_data_bdl__sample_application__main_window[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x08 /* Private */,
-       4,    1,   57,    2, 0x08 /* Private */,
-       5,    1,   60,    2, 0x08 /* Private */,
-       6,    1,   63,    2, 0x08 /* Private */,
-       7,    1,   66,    2, 0x08 /* Private */,
-       8,    1,   69,    2, 0x08 /* Private */,
-       9,    1,   72,    2, 0x08 /* Private */,
-      10,    1,   75,    2, 0x08 /* Private */,
+       1,    1,   74,    2, 0x08 /* Private */,
+       4,    1,   77,    2, 0x08 /* Private */,
+       5,    1,   80,    2, 0x08 /* Private */,
+       6,    1,   83,    2, 0x08 /* Private */,
+       7,    1,   86,    2, 0x08 /* Private */,
+       8,    1,   89,    2, 0x08 /* Private */,
+       9,    1,   92,    2, 0x08 /* Private */,
+      10,    1,   95,    2, 0x08 /* Private */,
+      11,    0,   98,    2, 0x08 /* Private */,
+      13,    0,   99,    2, 0x08 /* Private */,
+      14,    0,  100,    2, 0x08 /* Private */,
+      15,    0,  101,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,
@@ -83,6 +95,10 @@ static const uint qt_meta_data_bdl__sample_application__main_window[] = {
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
+    0x80000000 | 12,
+    0x80000000 | 12,
+    0x80000000 | 12,
+    0x80000000 | 12,
 
        0        // eod
 };
@@ -101,6 +117,14 @@ void bdl::sample_application::main_window::qt_static_metacall(QObject *_o, QMeta
         case 5: _t->state_btn_2_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 6: _t->state_btn_3_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 7: _t->state_btn_4_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: { QWidget* _r = _t->create_simple_control_widget();
+            if (_a[0]) *reinterpret_cast< QWidget**>(_a[0]) = _r; }  break;
+        case 9: { QWidget* _r = _t->create_item_control_widget();
+            if (_a[0]) *reinterpret_cast< QWidget**>(_a[0]) = _r; }  break;
+        case 10: { QWidget* _r = _t->create_item_editor_widget();
+            if (_a[0]) *reinterpret_cast< QWidget**>(_a[0]) = _r; }  break;
+        case 11: { QWidget* _r = _t->create_combined_control_widget();
+            if (_a[0]) *reinterpret_cast< QWidget**>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -131,13 +155,13 @@ int bdl::sample_application::main_window::qt_metacall(QMetaObject::Call _c, int 
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 12;
     }
     return _id;
 }
