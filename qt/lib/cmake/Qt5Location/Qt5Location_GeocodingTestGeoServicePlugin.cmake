@@ -1,6 +1,0 @@
-
-add_library(Qt5::GeocodingTestGeoServicePlugin MODULE IMPORTED)
-
-_populate_Location_plugin_properties(GeocodingTestGeoServicePlugin RELEASE "geoservices/qtgeoservices_geocodingplugin.dll")
-
-list(APPEND Qt5Location_PLUGINS Qt5::GeocodingTestGeoServicePlugin)
