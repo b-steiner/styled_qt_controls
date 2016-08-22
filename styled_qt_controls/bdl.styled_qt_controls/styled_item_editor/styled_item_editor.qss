@@ -28,7 +28,6 @@ QPushButton#part_biei_connect_button
 	background: transparent;
 	border: none;
 	padding: 0px 0px 0px 0px;
-	qproperty-topline_color: transparent;
 	image: url(:/images/connect_unbound.png);
 }
 QPushButton#part_biei_connect_button:checked

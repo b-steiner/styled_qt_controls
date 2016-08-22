@@ -109,13 +109,13 @@ int vector3_item_editor_item::widgets(QGridLayout* layout, int row)
 	edit_y->minimum(m_min_value);
 	edit_y->maximum(m_max_value);
 	edit_y->tick(m_ticks);
-	QObject::connect(edit_y, SIGNAL(teytEdited(const QString&)), this, SLOT(y_teytEdited(const QString&)));
+	QObject::connect(edit_y, SIGNAL(textEdited(const QString&)), this, SLOT(y_textEdited(const QString&)));
 
 	auto edit_z = new numeric_line_edit(m_value_z, m_digits);
 	edit_z->minimum(m_min_value);
 	edit_z->maximum(m_max_value);
 	edit_z->tick(m_ticks);
-	QObject::connect(edit_z, SIGNAL(teztEdited(const QString&)), this, SLOT(z_teztEdited(const QString&)));
+	QObject::connect(edit_z, SIGNAL(textEdited(const QString&)), this, SLOT(z_textEdited(const QString&)));
 
 	QGridLayout* vec_layout = new QGridLayout();
 	vec_layout->setContentsMargins(0, 0, 0, 0);
