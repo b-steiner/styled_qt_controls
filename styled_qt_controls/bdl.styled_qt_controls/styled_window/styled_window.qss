@@ -9,11 +9,6 @@ QWidget#part_window_widget[selected=true]
 	border: 1px solid @transparency_key;
 }
 
-QLabel#part_icon
-{
-	background-image: url(:/images/tp_icon_editor.png);
-}
-
 QPushButton#part_close_button
 {
 	background-image: url(:/images/window_close.png);

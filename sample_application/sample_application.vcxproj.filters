@@ -32,6 +32,9 @@
     <ClInclude Include="bdl.sample_application\resources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\pre_build.cmd" />
@@ -39,5 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.sample_application\resources.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\doc\icon\sqtc_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

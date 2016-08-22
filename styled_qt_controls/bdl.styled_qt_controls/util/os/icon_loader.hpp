@@ -12,7 +12,7 @@ namespace util
 		* 
 		* In contrast to the qt default icon loader, this loader supresses overlays (e.g. from TortoiseGIT, etc.)
 		*/
-	class BDL_SQTC_EXPORT file_icon_loader
+	class BDL_SQTC_EXPORT icon_loader
 	{
 	public:
 		/*! \brief Loads an icon for a specific file
@@ -20,7 +20,10 @@ namespace util
 			* \param info QFileInfo of the file
 			* \returns The loaded icon
 			*/
-		static QIcon load(const QFileInfo& info);
+		static QIcon load_fileicon(const QFileInfo& info);
+
+		static HICON QIcon_to_HICON(const QIcon& icon, unsigned int size, QIcon::Mode mode = QIcon::Mode::Normal, QIcon::State state = QIcon::State::Off);
+		static HICON taskbar_icon(const QIcon& icon);
 	};
 }
 

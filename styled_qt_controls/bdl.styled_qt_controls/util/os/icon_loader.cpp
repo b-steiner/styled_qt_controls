@@ -1,5 +1,5 @@
 #include <bdl.styled_qt_controls\styled_qt_controls.hpp>
-#include "file_icon_loader.hpp"
+#include "icon_loader.hpp"
 
 #include <Windows.h>
 #include <CommCtrl.h>
@@ -10,7 +10,7 @@
 
 using namespace bdl::styled_qt_controls::util;
 
-QIcon file_icon_loader::load(const QFileInfo& info)
+QIcon icon_loader::load_fileicon(const QFileInfo& info)
 {
 	QIcon icon;
 
@@ -36,18 +36,26 @@ QIcon file_icon_loader::load(const QFileInfo& info)
 
 			if (hResult == S_OK)
 			{
-				/*ICONINFO info;
-				ZeroMemory(&info, sizeof(info));
-				if (GetIconInfo(hIcon, &info))
-				{*/
 				QPixmap pixmap = QtWin::fromHICON(hIcon);
 				int w = pixmap.width();
 				int h = pixmap.height();
 				icon.addPixmap(pixmap, QIcon::Selected);
-				//}
 			}
 		}
 	}
 
 	return icon;
+}
+
+HICON icon_loader::taskbar_icon(const QIcon& icon)
+{
+	int s = GetSystemMetrics(SM_CXICON);
+	return QIcon_to_HICON(icon, s);
+}
+
+HICON icon_loader::QIcon_to_HICON(const QIcon& icon, unsigned int size, QIcon::Mode mode, QIcon::State state)
+{
+	auto pix = icon.pixmap(size, mode, state);
+	auto s = pix.width();
+	return QtWin::toHICON(pix);
 }

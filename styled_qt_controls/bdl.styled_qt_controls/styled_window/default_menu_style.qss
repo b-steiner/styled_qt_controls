@@ -28,7 +28,6 @@ QMenu::item:pressed:enabled
 
 QMenuBar
 {
-	padding-left: 10px;
 	background-color: transparent;
 }
 QMenuBar::item

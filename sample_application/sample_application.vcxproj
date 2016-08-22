@@ -109,6 +109,7 @@
   <ItemGroup>
     <ClInclude Include="bdl.sample_application\main_window.q.hpp" />
     <ClInclude Include="bdl.sample_application\resources.hpp" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bdl.sample_application\main_window.qss" />
@@ -124,6 +125,12 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">asdf.hpp</Outputs>
     </CustomBuild>
     <None Include="scripts\pre_build.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\doc\icon\sqtc_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

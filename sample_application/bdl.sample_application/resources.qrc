@@ -4,5 +4,7 @@
 
   <file>images/green_smiley.png</file>
   <file>images/pink_smiley.png</file>
+	<file>images/sqtc_icon.ico</file>
+	<file>images/sqtc_icon_titlebar.png</file>
 </qresource>														
 </RCC>	

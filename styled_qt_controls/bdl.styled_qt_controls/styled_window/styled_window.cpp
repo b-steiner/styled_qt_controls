@@ -1,6 +1,7 @@
 #include <bdl.styled_qt_controls\styled_qt_controls.hpp>
 #include "styled_window.q.hpp"
 
+#include "../util/os/icon_loader.hpp"
 #include "../util/style_loader.hpp"
 #include <WinUser.h>
 
@@ -22,7 +23,17 @@ styled_window::styled_window(QString title, styled_window* parent, window_type t
 
 	wc.hInstance = m_hInstance;
 	wc.lpfnWndProc = wnd_prc;
-	wc.hIcon = LoadIcon(m_hInstance, MAKEINTRESOURCE(101));
+	//wc.hIcon = LoadIcon(m_hInstance, MAKEINTRESOURCE(101));
+	/*wc.hIcon = (HICON)LoadImage( // returns a HANDLE so we have to cast to HICON
+		NULL,             // hInstance must be NULL when loading from a file
+		L"D:\\repos\\styled_qt_controls\\sample_application\\bdl.sample_application\\images\\sqtc_icon.ico",   // the icon file name
+		IMAGE_ICON,       // specifies that the file is an icon
+		0,                // width of the image (we'll specify default later on)
+		0,                // height of the image
+		LR_LOADFROMFILE |  // we want to load a file (as opposed to a resource)
+		LR_DEFAULTSIZE |   // default metrics based on the type (IMAGE_ICON, 32x32)
+		LR_SHARED         // let the system release the handle when it's no longer used
+		);*/
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	if (type == window_type::dialog)
@@ -308,14 +319,15 @@ void styled_window::initialize_widget()
 
 	//Titlebar layout
 
-	QGridLayout* titlebar_layout = new QGridLayout();
-	titlebar_layout->setContentsMargins(6, 0, 0, 0);
-	titlebar_layout->setSpacing(0);
-	titlebar_layout->setColumnStretch(4, 1);
+	m_titlebar_layout = new QGridLayout();
+	m_titlebar_layout->setContentsMargins(0, 0, 0, 0);
+	m_titlebar_layout->setSpacing(0);
+	m_titlebar_layout->setColumnStretch(4, 1);
 
-	QLabel* part_icon = new QLabel();
-	part_icon->setObjectName("part_icon");
-	part_icon->setFixedSize(20, 20);	
+	m_part_icon = new QLabel();
+	m_part_icon->setObjectName("part_icon");
+	m_part_icon->setFixedSize(20, 20);
+	m_part_icon->setVisible(false);
 		
 	if (m_type == window_type::normal)
 	{
@@ -340,16 +352,16 @@ void styled_window::initialize_widget()
 		m_part_restore_button->setVisible(false);
 		QObject::connect(m_part_restore_button, SIGNAL(clicked()), this, SLOT(restore_button_clicked()));
 
-		titlebar_layout->addWidget(part_minimize_button, 0, 5, Qt::AlignTop);
-		titlebar_layout->addWidget(m_part_maximize_button, 0, 6, Qt::AlignTop);
-		titlebar_layout->addWidget(m_part_restore_button, 0, 6, Qt::AlignTop);
+		m_titlebar_layout->addWidget(part_minimize_button, 0, 5, Qt::AlignTop);
+		m_titlebar_layout->addWidget(m_part_maximize_button, 0, 6, Qt::AlignTop);
+		m_titlebar_layout->addWidget(m_part_restore_button, 0, 6, Qt::AlignTop);
 
 		QPushButton* part_close_button = new QPushButton();
 		part_close_button->setObjectName("part_close_button");
 		part_close_button->setFixedSize(27, 20);
 		part_close_button->setFocusPolicy(Qt::NoFocus);
 		QObject::connect(part_close_button, SIGNAL(clicked()), this, SLOT(close_button_clicked()));
-		titlebar_layout->addWidget(part_close_button, 0, 7, Qt::AlignTop);
+		m_titlebar_layout->addWidget(part_close_button, 0, 7, Qt::AlignTop);
 	}
 	else if (m_type == window_type::dialog)
 	{
@@ -358,18 +370,19 @@ void styled_window::initialize_widget()
 		part_close_button->setFixedSize(28, 20);
 		part_close_button->setFocusPolicy(Qt::NoFocus);
 		QObject::connect(part_close_button, SIGNAL(clicked()), this, SLOT(close_button_clicked()));
-		titlebar_layout->addWidget(part_close_button, 0, 7, Qt::AlignTop);
+		m_titlebar_layout->addWidget(part_close_button, 0, 7, Qt::AlignTop);
 
 		QLabel* part_title_label = new QLabel(m_title);
 		part_title_label->setObjectName("part_title_label");
-		titlebar_layout->addWidget(part_title_label, 0, 4, Qt::AlignVCenter | Qt::AlignHCenter);
+		m_titlebar_layout->addWidget(part_title_label, 0, 4, Qt::AlignVCenter | Qt::AlignHCenter);
 	}
 
 	m_menubar = new QMenuBar();
 
-	titlebar_layout->addWidget(part_icon, 0, 0, Qt::AlignVCenter);
-	titlebar_layout->addWidget(m_menubar, 0, 2, Qt::AlignVCenter);
-	part_titlebar_widget->setLayout(titlebar_layout);
+	m_titlebar_layout->addWidget(m_part_icon, 0, 0, Qt::AlignVCenter);
+	m_titlebar_layout->setColumnMinimumWidth(1, 0);
+	m_titlebar_layout->addWidget(m_menubar, 0, 2, Qt::AlignVCenter);
+	part_titlebar_widget->setLayout(m_titlebar_layout);
 
 	m_part_window_widget->show();
 }
@@ -572,4 +585,17 @@ styled_window* styled_window::widget_to_window(QWidget* w)
 	if (it == m_widget_to_window.end())
 		return nullptr;
 	return it.value();
+}
+
+void styled_window::icon(const QPixmap& icon)
+{
+	m_part_icon->setVisible(true);
+	m_part_icon->setPixmap(icon);
+	m_part_icon->setFixedSize((int)(20.0 * ((float)icon.width() / (float)icon.height())), 20);
+	m_titlebar_layout->setColumnMinimumWidth(1, 10);
+}
+void styled_window::taskbar_icon(const QIcon& icon)
+{
+	HICON hicon = icon_loader::taskbar_icon(icon);
+	SetClassLongPtr(m_hwnd, GCLP_HICON, (LONG_PTR)hicon);
 }

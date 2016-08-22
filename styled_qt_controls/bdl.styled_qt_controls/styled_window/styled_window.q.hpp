@@ -57,12 +57,15 @@ public:
 	PROPERTY0(QString, title);
 
 	PROPERTY0(styled_frame*, part_window_widget);
-	//! Stores the widget in which the content is displayed
-	PROPERTY0(QWidget*, client_widget);
 	PROPERTY0(QPushButton*, part_restore_button);
 	PROPERTY0(QPushButton*, part_maximize_button);
+	PROPERTY0(QGridLayout*, titlebar_layout);
+	PROPERTY0(QLabel*, part_icon);
+	
 	//! Stores the menubar
 	PROPERTY1(QMenuBar*, menubar, GET);
+	//! Stores the widget in which the content is displayed
+	PROPERTY0(QWidget*, client_widget);
 
 	PROPERTY0(QVector<styled_widget*>, border_widgets);
 
@@ -148,6 +151,9 @@ public:
 		* \returns A pointer to the client widget
 		*/
 	virtual QWidget* client_widget() const;
+
+	void icon(const QPixmap& icon);
+	void taskbar_icon(const QIcon& icon);
 
 signals:
 	/*! \brief Emitted when the window is going to be closed

@@ -8,7 +8,7 @@
 #include <bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp>
 #include <bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp>
 #include <bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp>
-#include <bdl.styled_qt_controls\util\os\file_icon_loader.hpp>
+#include <bdl.styled_qt_controls\util\os\icon_loader.hpp>
 #include <bdl.styled_qt_controls/styled_controls/styled_list_view.q.hpp>
 #include <bdl.styled_qt_controls/styled_controls/styled_list_view_item_delegate.q.hpp>
 #include <bdl.styled_qt_controls/styled_controls/styled_collapse_widget.q.hpp>
@@ -47,6 +47,20 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	client_widget_layout->setSpacing(0);
 	client_widget_layout->addWidget(main_splitter);
 	this->client_widget()->setLayout(client_widget_layout);
+
+	auto file_menu = menubar()->addMenu("File");
+	file_menu->addAction("Dummy Action 1");
+	file_menu->addAction("Dummy Action 2");
+	file_menu->addAction("Dummy Action 3");
+	file_menu->addSeparator();
+	auto exit_action = file_menu->addAction("Exit");
+	QObject::connect(exit_action, &QAction::triggered, this, &main_window::exit_action_triggered);
+	
+	auto help_menu = menubar()->addMenu("Help");
+	help_menu->addAction("About");
+
+	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
+	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));
 }
 
 main_window::~main_window()
@@ -348,7 +362,7 @@ QStandardItem* main_window::load_fs_item(QFileInfo file, int depth)
 		item = new QStandardItem(file.fileName());
 
 	if (depth > 0)
-		item->setIcon(util::file_icon_loader::load(file));
+		item->setIcon(util::icon_loader::load_fileicon(file));
 
 	if (file.isDir())
 	{
@@ -412,4 +426,11 @@ void main_window::state_btn_3_clicked(bool checked)
 void main_window::state_btn_4_clicked(bool checked)
 {
 	m_scw->state(styled_collapse_widget::state_t::error);
+}
+
+void main_window::exit_action_triggered(bool checked)
+{
+	auto wlist = styled_window::front_to_back_windows();
+	for (auto w : wlist)
+		w->close();
 }
