@@ -1,5 +1,4 @@
-#include "util\properties.hpp"
-#include "util\property_extension.hpp"
+#pragma once
 
 #include <sstream>
 #include <Windows.h>
@@ -18,6 +17,7 @@
 #include <QtWidgets\QApplication>
 #include <QtWidgets\QAbstractitemview>
 #include <QtWidgets\QPushbutton>
+#include <QtWidgets\QButtongroup>
 #include <QtWidgets\QGridlayout>
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QMenubar>
@@ -71,3 +71,58 @@
 	inline bool flag_contains(type flags, type flag) { return !(static_cast<int>(flags & flag) == 0); }
 
 #define ISQTYPE(INSTANCE, TYPE) (INSTANCE->inherits(TYPE::staticMetaObject.className()))
+
+#include "util\properties.hpp"
+#include "util\property_extension.hpp"
+
+#ifndef BDL_SQTC_BUILD
+
+#include "styled_controls\clearable_line_edit.q.hpp"
+#include "styled_controls\numeric_line_edit.q.hpp"
+#include "styled_controls\styled_collapse_widget.q.hpp"
+#include "styled_controls\styled_frame.q.hpp"
+#include "styled_controls\styled_gradient_frame.q.hpp"
+#include "styled_controls\styled_label.q.hpp"
+#include "styled_controls\styled_list_view_item_delegate.q.hpp"
+#include "styled_controls\styled_list_view.q.hpp"
+#include "styled_controls\styled_pushbutton.q.hpp"
+#include "styled_controls\styled_tree_view_item_delegate.q.hpp"
+#include "styled_controls\styled_tree_view.q.hpp"
+#include "styled_controls\styled_widget.q.hpp"
+#include "styled_controls\tree_combobox.q.hpp"
+#include "styled_controls\vertical_scroll_area.q.hpp"
+
+#include "styled_window\styled_window.q.hpp"
+#include "styled_window\styled_dialog.q.hpp"
+
+#include "styled_color_picker\styled_color_picker.q.hpp"
+#include "styled_color_picker\color_item_delegate.q.hpp"
+#include "styled_color_picker\color_list_item_model.q.hpp"
+#include "styled_color_picker\hs_frame.q.hpp"
+#include "styled_color_picker\l_frame.q.hpp"
+
+#include "styled_dock_widget\styled_dock_widget.q.hpp"
+#include "styled_dock_widget\styled_dock_splitter.q.hpp"
+#include "styled_dock_widget\styled_dock_overlay.q.hpp"
+#include "styled_dock_widget\styled_dock_layout.q.hpp"
+#include "styled_dock_widget\styled_dock_item.q.hpp"
+
+#include "styled_item_editor\base_editor_group.q.hpp"
+#include "styled_item_editor\item_editor_group.q.hpp"
+#include "styled_item_editor\item_editor_item.q.hpp"
+#include "styled_item_editor\styled_item_editor.q.hpp"
+
+#include "styled_path_widget\styled_path_widget.q.hpp"
+#include "styled_path_widget\styled_path_widget_item.q.hpp"
+#include "styled_path_widget\styled_path_widget_layout.q.hpp"
+
+#include "util\qt_helper_functions.hpp"
+#include "util\style_loader.hpp"
+#include "util\theme_colors.hpp"
+#include "util\os\file_system_watcher.q.hpp"
+#include "util\os\icon_loader.hpp"
+#include "util\settings\i_settings_provider.q.hpp"
+#include "util\settings\settings_group.hpp"
+#include "util\settings\settings_io.hpp"
+
+#endif

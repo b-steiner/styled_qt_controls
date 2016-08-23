@@ -134,6 +134,14 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 			}
 			break;
 		}
+		case WM_SHOWWINDOW:
+		{
+			if (wParam == TRUE)
+			{
+				window->geometry(window->geometry());
+			}
+			return 0;
+		}
 		case WM_NCCALCSIZE:
 		{
 			return 0;
@@ -204,6 +212,8 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 			MINMAXINFO* mmi = (MINMAXINFO*)lParam;
 			mmi->ptMinTrackSize.x = window->m_part_window_widget->minimumSizeHint().width();
 			mmi->ptMinTrackSize.y = window->m_part_window_widget->minimumSizeHint().height();
+			mmi->ptMaxTrackSize.x = window->m_part_window_widget->maximumSize().width();
+			mmi->ptMaxTrackSize.y = window->m_part_window_widget->maximumSize().height();
 			return 0;
 		}
 
@@ -218,6 +228,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 void styled_window::initialize_widget()
 {
 	m_part_window_widget = new styled_frame();
+	//m_part_window_widget->installEventFilter(this);
 	m_part_window_widget->setObjectName("part_window_widget");
 	style_loader loader(":/styled_window/styled_window.qss");
 	loader.append_file(":/styled_window/default_menu_style.qss");
@@ -391,6 +402,7 @@ void styled_window::show()
 {
 	ShowWindow(m_hwnd, SW_SHOW);
 	SetFocus(m_hwnd);
+	geometry(geometry());
 }
 void styled_window::hide()
 {
@@ -414,16 +426,6 @@ void styled_window::focus()
 	SetFocus(m_hwnd);
 }
 
-QRect styled_window::geometry()
-{
-	RECT rect;
-	GetWindowRect(m_hwnd, &rect);
-	return QRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
-}
-void styled_window::geometry(int x, int y, int width, int height)
-{
-	MoveWindow(m_hwnd, x, y, width, height, true);
-}
 QWidget* styled_window::client_widget() const
 {
 	return m_client_widget;
@@ -495,6 +497,49 @@ void styled_window::start_move()
 	ReleaseCapture();
 	emit move_started();
 	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+}
+
+
+QRect styled_window::geometry()
+{
+	RECT rect;
+	GetWindowRect(m_hwnd, &rect);
+	return QRect(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
+}
+void styled_window::geometry(int x, int y, int width, int height)
+{
+	geometry(QRect(x, y, width, height));
+}
+void styled_window::geometry(const QRect& rect)
+{
+	MoveWindow(m_hwnd, rect.x(), rect.y(), rect.width(), rect.height(), true);
+}
+void styled_window::minimum_size(const QSize& size)
+{
+	m_part_window_widget->setMinimumSize(size);
+	geometry(geometry());
+}
+void styled_window::maximum_size(const QSize& size)
+{
+	m_part_window_widget->setMaximumSize(size);
+	geometry(geometry());
+}
+void styled_window::resize(const QSize& size)
+{
+	auto geom = geometry();
+	geometry(geom.x(), geom.y(), size.width(), size.height());
+}
+
+bool styled_window::eventFilter(QObject *obj, QEvent *ev)
+{
+	if (obj == m_part_window_widget && ev->type() == QEvent::FocusIn)
+	{
+		auto g = geometry();
+		qDebug() << m_part_window_widget->minimumSizeHint();
+		//geometry(g.x(), g.y(), s.width(), s.height());
+	}
+
+	return QObject::eventFilter(obj, ev);
 }
 
 void styled_window::close_button_clicked()

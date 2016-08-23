@@ -2,8 +2,6 @@
 
 #include "main_window.q.hpp"
 
-#include <QtWidgets\QApplication>
-
 using namespace bdl::styled_qt_controls;
 using namespace bdl::sample_application;
 

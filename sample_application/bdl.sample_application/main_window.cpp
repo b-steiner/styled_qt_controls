@@ -1,26 +1,6 @@
 #include "main_window.q.hpp"
-
 #include "resources.hpp"
-
-#include <bdl.styled_qt_controls\styled_qt_controls.hpp>
-#include <bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.q.hpp>
-#include <bdl.styled_qt_controls/util/style_loader.hpp>
-#include <bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp>
-#include <bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp>
-#include <bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp>
-#include <bdl.styled_qt_controls\util\os\icon_loader.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_list_view.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_list_view_item_delegate.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_collapse_widget.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_gradient_frame.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/tree_combobox.q.hpp>
-#include <bdl.styled_qt_controls/styled_path_widget/styled_path_widget.q.hpp>
-#include <bdl.styled_qt_controls/styled_color_picker/styled_color_picker.q.hpp>
-#include <bdl.styled_qt_controls/styled_item_editor/styled_item_editor.q.hpp>
-#include <bdl.styled_qt_controls/styled_item_editor/item_editor_item.q.hpp>
-#include <bdl.styled_qt_controls/styled_item_editor/item_editor_group.q.hpp>
-
-#include <QtWidgets\QButtongroup>
+#include "about_dialog.q.hpp"
 
 using namespace bdl::sample_application;
 using namespace bdl::styled_qt_controls;
@@ -57,7 +37,8 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	QObject::connect(exit_action, &QAction::triggered, this, &main_window::exit_action_triggered);
 	
 	auto help_menu = menubar()->addMenu("Help");
-	help_menu->addAction("About");
+	auto about_action = help_menu->addAction("About");
+	QObject::connect(about_action, &QAction::triggered, this, &main_window::about_action_triggered);
 
 	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
 	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));
@@ -433,4 +414,9 @@ void main_window::exit_action_triggered(bool checked)
 	auto wlist = styled_window::front_to_back_windows();
 	for (auto w : wlist)
 		w->close();
+}
+void main_window::about_action_triggered(bool checked)
+{
+	about_dialog* diag = new about_dialog(this);
+	qDebug() << "Dialog result: " << diag->exec();
 }

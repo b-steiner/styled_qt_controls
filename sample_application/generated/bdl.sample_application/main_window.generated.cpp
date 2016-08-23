@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__sample_application__main_window_t {
-    QByteArrayData data[12];
-    char stringdata0[224];
+    QByteArrayData data[13];
+    char stringdata0[247];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,7 +40,8 @@ QT_MOC_LITERAL(7, 122, 19), // "state_btn_1_clicked"
 QT_MOC_LITERAL(8, 142, 19), // "state_btn_2_clicked"
 QT_MOC_LITERAL(9, 162, 19), // "state_btn_3_clicked"
 QT_MOC_LITERAL(10, 182, 19), // "state_btn_4_clicked"
-QT_MOC_LITERAL(11, 202, 21) // "exit_action_triggered"
+QT_MOC_LITERAL(11, 202, 21), // "exit_action_triggered"
+QT_MOC_LITERAL(12, 224, 22) // "about_action_triggered"
 
     },
     "bdl::sample_application::main_window\0"
@@ -48,7 +49,8 @@ QT_MOC_LITERAL(11, 202, 21) // "exit_action_triggered"
     "size_btn_2_clicked\0size_btn_3_clicked\0"
     "size_btn_4_clicked\0state_btn_1_clicked\0"
     "state_btn_2_clicked\0state_btn_3_clicked\0"
-    "state_btn_4_clicked\0exit_action_triggered"
+    "state_btn_4_clicked\0exit_action_triggered\0"
+    "about_action_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +60,7 @@ static const uint qt_meta_data_bdl__sample_application__main_window[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,17 +68,19 @@ static const uint qt_meta_data_bdl__sample_application__main_window[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x08 /* Private */,
-       4,    1,   62,    2, 0x08 /* Private */,
-       5,    1,   65,    2, 0x08 /* Private */,
-       6,    1,   68,    2, 0x08 /* Private */,
-       7,    1,   71,    2, 0x08 /* Private */,
-       8,    1,   74,    2, 0x08 /* Private */,
-       9,    1,   77,    2, 0x08 /* Private */,
-      10,    1,   80,    2, 0x08 /* Private */,
-      11,    1,   83,    2, 0x08 /* Private */,
+       1,    1,   64,    2, 0x08 /* Private */,
+       4,    1,   67,    2, 0x08 /* Private */,
+       5,    1,   70,    2, 0x08 /* Private */,
+       6,    1,   73,    2, 0x08 /* Private */,
+       7,    1,   76,    2, 0x08 /* Private */,
+       8,    1,   79,    2, 0x08 /* Private */,
+       9,    1,   82,    2, 0x08 /* Private */,
+      10,    1,   85,    2, 0x08 /* Private */,
+      11,    1,   88,    2, 0x08 /* Private */,
+      12,    1,   91,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
     QMetaType::Void, QMetaType::Bool,    3,
@@ -105,6 +109,7 @@ void bdl::sample_application::main_window::qt_static_metacall(QObject *_o, QMeta
         case 6: _t->state_btn_3_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 7: _t->state_btn_4_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 8: _t->exit_action_triggered((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 9: _t->about_action_triggered((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -135,13 +140,13 @@ int bdl::sample_application::main_window::qt_metacall(QMetaObject::Call _c, int 
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

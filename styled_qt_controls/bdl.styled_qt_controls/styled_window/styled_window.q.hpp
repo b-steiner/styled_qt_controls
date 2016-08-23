@@ -11,7 +11,7 @@ BEGIN_BDL_SQTC
 	*
 	* \author bdl
 	*/
-class BDL_SQTC_EXPORT styled_window : public QWidget
+class BDL_SQTC_EXPORT styled_window : public QObject
 {
 	Q_OBJECT;
 
@@ -105,6 +105,7 @@ public:
 		* \param height The height of the window
 		*/
 	void geometry(int x, int y, int width, int height);
+	void geometry(const QRect& rect);
 
 	/*! Starts to move the window around. The mouse controlled is handed over to the operating system
 		*/
@@ -154,6 +155,13 @@ public:
 
 	void icon(const QPixmap& icon);
 	void taskbar_icon(const QIcon& icon);
+
+	void resize(const QSize& size);
+	void minimum_size(const QSize& size);
+	void maximum_size(const QSize& size);
+
+protected:
+	bool eventFilter(QObject *obj, QEvent *ev);
 
 signals:
 	/*! \brief Emitted when the window is going to be closed

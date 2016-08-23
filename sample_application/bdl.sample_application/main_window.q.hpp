@@ -1,8 +1,6 @@
 #pragma once
 
-#include <bdl.styled_qt_controls/styled_window/styled_window.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_list_view.q.hpp>
-#include <bdl.styled_qt_controls/styled_controls/styled_collapse_widget.q.hpp>
+#include <bdl.styled_qt_controls\styled_qt_controls.hpp>
 
 namespace bdl
 {
@@ -40,6 +38,7 @@ namespace bdl
 			void state_btn_4_clicked(bool checked);
 
 			void exit_action_triggered(bool checked);
+			void about_action_triggered(bool checked);
 		};
 	}
 }

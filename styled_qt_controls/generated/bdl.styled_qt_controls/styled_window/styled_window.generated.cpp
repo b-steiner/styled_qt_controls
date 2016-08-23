@@ -205,7 +205,7 @@ void bdl::styled_qt_controls::styled_window::qt_static_metacall(QObject *_o, QMe
 }
 
 const QMetaObject bdl::styled_qt_controls::styled_window::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_window.data,
+    { &QObject::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_window.data,
       qt_meta_data_bdl__styled_qt_controls__styled_window,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -220,12 +220,12 @@ void *bdl::styled_qt_controls::styled_window::qt_metacast(const char *_clname)
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__styled_window.stringdata0))
         return static_cast<void*>(const_cast< styled_window*>(this));
-    return QWidget::qt_metacast(_clname);
+    return QObject::qt_metacast(_clname);
 }
 
 int bdl::styled_qt_controls::styled_window::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
