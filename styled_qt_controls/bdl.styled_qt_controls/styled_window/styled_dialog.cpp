@@ -5,7 +5,7 @@
 
 using namespace bdl::styled_qt_controls;
 
-styled_dialog::styled_dialog(const QString& title, styled_window* parent, int exit_result) : styled_window(title, parent, window_type::dialog, window_flags::hittest_visible), m_result(exit_result), m_msg_loop(nullptr)
+styled_dialog::styled_dialog(const QString& title, styled_window* parent, int exit_result, window_flags initial_flags) : styled_window(title, parent, window_type::dialog, initial_flags), m_result(exit_result), m_msg_loop(nullptr)
 { 
 	styled_window::client_widget()->setAttribute(Qt::WA_ShowModal, true);
 

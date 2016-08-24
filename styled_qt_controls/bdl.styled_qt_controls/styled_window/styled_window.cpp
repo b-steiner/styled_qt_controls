@@ -41,10 +41,10 @@ styled_window::styled_window(QString title, styled_window* parent, window_type t
 
 	DWORD style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_THICKFRAME | WS_CLIPCHILDREN;
 
-	DWORD exstyle = 0;
+	DWORD exstyle = WS_EX_LAYERED;
 
 	if (flag_contains(m_flags, window_flags::show_on_taskbar))
-		exstyle |= WS_EX_LAYERED;
+		exstyle |= WS_EX_APPWINDOW;
 	else
 		exstyle |= WS_EX_TOOLWINDOW;
 
@@ -155,44 +155,44 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 			break;
 		case WM_SIZE:
 		{
-			RECT rect;
-			GetClientRect(window->m_hwnd, &rect);
+				RECT rect;
+				GetClientRect(window->m_hwnd, &rect);
 
-			WINDOWPLACEMENT wp;
-			wp.length = sizeof(WINDOWPLACEMENT);
-			GetWindowPlacement(hWnd, &wp);
+				WINDOWPLACEMENT wp;
+				wp.length = sizeof(WINDOWPLACEMENT);
+				GetWindowPlacement(hWnd, &wp);
 
-			if (window->m_part_window_widget != nullptr)
-			{
-				if (wp.showCmd == SW_MAXIMIZE)
+				if (window->m_part_window_widget != nullptr)
 				{
-					window->m_part_window_widget->setGeometry(8, 8, rect.right - 16, rect.bottom - 16);
-
-					if (window->m_type == window_type::normal)
+					if (wp.showCmd == SW_MAXIMIZE)
 					{
-						window->m_part_maximize_button->setVisible(false);
-						window->m_part_restore_button->setVisible(true);
-						window->m_part_maximize_button->setAttribute(Qt::WA_UnderMouse, false);
+						window->m_part_window_widget->setGeometry(8, 8, rect.right - 16, rect.bottom - 16);
+
+						if (window->m_type == window_type::normal && flag_contains(window->flags(), window_flags::show_maximize))
+						{
+							window->m_part_maximize_button->setVisible(false);
+							window->m_part_restore_button->setVisible(true);
+							window->m_part_maximize_button->setAttribute(Qt::WA_UnderMouse, false);
+						}
+
+						for (auto w : window->m_border_widgets)
+							w->setVisible(false);
 					}
-
-					for (auto w : window->m_border_widgets)
-						w->setVisible(false);
-				}
-				else
-				{
-					window->m_part_window_widget->setGeometry(0, 0, rect.right, rect.bottom);
-
-					if (window->m_type == window_type::normal)
+					else
 					{
-						window->m_part_maximize_button->setVisible(true);
-						window->m_part_restore_button->setVisible(false);
-						window->m_part_restore_button->setAttribute(Qt::WA_UnderMouse, false);
-					}
+						window->m_part_window_widget->setGeometry(0, 0, rect.right, rect.bottom);
 
-					for (auto w : window->m_border_widgets)
-						w->setVisible(!flag_contains(window->flags(), window_flags::frameless));
+						if (window->m_type == window_type::normal && flag_contains(window->flags(), window_flags::show_maximize))
+						{
+							window->m_part_maximize_button->setVisible(true);
+							window->m_part_restore_button->setVisible(false);
+							window->m_part_restore_button->setAttribute(Qt::WA_UnderMouse, false);
+						}
+
+						for (auto w : window->m_border_widgets)
+							w->setVisible(!flag_contains(window->flags(), window_flags::frameless));
+					}
 				}
-			}
 			
 			break;
 		}
@@ -247,43 +247,48 @@ void styled_window::initialize_widget()
 	part_nw_widget->setFixedWidth(4);
 	part_nw_widget->setFixedHeight(4);
 	part_nw_widget->setStyleSheet("background: solid transparent");
-	part_nw_widget->setCursor(Qt::SizeFDiagCursor);
-	QObject::connect(part_nw_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_nw_mouse_pressed(QMouseEvent*)));
 	styled_widget* part_w_widget = new styled_widget();
 	part_w_widget->setFixedWidth(4);
 	part_w_widget->setStyleSheet("background: solid transparent");
-	part_w_widget->setCursor(Qt::SizeHorCursor);
-	QObject::connect(part_w_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_w_mouse_pressed(QMouseEvent*)));
 	styled_widget* part_sw_widget = new styled_widget();
 	part_sw_widget->setFixedWidth(4);
 	part_sw_widget->setFixedHeight(4);
 	part_sw_widget->setStyleSheet("background: solid transparent");
-	part_sw_widget->setCursor(Qt::SizeBDiagCursor);
-	QObject::connect(part_sw_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_sw_mouse_pressed(QMouseEvent*)));
-
+	
 	styled_widget* part_s_widget = new styled_widget();
 	part_s_widget->setFixedHeight(4);
 	part_s_widget->setStyleSheet("background: solid transparent");
-	part_s_widget->setCursor(Qt::SizeVerCursor);
-	QObject::connect(part_s_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_s_mouse_pressed(QMouseEvent*)));
 
 	styled_widget* part_ne_widget = new styled_widget();
 	part_ne_widget->setFixedWidth(4);
 	part_ne_widget->setFixedHeight(4);
 	part_ne_widget->setStyleSheet("background: solid transparent");
-	part_ne_widget->setCursor(Qt::SizeBDiagCursor);
-	QObject::connect(part_ne_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_ne_mouse_pressed(QMouseEvent*)));
 	styled_widget* part_e_widget = new styled_widget();
 	part_e_widget->setFixedWidth(4);
 	part_e_widget->setStyleSheet("background: solid transparent");
-	part_e_widget->setCursor(Qt::SizeHorCursor);
-	QObject::connect(part_e_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_e_mouse_pressed(QMouseEvent*)));
 	styled_widget* part_se_widget = new styled_widget();
 	part_se_widget->setFixedWidth(4);
 	part_se_widget->setFixedHeight(4);
 	part_se_widget->setStyleSheet("background: solid transparent");
-	part_se_widget->setCursor(Qt::SizeFDiagCursor);
-	QObject::connect(part_se_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_se_mouse_pressed(QMouseEvent*)));
+	
+
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		part_nw_widget->setCursor(Qt::SizeFDiagCursor);
+		QObject::connect(part_nw_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_nw_mouse_pressed(QMouseEvent*)));
+		part_w_widget->setCursor(Qt::SizeHorCursor);
+		QObject::connect(part_w_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_w_mouse_pressed(QMouseEvent*)));
+		part_sw_widget->setCursor(Qt::SizeBDiagCursor);
+		QObject::connect(part_sw_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_sw_mouse_pressed(QMouseEvent*)));
+		part_s_widget->setCursor(Qt::SizeVerCursor);
+		QObject::connect(part_s_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_s_mouse_pressed(QMouseEvent*)));
+		part_ne_widget->setCursor(Qt::SizeBDiagCursor);
+		QObject::connect(part_ne_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_ne_mouse_pressed(QMouseEvent*)));
+		part_e_widget->setCursor(Qt::SizeHorCursor);
+		QObject::connect(part_e_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_e_mouse_pressed(QMouseEvent*)));
+		part_se_widget->setCursor(Qt::SizeFDiagCursor);
+		QObject::connect(part_se_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_se_mouse_pressed(QMouseEvent*)));
+	}
 
 	m_client_widget = new QWidget();
 	m_client_widget->setObjectName("part_client_widget");
@@ -336,25 +341,25 @@ void styled_window::initialize_widget()
 		part_minimize_button->setFixedSize(27, 20);
 		part_minimize_button->setFocusPolicy(Qt::NoFocus);
 		QObject::connect(part_minimize_button, SIGNAL(clicked()), this, SLOT(minimize_button_clicked()));
-
-
-		m_part_maximize_button = new QPushButton();
-		m_part_maximize_button->setObjectName("part_maximize_button");
-		m_part_maximize_button->setFixedSize(28, 20);
-		m_part_maximize_button->setFocusPolicy(Qt::NoFocus);
-		QObject::connect(m_part_maximize_button, SIGNAL(clicked()), this, SLOT(maximize_button_clicked()));
-
-
-		m_part_restore_button = new QPushButton();
-		m_part_restore_button->setObjectName("part_restore_button");
-		m_part_restore_button->setFixedSize(28, 20);
-		m_part_restore_button->setFocusPolicy(Qt::NoFocus);
-		m_part_restore_button->setVisible(false);
-		QObject::connect(m_part_restore_button, SIGNAL(clicked()), this, SLOT(restore_button_clicked()));
-
 		m_titlebar_layout->addWidget(part_minimize_button, 0, 5, Qt::AlignTop);
-		m_titlebar_layout->addWidget(m_part_maximize_button, 0, 6, Qt::AlignTop);
-		m_titlebar_layout->addWidget(m_part_restore_button, 0, 6, Qt::AlignTop);
+
+		if (flag_contains(flags(), window_flags::show_maximize))
+		{
+			m_part_maximize_button = new QPushButton();
+			m_part_maximize_button->setObjectName("part_maximize_button");
+			m_part_maximize_button->setFixedSize(28, 20);
+			m_part_maximize_button->setFocusPolicy(Qt::NoFocus);
+			QObject::connect(m_part_maximize_button, SIGNAL(clicked()), this, SLOT(maximize_button_clicked()));
+			m_titlebar_layout->addWidget(m_part_maximize_button, 0, 6, Qt::AlignTop);
+
+			m_part_restore_button = new QPushButton();
+			m_part_restore_button->setObjectName("part_restore_button");
+			m_part_restore_button->setFixedSize(28, 20);
+			m_part_restore_button->setFocusPolicy(Qt::NoFocus);
+			m_part_restore_button->setVisible(false);
+			QObject::connect(m_part_restore_button, SIGNAL(clicked()), this, SLOT(restore_button_clicked()));
+			m_titlebar_layout->addWidget(m_part_restore_button, 0, 6, Qt::AlignTop);
+		}
 
 		QPushButton* part_close_button = new QPushButton();
 		part_close_button->setObjectName("part_close_button");
@@ -541,11 +546,17 @@ void styled_window::minimize_button_clicked()
 }
 void styled_window::maximize_button_clicked()
 {
-	ShowWindow(m_hwnd, SW_MAXIMIZE);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ShowWindow(m_hwnd, SW_MAXIMIZE);
+	}
 }
 void styled_window::restore_button_clicked()
 {
-	ShowWindow(m_hwnd, SW_RESTORE);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ShowWindow(m_hwnd, SW_RESTORE);
+	}
 }
 
 void styled_window::titlebar_mouse_pressed(QMouseEvent* event)
@@ -557,38 +568,59 @@ void styled_window::titlebar_mouse_pressed(QMouseEvent* event)
 }
 void styled_window::border_ne_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
+	}
 }
 void styled_window::border_nw_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTTOPLEFT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTTOPLEFT, 0);
+	}
 }
 void styled_window::border_e_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTRIGHT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTRIGHT, 0);
+	}
 }
 void styled_window::border_w_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTLEFT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTLEFT, 0);
+	}
 }
 void styled_window::border_s_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOM, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOM, 0);
+	}
 }
 void styled_window::border_se_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOMRIGHT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOMRIGHT, 0);
+	}
 }
 void styled_window::border_sw_mouse_pressed(QMouseEvent* event)
 {
-	ReleaseCapture();
-	SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOMLEFT, 0);
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		ReleaseCapture();
+		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOMLEFT, 0);
+	}
 }
 
 QVector<styled_window*> styled_window::front_to_back_windows()

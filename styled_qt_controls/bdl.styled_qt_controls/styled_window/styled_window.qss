@@ -48,7 +48,6 @@ QPushButton#part_minimize_button
 	background-image: url(:/images/window_minimize.png);
 	border: 1px solid @border;
 	border-top: none;
-	border-right: none;
 	border-bottom-left-radius: 3px;
 }
 QPushButton#part_minimize_button:hover
@@ -63,8 +62,10 @@ QPushButton#part_minimize_button:pressed
 QPushButton#part_maximize_button
 {
 	background-image: url(:/images/window_maximize.png);
-	border: 1px solid @border;
+	border-right: 1px solid @border;
+	border-bottom: 1px solid @border;
 	border-top: none;
+	border-left: none;
 }
 QPushButton#part_maximize_button:hover
 {
@@ -79,6 +80,7 @@ QPushButton#part_restore_button
 {
 	background-image: url(:/images/window_restore.png);
 	border: 1px solid @border;
+	border-left: none;
 	border-top: none;
 }
 QPushButton#part_restore_button:hover

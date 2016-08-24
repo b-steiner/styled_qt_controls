@@ -19,7 +19,7 @@ public:
 	#pragma region Enumerations
 
 	//! Flags for specifying states of the window
-	enum class window_flags : unsigned char
+	enum class window_flags : unsigned short
 	{
 		//! No additional state
 		none = 0,
@@ -35,6 +35,10 @@ public:
 		delete_on_close = 16,
 		//! Determines whether or not this window is shown in the taskbar
 		show_on_taskbar = 32,
+		//! Enables resizing. This state can only be set in the constructor
+		resizable = 64,
+		//! Shows the maximize button. This state can only be set in the constructor
+		show_maximize = 128
 	};
 
 	//! Enumeration for different window types
@@ -77,7 +81,7 @@ public:
 		* \param type Specifies the type of the window
 		* \param initial_flags Specifies the initial flags that are set. Default value is (show_on_taskbar|hittest_visible)
 		*/
-	styled_window(QString title, styled_window* parent = nullptr, window_type type = window_type::normal, window_flags initial_flags = (window_flags)(32|8));
+	styled_window(QString title, styled_window* parent = nullptr, window_type type = window_type::normal, window_flags initial_flags = (window_flags)(128|64|32|8));
 	/*! \brief Releases all data associated with an instance of the styled_window class
 		*/
 	virtual ~styled_window();

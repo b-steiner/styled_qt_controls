@@ -1,0 +1,12 @@
+QWidget#part_client_widget
+{
+	background: solid @content_control;
+	border: 1px solid @border;
+}
+
+QWidget#part_abd_icon
+{
+	background-image: url(:/images/about_logo.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+}

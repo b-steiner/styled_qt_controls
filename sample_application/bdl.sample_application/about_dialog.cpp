@@ -3,7 +3,7 @@
 using namespace bdl::sample_application;
 using namespace bdl::styled_qt_controls;
 
-about_dialog::about_dialog(styled_window* parent) : styled_dialog("About", parent)
+about_dialog::about_dialog(styled_window* parent) : styled_dialog("About", parent, -1, window_flags::hittest_visible | window_flags::show_on_taskbar)
 {
 	util::style_loader loader(":/about_dialog.qss");
 	this->client_widget()->setStyleSheet(loader.style_string());

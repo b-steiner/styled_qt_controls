@@ -34,7 +34,7 @@ public:
 		* \param parent The parent window, which is blocked by the dialog during execution
 		* \param exit_result The default result of the dialog
 		*/
-	styled_dialog(const QString& title, styled_window* parent, int exit_result = -1);
+	styled_dialog(const QString& title, styled_window* parent, int exit_result = -1, window_flags initial_flags = (window_flags)(64|8));
 	/*! \brief Releases all data associated with an instance of the styled_dialog class
 	*/
 	virtual ~styled_dialog();
