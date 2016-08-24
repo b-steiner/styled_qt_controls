@@ -20,6 +20,7 @@ styled_dialog::styled_dialog(const QString& title, styled_window* parent, int ex
 	styled_window::client_widget()->setLayout(layout);
 
 	m_dialog_client_widget = new QWidget();
+	m_dialog_client_widget->setObjectName("part_client_widget");
 	layout->addWidget(m_dialog_client_widget, 0, 0);
 	layout->addLayout(m_button_layout, 1, 0, Qt::AlignRight);
 

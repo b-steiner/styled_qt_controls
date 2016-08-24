@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -14,7 +15,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>sample_application</RootNamespace>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -28,16 +29,16 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
-    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
-    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros"/>
+  <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(ProjectName)\</OutDir>
@@ -101,19 +102,21 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bdl.sample_application\about_dialog.cpp"/>
-    <ClCompile Include="bdl.sample_application\main.cpp"/>
-    <ClCompile Include="bdl.sample_application\main_window.cpp"/>
-    <ClCompile Include="generated\bdl.sample_application\main_window.generated.cpp"/>
-  <ClCompile Include="generated\bdl.sample_application\about_dialog.generated.cpp"/></ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="bdl.sample_application\about_dialog.q.hpp"/>
-    <ClInclude Include="bdl.sample_application\main_window.q.hpp"/>
-    <ClInclude Include="bdl.sample_application\resources.hpp"/>
-    <ClInclude Include="resource.h"/>
+    <ClCompile Include="bdl.sample_application\about_dialog.cpp" />
+    <ClCompile Include="bdl.sample_application\main.cpp" />
+    <ClCompile Include="bdl.sample_application\main_window.cpp" />
+    <ClCompile Include="generated\bdl.sample_application\main_window.generated.cpp" />
+    <ClCompile Include="generated\bdl.sample_application\about_dialog.generated.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bdl.sample_application\main_window.qss"/>
+    <ClInclude Include="bdl.sample_application\about_dialog.q.hpp" />
+    <ClInclude Include="bdl.sample_application\main_window.q.hpp" />
+    <ClInclude Include="bdl.sample_application\resources.hpp" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bdl.sample_application\about_dialog.qss" />
+    <None Include="bdl.sample_application\main_window.qss" />
     <CustomBuild Include="bdl.sample_application\resources.qrc">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">java -jar $(SolutionDir)tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(SolutionDir)qt\bin %(FullPath) $(ProjectDir)bdl.sample_application\resources.hpp</Command>
@@ -125,15 +128,15 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">asdf.hpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">asdf.hpp</Outputs>
     </CustomBuild>
-    <None Include="scripts\pre_build.cmd"/>
+    <None Include="scripts\pre_build.cmd" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\doc\icon\sqtc_icon.ico"/>
+    <Image Include="..\doc\icon\sqtc_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="resources.rc"/>
+    <ResourceCompile Include="resources.rc" />
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

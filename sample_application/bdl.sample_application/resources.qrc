@@ -1,10 +1,12 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 	<file>main_window.qss</file>
+  <file>about_dialog.qss</file>
 
   <file>images/green_smiley.png</file>
   <file>images/pink_smiley.png</file>
 	<file>images/sqtc_icon.ico</file>
 	<file>images/sqtc_icon_titlebar.png</file>
+  <file>images/about_logo.png</file>
 </qresource>														
 </RCC>	

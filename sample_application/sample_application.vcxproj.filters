@@ -24,6 +24,12 @@
     <ClCompile Include="generated\bdl.sample_application\main_window.generated.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bdl.sample_application\about_dialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="generated\bdl.sample_application\about_dialog.generated.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.sample_application\main_window.q.hpp">
@@ -35,10 +41,14 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bdl.sample_application\about_dialog.q.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="scripts\pre_build.cmd" />
     <None Include="bdl.sample_application\main_window.qss" />
+    <None Include="bdl.sample_application\about_dialog.qss" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.sample_application\resources.qrc" />

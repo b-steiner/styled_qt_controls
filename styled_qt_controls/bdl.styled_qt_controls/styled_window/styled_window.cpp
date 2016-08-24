@@ -23,17 +23,6 @@ styled_window::styled_window(QString title, styled_window* parent, window_type t
 
 	wc.hInstance = m_hInstance;
 	wc.lpfnWndProc = wnd_prc;
-	//wc.hIcon = LoadIcon(m_hInstance, MAKEINTRESOURCE(101));
-	/*wc.hIcon = (HICON)LoadImage( // returns a HANDLE so we have to cast to HICON
-		NULL,             // hInstance must be NULL when loading from a file
-		L"D:\\repos\\styled_qt_controls\\sample_application\\bdl.sample_application\\images\\sqtc_icon.ico",   // the icon file name
-		IMAGE_ICON,       // specifies that the file is an icon
-		0,                // width of the image (we'll specify default later on)
-		0,                // height of the image
-		LR_LOADFROMFILE |  // we want to load a file (as opposed to a resource)
-		LR_DEFAULTSIZE |   // default metrics based on the type (IMAGE_ICON, 32x32)
-		LR_SHARED         // let the system release the handle when it's no longer used
-		);*/
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	if (type == window_type::dialog)
