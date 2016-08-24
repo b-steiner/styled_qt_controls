@@ -4,6 +4,7 @@
 	<file>styled_window/default_menu_style.qss</file>
 	<file>styled_window/default_styles.qss</file>
 	<file>styled_window/default_view_style.qss</file>
+  <file>styled_window/styled_messagebox.qss</file>
 
 	<file>styled_dock_widget/styled_dock_widget.qss</file>
 	<file>styled_dock_widget/styled_dock_widget_top.qss</file>
@@ -68,5 +69,6 @@
 	<file>images/add.png</file>
 	<file>images/remove.png</file>
   <file>images/additional_options.png</file>
+  <file>images/msg_box_critical.png</file>
 </qresource>														
 </RCC>								

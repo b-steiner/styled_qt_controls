@@ -1,0 +1,6 @@
+QLabel#part_msg_critical_icon
+{
+	background-image: url(:/images/msg_box_critical.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+}

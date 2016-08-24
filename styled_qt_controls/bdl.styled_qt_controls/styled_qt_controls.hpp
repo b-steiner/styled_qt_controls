@@ -33,6 +33,7 @@
 #include <QtWidgets\QUndoCommand>
 #include <QtWidgets\QButtongroup>
 #include <QtWidgets\QCheckbox>
+#include <QtWidgets\QMessagebox>
 
 #include <QtXml\QDomDocument>
 
@@ -94,6 +95,7 @@
 
 #include "styled_window\styled_window.q.hpp"
 #include "styled_window\styled_dialog.q.hpp"
+#include "styled_window/styled_messagebox.hpp"
 
 #include "styled_color_picker\styled_color_picker.q.hpp"
 #include "styled_color_picker\color_item_delegate.q.hpp"
