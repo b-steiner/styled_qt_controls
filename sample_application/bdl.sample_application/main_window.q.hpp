@@ -39,6 +39,12 @@ namespace bdl
 
 			void exit_action_triggered(bool checked);
 			void about_action_triggered(bool checked);
+
+			void info_msg_action_triggered(bool checked);
+			void warning_msg_action_triggered(bool checked);
+			void critical_msg_action_triggered(bool checked);
+			void question_msg_action_triggered(bool checked);
+			void custom_msg_action_triggered(bool checked);
 		};
 	}
 }

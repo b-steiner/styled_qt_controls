@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_widget_t {
-    QByteArrayData data[8];
-    char stringdata0[106];
+    QByteArrayData data[10];
+    char stringdata0[128];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,13 +36,16 @@ QT_MOC_LITERAL(2, 52, 0), // ""
 QT_MOC_LITERAL(3, 53, 12), // "QMouseEvent*"
 QT_MOC_LITERAL(4, 66, 5), // "event"
 QT_MOC_LITERAL(5, 72, 13), // "mouseReleased"
-QT_MOC_LITERAL(6, 86, 13), // "topline_color"
-QT_MOC_LITERAL(7, 100, 5) // "hover"
+QT_MOC_LITERAL(6, 86, 10), // "keyPressed"
+QT_MOC_LITERAL(7, 97, 10), // "QKeyEvent*"
+QT_MOC_LITERAL(8, 108, 13), // "topline_color"
+QT_MOC_LITERAL(9, 122, 5) // "hover"
 
     },
     "bdl::styled_qt_controls::styled_widget\0"
     "mousePressed\0\0QMouseEvent*\0event\0"
-    "mouseReleased\0topline_color\0hover"
+    "mouseReleased\0keyPressed\0QKeyEvent*\0"
+    "topline_color\0hover"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,24 +55,26 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_widget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
-       2,   30, // properties
+       3,   14, // methods
+       2,   38, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       2,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x06 /* Public */,
-       5,    1,   27,    2, 0x06 /* Public */,
+       1,    1,   29,    2, 0x06 /* Public */,
+       5,    1,   32,    2, 0x06 /* Public */,
+       6,    1,   35,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, 0x80000000 | 7,    4,
 
  // properties: name, type, flags
-       6, QMetaType::QColor, 0x00095003,
-       7, QMetaType::Bool, 0x00095003,
+       8, QMetaType::QColor, 0x00095003,
+       9, QMetaType::Bool, 0x00095003,
 
        0        // eod
 };
@@ -82,6 +87,7 @@ void bdl::styled_qt_controls::styled_widget::qt_static_metacall(QObject *_o, QMe
         switch (_id) {
         case 0: _t->mousePressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 1: _t->mouseReleased((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 2: _t->keyPressed((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -98,6 +104,13 @@ void bdl::styled_qt_controls::styled_widget::qt_static_metacall(QObject *_o, QMe
             typedef void (styled_widget::*_t)(QMouseEvent * );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styled_widget::mouseReleased)) {
                 *result = 1;
+                return;
+            }
+        }
+        {
+            typedef void (styled_widget::*_t)(QKeyEvent * );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styled_widget::keyPressed)) {
+                *result = 2;
                 return;
             }
         }
@@ -155,13 +168,13 @@ int bdl::styled_qt_controls::styled_widget::qt_metacall(QMetaObject::Call _c, in
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
@@ -195,5 +208,12 @@ void bdl::styled_qt_controls::styled_widget::mouseReleased(QMouseEvent * _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void bdl::styled_qt_controls::styled_widget::keyPressed(QKeyEvent * _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -69,6 +69,5 @@
 	<file>images/add.png</file>
 	<file>images/remove.png</file>
   <file>images/additional_options.png</file>
-  <file>images/msg_box_critical.png</file>
 </qresource>														
 </RCC>								

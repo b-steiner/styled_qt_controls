@@ -862,10 +862,10 @@ void styled_dock_widget::application_focus_changed(QWidget* old_widget, QWidget*
 
 	this->set_focus(me_focus);
 
-	/*if (new_widget != nullptr)
-		LOG_EDITOR(debug) << "Focus: " << new_widget->metaObject()->className() << ", " << new_widget->objectName();
+	if (new_widget != nullptr)
+		qDebug() << "Focus: " << new_widget->metaObject()->className() << ", " << new_widget->objectName();
 	else
-		LOG_EDITOR(debug) << "Focus: none";*/
+		qDebug() << "Focus: none";
 }
 
 void styled_dock_widget::item_title_changed(bdl::styled_qt_controls::styled_dock_item*)

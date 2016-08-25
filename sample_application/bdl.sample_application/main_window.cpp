@@ -36,6 +36,18 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	auto exit_action = file_menu->addAction("Exit");
 	QObject::connect(exit_action, &QAction::triggered, this, &main_window::exit_action_triggered);
 	
+	auto msgbox_menu = menubar()->addMenu("Message Box");
+	auto info_msg_action = msgbox_menu->addAction("Information");
+	QObject::connect(info_msg_action, &QAction::triggered, this, &main_window::info_msg_action_triggered);
+	auto warning_msg_action = msgbox_menu->addAction("Warning");
+	QObject::connect(warning_msg_action, &QAction::triggered, this, &main_window::warning_msg_action_triggered);
+	auto critical_msg_action = msgbox_menu->addAction("Critical");
+	QObject::connect(critical_msg_action, &QAction::triggered, this, &main_window::critical_msg_action_triggered);
+	auto question_msg_action = msgbox_menu->addAction("Question");
+	QObject::connect(question_msg_action, &QAction::triggered, this, &main_window::question_msg_action_triggered);
+	auto custom_msg_action = msgbox_menu->addAction("Custom");
+	QObject::connect(custom_msg_action, &QAction::triggered, this, &main_window::custom_msg_action_triggered);
+
 	auto help_menu = menubar()->addMenu("Help");
 	auto about_action = help_menu->addAction("About");
 	QObject::connect(about_action, &QAction::triggered, this, &main_window::about_action_triggered);
@@ -421,4 +433,29 @@ void main_window::about_action_triggered(bool checked)
 {
 	about_dialog* diag = new about_dialog(this);
 	qDebug() << "Dialog result: " << diag->exec();
+}
+
+void main_window::info_msg_action_triggered(bool checked)
+{
+	styled_messagebox::information(this, "Info", "This is a info messagebox.");
+}
+void main_window::warning_msg_action_triggered(bool checked)
+{
+	styled_messagebox::warning(this, "Warning", "This is a warning messagebox.");
+}
+void main_window::critical_msg_action_triggered(bool checked)
+{
+	styled_messagebox::critical(this, "Critical", "A critical error happend. Press Ok to solve it.");
+}
+void main_window::question_msg_action_triggered(bool checked)
+{
+	auto result = QMessageBox::StandardButton::Yes;
+
+	while (result == QMessageBox::StandardButton::Yes)
+		result = styled_messagebox::question(this, "Question", "Do you want to see another question box?");
+}
+void main_window::custom_msg_action_triggered(bool checked)
+{
+	styled_messagebox::show(this, "Title", "<b>A more complicated text</b><p>It has multiple lines</p><font color='#00FF00'>and colors</font>", QIcon(":/sqtc_icon.ico").pixmap(32),
+	{ { "Yes to all", 1}, { "No to nothing", 2}, { "Do what you want", 3} });
 }

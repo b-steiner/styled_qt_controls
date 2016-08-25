@@ -13,9 +13,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	auto* window = new main_window();
 	window->show();
 
-	//auto result = QMessageBox::critical(nullptr, "Title", "Text");
-	auto result = styled_messagebox::question(nullptr, "Title", "Text");
-
 	auto exit_code = app.exec();
 
 	delete window;

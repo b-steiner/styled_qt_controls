@@ -6,6 +6,12 @@ using namespace bdl::styled_qt_controls;
 styled_widget::styled_widget(QWidget* parent, Qt::WindowFlags f) : QWidget(parent, f), m_topline_color(0, 0, 0, 0), m_hover(false) { }
 styled_widget::~styled_widget() { }
 
+void styled_widget::keyPressEvent(QKeyEvent * event)
+{
+	emit keyPressed(event);
+	QWidget::keyPressEvent(event);
+}
+
 void styled_widget::mousePressEvent(QMouseEvent* event)
 {
 	emit mousePressed(event);

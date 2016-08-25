@@ -64,6 +64,8 @@ BEGIN_BDL_SQTC
 		void leave(QEvent* event);
 		//! Emitted when the mouse enters the widget (see leaveEvent)
 		void enter(QEvent* event);
+		//! Emitted when a key is pressed (see keyPressEvent)
+		void keyPressed(QKeyEvent* event);
 
 		//! Emitted when the hover property changes its value
 		void hover_changed(bool value);
@@ -77,6 +79,8 @@ BEGIN_BDL_SQTC
 		virtual void mouseMoveEvent(QMouseEvent* event);
 		//! See QFrame
 		virtual void paintEvent(QPaintEvent *pe);
+		//! See QFrame
+		virtual void keyPressEvent(QKeyEvent* event);
 
 		//! See QFrame
 		virtual void enterEvent(QEvent * event);

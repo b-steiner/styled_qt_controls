@@ -217,6 +217,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 void styled_window::initialize_widget()
 {
 	m_part_window_widget = new styled_frame();
+	m_part_window_widget->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
 	m_part_window_widget->installEventFilter(this);
 	m_part_window_widget->setObjectName("part_window_widget");
 	style_loader loader(":/styled_window/styled_window.qss");
@@ -290,7 +291,7 @@ void styled_window::initialize_widget()
 		QObject::connect(part_se_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(border_se_mouse_pressed(QMouseEvent*)));
 	}
 
-	m_client_widget = new QWidget();
+	m_client_widget = new styled_widget();
 	m_client_widget->setObjectName("part_client_widget");
 
 	QGridLayout* layout = new QGridLayout();
@@ -394,7 +395,7 @@ void styled_window::show()
 {
 	ShowWindow(m_hwnd, SW_SHOW);
 	m_part_window_widget->show();
-	SetFocus(m_hwnd);
+	this->focus();
 }
 void styled_window::hide()
 {
@@ -416,9 +417,10 @@ void styled_window::disable()
 void styled_window::focus()
 {
 	SetFocus(m_hwnd);
+	this->m_part_window_widget->setFocus();
 }
 
-QWidget* styled_window::client_widget() const
+styled_widget* styled_window::client_widget() const
 {
 	return m_client_widget;
 }

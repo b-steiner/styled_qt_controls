@@ -36,6 +36,11 @@ void styled_frame::paintEvent(QPaintEvent *pe)
 	p.setPen(topLinePen);
 	p.drawLine(m_inner_padding_side, m_inner_padding_top, width() - 2 * m_inner_padding_side, m_inner_padding_top);
 }
+void styled_frame::keyPressEvent(QKeyEvent * event)
+{
+	emit keyPressed(event);
+	QFrame::keyPressEvent(event);
+}
 void styled_frame::enterEvent(QEvent * event)
 {
 	QFrame::enterEvent(event);

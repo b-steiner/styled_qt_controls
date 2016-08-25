@@ -37,8 +37,12 @@ signals:
 	void mousePressed(QMouseEvent* event);
 	//! See QWidget
 	void mouseReleased(QMouseEvent* event);
+	//! See QWidget
+	void keyPressed(QKeyEvent* event);
 
 protected:
+	//! See QWidget
+	virtual void keyPressEvent(QKeyEvent *event);
 	//! See QWidget
 	virtual void mousePressEvent(QMouseEvent* event);
 	//! See QWidget

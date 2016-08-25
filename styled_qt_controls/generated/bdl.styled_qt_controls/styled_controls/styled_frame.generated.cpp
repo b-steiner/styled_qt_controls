@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_frame_t {
-    QByteArrayData data[19];
-    char stringdata0[228];
+    QByteArrayData data[21];
+    char stringdata0[250];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,24 +40,26 @@ QT_MOC_LITERAL(6, 85, 9), // "mouseMove"
 QT_MOC_LITERAL(7, 95, 5), // "leave"
 QT_MOC_LITERAL(8, 101, 7), // "QEvent*"
 QT_MOC_LITERAL(9, 109, 5), // "enter"
-QT_MOC_LITERAL(10, 115, 13), // "hover_changed"
-QT_MOC_LITERAL(11, 129, 5), // "value"
-QT_MOC_LITERAL(12, 135, 13), // "topline_color"
-QT_MOC_LITERAL(13, 149, 5), // "hover"
-QT_MOC_LITERAL(14, 155, 8), // "selected"
-QT_MOC_LITERAL(15, 164, 17), // "inner_padding_top"
-QT_MOC_LITERAL(16, 182, 18), // "inner_padding_side"
-QT_MOC_LITERAL(17, 201, 13), // "custom_data_1"
-QT_MOC_LITERAL(18, 215, 12) // "custom_int_1"
+QT_MOC_LITERAL(10, 115, 10), // "keyPressed"
+QT_MOC_LITERAL(11, 126, 10), // "QKeyEvent*"
+QT_MOC_LITERAL(12, 137, 13), // "hover_changed"
+QT_MOC_LITERAL(13, 151, 5), // "value"
+QT_MOC_LITERAL(14, 157, 13), // "topline_color"
+QT_MOC_LITERAL(15, 171, 5), // "hover"
+QT_MOC_LITERAL(16, 177, 8), // "selected"
+QT_MOC_LITERAL(17, 186, 17), // "inner_padding_top"
+QT_MOC_LITERAL(18, 204, 18), // "inner_padding_side"
+QT_MOC_LITERAL(19, 223, 13), // "custom_data_1"
+QT_MOC_LITERAL(20, 237, 12) // "custom_int_1"
 
     },
     "bdl::styled_qt_controls::styled_frame\0"
     "mousePressed\0\0QMouseEvent*\0event\0"
     "mouseReleased\0mouseMove\0leave\0QEvent*\0"
-    "enter\0hover_changed\0value\0topline_color\0"
-    "hover\0selected\0inner_padding_top\0"
-    "inner_padding_side\0custom_data_1\0"
-    "custom_int_1"
+    "enter\0keyPressed\0QKeyEvent*\0hover_changed\0"
+    "value\0topline_color\0hover\0selected\0"
+    "inner_padding_top\0inner_padding_side\0"
+    "custom_data_1\0custom_int_1"
 };
 #undef QT_MOC_LITERAL
 
@@ -67,20 +69,21 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_frame[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
-       7,   62, // properties
+       7,   14, // methods
+       7,   70, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       6,       // signalCount
+       7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
-       5,    1,   47,    2, 0x06 /* Public */,
-       6,    1,   50,    2, 0x06 /* Public */,
-       7,    1,   53,    2, 0x06 /* Public */,
-       9,    1,   56,    2, 0x06 /* Public */,
-      10,    1,   59,    2, 0x06 /* Public */,
+       1,    1,   49,    2, 0x06 /* Public */,
+       5,    1,   52,    2, 0x06 /* Public */,
+       6,    1,   55,    2, 0x06 /* Public */,
+       7,    1,   58,    2, 0x06 /* Public */,
+       9,    1,   61,    2, 0x06 /* Public */,
+      10,    1,   64,    2, 0x06 /* Public */,
+      12,    1,   67,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -88,20 +91,21 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_frame[] = {
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 8,    4,
     QMetaType::Void, 0x80000000 | 8,    4,
-    QMetaType::Void, QMetaType::Bool,   11,
+    QMetaType::Void, 0x80000000 | 11,    4,
+    QMetaType::Void, QMetaType::Bool,   13,
 
  // properties: name, type, flags
-      12, QMetaType::QColor, 0x00095003,
-      13, QMetaType::Bool, 0x00495003,
-      14, QMetaType::Bool, 0x00095003,
-      15, QMetaType::Int, 0x00095003,
-      16, QMetaType::Int, 0x00095003,
-      17, QMetaType::Bool, 0x00095003,
+      14, QMetaType::QColor, 0x00095003,
+      15, QMetaType::Bool, 0x00495003,
+      16, QMetaType::Bool, 0x00095003,
+      17, QMetaType::Int, 0x00095003,
       18, QMetaType::Int, 0x00095003,
+      19, QMetaType::Bool, 0x00095003,
+      20, QMetaType::Int, 0x00095003,
 
  // properties: notify_signal_id
        0,
-       5,
+       6,
        0,
        0,
        0,
@@ -122,7 +126,8 @@ void bdl::styled_qt_controls::styled_frame::qt_static_metacall(QObject *_o, QMet
         case 2: _t->mouseMove((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 3: _t->leave((*reinterpret_cast< QEvent*(*)>(_a[1]))); break;
         case 4: _t->enter((*reinterpret_cast< QEvent*(*)>(_a[1]))); break;
-        case 5: _t->hover_changed((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: _t->keyPressed((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 6: _t->hover_changed((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -164,9 +169,16 @@ void bdl::styled_qt_controls::styled_frame::qt_static_metacall(QObject *_o, QMet
             }
         }
         {
+            typedef void (styled_frame::*_t)(QKeyEvent * );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styled_frame::keyPressed)) {
+                *result = 5;
+                return;
+            }
+        }
+        {
             typedef void (styled_frame::*_t)(bool );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styled_frame::hover_changed)) {
-                *result = 5;
+                *result = 6;
                 return;
             }
         }
@@ -230,13 +242,13 @@ int bdl::styled_qt_controls::styled_frame::qt_metacall(QMetaObject::Call _c, int
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
@@ -294,9 +306,16 @@ void bdl::styled_qt_controls::styled_frame::enter(QEvent * _t1)
 }
 
 // SIGNAL 5
-void bdl::styled_qt_controls::styled_frame::hover_changed(bool _t1)
+void bdl::styled_qt_controls::styled_frame::keyPressed(QKeyEvent * _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
+}
+
+// SIGNAL 6
+void bdl::styled_qt_controls::styled_frame::hover_changed(bool _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 QT_END_MOC_NAMESPACE

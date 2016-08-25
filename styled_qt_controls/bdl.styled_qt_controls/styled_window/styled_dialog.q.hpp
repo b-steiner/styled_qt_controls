@@ -18,7 +18,7 @@ class BDL_SQTC_EXPORT styled_dialog : public styled_window
 
 	PROPERTY0(QList<QString>, button_text);
 	PROPERTY0(QList<int>, button_result);
-	PROPERTY0(QWidget*, dialog_client_widget);
+	PROPERTY0(styled_widget*, dialog_client_widget);
 	PROPERTY0(QHBoxLayout*, button_layout);
 	PROPERTY0(QEventLoop*, msg_loop);
 	typedef QHash<QPushButton*, int> pushbutton_int_hashtable;
@@ -50,7 +50,7 @@ public:
 	*
 	* \returns A pointer to the client widget
 	*/
-	virtual QWidget* client_widget() const;
+	virtual styled_widget* client_widget() const;
 	/*! \brief Adds a button to the dialog
 		*
 		* \param text The text to display on the button
@@ -61,6 +61,8 @@ public:
 private slots:
 	void dialog_button_clicked(bool checked);
 	void this_closed();
+
+	void this_keyPressed(QKeyEvent* event);
 };
 
 
