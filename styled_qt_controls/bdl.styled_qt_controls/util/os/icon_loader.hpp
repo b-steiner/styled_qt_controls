@@ -6,6 +6,8 @@ BEGIN_BDL_SQTC
 
 namespace util
 {
+	enum class default_icon_type { error, warning, info, question };
+
 	/*! \brief Loads file icons from the operating system
 		*
 		* \author bdl
@@ -24,6 +26,8 @@ namespace util
 
 		static HICON QIcon_to_HICON(const QIcon& icon, unsigned int size, QIcon::Mode mode = QIcon::Mode::Normal, QIcon::State state = QIcon::State::Off);
 		static HICON taskbar_icon(const QIcon& icon);
+
+		static QPixmap default_os_icon(default_icon_type icon, int size);
 	};
 }
 

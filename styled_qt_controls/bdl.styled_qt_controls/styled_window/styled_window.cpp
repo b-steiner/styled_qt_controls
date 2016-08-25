@@ -548,7 +548,7 @@ bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 {
 	if (obj == m_part_window_widget)
 	{
-		qDebug() << "Event: " << ev->type();
+		//qDebug() << "Event: " << ev->type();
 
 		if (ev->type() == QEvent::Resize && flag_contains(m_internal_flags, internal_flags::adjust_size))
 		{
@@ -556,7 +556,7 @@ bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 			auto s = m_part_window_widget->sizeHint();
 			if (s.isValid())
 			{
-				qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
+				//qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
 				resize(s);
 			}
 		}

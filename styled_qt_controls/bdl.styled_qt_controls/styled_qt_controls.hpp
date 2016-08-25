@@ -1,5 +1,7 @@
 #pragma once
 
+#define OEMRESOURCE
+
 #include <sstream>
 #include <Windows.h>
 #include <algorithm>

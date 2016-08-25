@@ -59,3 +59,27 @@ HICON icon_loader::QIcon_to_HICON(const QIcon& icon, unsigned int size, QIcon::M
 	auto s = pix.width();
 	return QtWin::toHICON(pix);
 }
+
+QPixmap icon_loader::default_os_icon(default_icon_type icon, int size)
+{
+	LPCWSTR name;
+	switch (icon)
+	{
+	case default_icon_type::error:
+		name = MAKEINTRESOURCE(OIC_ERROR);
+		break;
+	case default_icon_type::warning:
+		name = MAKEINTRESOURCE(OIC_WARNING);
+		break;
+	case default_icon_type::info:
+		name = MAKEINTRESOURCE(OIC_INFORMATION);
+		break;
+	case default_icon_type::question:
+		name = MAKEINTRESOURCE(OIC_QUES);
+		break;
+	}
+
+	auto img = LoadImage(NULL, name, IMAGE_ICON, size, size, LR_SHARED);
+	auto pix = QtWin::fromHICON((HICON)img);
+	return pix;
+}

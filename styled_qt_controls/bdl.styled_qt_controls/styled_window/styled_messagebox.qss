@@ -1,6 +1,5 @@
-QLabel#part_msg_critical_icon
+QWidget#part_client_widget
 {
-	background-image: url(:/images/msg_box_critical.png);
-	background-repeat: no-repeat;
-	background-position: center left;
+	background: solid @content_control;
+	border: 1px solid @border;
 }
