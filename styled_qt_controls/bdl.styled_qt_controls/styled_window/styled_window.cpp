@@ -12,7 +12,7 @@ QHash<HWND, styled_window*> styled_window::m_all_windows;
 QHash<QWidget*, styled_window*> styled_window::m_widget_to_window;
 
 styled_window::styled_window(QString title, styled_window* parent, window_type type, window_flags initial_flags) : m_hInstance(GetModuleHandle(NULL)), m_hwnd(0),
-	m_flags(initial_flags), m_type(type), m_title(title), m_parent(parent), m_part_window_widget(nullptr)
+	m_flags(initial_flags), m_type(type), m_title(title), m_parent(parent), m_part_window_widget(nullptr), m_internal_flags(internal_flags::adjust_size)
 {
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(WNDCLASSEX);
@@ -217,7 +217,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 void styled_window::initialize_widget()
 {
 	m_part_window_widget = new styled_frame();
-	//m_part_window_widget->installEventFilter(this);
+	m_part_window_widget->installEventFilter(this);
 	m_part_window_widget->setObjectName("part_window_widget");
 	style_loader loader(":/styled_window/styled_window.qss");
 	loader.append_file(":/styled_window/default_menu_style.qss");
@@ -388,15 +388,13 @@ void styled_window::initialize_widget()
 	m_titlebar_layout->setColumnMinimumWidth(1, 0);
 	m_titlebar_layout->addWidget(m_menubar, 0, 2, Qt::AlignVCenter);
 	part_titlebar_widget->setLayout(m_titlebar_layout);
-
-	m_part_window_widget->show();
 }
 
 void styled_window::show()
 {
 	ShowWindow(m_hwnd, SW_SHOW);
+	m_part_window_widget->show();
 	SetFocus(m_hwnd);
-	geometry(geometry());
 }
 void styled_window::hide()
 {
@@ -523,14 +521,45 @@ void styled_window::resize(const QSize& size)
 	auto geom = geometry();
 	geometry(geom.x(), geom.y(), size.width(), size.height());
 }
+void styled_window::adjust_size()
+{
+	/*QWidget* measure_widget = new QWidget();
+	QGridLayout* l = new QGridLayout();
+	l->setSpacing(0);
+	l->setContentsMargins(0, 0, 0, 0);
+	measure_widget->setLayout(l);
+	l->addWidget(m_part_window_widget, 0, 0);
+	measure_widget->show();*/
+	
+	//qDebug() << measure_widget->adju;
+
+	//qDebug() << m_part_window_widget->sizeHint();
+	//resize(m_part_window_widget->minimumSizeHint());
+	m_internal_flags |= internal_flags::adjust_size;
+}
+void styled_window::fixed_size(const QSize& size)
+{
+	minimum_size(size);
+	maximum_size(size);
+	m_internal_flags &= ~internal_flags::adjust_size;
+}
 
 bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 {
-	if (obj == m_part_window_widget && ev->type() == QEvent::FocusIn)
+	if (obj == m_part_window_widget)
 	{
-		auto g = geometry();
-		qDebug() << m_part_window_widget->minimumSizeHint();
-		//geometry(g.x(), g.y(), s.width(), s.height());
+		qDebug() << "Event: " << ev->type();
+
+		if (ev->type() == QEvent::Resize && flag_contains(m_internal_flags, internal_flags::adjust_size))
+		{
+			m_internal_flags &= ~internal_flags::adjust_size;
+			auto s = m_part_window_widget->sizeHint();
+			if (s.isValid())
+			{
+				qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
+				resize(s);
+			}
+		}
 	}
 
 	return QObject::eventFilter(obj, ev);

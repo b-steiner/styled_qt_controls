@@ -50,7 +50,14 @@ public:
 		dialog 
 	};
 
+	enum class internal_flags : unsigned short
+	{
+		none = 0,
+		adjust_size = 1
+	};
+
 	#pragma endregion
+
 
 
 	PROPERTY0(styled_window*, parent);
@@ -163,6 +170,9 @@ public:
 	void resize(const QSize& size);
 	void minimum_size(const QSize& size);
 	void maximum_size(const QSize& size);
+	void fixed_size(const QSize& size);
+
+	void adjust_size();
 
 protected:
 	bool eventFilter(QObject *obj, QEvent *ev);
@@ -204,6 +214,8 @@ private slots:
 	void border_sw_mouse_pressed(QMouseEvent* event);
 
 private:
+	internal_flags m_internal_flags;
+
 	void initialize_widget();
 
 	static LRESULT CALLBACK wnd_prc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -213,4 +225,5 @@ private:
 
 END_BDL_SQTC
 
+FLAG_COMMON_OPERATIONS(bdl::styled_qt_controls::styled_window::internal_flags)
 FLAG_COMMON_OPERATIONS(bdl::styled_qt_controls::styled_window::window_flags)

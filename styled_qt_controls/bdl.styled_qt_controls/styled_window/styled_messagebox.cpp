@@ -13,7 +13,7 @@ QMessageBox::StandardButton styled_messagebox::critical(styled_window* parent, c
 
 	QGridLayout* layout = new QGridLayout();
 	layout->setSpacing(20);
-	layout->setContentsMargins(20, 0, 20, 0);
+	layout->setContentsMargins(10, 0, 10, 0);
 	layout->setColumnStretch(1, 1);
 	layout->setRowStretch(0, 1);
 
@@ -30,7 +30,7 @@ QMessageBox::StandardButton styled_messagebox::critical(styled_window* parent, c
 	diag->client_widget()->setLayout(layout);
 
 	diag->add_button("Ok", 1);
-	diag->resize(QSize(200, 100));
+	diag->adjust_size();
 	int result = diag->exec();
 	QMessageBox::StandardButton buttons [] = { QMessageBox::StandardButton::Abort, QMessageBox::StandardButton::Ok };
 

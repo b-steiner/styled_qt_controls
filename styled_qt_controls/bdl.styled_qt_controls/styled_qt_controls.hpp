@@ -69,6 +69,8 @@
 	inline type operator|(type a, type b) { return static_cast<type>(static_cast<int>(a) | static_cast<int>(b)); } \
 	inline type operator&(type a, type b) { return static_cast<type>(static_cast<int>(a) & static_cast<int>(b)); } \
 	inline type operator~(type a) { return static_cast<type>(~static_cast<int>(a)); } \
+	inline type& operator|= (type& a, const type& b) { a = a | b; return a; } \
+	inline type& operator&= (type& a, const type& b) { a = a & b; return a; } \
 	inline bool flag_contains(type flags, type flag) { return !(static_cast<int>(flags & flag) == 0); }
 
 #define ISQTYPE(INSTANCE, TYPE) (INSTANCE->inherits(TYPE::staticMetaObject.className()))
