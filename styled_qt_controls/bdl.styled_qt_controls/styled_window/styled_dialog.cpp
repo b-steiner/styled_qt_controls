@@ -100,7 +100,7 @@ void styled_dialog::this_keyPressed(QKeyEvent* event)
 {
 	auto cancel = QKeySequence(QKeySequence::Cancel);
 
-	if (cancel[0] == event->key() | event->modifiers())
+	if (cancel[0] == (event->key() | event->modifiers()))
 	{
 		this->close();
 	}
