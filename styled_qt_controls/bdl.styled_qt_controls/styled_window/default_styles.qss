@@ -185,6 +185,7 @@ QPushButton
 	border: 1px solid @border;
 	color: @font;
 	padding: 2px 10px 3px 10px;
+	outline: none;
 }
 QPushButton:hover
 {
@@ -204,7 +205,12 @@ QPushButton:middle
 {
 	border-left: none;
 }
-
+QPushButton:focus
+{
+	outline-width: 1px;
+	outline-style: solid;
+	outline-color: @selection_border;
+}
 
 
 QSlider

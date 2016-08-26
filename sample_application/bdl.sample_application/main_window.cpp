@@ -449,9 +449,9 @@ void main_window::critical_msg_action_triggered(bool checked)
 }
 void main_window::question_msg_action_triggered(bool checked)
 {
-	auto result = QMessageBox::StandardButton::Yes;
+	auto result = messagebox_result::yes;
 
-	while (result == QMessageBox::StandardButton::Yes)
+	while (result == messagebox_result::yes)
 		result = styled_messagebox::question(this, "Question", "Do you want to see another question box?");
 }
 void main_window::custom_msg_action_triggered(bool checked)

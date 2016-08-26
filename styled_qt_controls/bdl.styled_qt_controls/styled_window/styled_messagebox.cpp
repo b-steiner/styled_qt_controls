@@ -5,34 +5,34 @@
 
 using namespace bdl::styled_qt_controls;
 
-QMessageBox::StandardButton styled_messagebox::critical(styled_window* parent, const QString& title, const QString& text)
+messagebox_result styled_messagebox::critical(styled_window* parent, const QString& title, const QString& text)
 {
-	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::error, 32), { { "Ok", 0 } });
-	QMessageBox::StandardButton buttons [] = { QMessageBox::StandardButton::Abort, QMessageBox::StandardButton::Ok };
+	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::error, 32), { { "Ok", 0, button_flags::accept_button } });
+	messagebox_result buttons [] = { messagebox_result::close, messagebox_result::ok };
 
 	return buttons[role + 1];
 }
 
-QMessageBox::StandardButton styled_messagebox::warning(styled_window * parent, const QString & title, const QString & text)
+messagebox_result styled_messagebox::warning(styled_window * parent, const QString & title, const QString & text)
 {
-	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::warning, 32), { { "Ok", 0 } });
-	QMessageBox::StandardButton buttons[] = { QMessageBox::StandardButton::Abort, QMessageBox::StandardButton::Ok };
+	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::warning, 32), { { "Ok", 0, button_flags::accept_button } });
+	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::ok };
 
 	return buttons[role + 1];
 }
 
-BDL_SQTC_EXPORT QMessageBox::StandardButton styled_messagebox::information(styled_window * parent, const QString & title, const QString & text)
+messagebox_result styled_messagebox::information(styled_window * parent, const QString & title, const QString & text)
 {
-	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::info, 32), { { "Ok", 0 } });
-	QMessageBox::StandardButton buttons[] = { QMessageBox::StandardButton::Abort, QMessageBox::StandardButton::Ok };
+	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::info, 32), { { "Ok", 0, button_flags::accept_button } });
+	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::ok };
 
 	return buttons[role + 1];
 }
 
-BDL_SQTC_EXPORT QMessageBox::StandardButton styled_messagebox::question(styled_window * parent, const QString & title, const QString & text)
+messagebox_result styled_messagebox::question(styled_window * parent, const QString & title, const QString & text)
 {
-	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::question, 32), { { "Yes", 0 }, { "No", 1 } });
-	QMessageBox::StandardButton buttons[] = { QMessageBox::StandardButton::Abort, QMessageBox::StandardButton::Yes, QMessageBox::StandardButton::No };
+	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::question, 32), { { "Yes", 0, button_flags::accept_button }, { "No", 1, button_flags::abort_button } });
+	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::yes, messagebox_result::no };
 
 	return buttons[role + 1];
 }
@@ -40,7 +40,7 @@ BDL_SQTC_EXPORT QMessageBox::StandardButton styled_messagebox::question(styled_w
 
 
 int styled_messagebox::show(styled_window* parent, const QString& title, const QString& text, const QPixmap& icon,
-								 QList<QPair<QString, int>> buttons)
+								 QList<styled_dialog_button> buttons)
 {
 	styled_dialog* diag = new styled_dialog(title, parent, -1, styled_window::window_flags::hittest_visible);
 
@@ -62,12 +62,12 @@ int styled_messagebox::show(styled_window* parent, const QString& title, const Q
 	label->setWordWrap(true);
 	label->setText(text);
 
-	layout->addWidget(icon_lbl, 0, 0, Qt::AlignVCenter | Qt::AlignLeft);
+	layout->addWidget(icon_lbl, 0, 0 , Qt::AlignTop | Qt::AlignLeft);
 	layout->addWidget(label, 0, 1, Qt::AlignTop | Qt::AlignLeft);
 	diag->client_widget()->setLayout(layout);
 
 	for (auto& btn : buttons)
-		diag->add_button(btn.first, btn.second);
+		diag->add_button(btn);
 
 	return diag->exec();
 }

@@ -5,6 +5,24 @@
 
 BEGIN_BDL_SQTC
 
+enum class button_flags
+{
+	none = 0,
+	abort_button = 1,
+	accept_button = 2,
+	default_button = 4
+};
+
+struct BDL_SQTC_EXPORT styled_dialog_button
+{
+public:
+	QString text;
+	int role;
+	button_flags flags;
+
+	styled_dialog_button(const QString& text, int role, button_flags flags = button_flags::none) : text(text), role(role), flags(flags) { }
+};
+
 /*! \brief A dialog window
 	*
 	* \author bdl
@@ -16,8 +34,7 @@ class BDL_SQTC_EXPORT styled_dialog : public styled_window
 {
 	Q_OBJECT;
 
-	PROPERTY0(QList<QString>, button_text);
-	PROPERTY0(QList<int>, button_result);
+	PROPERTY0(QList<styled_dialog_button>, buttons)
 	PROPERTY0(styled_widget*, dialog_client_widget);
 	PROPERTY0(QHBoxLayout*, button_layout);
 	PROPERTY0(QEventLoop*, msg_loop);
@@ -56,7 +73,8 @@ public:
 		* \param text The text to display on the button
 		* \param result The value that should be stored in result when this button was clicked
 		*/
-	void add_button(const QString& text, int result);
+	void add_button(const QString& text, int result, button_flags flags = button_flags::none);
+	void add_button(const styled_dialog_button& button);
 
 private slots:
 	void dialog_button_clicked(bool checked);
@@ -65,5 +83,6 @@ private slots:
 	void this_keyPressed(QKeyEvent* event);
 };
 
-
 END_BDL_SQTC
+
+FLAG_COMMON_OPERATIONS(bdl::styled_qt_controls::button_flags);

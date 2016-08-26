@@ -8,8 +8,8 @@ about_dialog::about_dialog(styled_window* parent) : styled_dialog("About", paren
 	util::style_loader loader(":/about_dialog.qss");
 	this->client_widget()->setStyleSheet(loader.style_string());
 
-	this->add_button("Close", 0);
-	this->add_button("Love it!", 1);
+	this->add_button("Close", 0, button_flags::abort_button);
+	this->add_button("Love it!", 1, button_flags::default_button);
 
 	QGridLayout* layout = new QGridLayout();
 	layout->setSpacing(35);

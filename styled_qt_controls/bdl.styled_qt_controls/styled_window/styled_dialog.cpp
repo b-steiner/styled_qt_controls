@@ -37,17 +37,28 @@ void styled_dialog::show()
 	while ((item = m_button_layout->takeAt(0)))
 		delete item;
 
-	for (int i = 0; i < m_button_text.size(); i++)
+	styled_pushbutton* focus_btn = nullptr;
+
+	for (auto& btn : m_buttons)
 	{
-		styled_pushbutton* button = new styled_pushbutton(m_button_text[i]);
+		styled_pushbutton* button = new styled_pushbutton(btn.text);
+		button->setAutoDefault(true);
 		button->setMinimumWidth(70);
 		button->setObjectName("part_sdiag_button");
-		m_button_result_lookup.insert(button, m_button_result[i]);
+		m_button_result_lookup.insert(button, btn.role);
 		m_button_layout->addWidget(button);
 		QObject::connect(button, SIGNAL(clicked(bool)), this, SLOT(dialog_button_clicked(bool)));
+		
+		if (flag_contains(btn.flags, button_flags::default_button) || flag_contains(btn.flags, button_flags::accept_button))
+		{
+			focus_btn = button;
+		}
 	}
 
 	styled_window::show();
+
+	if (focus_btn != nullptr)
+		focus_btn->setFocus(Qt::FocusReason::TabFocusReason);
 }
 
 int styled_dialog::exec()
@@ -78,10 +89,14 @@ styled_widget* styled_dialog::client_widget() const
 {
 	return m_dialog_client_widget;
 }
-void styled_dialog::add_button(const QString& text, int result)
+void styled_dialog::add_button(const QString& text, int result, button_flags flags)
 {
-	m_button_text.push_back(text);
-	m_button_result.push_back(result);
+	m_buttons.push_back({ text, result, flags });
+}
+
+void styled_dialog::add_button(const styled_dialog_button & button)
+{
+	m_buttons.push_back(button);
 }
 
 void styled_dialog::dialog_button_clicked(bool checked)
@@ -98,10 +113,35 @@ void styled_dialog::this_closed()
 }
 void styled_dialog::this_keyPressed(QKeyEvent* event)
 {
-	auto cancel = QKeySequence(QKeySequence::Cancel);
-
-	if (cancel[0] == (event->key() | event->modifiers()))
+	switch (event->key())
 	{
-		this->close();
+	case Qt::Key_Escape:
+	{
+		//Check whether there is a abort button
+		for (auto& btn : m_buttons)
+		{
+			if (flag_contains(btn.flags, button_flags::abort_button))
+			{
+				m_result = btn.role;
+				this->close();
+				return;
+			}
+		}
+		break;
+	}
+	case Qt::Key_Enter:
+	{
+		//Check whether there is a accept button
+		for (auto& btn : m_buttons)
+		{
+			if (flag_contains(btn.flags, button_flags::accept_button))
+			{
+				m_result = btn.role;
+				this->close();
+				return;
+			}
+		}
+		break;
+	}
 	}
 }
