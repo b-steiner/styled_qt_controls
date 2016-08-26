@@ -10,3 +10,5 @@ ipch
 /tools/qt_compiler/nbproject/private/
 *.suo
 *.opendb
+/doc/doxygen_error.log
+/doc/styled_qt_controls

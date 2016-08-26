@@ -44,12 +44,14 @@ BEGIN_BDL_SQTC
 			PROPERTY0(bool, record_color);
 			PROPERTY0(styled_list_view*, recent_list);
 
+		private:
 			static std::unique_ptr<color_list_item_model> m_recent_model;
 
 		public:
 			/*! \brief Initializes a new instance of the styled_color_picker class
 			 *
 			 * \param title The title of the collapsable widget
+			 * \param pick_widget The widget from which the color_picker can pick colors. When set to nullptr, the picker button is hidden
 			 */
 			styled_color_picker(const QString& title, QWidget* pick_widget = nullptr);
 			/*! \brief Releases all data associated with an instance of the styled_color_picker class
@@ -67,7 +69,15 @@ BEGIN_BDL_SQTC
 			*/
 			void is_bound(bool value);
 
+			/*! \brief Saves the global settings including recently used colors
+			 *
+			 * \returns A settings_group containing the settings
+			 */
 			static util::settings_group* save_global_settings();
+			/*! \brief Loads the global settings including recently used colors
+			 *
+			 * \param group A setting_group containing the settings for this control
+			 */
 			static void load_global_settings(util::settings_group* group);
 
 		private slots:

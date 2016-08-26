@@ -6,6 +6,12 @@
 
 BEGIN_BDL_SQTC
 
+/*! \brief Editor group that supports editing of primitive types
+ *
+ * \author bdl
+ *
+ * This group contains a number of item_editor_items that arranged in a grid. The widget can be collapse and supports a drop-down menu and enabling/disabling
+ */
 class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 {
 	Q_OBJECT
@@ -18,13 +24,39 @@ class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 	PROPERTY0(QMenu*, additional_options);
 
 public:
+	/*! \brief Initializes a new instance of the item_editor_group class
+	 *
+	 * \param title The title of the group
+	 * \param show_enable_button When set to true a checkbox is displayed
+	 * \param additional_options A menu containing additional option actions
+	 */
 	item_editor_group(const QString& title, bool show_enable_button = false, QMenu* additional_options = nullptr);
+	/*! \brief Releases all data associated with an instance of the item_editor_group class
+	 */
 	virtual ~item_editor_group();
 
+	/*! \brief Constructs the group widget
+	*
+	* This method creates a widget and hands it over to the editor. The widget gets deleted by the editor
+	*
+	* \returns A pointer to a new group widget
+	*/
 	virtual QWidget* widget();
 
+	/*! \brief Adds an item to the group
+	 *
+	 * \param item The item to add
+	 */
 	void add_item(base_item_editor_item* item);
+	/*! \brief Removes an item to the group
+	*
+	* \param item The item to remove
+	*/
 	void remove_item(base_item_editor_item* item);
+	/*! \brief Adds a item to the group
+	*
+	* \param idx Index of the item
+	*/
 	void remove_item(int idx);
 
 private:

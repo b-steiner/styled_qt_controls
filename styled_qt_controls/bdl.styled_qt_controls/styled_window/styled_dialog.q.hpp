@@ -5,21 +5,42 @@
 
 BEGIN_BDL_SQTC
 
+/*! \brief Flags that define properties for dialog buttons
+ *
+ * \author bdl
+ */
 enum class button_flags
 {
+	//! No special properties
 	none = 0,
+	//! This button is toggled when the user presses ESC
 	abort_button = 1,
+	//! This button is toggled when the user presses Enter (and no button has focus). This button has focus when the dialog is displayed.
 	accept_button = 2,
+	//! This button has the focus when the dialog is displayed
 	default_button = 4
 };
 
+/*! \brief Stores information about dialog buttons
+ *
+ * \author bdl
+ */
 struct BDL_SQTC_EXPORT styled_dialog_button
 {
 public:
+	//! The text to display on the button
 	QString text;
+	//! The return value of this button
 	int role;
+	//! Special flags for this button
 	button_flags flags;
 
+	/*! \brief Initializes a new instance of the xxx class
+	 *
+	 * \param text The text to display on the button
+	 * \param role The return value of this button
+	 * \param flags Special flags for this button
+	 */
 	styled_dialog_button(const QString& text, int role, button_flags flags = button_flags::none) : text(text), role(role), flags(flags) { }
 };
 
@@ -50,6 +71,7 @@ public:
 		* \param title Title of the dialog window
 		* \param parent The parent window, which is blocked by the dialog during execution
 		* \param exit_result The default result of the dialog
+		* \param initial_flags Window flags for the dialog. Set to (resizeable|hittest_visible) by default
 		*/
 	styled_dialog(const QString& title, styled_window* parent, int exit_result = -1, window_flags initial_flags = (window_flags)(64|8));
 	/*! \brief Releases all data associated with an instance of the styled_dialog class
@@ -69,11 +91,16 @@ public:
 	*/
 	virtual styled_widget* client_widget() const;
 	/*! \brief Adds a button to the dialog
-		*
-		* \param text The text to display on the button
-		* \param result The value that should be stored in result when this button was clicked
-		*/
+	 *
+	 * \param text The text to display on the button
+	 * \param result The value that should be stored in result when this button was clicked
+	 * \param flags Special flags for this button
+	 */
 	void add_button(const QString& text, int result, button_flags flags = button_flags::none);
+	/*! \brief Adds a button to the dialog
+ 	 *
+	 * \param button Information about the button
+	 */
 	void add_button(const styled_dialog_button& button);
 
 private slots:

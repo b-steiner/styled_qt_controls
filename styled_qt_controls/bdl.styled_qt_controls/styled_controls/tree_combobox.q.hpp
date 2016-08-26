@@ -48,6 +48,11 @@ BEGIN_BDL_SQTC
 		*/
 		QAbstractItemModel* model() const;
 
+		/*! \brief Sets the expanded property for a tree item
+		 *
+		 * \param index The index of the item
+		 * \param expand The new expansion state
+		 */
 		void setExpanded(const QModelIndex& index, bool expand);
 
 	protected:

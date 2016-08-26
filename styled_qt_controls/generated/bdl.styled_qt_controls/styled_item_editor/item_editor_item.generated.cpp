@@ -55,7 +55,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__base_item_editor_item[] 
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x09 /* Protected */,
+       1,    1,   19,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    3,

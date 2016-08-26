@@ -5,6 +5,10 @@
 
 BEGIN_BDL_SQTC
 
+/*! \brief Base class for items in a item_editor_group
+ *
+ * \author bdl
+ */
 class BDL_SQTC_EXPORT base_item_editor_item : public QObject
 {
 	Q_OBJECT;
@@ -14,31 +18,80 @@ class BDL_SQTC_EXPORT base_item_editor_item : public QObject
 	PROPERTY0(bool, is_bound);
 
 public:
+	/*! \brief Initializes a new instance of the base_item_editor_item class
+	 *
+	 * \param show_binding_button When set to true, a binding button is displayed after the element
+	 * \param is_bound Sets the binding state of the binding button
+	 * \param binding_changed_func Function that should be called when the binding is toggled
+	 */
 	base_item_editor_item(bool show_binding_button, bool is_bound, std::function<void(bool)> binding_changed_func);
+	/*! \brief Releases all data associated with an instance of the base_item_editor_item class
+	 */
 	virtual ~base_item_editor_item();
 	
+	/*! \brief Creates the widgets for this editor item
+	 *
+	 * \param layout The layout to which the widgets should be added
+	 * \param row the row in which the items should be added
+	 * 
+	 * \returns The number of rows this item consumes
+	 */
 	virtual int widgets(QGridLayout* layout, int row) = 0;
-
+	/*! \brief Adds the binding button
+	 *
+	 * \param layout The layout
+	 * \param row The row in the layout where the button should be added
+	 */
 	void add_binding_button(QGridLayout* layout, int row);
 
-protected slots:
+private slots:
 	void binding_button_toggled(bool value);
 };
 
 
+
+
+
+
+/*! \brief A editor item for strings
+ *
+ * \author bdl
+ *
+ * Displays a QLineEdit for text editing.
+ */
 class BDL_SQTC_EXPORT string_item_editor_item : public base_item_editor_item
 {
 	Q_OBJECT;
 
 	PROPERTY0(std::function<void(const QString&)>, value_changed_func);
+	//! Stores the current value of the item
 	PROPERTY1(QString, value, GET_CONST_REF);
+	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
 public:
+	/*! \brief Initializes a new instance of the string_item_editor_item class
+	 *
+	 * \param title The title for the item
+	 * \param initial_value The value when the widget gets displayed
+	 * \param value_changed_func A function that is called when the value changes
+	 * \param show_binding_button When set to true, a binding button is displayed after the element
+	 * \param is_bound Sets the binding state of the binding button
+	 * \param binding_changed_func Function that should be called when the binding is toggled
+	 */
 	string_item_editor_item(const QString& title, const QString& initial_value, std::function<void(const QString&)> value_changed_func,
 							bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+	/*! \brief Releases all data associated with an instance of the string_item_editor_item class
+	*/
 	virtual ~string_item_editor_item();
 
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
 	virtual int widgets(QGridLayout* layout, int row);
 
 private slots:
@@ -46,12 +99,20 @@ private slots:
 };
 
 
+/*! \brief A editor item for floats
+*
+* \author bdl
+*
+* Displays a numeric_line_edit.
+*/
 class BDL_SQTC_EXPORT float_item_editor_item : public base_item_editor_item
 {
 	Q_OBJECT;
 
 	PROPERTY0(std::function<void(float)>, value_changed_func);
+	//! Stores the current value of the item
 	PROPERTY1(float, value, GET_CONST_REF);
+	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 	PROPERTY0(unsigned int, digits);
 	PROPERTY0(float, ticks);
@@ -59,11 +120,33 @@ class BDL_SQTC_EXPORT float_item_editor_item : public base_item_editor_item
 	PROPERTY0(float, max_value);
 
 public:
+	/*! \brief Initializes a new instance of the float_item_editor_item class
+	 *
+	 * \param title The title for the item
+	 * \param initial_value The value when the widget gets displayed
+	 * \param value_changed_func A function that is called when the value changes
+	 * \param digits Number of digits that should be displayed after the decimal point
+	 * \param ticks Value change per pixel when dragging
+	 * \param min_value Minimum value
+	 * \param max_value Maximum value
+	 * \param show_binding_button When set to true, a binding button is displayed after the element
+	 * \param is_bound Sets the binding state of the binding button
+	 * \param binding_changed_func Function that should be called when the binding is toggled
+	 */
 	float_item_editor_item(const QString& title, float initial_value, std::function<void(float)> value_changed_func,
 						   unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<double>::infinity(), float max_value = std::numeric_limits<double>::infinity(),
 						   bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+	/*! \brief Releases all data associated with an instance of the float_item_editor_item class
+	*/
 	virtual ~float_item_editor_item();
 
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
 	virtual int widgets(QGridLayout* layout, int row);
 
 private slots:
@@ -71,14 +154,24 @@ private slots:
 };
 
 
+/*! \brief A editor item for 3d vectors
+*
+* \author bdl
+*
+* Displays a three numeric_line_edit widgets for the components
+*/
 class BDL_SQTC_EXPORT vector3_item_editor_item : public base_item_editor_item
 {
 	Q_OBJECT;
 
 	PROPERTY0(std::function<void(float, float, float)>, value_changed_func);
+	//! Stores the current value of the x component
 	PROPERTY1(float, value_x, GET_CONST_REF);
+	//! Stores the current value of the y component
 	PROPERTY1(float, value_y, GET_CONST_REF);
+	//! Stores the current value of the z component
 	PROPERTY1(float, value_z, GET_CONST_REF);
+	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 	PROPERTY0(unsigned int, digits);
 	PROPERTY0(float, ticks);
@@ -86,11 +179,35 @@ class BDL_SQTC_EXPORT vector3_item_editor_item : public base_item_editor_item
 	PROPERTY0(float, max_value);
 
 public:
+	/*! \brief Initializes a new instance of the vector3_item_editor_item class
+	 *
+	 * \param title The title for the item
+	 * \param initial_x The value for x when the widget gets displayed
+	 * \param initial_y The value for y when the widget gets displayed
+	 * \param initial_z The value for z when the widget gets displayed
+	 * \param value_changed_func A function that is called when the value changes
+	 * \param digits Number of digits that should be displayed after the decimal point
+	 * \param ticks Value change per pixel when dragging
+	 * \param min_value Minimum value
+	 * \param max_value Maximum value
+	 * \param show_binding_button When set to true, a binding button is displayed after the element
+	 * \param is_bound Sets the binding state of the binding button
+	 * \param binding_changed_func Function that should be called when the binding is toggled
+	 */
 	vector3_item_editor_item(const QString& title, float initial_x, float initial_y, float initial_z, std::function<void(float,float,float)> value_changed_func,
 						   unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<double>::infinity(), float max_value = std::numeric_limits<double>::infinity(),
 						   bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+	/*! \brief Releases all data associated with an instance of the vector3_item_editor_item class
+	*/
 	virtual ~vector3_item_editor_item();
 
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
 	virtual int widgets(QGridLayout* layout, int row);
 
 private slots:
@@ -100,19 +217,44 @@ private slots:
 };
 
 
+/*! \brief A editor item for colors
+*
+* \author bdl
+*
+* Displays a styled_color_picker
+*/
 class BDL_SQTC_EXPORT color_item_editor_item : public base_item_editor_item
 {
 	Q_OBJECT;
 
 	PROPERTY0(std::function<void(QColor)>, value_changed_func);
+	//! Stores the current value of the item
 	PROPERTY1(QColor, value, GET_CONST_REF);
+	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
 public:
+	/*! \brief Initializes a new instance of the color_item_editor_item class
+	 *
+	 * \param title The title for the item
+	 * \param initial_value The value when the widget gets displayed
+	 * \param value_changed_func A function that is called when the value changes
+	 * \param is_bound Sets the binding state of the binding button
+	 * \param binding_changed_func Function that should be called when the binding is toggled
+	 */
 	color_item_editor_item(const QString& title, QColor initial_value, std::function<void(QColor)> value_changed_func,
-						   /*bool show_binding_button = false,*/ bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+						   bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+	/*! \brief Releases all data associated with an instance of the color_item_editor_item class
+	 */
 	virtual ~color_item_editor_item();
 
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
 	virtual int widgets(QGridLayout* layout, int row);
 
 private slots:

@@ -25,8 +25,9 @@ public:
 	PROPERTY0(styled_frame*, title_frame);
 	//! Stores the state of this widget
 	PROPERTY2(state_t, state, GET, SET_PT);
-
+	//! Store the title widget
 	PROPERTY2(QWidget*, title_widget, GET, SET_PT);
+	//! Stores the content widget
 	PROPERTY2(QWidget*, content_widget, GET, SET_PT);
 
 	//! Stores the alignment of the collapse button. Allowed values are only Qt::AlignLeft and Qt::AlignRight
@@ -58,6 +59,8 @@ protected:
 	virtual void paintEvent(QPaintEvent *pe);
 
 signals:
+	/*! \brief Emitted when the widget is deleted
+	 */
 	void deleted();
 
 private slots:

@@ -50,9 +50,12 @@ public:
 		dialog 
 	};
 
+	//! Internal flags for windows
 	enum class internal_flags : unsigned short
 	{
+		//! No flag
 		none = 0,
+		//! Adjusts the size to the minimum possible size at the next resize event
 		adjust_size = 1
 	};
 
@@ -67,18 +70,17 @@ public:
 	PROPERTY0(window_type, type);
 	PROPERTY0(QString, title);
 
-	PROPERTY1(styled_frame*, part_window_widget, protected: GET);
 	PROPERTY0(QPushButton*, part_restore_button);
 	PROPERTY0(QPushButton*, part_maximize_button);
 	PROPERTY0(QGridLayout*, titlebar_layout);
 	PROPERTY0(QLabel*, part_icon);
-	
+	PROPERTY0(styled_widget*, client_widget);
+	PROPERTY0(QVector<styled_widget*>, border_widgets);
+
+	//! Stores the main widget of this window
+	PROPERTY1(styled_frame*, part_window_widget, protected: GET);
 	//! Stores the menubar
 	PROPERTY1(QMenuBar*, menubar, GET);
-	//! Stores the widget in which the content is displayed
-	PROPERTY0(styled_widget*, client_widget);
-
-	PROPERTY0(QVector<styled_widget*>, border_widgets);
 
 public:
 	/*! \brief Initializes a new instance of the styled_window class
@@ -86,7 +88,7 @@ public:
 		* \param title Title of the window. Only used in the taskbar
 		* \param parent Specifies the parent window. This can be used for blocking dialogs. Setting this to nullptr makes this a normal application window
 		* \param type Specifies the type of the window
-		* \param initial_flags Specifies the initial flags that are set. Default value is (show_on_taskbar|hittest_visible)
+		* \param initial_flags Specifies the initial flags that are set. Default value is (show_maximize|resizable|show_on_taskbar|hittest_visible)
 		*/
 	styled_window(QString title, styled_window* parent = nullptr, window_type type = window_type::normal, window_flags initial_flags = (window_flags)(128|64|32|8));
 	/*! \brief Releases all data associated with an instance of the styled_window class
@@ -116,6 +118,10 @@ public:
 		* \param height The height of the window
 		*/
 	void geometry(int x, int y, int width, int height);
+	/*! \brief Gets or sets the rectangle covered by the window
+	*
+	* \param rect The new size and position
+	*/
 	void geometry(const QRect& rect);
 
 	/*! Starts to move the window around. The mouse controlled is handed over to the operating system
@@ -164,17 +170,44 @@ public:
 		*/
 	virtual styled_widget* client_widget() const;
 
+	/*! \brief Sets the window icon
+	 *
+	 * \param icon The icon to display
+	 */
 	void icon(const QPixmap& icon);
+	/*! \brief Sets the icon that is displayed in the taskbar
+	 *
+	 * \param icon The icon to display
+	 */
 	void taskbar_icon(const QIcon& icon);
 
+	/*! \brief Resizes the window
+	 *
+	 * \param size The new size
+	 */
 	void resize(const QSize& size);
+	/*! \brief Sets the minimum size of the window.
+	 *
+	 * \param size The new minimum size
+	 */
 	void minimum_size(const QSize& size);
+	/*! \brief Sets the maximum size of the window.
+	*
+	* \param size The new maximum size
+	*/
 	void maximum_size(const QSize& size);
+	/*! \brief Sets a fixed size for the window (minimum and maximum).
+	*
+	* \param size The fixed size
+	*/
 	void fixed_size(const QSize& size);
 
+	/*! \brief Adjusts the window to the minimal possible size
+	 */
 	void adjust_size();
 
 protected:
+	//! See QObject
 	bool eventFilter(QObject *obj, QEvent *ev);
 
 signals:
@@ -183,7 +216,8 @@ signals:
 		* \param close When set to False, closing is aborted
 		*/
 	void closing(bool& close);
-	//! Emitted when the window is closed
+	/*! \brief Emitted when the window is closed
+	 */
 	void closed();
 	/*! Emitted when the frameless state of the window changes
 		*
@@ -191,11 +225,14 @@ signals:
 		*/
 	void frameless_changed(bool is_frameless);
 
-	//! Emitted when the windows position has changed
+	/*! \brief Emitted when the windows position has changed
+	 */
 	void moved();
-	//! Emitted when the window starts to move
+	/*! \brief Emitted when the window starts to move
+	 */
 	void move_started();
-	//! Emitted when the move operation of this window has ended
+	/*! \brief Emitted when the move operation of this window has ended
+	 */
 	void move_ended();
 
 private slots:
