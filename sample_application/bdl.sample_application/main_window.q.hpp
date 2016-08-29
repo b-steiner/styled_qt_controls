@@ -6,6 +6,10 @@ namespace bdl
 {
 	namespace sample_application
 	{
+		/*! \brief A window containing all controls from the styled_qt_controls library
+		 *
+		 * \author bdl
+		 */
 		class main_window : public styled_qt_controls::styled_window
 		{
 			Q_OBJECT;
@@ -13,7 +17,11 @@ namespace bdl
 			PROPERTY0(QStandardItemModel*, model);
 
 		public:
+			/*! \brief Initializes a new instance of the main_window class
+			 */
 			main_window();
+			/*! \brief Releases all data associated with an instance of the main_window class
+			 */
 			virtual ~main_window();
 
 		private:			
