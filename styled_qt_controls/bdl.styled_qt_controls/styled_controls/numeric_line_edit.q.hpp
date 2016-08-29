@@ -24,8 +24,14 @@ class BDL_SQTC_EXPORT numeric_line_edit : public QLineEdit
 	PROPERTY0(double, drag_reference_value);
 	//! Stores the amount of change in value per pixel during a drag operation
 	PROPERTY2(double, tick, GET, SET);
+	//! Stores the amout of change in value per pixel during a drag operation when the shift-key is pressed (usually small than tick). When set to a negative number, the value is assumed ticks / 10.0. The default value is -1.
+	PROPERTY2(double, small_tick, GET, SET);
+	//! Stores the minimum value. Keyboard input is clamped to this range
 	PROPERTY2(double, minimum, GET, SET);
+	//! Stores the maximum value. Keyboard input is clamped to this range
 	PROPERTY2(double, maximum, GET, SET);
+
+	PROPERTY0(bool, slow_mode);
 
 public:
 	/*! \brief Initializes a new instance of the numeric_line_edit class
@@ -60,6 +66,10 @@ protected:
 	virtual void mouseMoveEvent(QMouseEvent* event);
 	//! See QLineEdit
 	virtual void mouseReleaseEvent(QMouseEvent* event);
+	//! See QLineEdit
+	virtual void keyPressEvent(QKeyEvent *event);
+	//! See QLineEdit
+	virtual void keyReleaseEvent(QKeyEvent *event);
 
 private slots:
 	void this_returnPressed();

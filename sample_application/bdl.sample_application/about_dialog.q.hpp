@@ -6,7 +6,7 @@ namespace bdl
 {
 	namespace sample_application
 	{
-		/*! \A dialog window that show license infos
+		/*! \brief A dialog window that show license infos
 		 *
 		 * \author bdl
 		 */

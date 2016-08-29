@@ -4,7 +4,7 @@
 using namespace bdl::styled_qt_controls;
 
 numeric_line_edit::numeric_line_edit(double value, int visible_decimal_places) : m_visible_decimal_places(visible_decimal_places), m_select_on_click(false), m_mouse_down(false),
-	m_tick(0.01), m_minimum(-std::numeric_limits<double>::infinity()), m_maximum(std::numeric_limits<double>::infinity())
+	m_tick(0.01), m_small_tick(-1), m_minimum(-std::numeric_limits<double>::infinity()), m_maximum(std::numeric_limits<double>::infinity()), m_slow_mode(false)
 {
 	QCursor cursor(QPixmap(":/images/cursor_numeric_drag.png"), 15, 5);
 	this->setCursor(cursor);
@@ -77,7 +77,16 @@ void numeric_line_edit::mouseMoveEvent(QMouseEvent* event)
 	{
 		int x_diff = event->pos().x() - m_mouse_reference_point.x();
 
-		value(m_drag_reference_value + x_diff * m_tick);
+		double change = 0.0;
+		
+		if (m_slow_mode && m_small_tick >= 0.0)
+			change = m_drag_reference_value + x_diff * m_small_tick;
+		else if (m_slow_mode)
+			change = m_drag_reference_value + x_diff * (m_tick / 10.0);
+		else
+			change = m_drag_reference_value + x_diff * m_tick;
+
+		value(change);
 		emit this->textEdited(this->text());
 		emit this->editingFinished();
 		this->selectAll();
@@ -87,4 +96,16 @@ void numeric_line_edit::mouseMoveEvent(QMouseEvent* event)
 void numeric_line_edit::mouseReleaseEvent(QMouseEvent* event)
 {
 	m_mouse_down = false;
+}
+
+void numeric_line_edit::keyPressEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Shift)
+		m_slow_mode = true;
+}
+
+void numeric_line_edit::keyReleaseEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Shift)
+		m_slow_mode = false;
 }
