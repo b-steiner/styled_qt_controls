@@ -44,7 +44,7 @@ about_dialog::about_dialog(styled_window* parent) : styled_dialog("About", paren
 		"<a href='https://www.gnu.org/licenses/lgpl-3.0.html'>https://www.gnu.org/licenses/lgpl-3.0.html</a>."
 		"</p>"
 		"<p align='justify'>"
-		"Feel free to contact us if you have any questions about licensing or want to use the library in a commerical closed source product."
+		"Feel free to contact us if you have any questions about licensing or want to use the library in a commercial closed source product."
 		"</p>"
 		);
 	l->setWordWrap(true);
