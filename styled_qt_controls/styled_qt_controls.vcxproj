@@ -163,6 +163,7 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\util\os\icon_loader.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\util\os\file_system_watcher.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\util\os\os_sound.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\util\qt_helper_functions.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_group.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_io.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\util\os\icon_loader.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\util\os\file_system_watcher.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\util\os\os_sound.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\util\properties.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\util\property_extension.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\util\qt_helper_functions.hpp" />

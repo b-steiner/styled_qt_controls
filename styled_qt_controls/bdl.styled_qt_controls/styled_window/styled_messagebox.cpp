@@ -2,11 +2,14 @@
 #include "styled_messagebox.hpp"
 #include "../util/style_loader.hpp"
 #include "../util/os/icon_loader.hpp"
+#include "../util/os/os_sound.hpp"
 
 using namespace bdl::styled_qt_controls;
+using namespace bdl::styled_qt_controls::util;
 
 messagebox_result styled_messagebox::critical(styled_window* parent, const QString& title, const QString& text)
 {
+	os_sound::play(os_sound_type::error);
 	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::error, 32), { { "Ok", 0, button_flags::accept_button } });
 	messagebox_result buttons [] = { messagebox_result::close, messagebox_result::ok };
 
@@ -15,6 +18,7 @@ messagebox_result styled_messagebox::critical(styled_window* parent, const QStri
 
 messagebox_result styled_messagebox::warning(styled_window * parent, const QString & title, const QString & text)
 {
+	os_sound::play(os_sound_type::warning);
 	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::warning, 32), { { "Ok", 0, button_flags::accept_button } });
 	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::ok };
 
@@ -23,6 +27,7 @@ messagebox_result styled_messagebox::warning(styled_window * parent, const QStri
 
 messagebox_result styled_messagebox::information(styled_window * parent, const QString & title, const QString & text)
 {
+	os_sound::play(os_sound_type::question);
 	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::info, 32), { { "Ok", 0, button_flags::accept_button } });
 	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::ok };
 
@@ -31,6 +36,7 @@ messagebox_result styled_messagebox::information(styled_window * parent, const Q
 
 messagebox_result styled_messagebox::question(styled_window * parent, const QString & title, const QString & text)
 {
+	os_sound::play(os_sound_type::question);
 	auto role = show(parent, title, text, util::icon_loader::default_os_icon(util::default_icon_type::question, 32), { { "Yes", 0, button_flags::accept_button }, { "No", 1, button_flags::abort_button } });
 	messagebox_result buttons[] = { messagebox_result::close, messagebox_result::yes, messagebox_result::no };
 

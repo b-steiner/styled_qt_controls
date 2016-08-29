@@ -47,6 +47,7 @@
 #pragma comment(lib, "Qt5Widgets.lib")
 #pragma comment(lib, "Qt5WinExtras.lib")
 #pragma comment(lib, "Shlwapi.lib")
+#pragma comment(lib, "Winmm.lib")
 
 #ifndef BDL_SQTC_BUILD
 #	if _DEBUG
@@ -127,6 +128,7 @@
 #include "util\theme_colors.hpp"
 #include "util\os\file_system_watcher.q.hpp"
 #include "util\os\icon_loader.hpp"
+#include "util\os\os_sound.hpp"
 #include "util\settings\i_settings_provider.q.hpp"
 #include "util\settings\settings_group.hpp"
 #include "util\settings\settings_io.hpp"
