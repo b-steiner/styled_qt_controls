@@ -11,6 +11,7 @@ QPushButton#part_scp_connect_button
 	border: none;
 	padding: 0px 0px 0px 0px;
 	image: url(:/images/connect_unbound.png);
+	outline: none;
 }
 QPushButton#part_scp_connect_button:checked
 {
@@ -22,6 +23,7 @@ QPushButton#part_scp_pick_button
 	border-left: none;
 	padding: 0px 0px 0px 0px;
 	image: url(:/images/color_pick.png);
+	outline: none;
 }
 
 

@@ -12,7 +12,7 @@ QHash<HWND, styled_window*> styled_window::m_all_windows;
 QHash<QWidget*, styled_window*> styled_window::m_widget_to_window;
 
 styled_window::styled_window(QString title, styled_window* parent, window_type type, window_flags initial_flags) : m_hInstance(GetModuleHandle(NULL)), m_hwnd(0),
-	m_flags(initial_flags), m_type(type), m_title(title), m_parent(parent), m_part_window_widget(nullptr), m_internal_flags(internal_flags::adjust_size)
+	m_flags(initial_flags), m_type(type), m_title(title), m_parent(parent), m_part_window_widget(nullptr), m_internal_flags(internal_flags::none)
 {
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(WNDCLASSEX);
@@ -522,6 +522,7 @@ void styled_window::resize(const QSize& size)
 {
 	auto geom = geometry();
 	geometry(geom.x(), geom.y(), size.width(), size.height());
+	m_internal_flags &= (~internal_flags::adjust_size);
 }
 void styled_window::adjust_size()
 {

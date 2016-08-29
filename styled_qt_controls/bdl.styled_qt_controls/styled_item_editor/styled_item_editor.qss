@@ -29,6 +29,7 @@ QPushButton#part_biei_connect_button
 	border: none;
 	padding: 0px 0px 0px 0px;
 	image: url(:/images/connect_unbound.png);
+	outline: none;
 }
 QPushButton#part_biei_connect_button:checked
 {
@@ -42,6 +43,7 @@ QPushButton#part_ieg_additional_options_button
 	border: 1px transparent;
 	background: transparent;
 	padding: 0px 0px 0px 0px;
+	outline: none;
 }
 QPushButton#part_ieg_additional_options_button::menu-indicator
 {

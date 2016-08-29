@@ -44,6 +44,7 @@ bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > 
 	image: url(:/images/expand.png);
 	padding: 0px 0px 0px 0px;
 	border: none;
+	outline: none;
 }
 bdl--styled_qt_controls--styled_collapse_widget > QFrame#part_scw_title_frame > QPushButton#part_scw_collapse_button:checked
 {

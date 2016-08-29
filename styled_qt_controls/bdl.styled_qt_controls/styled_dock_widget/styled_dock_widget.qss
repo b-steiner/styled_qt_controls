@@ -16,6 +16,11 @@ QFrame#part_sdw_contentframe
 	border: 1px solid @border;
 	background: transparent;
 }
+QFrame#part_sdw_contentframe[selected=true]
+{
+	border: 1px solid @border;
+	background: solid @content_control;
+}
 
 
 
@@ -44,6 +49,7 @@ QPushButton#part_sdw_overflow_button
 	background-image: url(:/images/tabwidget_tablist.png);
 	background-repeat: no-repeat;
 	background-position: center center;
+	outline: none;
 }
 QPushButton#part_sdw_overflow_button[hover=true][custom_data_1=true]
 {

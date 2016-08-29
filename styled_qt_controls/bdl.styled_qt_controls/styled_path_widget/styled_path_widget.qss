@@ -1,7 +1,7 @@
 QPushButton#part_spw_textbutton
 {
 	qproperty-topline_color: transparent;
-	outline: 0px;
+	outline: none;
 	background: transparent;
 	border: 1px solid transparent;
 	padding: 4px 6px 4px 6px;
@@ -26,6 +26,7 @@ QPushButton#part_spw_menubutton
 {
 	background: transparent;
 	border: 1px transparent;
+	outline: none;
 }
 QPushButton#part_spw_menubutton:hover, QPushButton#part_spw_overflowbutton:hover
 {
@@ -53,6 +54,7 @@ QPushButton#part_spw_overflowbutton
 	background: transparent;
 	border: 1px transparent;
 	margin: 0px 0px 1px 0px;
+	outline: none;
 }
 QPushButton#part_spw_overflowbutton::menu-indicator
 {
@@ -86,6 +88,7 @@ QPushButton#part_spw_backbutton
 	border: 1px transparent;
 	image: url(:/images/back.png);
 	padding: 0px 0px 1px 0px;
+	outline: none;
 }
 QPushButton#part_spw_backbutton:disabled
 {
@@ -98,6 +101,7 @@ QPushButton#part_spw_forwardbutton
 	border: 1px transparent;
 	image: url(:/images/forward.png);
 	padding: 0px 0px 1px 0px;
+	outline: none;
 }
 QPushButton#part_spw_forwardbutton:disabled
 {

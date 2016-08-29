@@ -75,5 +75,6 @@ int styled_messagebox::show(styled_window* parent, const QString& title, const Q
 	for (auto& btn : buttons)
 		diag->add_button(btn);
 
+	diag->adjust_size();
 	return diag->exec();
 }

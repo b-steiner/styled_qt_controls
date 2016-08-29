@@ -54,8 +54,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
 	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));
-
-	this->fixed_size(QSize(1280, 768));
+	this->resize(QSize(1280, 768));
 }
 
 main_window::~main_window()

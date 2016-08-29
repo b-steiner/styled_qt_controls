@@ -54,7 +54,7 @@ about_dialog::about_dialog(styled_window* parent) : styled_dialog("About", paren
 
 	this->client_widget()->setLayout(layout);
 
-	this->resize(QSize(700, 320));
+	this->adjust_size();
 }
 about_dialog::~about_dialog()
 {

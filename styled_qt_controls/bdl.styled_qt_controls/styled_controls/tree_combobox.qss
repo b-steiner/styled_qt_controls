@@ -9,6 +9,7 @@ bdl--styled_qt_controls--tree_combobox > bdl--styled_qt_controls--styled_pushbut
 	border-left: 1px solid @border;
 	qproperty-topline_offset_right: 0;
 	qproperty-topline_offset_top: 0;
+	outline: none;
 }
 bdl--styled_qt_controls--tree_combobox > bdl--styled_qt_controls--styled_pushbutton::menu-indicator
 {
