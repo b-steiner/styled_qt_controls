@@ -121,10 +121,14 @@ void numeric_line_edit::keyPressEvent(QKeyEvent * event)
 {
 	if (event->key() == Qt::Key_Shift)
 		m_slow_mode = true;
+
+	QLineEdit::keyPressEvent(event);
 }
 
 void numeric_line_edit::keyReleaseEvent(QKeyEvent * event)
 {
 	if (event->key() == Qt::Key_Shift)
 		m_slow_mode = false;
+
+	QLineEdit::keyReleaseEvent(event);
 }
