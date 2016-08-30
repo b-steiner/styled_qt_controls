@@ -43,8 +43,8 @@ void styled_widget::mouseReleaseEvent(QMouseEvent* event)
 }
 void styled_widget::mouseDoubleClickEvent(QMouseEvent * event)
 {
-	emit mouseDoubleClick(event);
 	QWidget::mouseDoubleClickEvent(event);
+	emit mouseDoubleClick(event);
 }
 void styled_widget::paintEvent(QPaintEvent *pe)
 {

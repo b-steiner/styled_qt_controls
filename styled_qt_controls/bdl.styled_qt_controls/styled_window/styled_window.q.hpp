@@ -23,6 +23,7 @@
 #include "..\styled_controls\styled_frame.q.hpp"
 #include "..\styled_controls\styled_widget.q.hpp"
 #include "..\util\settings\settings_group.hpp"
+#include "..\styled_controls\styled_label.q.hpp"
 
 BEGIN_BDL_SQTC
 
@@ -92,7 +93,7 @@ public:
 	PROPERTY0(QPushButton*, part_restore_button);
 	PROPERTY0(QPushButton*, part_maximize_button);
 	PROPERTY0(QGridLayout*, titlebar_layout);
-	PROPERTY0(QLabel*, part_icon);
+	PROPERTY0(styled_label*, part_icon);
 	PROPERTY0(styled_widget*, client_widget);
 	PROPERTY0(QVector<styled_widget*>, border_widgets);
 
@@ -273,10 +274,13 @@ private slots:
 	void border_se_mouse_pressed(QMouseEvent* event);
 	void border_sw_mouse_pressed(QMouseEvent* event);
 
+	void icon_mousePressed(QMouseEvent* event);
+
 private:
 	internal_flags m_internal_flags;
 
 	void initialize_widget();
+	void show_system_menu(bool show_at_cursor);
 
 	static LRESULT CALLBACK wnd_prc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	static QHash<HWND, styled_window*> m_all_windows;

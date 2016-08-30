@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_window_t {
-    QByteArrayData data[26];
-    char stringdata0[454];
+    QByteArrayData data[27];
+    char stringdata0[472];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,7 +55,8 @@ QT_MOC_LITERAL(21, 337, 22), // "border_e_mouse_pressed"
 QT_MOC_LITERAL(22, 360, 22), // "border_w_mouse_pressed"
 QT_MOC_LITERAL(23, 383, 22), // "border_s_mouse_pressed"
 QT_MOC_LITERAL(24, 406, 23), // "border_se_mouse_pressed"
-QT_MOC_LITERAL(25, 430, 23) // "border_sw_mouse_pressed"
+QT_MOC_LITERAL(25, 430, 23), // "border_sw_mouse_pressed"
+QT_MOC_LITERAL(26, 454, 17) // "icon_mousePressed"
 
     },
     "bdl::styled_qt_controls::styled_window\0"
@@ -68,7 +69,7 @@ QT_MOC_LITERAL(25, 430, 23) // "border_sw_mouse_pressed"
     "border_ne_mouse_pressed\0border_nw_mouse_pressed\0"
     "border_e_mouse_pressed\0border_w_mouse_pressed\0"
     "border_s_mouse_pressed\0border_se_mouse_pressed\0"
-    "border_sw_mouse_pressed"
+    "border_sw_mouse_pressed\0icon_mousePressed"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +79,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_window[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,27 +87,28 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_window[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  109,    2, 0x06 /* Public */,
-       5,    0,  112,    2, 0x06 /* Public */,
-       6,    1,  113,    2, 0x06 /* Public */,
-       8,    0,  116,    2, 0x06 /* Public */,
-       9,    0,  117,    2, 0x06 /* Public */,
-      10,    0,  118,    2, 0x06 /* Public */,
+       1,    1,  114,    2, 0x06 /* Public */,
+       5,    0,  117,    2, 0x06 /* Public */,
+       6,    1,  118,    2, 0x06 /* Public */,
+       8,    0,  121,    2, 0x06 /* Public */,
+       9,    0,  122,    2, 0x06 /* Public */,
+      10,    0,  123,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    0,  119,    2, 0x08 /* Private */,
-      12,    0,  120,    2, 0x08 /* Private */,
-      13,    0,  121,    2, 0x08 /* Private */,
-      14,    0,  122,    2, 0x08 /* Private */,
-      15,    1,  123,    2, 0x08 /* Private */,
-      18,    1,  126,    2, 0x08 /* Private */,
-      19,    1,  129,    2, 0x08 /* Private */,
-      20,    1,  132,    2, 0x08 /* Private */,
-      21,    1,  135,    2, 0x08 /* Private */,
-      22,    1,  138,    2, 0x08 /* Private */,
-      23,    1,  141,    2, 0x08 /* Private */,
-      24,    1,  144,    2, 0x08 /* Private */,
-      25,    1,  147,    2, 0x08 /* Private */,
+      11,    0,  124,    2, 0x08 /* Private */,
+      12,    0,  125,    2, 0x08 /* Private */,
+      13,    0,  126,    2, 0x08 /* Private */,
+      14,    0,  127,    2, 0x08 /* Private */,
+      15,    1,  128,    2, 0x08 /* Private */,
+      18,    1,  131,    2, 0x08 /* Private */,
+      19,    1,  134,    2, 0x08 /* Private */,
+      20,    1,  137,    2, 0x08 /* Private */,
+      21,    1,  140,    2, 0x08 /* Private */,
+      22,    1,  143,    2, 0x08 /* Private */,
+      23,    1,  146,    2, 0x08 /* Private */,
+      24,    1,  149,    2, 0x08 /* Private */,
+      25,    1,  152,    2, 0x08 /* Private */,
+      26,    1,  155,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -121,6 +123,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_window[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 16,   17,
     QMetaType::Void, 0x80000000 | 16,   17,
     QMetaType::Void, 0x80000000 | 16,   17,
     QMetaType::Void, 0x80000000 | 16,   17,
@@ -159,6 +162,7 @@ void bdl::styled_qt_controls::styled_window::qt_static_metacall(QObject *_o, QMe
         case 16: _t->border_s_mouse_pressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 17: _t->border_se_mouse_pressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 18: _t->border_sw_mouse_pressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 19: _t->icon_mousePressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -234,13 +238,13 @@ int bdl::styled_qt_controls::styled_window::qt_metacall(QMetaObject::Call _c, in
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

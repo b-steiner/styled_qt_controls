@@ -224,6 +224,10 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 			mmi->ptMaxTrackSize.y = window->m_part_window_widget->maximumSize().height();
 			return 0;
 		}
+		case WM_SYSCOMMAND:
+		{
+			qDebug() << "Here" << (wParam & 0xFFF0);
+		}
 
 		}
 	}
@@ -261,7 +265,7 @@ void styled_window::initialize_widget()
 	styled_widget* part_titlebar_widget = new styled_widget();
 	part_titlebar_widget->setObjectName("part_titlebar_widget");
 	part_titlebar_widget->setFixedHeight(32);
-	QObject::connect(part_titlebar_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(titlebar_mouse_pressed(QMouseEvent*)));
+	QObject::connect(part_titlebar_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(titlebar_mouse_pressed(QMouseEvent*)), Qt::QueuedConnection);
 	QObject::connect(part_titlebar_widget, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(titlebar_mouse_doubleclick(QMouseEvent*)));
 
 	styled_widget* part_nw_widget = new styled_widget();
@@ -350,10 +354,11 @@ void styled_window::initialize_widget()
 	m_titlebar_layout->setSpacing(0);
 	m_titlebar_layout->setColumnStretch(4, 1);
 
-	m_part_icon = new QLabel();
+	m_part_icon = new styled_label("Title");
 	m_part_icon->setObjectName("part_icon");
 	m_part_icon->setFixedSize(20, 20);
 	m_part_icon->setVisible(false);
+	QObject::connect(m_part_icon, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(icon_mousePressed(QMouseEvent*)), Qt::QueuedConnection);
 		
 	if (m_type == window_type::normal)
 	{
@@ -627,10 +632,14 @@ void styled_window::titlebar_mouse_pressed(QMouseEvent* event)
 	{
 		start_move();
 	}
+	else if (event->button() == Qt::RightButton)
+	{
+		show_system_menu(true);
+	}
 }
 void styled_window::titlebar_mouse_doubleclick(QMouseEvent* event)
 {
-	toggle_maximized();
+	toggle_maximized();	
 }
 void styled_window::border_ne_mouse_pressed(QMouseEvent* event)
 {
@@ -688,6 +697,10 @@ void styled_window::border_sw_mouse_pressed(QMouseEvent* event)
 		SendMessage(m_hwnd, WM_NCLBUTTONDOWN, HTBOTTOMLEFT, 0);
 	}
 }
+void styled_window::icon_mousePressed(QMouseEvent * event)
+{
+	show_system_menu(false);
+}
 
 QVector<styled_window*> styled_window::front_to_back_windows()
 {
@@ -730,4 +743,22 @@ void styled_window::taskbar_icon(const QIcon& icon)
 {
 	HICON hicon = icon_loader::taskbar_icon(icon);
 	SetClassLongPtr(m_hwnd, GCLP_HICON, (LONG_PTR)hicon);
+}
+
+void styled_window::show_system_menu(bool show_at_cursor)
+{
+	POINT  pt;
+	if (show_at_cursor)
+		GetCursorPos(&pt);
+	else
+	{
+		auto client_p = this->client_widget()->mapToGlobal(QPoint(0, 0));
+		pt.x = client_p.x();
+		pt.y = client_p.y();
+	}
+
+	auto menu = GetSystemMenu(m_hwnd, FALSE);
+	int flag = TrackPopupMenu(menu, TPM_LEFTALIGN | TPM_TOPALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, m_hwnd, NULL);
+	if (flag > 0)
+		SendMessage(m_hwnd, WM_SYSCOMMAND, flag, 0);
 }
