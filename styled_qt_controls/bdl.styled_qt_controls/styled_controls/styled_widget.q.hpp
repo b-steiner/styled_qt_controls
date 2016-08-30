@@ -58,6 +58,8 @@ signals:
 	void mouseReleased(QMouseEvent* event);
 	//! See QWidget
 	void keyPressed(QKeyEvent* event);
+	//! See QWidget
+	void mouseDoubleClick(QMouseEvent* event);
 
 protected:
 	//! See QWidget
@@ -68,6 +70,8 @@ protected:
 	virtual void mouseReleaseEvent(QMouseEvent* event);
 	//! See QWidget
 	virtual void paintEvent(QPaintEvent *pe);
+	//! See QWidget
+	virtual void mouseDoubleClickEvent(QMouseEvent* event);
 
 	//! See QWidget
 	virtual void enterEvent(QEvent * event);

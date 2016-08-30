@@ -262,6 +262,7 @@ void styled_window::initialize_widget()
 	part_titlebar_widget->setObjectName("part_titlebar_widget");
 	part_titlebar_widget->setFixedHeight(32);
 	QObject::connect(part_titlebar_widget, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(titlebar_mouse_pressed(QMouseEvent*)));
+	QObject::connect(part_titlebar_widget, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(titlebar_mouse_doubleclick(QMouseEvent*)));
 
 	styled_widget* part_nw_widget = new styled_widget();
 	part_nw_widget->setFixedWidth(4);
@@ -565,6 +566,22 @@ void styled_window::fixed_size(const QSize& size)
 	maximum_size(size);
 	m_internal_flags &= ~internal_flags::adjust_size;
 }
+void styled_window::toggle_maximized()
+{
+	if (flag_contains(flags(), window_flags::resizable))
+	{
+		WINDOWPLACEMENT placement;
+		GetWindowPlacement(m_hwnd, &placement);
+		if (placement.showCmd == SW_MAXIMIZE)
+		{
+			ShowWindow(m_hwnd, SW_RESTORE);
+		}
+		else
+		{
+			ShowWindow(m_hwnd, SW_MAXIMIZE);
+		}
+	}
+}
 
 bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 {
@@ -597,17 +614,11 @@ void styled_window::minimize_button_clicked()
 }
 void styled_window::maximize_button_clicked()
 {
-	if (flag_contains(flags(), window_flags::resizable))
-	{
-		ShowWindow(m_hwnd, SW_MAXIMIZE);
-	}
+	toggle_maximized();
 }
 void styled_window::restore_button_clicked()
 {
-	if (flag_contains(flags(), window_flags::resizable))
-	{
-		ShowWindow(m_hwnd, SW_RESTORE);
-	}
+	toggle_maximized();
 }
 
 void styled_window::titlebar_mouse_pressed(QMouseEvent* event)
@@ -616,6 +627,10 @@ void styled_window::titlebar_mouse_pressed(QMouseEvent* event)
 	{
 		start_move();
 	}
+}
+void styled_window::titlebar_mouse_doubleclick(QMouseEvent* event)
+{
+	toggle_maximized();
 }
 void styled_window::border_ne_mouse_pressed(QMouseEvent* event)
 {

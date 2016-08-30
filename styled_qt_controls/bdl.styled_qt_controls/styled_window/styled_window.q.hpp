@@ -225,6 +225,8 @@ public:
 	 */
 	void adjust_size();
 
+	void toggle_maximized();
+
 protected:
 	//! See QObject
 	bool eventFilter(QObject *obj, QEvent *ev);
@@ -261,6 +263,8 @@ private slots:
 	void restore_button_clicked();
 
 	void titlebar_mouse_pressed(QMouseEvent* event);
+	void titlebar_mouse_doubleclick(QMouseEvent* event);
+
 	void border_ne_mouse_pressed(QMouseEvent* event);
 	void border_nw_mouse_pressed(QMouseEvent* event);
 	void border_e_mouse_pressed(QMouseEvent* event);

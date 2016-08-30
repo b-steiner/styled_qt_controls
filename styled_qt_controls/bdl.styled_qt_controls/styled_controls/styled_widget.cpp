@@ -41,6 +41,11 @@ void styled_widget::mouseReleaseEvent(QMouseEvent* event)
 	emit mouseReleased(event);
 	QWidget::mouseReleaseEvent(event);
 }
+void styled_widget::mouseDoubleClickEvent(QMouseEvent * event)
+{
+	emit mouseDoubleClick(event);
+	QWidget::mouseDoubleClickEvent(event);
+}
 void styled_widget::paintEvent(QPaintEvent *pe)
 {
 	QStyleOption o;
