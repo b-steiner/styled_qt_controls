@@ -15,4 +15,4 @@ IF not exist %2"imageformats" (mkdir %2"imageformats")
 xcopy %1"qt\plugins\imageformats\*.dll" %2imageformats /d /y 1> nul
 
 
-xcopy %1"bin/"%4"\styled_qt_controls\*.dll" %2 /d /s /y 1> nul
+xcopy %1"bin/styled_qt_controls.x64."%4"\*.dll" %2 /d /s /y 1> nul

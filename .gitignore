@@ -12,3 +12,4 @@ ipch
 *.opendb
 /doc/doxygen_error.log
 /doc/styled_qt_controls
+temp
