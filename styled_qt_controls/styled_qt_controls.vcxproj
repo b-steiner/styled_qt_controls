@@ -41,14 +41,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName).$(Platform).$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName).$(Platform).$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\$(ProjectName)\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName).$(Platform).$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)temp\$(ProjectName).$(Platform).$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -58,13 +58,13 @@
       <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;BDL_SQTC_BUILD;WIN32;_DEBUG;_WINDOWS;_USRDLL;STYLED_QT_CONTROLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderFile>bdl.styled_qt_controls\styled_qt_controls.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
       <Command>"$(ProjectDir)scripts/pre_build.cmd" "$(SolutionDir)\" "$(ProjectDir)\" "$(ProjectFileName)"</Command>
@@ -83,14 +83,14 @@
       <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;BDL_SQTC_BUILD;WIN32;NDEBUG;_WINDOWS;_USRDLL;STYLED_QT_CONTROLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderFile>bdl.styled_qt_controls\styled_qt_controls.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\qt\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\qt\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
       <Command>"$(ProjectDir)scripts/pre_build.cmd" "$(SolutionDir)\" "$(ProjectDir)\" "$(ProjectFileName)"</Command>
@@ -102,9 +102,9 @@
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">java -jar $(SolutionDir)tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(SolutionDir)qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">java -jar $(ProjectDir)..\tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(ProjectDir)..\qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">asdf.hpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">java -jar $(SolutionDir)tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(SolutionDir)qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">java -jar $(ProjectDir)..\tools\qt_resource_compiler\dist\qt_resource_compiler.jar $(ProjectDir)..\qt\bin %(FullPath) $(ProjectDir)bdl.styled_qt_controls\resources\resources.hpp</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">asdf.hpp</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
       </Message>
