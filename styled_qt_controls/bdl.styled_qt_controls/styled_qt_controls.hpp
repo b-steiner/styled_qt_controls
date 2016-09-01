@@ -26,15 +26,23 @@
 #include <Windows.h>
 #include <algorithm>
 #include <memory>
+#include <functional>
 
 #include <QtCore\QHash>
 #include <QtCore\QFile>
+#include <QtCore\QDir>
 #include <QtCore\QFileinfo>
 #include <QtCore\QDebug>
 #include <QtCore\QThread>
+#include <QtCore\QMimeData>
+#include <QtCore\QTimer>
 
 #include <QtGui\QColor>
 #include <QtGui\5.7.0\QtGui\qpa\qplatformnativeinterface.h>
+#include <QtGui\QPainter>
+#include <QtGui\QPaintEvent>
+#include <QtGui\QDrag>
+#include <QtGui\QWindow>
 
 #include <QtWidgets\QApplication>
 #include <QtWidgets\QAbstractitemview>
@@ -58,8 +66,6 @@
 #include <QtWidgets\QMessagebox>
 
 #include <QtXml\QDomDocument>
-
-#include <QtWinExtras\QtWinExtras>
 
 #pragma comment(lib, "Qt5Core.lib")
 #pragma comment(lib, "Qt5Gui.lib")
