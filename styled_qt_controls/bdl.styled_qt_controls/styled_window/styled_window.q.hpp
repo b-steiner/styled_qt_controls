@@ -97,6 +97,8 @@ public:
 	PROPERTY0(styled_widget*, client_widget);
 	PROPERTY0(QVector<styled_widget*>, border_widgets);
 
+	PROPERTY0(QTimer, system_menu_timer);
+
 	//! Stores the main widget of this window
 	PROPERTY1(styled_frame*, part_window_widget, protected: GET);
 	//! Stores the menubar
@@ -275,6 +277,9 @@ private slots:
 	void border_sw_mouse_pressed(QMouseEvent* event);
 
 	void icon_mousePressed(QMouseEvent* event);
+	void icon_mouseDoubleClick(QMouseEvent* event);
+
+	void system_menu_timer_timeout();
 
 private:
 	internal_flags m_internal_flags;

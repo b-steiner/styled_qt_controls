@@ -44,3 +44,10 @@ void styled_label::mouseReleaseEvent(QMouseEvent* event)
 	emit mouseReleased(event);
 	QLabel::mouseReleaseEvent(event);
 }
+
+void styled_label::mouseDoubleClickEvent(QMouseEvent * event)
+{
+	emit mouseDoubleClick(event);
+	if (!event->isAccepted())
+		QLabel::mouseDoubleClickEvent(event);
+}

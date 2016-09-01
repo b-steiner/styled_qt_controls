@@ -226,7 +226,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 		}
 		case WM_SYSCOMMAND:
 		{
-			qDebug() << "Here" << (wParam & 0xFFF0);
+			//qDebug() << "Here" << (wParam & 0xFFF0);
 		}
 
 		}
@@ -359,6 +359,7 @@ void styled_window::initialize_widget()
 	m_part_icon->setFixedSize(20, 20);
 	m_part_icon->setVisible(false);
 	QObject::connect(m_part_icon, SIGNAL(mousePressed(QMouseEvent*)), this, SLOT(icon_mousePressed(QMouseEvent*)), Qt::QueuedConnection);
+	QObject::connect(m_part_icon, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(icon_mouseDoubleClick(QMouseEvent*)));
 		
 	if (m_type == window_type::normal)
 	{
@@ -414,6 +415,10 @@ void styled_window::initialize_widget()
 	m_titlebar_layout->setColumnMinimumWidth(1, 0);
 	m_titlebar_layout->addWidget(m_menubar, 0, 2, Qt::AlignVCenter);
 	part_titlebar_widget->setLayout(m_titlebar_layout);
+
+	m_system_menu_timer.setSingleShot(true);
+	m_system_menu_timer.setInterval(100);
+	QObject::connect(&m_system_menu_timer, SIGNAL(timeout()), this, SLOT(system_menu_timer_timeout()));
 }
 
 void styled_window::show()
@@ -699,7 +704,13 @@ void styled_window::border_sw_mouse_pressed(QMouseEvent* event)
 }
 void styled_window::icon_mousePressed(QMouseEvent * event)
 {
-	show_system_menu(false);
+	m_system_menu_timer.start();	
+}
+void styled_window::icon_mouseDoubleClick(QMouseEvent * event)
+{
+	m_system_menu_timer.stop();
+	event->accept();
+	this->close();
 }
 
 QVector<styled_window*> styled_window::front_to_back_windows()
@@ -761,4 +772,8 @@ void styled_window::show_system_menu(bool show_at_cursor)
 	int flag = TrackPopupMenu(menu, TPM_LEFTALIGN | TPM_TOPALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, m_hwnd, NULL);
 	if (flag > 0)
 		SendMessage(m_hwnd, WM_SYSCOMMAND, flag, 0);
+}
+void styled_window::system_menu_timer_timeout()
+{
+	show_system_menu(false);
 }

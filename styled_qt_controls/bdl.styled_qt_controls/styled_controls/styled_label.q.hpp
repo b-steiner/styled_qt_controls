@@ -51,14 +51,18 @@ protected:
 	virtual void paintEvent(QPaintEvent *pe);
 	//! See QWidget
 	virtual void mousePressEvent(QMouseEvent* event);
-	//! See QWidget
+	//! See QLabel
 	virtual void mouseReleaseEvent(QMouseEvent* event);
+	//! See QLabel
+	virtual void mouseDoubleClickEvent(QMouseEvent *event);
 
 signals:
-	//! See QWidget
+	//! See QLabel
 	void mousePressed(QMouseEvent* event);
-	//! See QWidget
+	//! See QLabel
 	void mouseReleased(QMouseEvent* event);
+	//! See QLabel
+	void mouseDoubleClick(QMouseEvent* event);
 };
 
 END_BDL_SQTC
