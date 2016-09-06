@@ -180,6 +180,16 @@ QWidget* main_window::create_simple_control_widget()
 	scw_layout->addWidget(gf, row, 1);
 	row++;
 
+	l = new styled_label("Slider");
+	auto sli = new QSlider();
+	sli->setOrientation(Qt::Horizontal);
+	sli->setMinimum(0);
+	sli->setValue(4);
+	sli->setMaximum(10);
+	scw_layout->addWidget(l, row, 0);
+	scw_layout->addWidget(sli, row, 1);
+	row++;
+
 	l = new styled_label("Collapse Widget");
 	m_scw = new styled_collapse_widget();
 	m_scw->state(styled_collapse_widget::state_t::no_state);

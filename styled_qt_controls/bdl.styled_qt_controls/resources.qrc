@@ -69,5 +69,6 @@
 	<file>images/add.png</file>
 	<file>images/remove.png</file>
   <file>images/additional_options.png</file>
+  <file>images/slider_handle.png</file>
 </qresource>														
 </RCC>								
