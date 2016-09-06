@@ -39,8 +39,8 @@ using namespace bdl::styled_qt_controls::util;
 
 QList<styled_dock_widget*> styled_dock_widget::m_all_dock_widgets;
 
-styled_dock_widget::styled_dock_widget(styled_dock_orientation orientation, const QString& tag, bool remove_on_empty) : m_orientation(orientation), m_selected_item(nullptr),
-	m_remove_on_empty(remove_on_empty), m_title_mousedown(false), m_has_focus(false), m_drag_item(nullptr), m_ignore_overflow_changed(false), m_tag(tag)
+styled_dock_widget::styled_dock_widget(styled_dock_orientation orientation, base_widget_factory* factory, const QString& tag, bool remove_on_empty) : m_orientation(orientation), m_selected_item(nullptr),
+	m_remove_on_empty(remove_on_empty), m_title_mousedown(false), m_has_focus(false), m_drag_item(nullptr), m_ignore_overflow_changed(false), m_tag(tag), m_factory(factory)
 {
 	QObject::connect(qApp, SIGNAL(focusChanged(QWidget*, QWidget*)), this, SLOT(application_focus_changed(QWidget*, QWidget*)));
 
@@ -422,7 +422,7 @@ void styled_dock_widget::drop_item(const QList<styled_dock_item*>& items, styled
 				if (split->orientation() != Qt::Horizontal)
 				{
 					auto sizes = split->sizes();
-					styled_dock_splitter* new_splitter = new styled_dock_splitter(Qt::Horizontal);
+					styled_dock_splitter* new_splitter = new styled_dock_splitter(Qt::Horizontal, m_factory);
 					split->insertWidget(insert_idx, new_splitter);
 					new_splitter->addWidget(this);
 					insert_idx = 0;
@@ -437,7 +437,7 @@ void styled_dock_widget::drop_item(const QList<styled_dock_item*>& items, styled
 				auto sizes = split->sizes();
 				sizes[old_idx] = sizes[old_idx] / 2;
 				sizes.insert(old_idx, sizes[old_idx]);
-				styled_dock_widget* new_widget = new styled_dock_widget(preferred_orientation, "", true);
+				styled_dock_widget* new_widget = new styled_dock_widget(preferred_orientation, m_factory, "", true);
 				split->insertWidget(insert_idx, new_widget);
 				split->setSizes(sizes);
 
@@ -462,7 +462,7 @@ void styled_dock_widget::drop_item(const QList<styled_dock_item*>& items, styled
 			if (split->orientation() != Qt::Vertical)
 			{
 				auto sizes = split->sizes();
-				styled_dock_splitter* new_splitter = new styled_dock_splitter(Qt::Vertical);
+				styled_dock_splitter* new_splitter = new styled_dock_splitter(Qt::Vertical, m_factory);
 				split->insertWidget(insert_idx, new_splitter);
 				new_splitter->addWidget(this);
 				insert_idx = 0;
@@ -477,7 +477,7 @@ void styled_dock_widget::drop_item(const QList<styled_dock_item*>& items, styled
 			auto sizes = split->sizes();
 			sizes[old_idx] = sizes[old_idx] / 2;
 			sizes.insert(old_idx, sizes[old_idx]);
-			styled_dock_widget* new_widget = new styled_dock_widget(preferred_orientation, "", true);
+			styled_dock_widget* new_widget = new styled_dock_widget(preferred_orientation, m_factory, "", true);
 			split->insertWidget(insert_idx, new_widget);
 			split->setSizes(sizes);
 
@@ -608,10 +608,10 @@ styled_window* styled_dock_widget::drag_window(QList<styled_dock_item*> items, s
 	layout->setContentsMargins(0, 0, 0, 0);
 	window->client_widget()->setLayout(layout);
 
-	styled_dock_splitter* splitter = new styled_dock_splitter(Qt::Horizontal, true);
+	styled_dock_splitter* splitter = new styled_dock_splitter(Qt::Horizontal, m_factory, true);
 	layout->addWidget(splitter, 0, 0);
 
-	*dock_widget = new styled_dock_widget(this->m_orientation, "", true);
+	*dock_widget = new styled_dock_widget(this->m_orientation, m_factory, "", true);
 	splitter->addWidget(*dock_widget);
 	
 
@@ -988,10 +988,31 @@ settings_group* styled_dock_widget::save_settings()
 }
 void styled_dock_widget::load_settings(settings_group* group)
 {
-	/*this->m_tag = group->values()["tag"];
+	this->m_tag = group->values()["tag"];
 	this->m_remove_on_empty = group->values()["remove_on_empty"] == "True";
 
-	QHash<int, i_plugin*> children;
+	int done = 0;
+	int idx = 0;
+	while (done < group->groups().count())
+	{
+		QString key = "item[" + QString::number(idx) + "]";
+
+		if (group->groups().contains(key))
+		{
+			m_factory->load(this, group->groups()[key]);
+			done++;
+		}
+
+		idx++;
+	}
+
+	int selected_idx = group->values()["selected_idx"].toInt();
+	if (m_items.count() > selected_idx)
+		this->select(selected_idx);
+
+
+
+	/*QHash<int, i_plugin*> children;
 	QHash<int, settings_group*> groups;
 
 	for (auto grp : group->groups())

@@ -28,7 +28,8 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-styled_dock_splitter::styled_dock_splitter(Qt::Orientation orientation, bool close_on_empty, QWidget* parent) : QSplitter(orientation, parent), m_close_on_empty(close_on_empty)
+styled_dock_splitter::styled_dock_splitter(Qt::Orientation orientation, base_widget_factory* factory, bool close_on_empty, QWidget* parent)
+	: QSplitter(orientation, parent), m_close_on_empty(close_on_empty), m_factory(factory)
 { 
 	style_loader loader(":/styled_dock_widget/styled_dock_widget.qss");
 	this->setStyleSheet(loader.style_string());
@@ -132,7 +133,7 @@ void styled_dock_splitter::load_settings(settings_group* group)
 			if (grp->values()["orientation"] == "Horizontal")
 				orientation = Qt::Horizontal;
 
-			styled_dock_splitter* splitter = new styled_dock_splitter(orientation, grp->values()["close_on_empty"] == "True");
+			styled_dock_splitter* splitter = new styled_dock_splitter(orientation, m_factory, grp->values()["close_on_empty"] == "True");
 			widgets.insert(grp->values()["idx"].toInt(), splitter);
 			splitter->load_settings(grp);
 		}
@@ -142,7 +143,7 @@ void styled_dock_splitter::load_settings(settings_group* group)
 			if (grp->values()["orientation"] == "bottom")
 				orientation = styled_dock_orientation::bottom;
 
-			styled_dock_widget* widget = new styled_dock_widget(orientation, grp->values()["tag"]);
+			styled_dock_widget* widget = new styled_dock_widget(orientation, m_factory, grp->values()["tag"]);
 			widgets.insert(grp->values()["idx"].toInt(), widget);
 			widget->load_settings(grp);
 		}

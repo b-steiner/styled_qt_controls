@@ -77,6 +77,7 @@ class BDL_SQTC_EXPORT styled_dock_widget : public styled_widget
 	PROPERTY0(bool, has_focus);
 
 	PROPERTY0(bool, ignore_overflow_changed);
+	PROPERTY0(base_widget_factory*, factory);
 
 public:
 	/*! \brief Initializes a new instance of the styled_dock_widget class
@@ -85,7 +86,7 @@ public:
 		* \param tag Tag that can be used to store user data
 		* \param remove_on_empty Sets whether or not the widget should be removed from its parent when there are no items left
 		*/
-	styled_dock_widget(styled_dock_orientation orientation, const QString& tag = "", bool remove_on_empty = false);
+	styled_dock_widget(styled_dock_orientation orientation, base_widget_factory* factory, const QString& tag = "", bool remove_on_empty = false);
 	/*! \brief Releases all data associated with an instance of the styled_dock_widget class
 		*/
 	~styled_dock_widget();

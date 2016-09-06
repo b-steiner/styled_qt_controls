@@ -21,6 +21,7 @@
 
 #include "../styled_qt_controls.hpp"
 #include "../util/settings/settings_group.hpp"
+#include "base_widget_factory.q.hpp"
 
 BEGIN_BDL_SQTC
 
@@ -32,6 +33,8 @@ class BDL_SQTC_EXPORT styled_dock_splitter : public QSplitter
 {
 	Q_OBJECT;
 
+	PROPERTY0(base_widget_factory*, factory);
+
 public:
 	/*! \brief Initializes a new instance of the styled_dock_splitter class
 		*
@@ -39,7 +42,7 @@ public:
 		* \param close_on_empty When set to true, the splitter removes itself from the parent layout when the last child is removed
 		* \param parent Parent widget
 		*/
-	styled_dock_splitter(Qt::Orientation orientation, bool close_on_empty = false, QWidget* parent = nullptr);
+	styled_dock_splitter(Qt::Orientation orientation, base_widget_factory* factory, bool close_on_empty = false, QWidget* parent = nullptr);
 	/*! \brief Releases all data associated with an instance of the styled_dock_splitter class
 		*/
 	virtual ~styled_dock_splitter();
