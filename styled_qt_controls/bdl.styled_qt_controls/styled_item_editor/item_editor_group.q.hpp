@@ -21,6 +21,7 @@
 
 #include "base_editor_group.q.hpp"
 #include "item_editor_item.q.hpp"
+#include "item_editor_group_widget.q.hpp"
 #include "../styled_controls/styled_collapse_widget.q.hpp"
 
 BEGIN_BDL_SQTC
@@ -39,7 +40,8 @@ class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 	PROPERTY0(bool, show_enable_button);
 	PROPERTY0(bool, is_expanded);
 	PROPERTY0(QList<base_item_editor_item*>, items);
-	PROPERTY0(styled_collapse_widget*, widget);
+	PROPERTY0(item_editor_group_widget*, widget);
+	PROPERTY0(styled_collapse_widget*, collapse_widget);
 	PROPERTY0(QMenu*, additional_options);
 
 public:
@@ -60,7 +62,7 @@ public:
 	*
 	* \returns A pointer to a new group widget
 	*/
-	virtual QWidget* widget();
+	virtual util::i_settings_provider* widget();
 
 	/*! \brief Adds an item to the group
 	 *
@@ -77,6 +79,9 @@ public:
 	* \param idx Index of the item
 	*/
 	void remove_item(int idx);
+
+protected:
+	virtual item_editor_group_widget* top_level_widget();
 
 private:
 	void items_changed();

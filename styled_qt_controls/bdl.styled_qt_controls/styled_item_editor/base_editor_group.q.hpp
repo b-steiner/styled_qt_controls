@@ -21,6 +21,7 @@
 
 #include "../styled_qt_controls.hpp"
 #include "../util/settings/settings_group.hpp"
+#include "../util/settings/i_settings_provider.q.hpp"
 
 BEGIN_BDL_SQTC
 
@@ -45,7 +46,7 @@ public:
 	 *
 	 * \returns A pointer to a new group widget
 	 */
-	virtual QWidget* widget() = 0;
+	virtual util::i_settings_provider* widget() = 0;
 };
 
 END_BDL_SQTC

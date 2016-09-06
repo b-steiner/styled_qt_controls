@@ -21,6 +21,7 @@
 
 #include "../styled_qt_controls.hpp"
 #include "../styled_controls/numeric_line_edit.q.hpp"
+#include "../styled_color_picker/styled_color_picker.q.hpp"
 
 BEGIN_BDL_SQTC
 
@@ -35,6 +36,7 @@ class BDL_SQTC_EXPORT base_item_editor_item : public QObject
 	PROPERTY0(bool, show_binding_button);
 	PROPERTY0(std::function<void(bool)>, binding_changed_func);
 	PROPERTY0(bool, is_bound);
+	PROPERTY0(QPushButton*, binding_button);
 
 public:
 	/*! \brief Initializes a new instance of the base_item_editor_item class
@@ -56,12 +58,16 @@ public:
 	 * \returns The number of rows this item consumes
 	 */
 	virtual int widgets(QGridLayout* layout, int row) = 0;
+	virtual void notify_widget_deleted();
+
 	/*! \brief Adds the binding button
 	 *
 	 * \param layout The layout
 	 * \param row The row in the layout where the button should be added
 	 */
 	void add_binding_button(QGridLayout* layout, int row);
+
+	void set_binding(bool is_bound);
 
 private slots:
 	void binding_button_toggled(bool value);
@@ -88,6 +94,8 @@ class BDL_SQTC_EXPORT string_item_editor_item : public base_item_editor_item
 	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
+	PROPERTY0(QLineEdit*, edit);
+
 public:
 	/*! \brief Initializes a new instance of the string_item_editor_item class
 	 *
@@ -112,6 +120,9 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	virtual void notify_widget_deleted();
+
+	void set_value(const QString& value);
 
 private slots:
 	void textEdited(const QString& text);
@@ -138,6 +149,8 @@ class BDL_SQTC_EXPORT float_item_editor_item : public base_item_editor_item
 	PROPERTY0(float, min_value);
 	PROPERTY0(float, max_value);
 
+	PROPERTY0(numeric_line_edit*, edit);
+
 public:
 	/*! \brief Initializes a new instance of the float_item_editor_item class
 	 *
@@ -153,8 +166,9 @@ public:
 	 * \param binding_changed_func Function that should be called when the binding is toggled
 	 */
 	float_item_editor_item(const QString& title, float initial_value, std::function<void(float)> value_changed_func,
-						   unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<double>::infinity(), float max_value = std::numeric_limits<double>::infinity(),
-						   bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+						   bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {},
+						   unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<double>::infinity(), float max_value = std::numeric_limits<double>::infinity()
+						   );
 	/*! \brief Releases all data associated with an instance of the float_item_editor_item class
 	*/
 	virtual ~float_item_editor_item();
@@ -167,6 +181,9 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	virtual void notify_widget_deleted();
+
+	void set_value(float value);
 
 private slots:
 	void edit_textEdited(const QString& text);
@@ -197,6 +214,10 @@ class BDL_SQTC_EXPORT vector3_item_editor_item : public base_item_editor_item
 	PROPERTY0(float, min_value);
 	PROPERTY0(float, max_value);
 
+	PROPERTY0(numeric_line_edit*, x_edit);
+	PROPERTY0(numeric_line_edit*, y_edit);
+	PROPERTY0(numeric_line_edit*, z_edit);
+
 public:
 	/*! \brief Initializes a new instance of the vector3_item_editor_item class
 	 *
@@ -214,8 +235,9 @@ public:
 	 * \param binding_changed_func Function that should be called when the binding is toggled
 	 */
 	vector3_item_editor_item(const QString& title, float initial_x, float initial_y, float initial_z, std::function<void(float,float,float)> value_changed_func,
-						   unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<double>::infinity(), float max_value = std::numeric_limits<double>::infinity(),
-						   bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+							 bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {},
+						     unsigned int digits = 2, float ticks = 0.01, float min_value = -std::numeric_limits<float>::infinity(), float max_value = std::numeric_limits<float>::infinity()
+						     );
 	/*! \brief Releases all data associated with an instance of the vector3_item_editor_item class
 	*/
 	virtual ~vector3_item_editor_item();
@@ -228,6 +250,9 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	virtual void notify_widget_deleted();
+
+	void set_value(float x, float y, float z);
 
 private slots:
 	void x_textEdited(const QString& text);
@@ -252,6 +277,8 @@ class BDL_SQTC_EXPORT color_item_editor_item : public base_item_editor_item
 	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
+	PROPERTY0(styled_color_picker*, picker);
+
 public:
 	/*! \brief Initializes a new instance of the color_item_editor_item class
 	 *
@@ -275,6 +302,9 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	virtual void notify_widget_deleted();
+
+	void set_value(QColor color);
 
 private slots:
 	void color_changed(const QColor& color);

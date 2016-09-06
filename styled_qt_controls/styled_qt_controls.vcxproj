@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
+<?xml version="1.0" encoding="utf-8" standalone="no"?><Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="12.0">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -15,7 +14,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>styled_qt_controls</RootNamespace>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -29,16 +28,16 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
-    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
-    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" />
+    <Import Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props"/>
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="UserMacros"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(ProjectName).$(Platform).$(Configuration)\</OutDir>
@@ -111,155 +110,122 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </Message>
     </CustomBuild>
-    <None Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.qss" />
-    <None Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.qss" />
-    <None Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.qss" />
-    <None Include="bdl.styled_qt_controls\styled_controls\tree_combobox.qss" />
-    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.qss" />
-    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_bottom.qss" />
-    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_top.qss" />
-    <None Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.qss" />
-    <None Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.qss" />
-    <None Include="bdl.styled_qt_controls\styled_window\default_menu_style.qss" />
-    <None Include="bdl.styled_qt_controls\styled_window\default_styles.qss" />
-    <None Include="bdl.styled_qt_controls\styled_window\default_view_style.qss" />
-    <None Include="bdl.styled_qt_controls\styled_window\styled_messagebox.qss" />
-    <None Include="bdl.styled_qt_controls\styled_window\styled_window.qss" />
+    <None Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_controls\tree_combobox.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_bottom.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget_top.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_window\default_menu_style.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_window\default_styles.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_window\default_view_style.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_window\styled_messagebox.qss"/>
+    <None Include="bdl.styled_qt_controls\styled_window\styled_window.qss"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\l_frame.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_frame.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_label.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_messagebox.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_widget.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\tree_combobox.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\os\icon_loader.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\os\file_system_watcher.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\os\os_sound.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\qt_helper_functions.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_group.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_io.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\resources\resources.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\l_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_label.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group_widget.q.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_messagebox.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\styled_widget.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\tree_combobox.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\os\icon_loader.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\os\file_system_watcher.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\os\os_sound.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\qt_helper_functions.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_group.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\settings\settings_io.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_qt_controls.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">bdl.styled_qt_controls/styled_qt_controls.hpp</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bdl.styled_qt_controls/styled_qt_controls.hpp</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="bdl.styled_qt_controls\util\style_loader.cpp" />
-    <ClCompile Include="bdl.styled_qt_controls\util\theme_colors.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_item_delegate.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_list_item_model.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_collapse_widget.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_gradient_frame.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\tree_combobox.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\vertical_scroll_area.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\base_editor_group.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_group.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_item.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\styled_item_editor.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp" />
-    <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp" />
-  </ItemGroup>
+    <ClCompile Include="bdl.styled_qt_controls\util\style_loader.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\util\theme_colors.cpp"/>
+  <ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_item_delegate.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\color_list_item_model.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\hs_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\l_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_color_picker\styled_color_picker.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\clearable_line_edit.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\numeric_line_edit.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_collapse_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_gradient_frame.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_label.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_group_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_pushbutton.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\styled_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\tree_combobox.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_controls\vertical_scroll_area.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\base_editor_group.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_group.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\item_editor_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_item_editor\styled_item_editor.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_dialog.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\styled_window\styled_window.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp"/><ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp"/></ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\l_frame.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_label.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_messagebox.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_widget.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\tree_combobox.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\base_editor_group.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_qt_controls.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\os\icon_loader.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\os\file_system_watcher.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\os\os_sound.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\properties.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\property_extension.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\qt_helper_functions.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\settings\i_settings_provider.q.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_group.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_io.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\style_loader.hpp" />
-    <ClInclude Include="bdl.styled_qt_controls\util\theme_colors.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_item_delegate.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\color_list_item_model.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\hs_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\l_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_color_picker\styled_color_picker.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\clearable_line_edit.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\numeric_line_edit.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_collapse_widget.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_gradient_frame.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_label.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_list_view_item_delegate.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group_widget.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_messagebox.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_pushbutton.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_tree_view_item_delegate.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\styled_widget.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\tree_combobox.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_controls\vertical_scroll_area.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_item.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_layout.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_overlay.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_splitter.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\styled_dock_widget.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\base_editor_group.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_item.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\styled_item_editor.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_item.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_qt_controls.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\os\icon_loader.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\os\file_system_watcher.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\os\os_sound.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\properties.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\property_extension.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\qt_helper_functions.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\i_settings_provider.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_group.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\settings\settings_io.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\style_loader.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\util\theme_colors.hpp"/>
   </ItemGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

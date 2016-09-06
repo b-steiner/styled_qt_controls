@@ -24,7 +24,7 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-styled_item_editor::styled_item_editor()
+styled_item_editor::styled_item_editor() : m_editing(false)
 {
 	style_loader loader(":/styled_item_editor/styled_item_editor.qss");
 
@@ -66,22 +66,41 @@ void styled_item_editor::remove_group(int idx)
 	groups_changed();
 }
 
+void styled_item_editor::clear()
+{
+	m_groups.clear();
+	groups_changed();
+}
+
 void styled_item_editor::groups_changed()
 {
-	while (m_layout->count() > 0)
+	if (m_editing)
 	{
-		auto item = m_layout->takeAt(0);
-		delete item->widget();
-		delete item;
-	}
+		while (m_layout->count() > 0)
+		{
+			auto item = m_layout->takeAt(0);
+			delete item->widget();
+			delete item;
+		}
 
-	int row = 0;
-	for (auto g : m_groups)
-	{
-		m_layout->addWidget(g->widget(), row, 0);
-		m_layout->setRowStretch(row, 0);
-		row++;
-	}
+		int row = 0;
+		for (auto g : m_groups)
+		{
+			m_layout->addWidget(g->widget(), row, 0);
+			m_layout->setRowStretch(row, 0);
+			row++;
+		}
 
-	m_layout->setRowStretch(row, 1);
+		m_layout->setRowStretch(row, 1);
+	}
+}
+
+void styled_item_editor::start_edit()
+{
+	m_editing = false;
+}
+void styled_item_editor::end_edit()
+{
+	m_editing = true;
+	groups_changed();
 }

@@ -37,6 +37,7 @@ class BDL_SQTC_EXPORT styled_item_editor : public vertical_scroll_area
 
 	PROPERTY0(QList<base_editor_group*>, groups);
 	PROPERTY0(QGridLayout*, layout);
+	PROPERTY0(bool, editing);
 
 public:
 	/*! \brief Initializes a new instance of the styled_item_editor class
@@ -61,6 +62,11 @@ public:
 	* \param idx The index of the item to remove
 	*/
 	void remove_group(int idx);
+
+	void clear();
+
+	void start_edit();
+	void end_edit();
 
 private:
 	void groups_changed();
