@@ -68,6 +68,9 @@ void styled_item_editor::remove_group(int idx)
 
 void styled_item_editor::clear()
 {
+	for (auto grp : m_groups)
+		delete grp;
+
 	m_groups.clear();
 	groups_changed();
 }
