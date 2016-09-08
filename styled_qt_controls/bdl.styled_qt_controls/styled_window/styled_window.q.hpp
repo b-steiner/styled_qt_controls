@@ -228,6 +228,8 @@ public:
 	 */
 	void adjust_size();
 
+	/*! \brief Changes between maximized and restored state
+	 */
 	void toggle_maximized();
 
 protected:

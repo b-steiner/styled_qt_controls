@@ -63,9 +63,15 @@ public:
 	*/
 	void remove_group(int idx);
 
+	/*! \brief Removes all groups from the widget
+	 */
 	void clear();
 
+	/*! \brief Starts an editing operation. Delays all visual updates until the end of the operation. 
+	 */
 	void start_edit();
+	/*! \brief Ends an editing operation and performs the visual update for all changes in this operation.mo
+	*/
 	void end_edit();
 
 private:

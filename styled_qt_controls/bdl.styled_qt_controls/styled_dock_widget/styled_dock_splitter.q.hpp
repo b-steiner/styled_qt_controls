@@ -39,6 +39,7 @@ public:
 	/*! \brief Initializes a new instance of the styled_dock_splitter class
 		*
 		* \param orientation The orientation of the splitter (see QSplitter)
+		* \param factory The factory for creating dock items that gets passed to all child dock_widgets
 		* \param close_on_empty When set to true, the splitter removes itself from the parent layout when the last child is removed
 		* \param parent Parent widget
 		*/

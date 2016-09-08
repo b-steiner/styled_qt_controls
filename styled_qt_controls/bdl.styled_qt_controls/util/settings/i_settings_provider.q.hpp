@@ -43,10 +43,14 @@ namespace util
 		virtual ~i_settings_provider() { }
 
 		/*! \brief Implement this method to return a group with settings to be saved
-			*/
+		 *
+		 * \returns A settings_group containing the settings for this class
+		 */
 		virtual settings_group* save_settings() = 0;
 		/*! \brief Implement this to restore settings from a settings_group
-			*/
+		 *
+		 * \param group The settings for this class
+		 */
 		virtual void load_settings(settings_group* group) = 0;
 	};
 }

@@ -37,8 +37,9 @@ class BDL_SQTC_EXPORT base_item_editor_item : public QObject
 	PROPERTY0(std::function<void(bool)>, binding_changed_func);
 	PROPERTY0(bool, is_bound);
 	PROPERTY0(QPushButton*, binding_button);
+	//! Stores the visibility of this item
 	PROPERTY2(bool, visible, GET, SET_PT);
-
+	//! Stores the child widgets that should be influenced by the visibility setting
 	PROPERTY1(QList<QWidget*>, children, protected: GET_REF)
 
 public:
@@ -61,6 +62,8 @@ public:
 	 * \returns The number of rows this item consumes
 	 */
 	virtual int widgets(QGridLayout* layout, int row) = 0;
+	/*! \brief Called when the widget is deleted
+	 */
 	virtual void notify_widget_deleted();
 
 	/*! \brief Adds the binding button
@@ -69,7 +72,10 @@ public:
 	 * \param row The row in the layout where the button should be added
 	 */
 	void add_binding_button(QGridLayout* layout, int row);
-
+	/*! \brief Sets the binding state
+	 *
+	 * \param is_bound The new binding state
+	 */
 	void set_binding(bool is_bound);
 
 private slots:
@@ -123,6 +129,8 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
 	virtual void notify_widget_deleted();
 
 private slots:
@@ -182,6 +190,8 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
 	virtual void notify_widget_deleted();
 
 private slots:
@@ -249,8 +259,16 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
 	virtual void notify_widget_deleted();
 
+	/*! \brief Sets a new value
+	 *
+	 * \param x The new x value
+	 * \param y The new y value
+	 * \param z The new z value
+	 */
 	void set_value(float x, float y, float z);
 
 private slots:
@@ -301,6 +319,8 @@ public:
 	* \returns The number of rows this item consumes
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
 	virtual void notify_widget_deleted();
 
 private slots:
@@ -308,11 +328,18 @@ private slots:
 };
 
 
+/*! \brief A editor item for enumerations
+ *
+ * \author bdl
+ *
+ * Displays a list of toggle buttons
+ */
 class BDL_SQTC_EXPORT enum_item_editor_item : public base_item_editor_item
 {
 	Q_OBJECT;
 
 	PROPERTY0(std::function<void(int)>, value_changed_func);
+	//! Stores the currently selected value of the item
 	PROPERTY2(int, value, GET_CONST_REF, SET_PT);
 	PROPERTY0(QButtonGroup*, group);
 
@@ -320,10 +347,27 @@ class BDL_SQTC_EXPORT enum_item_editor_item : public base_item_editor_item
 	PROPERTY0(items_list_type, items);
 
 public:
+	/*! \brief Initializes a new instance of the enum_item_editor_item class
+	*
+	* \param initial_value The selected value when the widget gets displayed
+	* \param value_changed_func A function that is called when the value changes
+	* \param items A list of string-value pairs that represent the available options
+	*/
 	enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, items_list_type items);
+	/*! \brief Releases all data associated with an instance of the enum_item_editor_item class
+	*/
 	virtual ~enum_item_editor_item();
 
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
 	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
 	virtual void notify_widget_deleted();
 
 private slots:

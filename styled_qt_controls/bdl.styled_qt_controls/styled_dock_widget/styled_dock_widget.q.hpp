@@ -81,11 +81,12 @@ class BDL_SQTC_EXPORT styled_dock_widget : public styled_widget
 
 public:
 	/*! \brief Initializes a new instance of the styled_dock_widget class
-		*
-		* \param orientation Orientation of the tabs in the widget
-		* \param tag Tag that can be used to store user data
-		* \param remove_on_empty Sets whether or not the widget should be removed from its parent when there are no items left
-		*/
+	 *
+	 * \param orientation Orientation of the tabs in the widget
+	 * \param factory Factory used to restore items in the widget (used by load_settings)
+	 * \param tag Tag that can be used to store user data
+	 * \param remove_on_empty Sets whether or not the widget should be removed from its parent when there are no items left
+	 */
 	styled_dock_widget(styled_dock_orientation orientation, base_widget_factory* factory, const QString& tag = "", bool remove_on_empty = false);
 	/*! \brief Releases all data associated with an instance of the styled_dock_widget class
 		*/

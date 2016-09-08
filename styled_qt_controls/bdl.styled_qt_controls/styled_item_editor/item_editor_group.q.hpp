@@ -43,9 +43,12 @@ class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 	PROPERTY0(item_editor_group_widget*, widget);
 	PROPERTY0(styled_collapse_widget*, collapse_widget);
 	PROPERTY0(QCheckBox*, enabled_box);
-	PROPERTY2(QMenu*, additional_options, protected: GET_REF, protected: SET_PT);
 
+	//! Stores a QMenu that displays additional options
+	PROPERTY2(QMenu*, additional_options, protected: GET_REF, protected: SET_PT);
+	//! Stores wether this group should show a checked enable checkbox or not
 	PROPERTY2(bool, enabled_state, GET, SET_PT);
+	//! Stores a function that is called when the enabled checkbox is toggled
 	PROPERTY1(std::function<void(bool)>, enabled_changed_func, SET);
 
 public:
@@ -53,9 +56,12 @@ public:
 	 *
 	 * \param title The title of the group
 	 * \param show_enable_button When set to true a checkbox is displayed
+	 * \param enabled_state The default state for the enabled_button
+	 * \param enabled_changed_func A function that gets called when the enabled button is toggled
 	 * \param additional_options A menu containing additional option actions
 	 */
-	item_editor_group(const QString& title, bool show_enable_button = false, bool enabled_state = false, std::function<void(bool)> enabled_changed_func = [](bool) {}, QMenu* additional_options = nullptr);
+	item_editor_group(const QString& title, bool show_enable_button = false, bool enabled_state = false, std::function<void(bool)> enabled_changed_func = [](bool) {},
+					  QMenu* additional_options = nullptr);
 	/*! \brief Releases all data associated with an instance of the item_editor_group class
 	 */
 	virtual ~item_editor_group();
@@ -85,6 +91,10 @@ public:
 	void remove_item(int idx);
 
 protected:
+	/*! \brief Returns the top-level widget for this groups
+	 *
+	 * \returns The toplevel widget
+	 */
 	virtual item_editor_group_widget* top_level_widget();
 
 private:
