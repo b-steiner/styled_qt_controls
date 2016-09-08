@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__item_editor_group_t {
-    QByteArrayData data[3];
-    char stringdata0[59];
+    QByteArrayData data[5];
+    char stringdata0[86];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,14 @@ static const qt_meta_stringdata_bdl__styled_qt_controls__item_editor_group_t qt_
     {
 QT_MOC_LITERAL(0, 0, 42), // "bdl::styled_qt_controls::item..."
 QT_MOC_LITERAL(1, 43, 14), // "widget_deleted"
-QT_MOC_LITERAL(2, 58, 0) // ""
+QT_MOC_LITERAL(2, 58, 0), // ""
+QT_MOC_LITERAL(3, 59, 20), // "enabled_stateChanged"
+QT_MOC_LITERAL(4, 80, 5) // "state"
 
     },
     "bdl::styled_qt_controls::item_editor_group\0"
-    "widget_deleted\0"
+    "widget_deleted\0\0enabled_stateChanged\0"
+    "state"
 };
 #undef QT_MOC_LITERAL
 
@@ -46,7 +49,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__item_editor_group[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -54,10 +57,12 @@ static const uint qt_meta_data_bdl__styled_qt_controls__item_editor_group[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x08 /* Private */,
+       1,    0,   24,    2, 0x08 /* Private */,
+       3,    1,   25,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    4,
 
        0        // eod
 };
@@ -69,10 +74,10 @@ void bdl::styled_qt_controls::item_editor_group::qt_static_metacall(QObject *_o,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->widget_deleted(); break;
+        case 1: _t->enabled_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject bdl::styled_qt_controls::item_editor_group::staticMetaObject = {
@@ -100,13 +105,13 @@ int bdl::styled_qt_controls::item_editor_group::qt_metacall(QMetaObject::Call _c
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

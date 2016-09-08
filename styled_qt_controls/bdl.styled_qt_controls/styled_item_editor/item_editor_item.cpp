@@ -47,6 +47,8 @@ void base_item_editor_item::add_binding_button(QGridLayout* layout, int row)
 		m_binding_button->setObjectName("part_biei_connect_button");
 		QObject::connect(m_binding_button, SIGNAL(toggled(bool)), this, SLOT(binding_button_toggled(bool)));
 		layout->addWidget(m_binding_button, row, 2, Qt::AlignCenter);
+
+		children().push_back(m_binding_button);
 	}
 }
 void base_item_editor_item::set_binding(bool is_bound)
@@ -57,6 +59,14 @@ void base_item_editor_item::set_binding(bool is_bound)
 void base_item_editor_item::binding_button_toggled(bool value)
 {
 	m_binding_changed_func(value);
+}
+
+void base_item_editor_item::visible(const bool& value)
+{
+	m_visible = value;
+
+	for (auto w : m_children)
+		w->setVisible(value);
 }
 
 
@@ -71,11 +81,19 @@ string_item_editor_item::~string_item_editor_item() { }
 
 int string_item_editor_item::widgets(QGridLayout* layout, int row)
 {
-	layout->addWidget(new styled_label(m_title), row, 0);
+	children().clear();
+
+	auto lbl = new styled_label(m_title);
+	layout->addWidget(lbl, row, 0);
 	m_edit = new QLineEdit(m_value);
 	QObject::connect(m_edit, SIGNAL(textEdited(const QString&)), this, SLOT(textEdited(const QString&)));
 	layout->addWidget(m_edit, row, 1);
 	add_binding_button(layout, row);
+
+	children().push_back(lbl);
+	children().push_back(m_edit);
+
+	visible(visible());
 
 	return 1; //1 row
 }
@@ -111,15 +129,22 @@ float_item_editor_item::~float_item_editor_item() { }
 
 int float_item_editor_item::widgets(QGridLayout* layout, int row)
 {
+	children().clear();
+
 	m_edit = new numeric_line_edit(m_value, m_digits);
 	m_edit->minimum(m_min_value);
 	m_edit->maximum(m_max_value);
 	m_edit->tick(m_ticks);
 	QObject::connect(m_edit, SIGNAL(textEdited(const QString&)), this, SLOT(edit_textEdited(const QString&)));
 
-	layout->addWidget(new QLabel(m_title), row, 0);
+	auto lbl = new QLabel(m_title);
+	layout->addWidget(lbl, row, 0);
 	layout->addWidget(m_edit, row, 1);
 	this->add_binding_button(layout, row);
+	
+	children().push_back(lbl);
+	children().push_back(m_edit);
+	visible(visible());
 
 	return 1;
 }
@@ -153,6 +178,8 @@ vector3_item_editor_item::~vector3_item_editor_item() { }
 
 int vector3_item_editor_item::widgets(QGridLayout* layout, int row)
 {
+	children().clear();
+
 	m_x_edit = new numeric_line_edit(m_value_x, m_digits);
 	m_x_edit->minimum(m_min_value);
 	m_x_edit->maximum(m_max_value);
@@ -175,11 +202,14 @@ int vector3_item_editor_item::widgets(QGridLayout* layout, int row)
 	vec_layout->setContentsMargins(0, 0, 0, 0);
 	vec_layout->setSpacing(4);
 
-	vec_layout->addWidget(new QLabel("X:"), 0, 0);
+	auto lbl_x = new QLabel("X:");
+	vec_layout->addWidget(lbl_x, 0, 0);
 	vec_layout->addWidget(m_x_edit, 0, 1);
-	vec_layout->addWidget(new QLabel("Y:"), 0, 2);
+	auto lbl_y = new QLabel("Y:");
+	vec_layout->addWidget(lbl_y, 0, 2);
 	vec_layout->addWidget(m_y_edit, 0, 3);
-	vec_layout->addWidget(new QLabel("Z:"), 0, 4);
+	auto lbl_z = new QLabel("Z:");
+	vec_layout->addWidget(lbl_z, 0, 4);
 	vec_layout->addWidget(m_z_edit, 0, 5);
 	vec_layout->setColumnStretch(1, 1);
 	vec_layout->setColumnStretch(3, 1);
@@ -188,6 +218,14 @@ int vector3_item_editor_item::widgets(QGridLayout* layout, int row)
 	layout->addWidget(new QLabel(m_title), row, 0, 1, 3);
 	layout->addLayout(vec_layout, row + 1, 0, 1, 2);
 	this->add_binding_button(layout, row + 1);
+
+	children().push_back(m_x_edit);
+	children().push_back(m_y_edit);
+	children().push_back(m_z_edit);
+	children().push_back(lbl_x);
+	children().push_back(lbl_y);
+	children().push_back(lbl_z);
+	visible(visible());
 
 	return 2;
 }
@@ -234,11 +272,17 @@ color_item_editor_item::~color_item_editor_item() { }
 
 int color_item_editor_item::widgets(QGridLayout* layout, int row)
 {
+	children().clear();
+
 	m_picker = new styled_color_picker(m_title);
+	m_picker->color(m_value);
 	QObject::connect(m_picker, SIGNAL(color_changed(const QColor&)), this, SLOT(color_changed(const QColor&)));
 	QObject::connect(m_picker, SIGNAL(binding_changed(bool)), this, SLOT(binding_button_toggled(bool)));
 
 	layout->addWidget(m_picker, row, 0, 1, 3);
+
+	children().push_back(m_picker);
+	visible(visible());
 
 	return 1;
 }
@@ -269,6 +313,8 @@ enum_item_editor_item::~enum_item_editor_item() { }
 
 int enum_item_editor_item::widgets(QGridLayout * layout, int row)
 {
+	children().clear();
+
 	m_group = new QButtonGroup();
 	QHBoxLayout* grp_layout = new QHBoxLayout();
 	grp_layout->setContentsMargins(0, 0, 0, 0);
@@ -289,12 +335,15 @@ int enum_item_editor_item::widgets(QGridLayout * layout, int row)
 			btn->setObjectName("part_eiei_notfirstbutton");
 
 		first = false;
+		children().push_back(btn);
 	}
 
 	m_group->button(m_value)->setChecked(true);
 
 	layout->addLayout(grp_layout, row, 0, 1, 2);
 	QObject::connect(m_group, SIGNAL(buttonToggled(int, bool)), this, SLOT(group_buttonToggled(int, bool)));
+
+	visible(visible());
 
 	return 1;
 }

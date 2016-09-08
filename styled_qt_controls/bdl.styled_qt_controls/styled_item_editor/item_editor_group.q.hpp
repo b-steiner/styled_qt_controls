@@ -42,7 +42,11 @@ class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 	PROPERTY0(QList<base_item_editor_item*>, items);
 	PROPERTY0(item_editor_group_widget*, widget);
 	PROPERTY0(styled_collapse_widget*, collapse_widget);
-	PROPERTY0(QMenu*, additional_options);
+	PROPERTY0(QCheckBox*, enabled_box);
+	PROPERTY2(QMenu*, additional_options, protected: GET_REF, protected: SET_PT);
+
+	PROPERTY2(bool, enabled_state, GET, SET_PT);
+	PROPERTY1(std::function<void(bool)>, enabled_changed_func, SET);
 
 public:
 	/*! \brief Initializes a new instance of the item_editor_group class
@@ -51,7 +55,7 @@ public:
 	 * \param show_enable_button When set to true a checkbox is displayed
 	 * \param additional_options A menu containing additional option actions
 	 */
-	item_editor_group(const QString& title, bool show_enable_button = false, QMenu* additional_options = nullptr);
+	item_editor_group(const QString& title, bool show_enable_button = false, bool enabled_state = false, std::function<void(bool)> enabled_changed_func = [](bool) {}, QMenu* additional_options = nullptr);
 	/*! \brief Releases all data associated with an instance of the item_editor_group class
 	 */
 	virtual ~item_editor_group();
@@ -88,6 +92,7 @@ private:
 
 private slots:
 	void widget_deleted();
+	void enabled_stateChanged(int state);
 };
 
 END_BDL_SQTC

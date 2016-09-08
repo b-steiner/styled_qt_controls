@@ -37,6 +37,9 @@ class BDL_SQTC_EXPORT base_item_editor_item : public QObject
 	PROPERTY0(std::function<void(bool)>, binding_changed_func);
 	PROPERTY0(bool, is_bound);
 	PROPERTY0(QPushButton*, binding_button);
+	PROPERTY2(bool, visible, GET, SET_PT);
+
+	PROPERTY1(QList<QWidget*>, children, protected: GET_REF)
 
 public:
 	/*! \brief Initializes a new instance of the base_item_editor_item class

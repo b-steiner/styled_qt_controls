@@ -25,8 +25,9 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-item_editor_group::item_editor_group(const QString& title, bool show_enable_button, QMenu* additional_options)
-	: m_title(title), m_show_enable_button(show_enable_button), m_is_expanded(false), m_widget(nullptr), m_additional_options(additional_options)
+item_editor_group::item_editor_group(const QString& title, bool show_enable_button, bool enabled_state, std::function<void(bool)> enabled_changed_func, QMenu* additional_options)
+	: m_title(title), m_show_enable_button(show_enable_button), m_is_expanded(false), m_widget(nullptr), m_additional_options(additional_options),
+	m_enabled_changed_func(enabled_changed_func), m_enabled_state(enabled_state), m_enabled_box(nullptr)
 { }
 item_editor_group::~item_editor_group()
 {
@@ -53,9 +54,13 @@ i_settings_provider* item_editor_group::widget()
 
 	if (m_show_enable_button)
 	{
-		QCheckBox* enable_cbx = new QCheckBox();
-		title_layout->addWidget(enable_cbx, 0, 0, Qt::AlignVCenter);
+		m_enabled_box = new QCheckBox();
+		m_enabled_box->setChecked(m_enabled_state);
+		QObject::connect(m_enabled_box, SIGNAL(stateChanged(int)), this, SLOT(enabled_stateChanged(int)));
+		title_layout->addWidget(m_enabled_box, 0, 0, Qt::AlignVCenter);
 	}
+	else
+		m_enabled_box = nullptr;
 		
 	QLabel* title_label = new QLabel(m_title);
 	title_label->setObjectName("part_ieg_title_label");
@@ -64,8 +69,6 @@ i_settings_provider* item_editor_group::widget()
 
 	if (m_additional_options != nullptr)
 	{
-		//m_additional_options->setParent(title_label);
-
 		QPushButton* add_opt_button = new QPushButton();
 		add_opt_button->setObjectName("part_ieg_additional_options_button");
 		add_opt_button->setFixedSize(10, 16);
@@ -152,4 +155,29 @@ void item_editor_group::widget_deleted()
 		it->notify_widget_deleted();
 
 	m_widget = nullptr;
+	m_enabled_box = nullptr;
+}
+
+void item_editor_group::enabled_stateChanged(int state)
+{
+	switch ((Qt::CheckState)state)
+	{
+	case Qt::CheckState::Checked:
+		m_enabled_changed_func(true);
+		break;
+	case Qt::CheckState::Unchecked:
+		m_enabled_changed_func(false);
+		break;
+	}
+}
+void item_editor_group::enabled_state(const bool& value)
+{
+	m_enabled_state = value;
+	if (m_enabled_box != nullptr)
+		m_enabled_box->setChecked(m_enabled_state);
+}
+
+void item_editor_group::additional_options(QMenu* const & value)
+{
+	m_additional_options = value;
 }
