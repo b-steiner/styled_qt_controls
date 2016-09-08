@@ -33,7 +33,8 @@ QScrollArea(parent)
 bool vertical_scroll_area::eventFilter(QObject *o, QEvent *e)
 {
 	// This works because QScrollArea::setWidget installs an eventFilter on the widget
-	if (o && o == widget() && e->type() == QEvent::Resize)
+	if ((o && o == widget() && e->type() == QEvent::Resize)
+		|| e->type() == QEvent::LayoutRequest)
 	{
 		widget()->setMinimumHeight(widget()->minimumSizeHint().height());
 		setMinimumWidth(widget()->minimumSizeHint().width() + verticalScrollBar()->width());

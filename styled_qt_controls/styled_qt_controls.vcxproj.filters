@@ -98,6 +98,7 @@
     <ClCompile Include="generated\bdl.styled_qt_controls\util\os\file_system_watcher.generated.cpp" />
     <ClCompile Include="generated\bdl.styled_qt_controls\util\settings\i_settings_provider.generated.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\base_widget_factory.cpp" />
+    <ClCompile Include="generated\bdl.styled_qt_controls\styled_dock_widget\base_widget_factory.generated.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />

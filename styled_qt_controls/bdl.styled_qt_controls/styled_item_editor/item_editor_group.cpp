@@ -75,6 +75,7 @@ i_settings_provider* item_editor_group::widget()
 
 	//Content
 	QWidget* body_widget = new QWidget();
+	body_widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 	body_widget->setObjectName("part_ieg_body_widget");
 	QGridLayout* body_layout = new QGridLayout();
 	body_layout->setContentsMargins(15, 2, 0, 6);
@@ -140,6 +141,8 @@ void item_editor_group::items_changed()
 		{
 			row += item->widgets(layout, row);
 		}
+
+		layout->setRowStretch(row, 1);
 	}
 }
 

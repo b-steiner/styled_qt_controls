@@ -24,11 +24,12 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-styled_item_editor::styled_item_editor() : m_editing(false)
+styled_item_editor::styled_item_editor() : m_editing(true)
 {
 	style_loader loader(":/styled_item_editor/styled_item_editor.qss");
 
 	QWidget* content_widget = new QWidget();
+	content_widget->setObjectName("part_sie_content_widget");
 	content_widget->setStyleSheet(loader.style_string());
 	content_widget->setMinimumSize(100, 100);
 	content_widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);

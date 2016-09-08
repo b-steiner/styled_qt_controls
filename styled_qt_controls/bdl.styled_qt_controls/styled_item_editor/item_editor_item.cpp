@@ -84,7 +84,7 @@ void string_item_editor_item::notify_widget_deleted()
 	m_edit = nullptr;
 	base_item_editor_item::notify_widget_deleted();
 }
-void string_item_editor_item::set_value(const QString& value)
+void string_item_editor_item::value(const QString& value)
 {
 	m_value = value;
 	if (m_edit != nullptr)
@@ -128,7 +128,7 @@ void float_item_editor_item::notify_widget_deleted()
 	m_edit = nullptr;
 	base_item_editor_item::notify_widget_deleted();
 }
-void float_item_editor_item::set_value(float value)
+void float_item_editor_item::value(const float& value)
 {
 	if (m_edit != nullptr)
 		m_edit->value(value);
@@ -246,7 +246,7 @@ void color_item_editor_item::notify_widget_deleted()
 {
 	m_picker = nullptr;
 }
-void color_item_editor_item::set_value(QColor color)
+void color_item_editor_item::value(const QColor& color)
 {
 	if (m_picker != nullptr)
 	{
@@ -257,4 +257,62 @@ void color_item_editor_item::color_changed(const QColor& color)
 {
 	m_value = color;
 	m_value_changed_func(m_value);
+}
+
+
+//Enum
+
+enum_item_editor_item::enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, items_list_type items)
+	: base_item_editor_item(false, false, [](bool) {}), m_value(initial_value), m_items(items), m_group(nullptr), m_value_changed_func(value_changed_func)
+{ }
+enum_item_editor_item::~enum_item_editor_item() { }
+
+int enum_item_editor_item::widgets(QGridLayout * layout, int row)
+{
+	m_group = new QButtonGroup();
+	QHBoxLayout* grp_layout = new QHBoxLayout();
+	grp_layout->setContentsMargins(0, 0, 0, 0);
+	grp_layout->setSpacing(0);
+
+	bool first = true;
+
+	for (auto& i : m_items)
+	{
+		auto btn = new styled_pushbutton(i.second);
+		btn->setCheckable(true);
+		m_group->addButton(btn, i.first);
+		grp_layout->addWidget(btn);
+		
+		if (first)
+			btn->setObjectName("part_eiei_firstbutton");
+		else
+			btn->setObjectName("part_eiei_notfirstbutton");
+
+		first = false;
+	}
+
+	m_group->button(m_value)->setChecked(true);
+
+	layout->addLayout(grp_layout, row, 0, 1, 2);
+	QObject::connect(m_group, SIGNAL(buttonToggled(int, bool)), this, SLOT(group_buttonToggled(int, bool)));
+
+	return 1;
+}
+void enum_item_editor_item::notify_widget_deleted()
+{
+	m_group = nullptr;
+}
+void enum_item_editor_item::value(const int& value)
+{
+	if (m_group != nullptr)
+		m_group->button(value)->setChecked(true);
+}
+
+void enum_item_editor_item::group_buttonToggled(int id, bool checked)
+{
+	if (checked)
+	{
+		m_value = id;
+		m_value_changed_func(m_value);
+	}
 }

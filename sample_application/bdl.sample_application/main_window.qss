@@ -20,11 +20,13 @@ QWidget#simple_controls_widget
 QPushButton#grp_button2, QPushButton#grp_button3, QPushButton#grp_button4
 {
 	border-left: none;
+	qproperty-topline_offset_left: 0;
 }
 
 QPushButton#size_btn_2, QPushButton#size_btn_3, QPushButton#size_btn_4
 {
 	border-left: none;
+	qproperty-topline_offset_left: 0;
 }
 
 bdl--styled_qt_controls--styled_gradient_frame#simple_gf_1

@@ -90,7 +90,7 @@ class BDL_SQTC_EXPORT string_item_editor_item : public base_item_editor_item
 
 	PROPERTY0(std::function<void(const QString&)>, value_changed_func);
 	//! Stores the current value of the item
-	PROPERTY1(QString, value, GET_CONST_REF);
+	PROPERTY2(QString, value, GET_CONST_REF, SET_PT);
 	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
@@ -122,8 +122,6 @@ public:
 	virtual int widgets(QGridLayout* layout, int row);
 	virtual void notify_widget_deleted();
 
-	void set_value(const QString& value);
-
 private slots:
 	void textEdited(const QString& text);
 };
@@ -141,7 +139,7 @@ class BDL_SQTC_EXPORT float_item_editor_item : public base_item_editor_item
 
 	PROPERTY0(std::function<void(float)>, value_changed_func);
 	//! Stores the current value of the item
-	PROPERTY1(float, value, GET_CONST_REF);
+	PROPERTY2(float, value, GET_CONST_REF, SET_PT);
 	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 	PROPERTY0(unsigned int, digits);
@@ -182,8 +180,6 @@ public:
 	*/
 	virtual int widgets(QGridLayout* layout, int row);
 	virtual void notify_widget_deleted();
-
-	void set_value(float value);
 
 private slots:
 	void edit_textEdited(const QString& text);
@@ -273,7 +269,7 @@ class BDL_SQTC_EXPORT color_item_editor_item : public base_item_editor_item
 
 	PROPERTY0(std::function<void(QColor)>, value_changed_func);
 	//! Stores the current value of the item
-	PROPERTY1(QColor, value, GET_CONST_REF);
+	PROPERTY2(QColor, value, GET_CONST_REF, SET_PT);
 	//! Stores the title of the item
 	PROPERTY1(QString, title, GET_CONST_REF);
 
@@ -304,10 +300,30 @@ public:
 	virtual int widgets(QGridLayout* layout, int row);
 	virtual void notify_widget_deleted();
 
-	void set_value(QColor color);
-
 private slots:
 	void color_changed(const QColor& color);
 };
 
+
+class BDL_SQTC_EXPORT enum_item_editor_item : public base_item_editor_item
+{
+	Q_OBJECT;
+
+	PROPERTY0(std::function<void(int)>, value_changed_func);
+	PROPERTY2(int, value, GET_CONST_REF, SET_PT);
+	PROPERTY0(QButtonGroup*, group);
+
+	typedef QList<QPair<int, QString>> items_list_type;
+	PROPERTY0(items_list_type, items);
+
+public:
+	enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, items_list_type items);
+	virtual ~enum_item_editor_item();
+
+	virtual int widgets(QGridLayout* layout, int row);
+	virtual void notify_widget_deleted();
+
+private slots:
+	void group_buttonToggled(int id, bool checked);
+};
 END_BDL_SQTC

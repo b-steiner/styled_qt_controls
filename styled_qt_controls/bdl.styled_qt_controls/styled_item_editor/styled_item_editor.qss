@@ -69,3 +69,19 @@ QLabel#part_ieg_title_label
 {
 	font-weight: bold;
 }
+
+QPushButton#part_eiei_firstbutton
+{
+	outline: none;
+}
+QPushButton#part_eiei_notfirstbutton
+{
+	outline: none;
+	border-left: none;
+	qproperty-topline_offset_left: 0;
+}
+
+QWidget#part_sie_content_widget
+{
+	background: solid @content_control;
+}

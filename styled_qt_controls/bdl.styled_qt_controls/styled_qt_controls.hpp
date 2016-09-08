@@ -43,6 +43,7 @@
 #include <QtGui\QPaintEvent>
 #include <QtGui\QDrag>
 #include <QtGui\QWindow>
+#include <QtGui\QStandarditemmodel>
 
 #include <QtWidgets\QApplication>
 #include <QtWidgets\QAbstractitemview>

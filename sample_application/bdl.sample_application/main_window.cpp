@@ -27,8 +27,8 @@ using namespace bdl::styled_qt_controls;
 main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app")
 {
 	styled_dock_splitter* main_splitter = new styled_dock_splitter(Qt::Orientation::Horizontal, false);
-	styled_dock_widget* dw1 = new styled_dock_widget(styled_dock_orientation::top, "dw1", false);
-	styled_dock_widget* dw2 = new styled_dock_widget(styled_dock_orientation::bottom, "dw2", true);
+	styled_dock_widget* dw1 = new styled_dock_widget(styled_dock_orientation::top, new base_widget_factory(), "dw1", false);
+	styled_dock_widget* dw2 = new styled_dock_widget(styled_dock_orientation::bottom, new base_widget_factory(), "dw2", true);
 
 	dw2->add_item(new styled_dock_item("Item editor", create_item_editor_widget()));
 	dw2->add_item(new styled_dock_item("Item Views", create_item_control_widget()));
@@ -295,13 +295,19 @@ QWidget* main_window::create_item_editor_widget()
 	styled_item_editor* editor = new styled_item_editor();
 	auto group1 = new item_editor_group("Group 1", true, add_opt_menu);
 	group1->add_item(new string_item_editor_item("String", "Initial Value", [](const QString&) { qDebug() << "Text changed"; }, true, true, [](bool) { qDebug() << "Binding changed"; }));
-	group1->add_item(new float_item_editor_item("Float", 0.5, [](float) { qDebug() << "Float changed"; }, 4, 0.1f, -10.0f, 10.0f, true, false, [](bool) { qDebug() << "Binding changed"; }));
+	group1->add_item(new float_item_editor_item("Float", 0.5, [](float) { qDebug() << "Float changed"; }, true, false, [](bool) { qDebug() << "Binding changed"; }, 4, 0.1f, -10.0f, 10.0f));
 	editor->add_group(group1);
 
 	auto group2 = new item_editor_group("Group 2");
 	group2->add_item(new vector3_item_editor_item("Vector3", 1, 2, 3, [](float, float, float) { qDebug() << "Vector3 changed"; }));
 	group2->add_item(new color_item_editor_item("Color", QColor::fromRgb(255, 128, 0), [](QColor) { qDebug() << "Color changed"; }, true, [](bool) { qDebug() << "Binding changed"; }));
+	group2->add_item(new enum_item_editor_item(1, [](int) { qDebug() << "Enum changed"; }, { {0, "First"}, {1, "Second"}, {2, "Third"} }));
 	editor->add_group(group2);
+
+	auto group3 = new item_editor_group("Group 3");
+	for (int i = 0; i < 20; i++)
+		group3->add_item(new float_item_editor_item("Float " + QString::number(i), 0.5, [](float) { qDebug() << "Float changed"; }, true, false, [](bool) { qDebug() << "Binding changed"; }, 4, 0.1f, -10.0f, 10.0f));
+	editor->add_group(group3);
 
 
 	return editor;
