@@ -95,5 +95,14 @@ int styled_messagebox::show(styled_window* parent, const QString& title, const Q
 		diag->add_button(btn);
 
 	diag->adjust_size();
+
+	if (parent != nullptr)
+	{
+		auto parent_geom = parent->geometry();
+		auto diag_geom = diag->geometry();
+
+		diag->geometry(parent_geom.x() + 200, parent_geom.y() + parent_geom.height() / 2, diag_geom.width(), diag_geom.height());
+	}
+
 	return diag->exec();
 }
