@@ -129,6 +129,8 @@ void styled_collapse_widget::paintEvent(QPaintEvent *pe)
 
 void styled_collapse_widget::title_mousePressed(QMouseEvent* event)
 {
+	if (this->m_content_widget != nullptr)
+		this->m_content_widget->setFocus();
 	this->m_collapse_button->click();
 }
 void styled_collapse_widget::collapse_toggled(bool checked)

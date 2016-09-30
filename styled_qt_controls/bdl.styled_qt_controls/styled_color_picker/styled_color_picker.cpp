@@ -475,3 +475,8 @@ void styled_color_picker::load_global_settings(settings_group* group)
 		m_recent_model->add_color(c);
 	}
 }
+
+void styled_color_picker::mousePressEvent(QMouseEvent * e)
+{
+	this->setFocus();
+}

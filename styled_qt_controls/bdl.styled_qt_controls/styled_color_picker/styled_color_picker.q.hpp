@@ -111,6 +111,8 @@ BEGIN_BDL_SQTC
 			void remove_recent_button_clicked(bool value);
 			void recent_list_double_clicked(const QModelIndex& index);
 
+			void mousePressEvent(QMouseEvent *e);
+
 			bool eventFilter(QObject *obj, QEvent *event);
 
 		signals:

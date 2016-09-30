@@ -65,6 +65,7 @@ void hs_frame::mouseMoveEvent(QMouseEvent *e)
 }
 void hs_frame::mousePressEvent(QMouseEvent *e)
 {
+	this->setFocus();
 	m_mouse_down = true;
 	set_from_coord(e->pos());
 }

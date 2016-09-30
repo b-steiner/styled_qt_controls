@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bdl__styled_qt_controls__styled_color_picker_t {
-    QByteArrayData data[22];
-    char stringdata0[324];
+    QByteArrayData data[25];
+    char stringdata0[355];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -48,10 +48,13 @@ QT_MOC_LITERAL(14, 206, 25), // "add_recent_button_clicked"
 QT_MOC_LITERAL(15, 232, 28), // "remove_recent_button_clicked"
 QT_MOC_LITERAL(16, 261, 26), // "recent_list_double_clicked"
 QT_MOC_LITERAL(17, 288, 5), // "index"
-QT_MOC_LITERAL(18, 294, 11), // "eventFilter"
-QT_MOC_LITERAL(19, 306, 3), // "obj"
-QT_MOC_LITERAL(20, 310, 7), // "QEvent*"
-QT_MOC_LITERAL(21, 318, 5) // "event"
+QT_MOC_LITERAL(18, 294, 15), // "mousePressEvent"
+QT_MOC_LITERAL(19, 310, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(20, 323, 1), // "e"
+QT_MOC_LITERAL(21, 325, 11), // "eventFilter"
+QT_MOC_LITERAL(22, 337, 3), // "obj"
+QT_MOC_LITERAL(23, 341, 7), // "QEvent*"
+QT_MOC_LITERAL(24, 349, 5) // "event"
 
     },
     "bdl::styled_qt_controls::styled_color_picker\0"
@@ -62,6 +65,7 @@ QT_MOC_LITERAL(21, 318, 5) // "event"
     "pick_button_toggled\0add_recent_button_clicked\0"
     "remove_recent_button_clicked\0"
     "recent_list_double_clicked\0index\0"
+    "mousePressEvent\0QMouseEvent*\0e\0"
     "eventFilter\0obj\0QEvent*\0event"
 };
 #undef QT_MOC_LITERAL
@@ -72,7 +76,7 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,19 +84,20 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   69,    2, 0x06 /* Public */,
-       4,    1,   72,    2, 0x06 /* Public */,
+       1,    1,   74,    2, 0x06 /* Public */,
+       4,    1,   77,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   75,    2, 0x08 /* Private */,
-       7,    2,   78,    2, 0x08 /* Private */,
-      10,    1,   83,    2, 0x08 /* Private */,
-      12,    1,   86,    2, 0x08 /* Private */,
-      13,    1,   89,    2, 0x08 /* Private */,
-      14,    1,   92,    2, 0x08 /* Private */,
-      15,    1,   95,    2, 0x08 /* Private */,
-      16,    1,   98,    2, 0x08 /* Private */,
-      18,    2,  101,    2, 0x08 /* Private */,
+       6,    1,   80,    2, 0x08 /* Private */,
+       7,    2,   83,    2, 0x08 /* Private */,
+      10,    1,   88,    2, 0x08 /* Private */,
+      12,    1,   91,    2, 0x08 /* Private */,
+      13,    1,   94,    2, 0x08 /* Private */,
+      14,    1,   97,    2, 0x08 /* Private */,
+      15,    1,  100,    2, 0x08 /* Private */,
+      16,    1,  103,    2, 0x08 /* Private */,
+      18,    1,  106,    2, 0x08 /* Private */,
+      21,    2,  109,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QColor,    3,
@@ -107,7 +112,8 @@ static const uint qt_meta_data_bdl__styled_qt_controls__styled_color_picker[] = 
     QMetaType::Void, QMetaType::Bool,    5,
     QMetaType::Void, QMetaType::Bool,    5,
     QMetaType::Void, QMetaType::QModelIndex,   17,
-    QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 20,   19,   21,
+    QMetaType::Void, 0x80000000 | 19,   20,
+    QMetaType::Bool, QMetaType::QObjectStar, 0x80000000 | 23,   22,   24,
 
        0        // eod
 };
@@ -128,7 +134,8 @@ void bdl::styled_qt_controls::styled_color_picker::qt_static_metacall(QObject *_
         case 7: _t->add_recent_button_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 8: _t->remove_recent_button_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 9: _t->recent_list_double_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 10: { bool _r = _t->eventFilter((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QEvent*(*)>(_a[2])));
+        case 10: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 11: { bool _r = _t->eventFilter((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QEvent*(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
         default: ;
         }
@@ -177,13 +184,13 @@ int bdl::styled_qt_controls::styled_color_picker::qt_metacall(QMetaObject::Call 
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }
