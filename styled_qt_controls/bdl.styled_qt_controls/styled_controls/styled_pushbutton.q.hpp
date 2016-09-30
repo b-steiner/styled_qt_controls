@@ -80,6 +80,8 @@ class BDL_SQTC_EXPORT styled_pushbutton : public QPushButton
 	//! Stores a pointer to additional data
 	PROPERTY2(void*, data, GET, SET);
 
+	PROPERTY0(QSize, size_hint);
+
 
 public:
 	/*! \brief Initializes a new instance of the styled_pushbutton class. See QPushButton for details
@@ -104,6 +106,23 @@ public:
 		*/
 	virtual ~styled_pushbutton();
 			
+	//! See QPushButton
+	virtual QSize sizeHint() const;
+	/*! \brief Returns the minimum size this button can have
+	 *
+	 * \returns The minimum size
+	 *
+	 * This function combines the size (setSize) and the default minimumSizeHint.
+	 */
+	virtual QSize minimumSizeHint() const;
+	/*! \brief Sets a preferred size.
+	 *
+	 * \param size The size
+	 *
+	 * This size is only taken into account when larger than the default minimumSizeHint
+	 */
+	void setSize(QSize size);
+
 protected:
 	//! See QPushButton
 	virtual void paintEvent(QPaintEvent *pe);

@@ -597,15 +597,16 @@ bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 {
 	if (obj == m_part_window_widget)
 	{
-		//qDebug() << "Event: " << ev->type();
+		//if (m_part_window_widget != nullptr)
+		//	qDebug() << obj << " Event: " << ev->type() << m_part_window_widget->sizeHint();
 
-		if (ev->type() == QEvent::Resize && flag_contains(m_internal_flags, internal_flags::adjust_size))
+		if (ev->type() == QEvent::ShowToParent && flag_contains(m_internal_flags, internal_flags::adjust_size))
 		{
 			m_internal_flags &= ~internal_flags::adjust_size;
 			auto s = m_part_window_widget->sizeHint();
 			if (s.isValid())
 			{
-				//qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
+				qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
 				resize(s);
 			}
 		}

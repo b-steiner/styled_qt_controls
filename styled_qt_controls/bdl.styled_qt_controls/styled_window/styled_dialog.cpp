@@ -62,7 +62,8 @@ void styled_dialog::show()
 	{
 		styled_pushbutton* button = new styled_pushbutton(btn.text);
 		button->setAutoDefault(true);
-		button->setMinimumWidth(70);
+		button->setSize(QSize(70, 0));
+		button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 		button->setObjectName("part_sdiag_button");
 		m_button_result_lookup.insert(button, btn.role);
 		m_button_layout->addWidget(button);

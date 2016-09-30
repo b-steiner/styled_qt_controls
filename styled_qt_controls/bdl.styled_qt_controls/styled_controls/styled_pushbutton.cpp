@@ -32,6 +32,8 @@ styled_pushbutton::styled_pushbutton(const QIcon& icon, const QString& text, QWi
 styled_pushbutton::~styled_pushbutton() { }
 void styled_pushbutton::init()
 {
+	m_size_hint = QSize(-1, -1);
+
 	m_topline_offset_left = 1;
 	m_topline_offset_right = 1;
 	m_topline_offset_top = 1;
@@ -127,4 +129,28 @@ void styled_pushbutton::custom_data_1(const bool& value)
 	m_custom_data_1 = value;
 	style()->unpolish(this);
 	style()->polish(this);
+}
+
+QSize styled_pushbutton::sizeHint() const
+{
+	auto s = QPushButton::sizeHint();
+	auto s2 = m_size_hint;
+
+	return QSize(
+			max(s.width(), s2.width()),
+			max(s.height(), s2.height())
+		);
+}
+QSize styled_pushbutton::minimumSizeHint() const
+{
+	auto ms = QPushButton::minimumSizeHint();
+	auto x = max(m_size_hint.width(), ms.width());
+	auto y = max(m_size_hint.height(), ms.height());
+	return QSize(x, y);
+
+	return QSize(150, 40);
+}
+void styled_pushbutton::setSize(QSize size)
+{
+	m_size_hint = size;
 }
