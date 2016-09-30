@@ -89,6 +89,8 @@ protected:
 	virtual void keyPressEvent(QKeyEvent *event);
 	//! See QLineEdit
 	virtual void keyReleaseEvent(QKeyEvent *event);
+	//! See QLineEdit
+	virtual void wheelEvent(QWheelEvent *event);
 
 private slots:
 	void this_returnPressed();

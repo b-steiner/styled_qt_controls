@@ -135,3 +135,18 @@ void numeric_line_edit::keyReleaseEvent(QKeyEvent * event)
 
 	QLineEdit::keyReleaseEvent(event);
 }
+
+void numeric_line_edit::wheelEvent(QWheelEvent * event)
+{
+	auto tick = m_tick;
+	if (m_slow_mode && m_small_tick >= 0.0)
+		tick = m_small_tick;
+	else if (m_slow_mode)
+		tick = m_tick / 10.0;
+
+	auto f = (double)event->angleDelta().y() / 4.0f / 1.5f;
+	value(value() + f * tick);
+	emit this->textEdited(this->text());
+	emit this->editingFinished();
+	this->selectAll();
+}
