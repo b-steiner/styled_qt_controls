@@ -101,10 +101,33 @@ void styled_item_editor::groups_changed()
 
 void styled_item_editor::start_edit()
 {
+	save_settings();
 	m_editing = false;
 }
 void styled_item_editor::end_edit()
 {
 	m_editing = true;
 	groups_changed();
+	restore_settings();
+}
+
+void styled_item_editor::save_settings()
+{
+	m_settings = new settings_group("styled_item_editor");
+
+	for (auto grp : m_groups)
+		m_settings->add_group(grp->save_settings());
+}
+
+void styled_item_editor::restore_settings()
+{
+	if (m_settings != nullptr)
+	{
+		for (auto grp : m_groups)
+			grp->load_settings(m_settings);
+
+		delete m_settings;
+		m_settings = nullptr;
+	}
+
 }

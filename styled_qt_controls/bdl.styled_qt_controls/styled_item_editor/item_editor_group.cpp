@@ -81,10 +81,11 @@ i_settings_provider* item_editor_group::widget()
 	body_widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 	body_widget->setObjectName("part_ieg_body_widget");
 	QGridLayout* body_layout = new QGridLayout();
-	body_layout->setContentsMargins(15, 2, 0, 6);
+	body_layout->setContentsMargins(0, 2, 0, 6);
 	body_layout->setSpacing(4);
-	body_layout->setColumnMinimumWidth(2, 24);
-	body_layout->setColumnStretch(1, 1);
+	body_layout->setColumnMinimumWidth(0, 11);
+	body_layout->setColumnMinimumWidth(3, 24);
+	body_layout->setColumnStretch(2, 1);
 	body_widget->setLayout(body_layout);
 	m_collapse_widget->content_widget(body_widget);
 

@@ -32,10 +32,13 @@ settings_group::~settings_group()
 
 void settings_group::add_group(settings_group* group)
 {
-	if (m_groups.contains(group->key()))
-		delete m_groups[group->key()];
+	if (group != nullptr)
+	{
+		if (m_groups.contains(group->key()))
+			delete m_groups[group->key()];
 
-	m_groups[group->key()] = group;
+		m_groups[group->key()] = group;
+	}
 }
 
 void settings_group::clear_groups()

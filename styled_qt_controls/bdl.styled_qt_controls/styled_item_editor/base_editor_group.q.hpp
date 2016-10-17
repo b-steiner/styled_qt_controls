@@ -31,7 +31,7 @@ BEGIN_BDL_SQTC
  *
  * Implement this interface if you want to add a custom widget to the item editor
  */
-class BDL_SQTC_EXPORT base_editor_group : public QObject
+class BDL_SQTC_EXPORT base_editor_group : public util::i_settings_provider
 {
 	Q_OBJECT;
 
@@ -47,6 +47,9 @@ public:
 	 * \returns A pointer to a new group widget
 	 */
 	virtual util::i_settings_provider* widget() = 0;
+
+	virtual util::settings_group* save_settings() { return nullptr; }
+	virtual void load_settings(util::settings_group* group) { }
 };
 
 END_BDL_SQTC

@@ -46,7 +46,7 @@ void base_item_editor_item::add_binding_button(QGridLayout* layout, int row)
 		m_binding_button->setFixedSize(20, 20);
 		m_binding_button->setObjectName("part_biei_connect_button");
 		QObject::connect(m_binding_button, SIGNAL(toggled(bool)), this, SLOT(binding_button_toggled(bool)));
-		layout->addWidget(m_binding_button, row, 2, Qt::AlignCenter);
+		layout->addWidget(m_binding_button, row, 3, Qt::AlignCenter);
 
 		children().push_back(m_binding_button);
 	}
@@ -84,10 +84,10 @@ int string_item_editor_item::widgets(QGridLayout* layout, int row)
 	children().clear();
 
 	auto lbl = new styled_label(m_title);
-	layout->addWidget(lbl, row, 0);
+	layout->addWidget(lbl, row, 1);
 	m_edit = new QLineEdit(m_value);
 	QObject::connect(m_edit, SIGNAL(textEdited(const QString&)), this, SLOT(textEdited(const QString&)));
-	layout->addWidget(m_edit, row, 1);
+	layout->addWidget(m_edit, row, 2);
 	add_binding_button(layout, row);
 
 	children().push_back(lbl);
@@ -138,8 +138,8 @@ int float_item_editor_item::widgets(QGridLayout* layout, int row)
 	QObject::connect(m_edit, SIGNAL(textEdited(const QString&)), this, SLOT(edit_textEdited(const QString&)));
 
 	auto lbl = new QLabel(m_title);
-	layout->addWidget(lbl, row, 0);
-	layout->addWidget(m_edit, row, 1);
+	layout->addWidget(lbl, row, 1);
+	layout->addWidget(m_edit, row, 2);
 	this->add_binding_button(layout, row);
 	
 	children().push_back(lbl);
@@ -215,8 +215,8 @@ int vector3_item_editor_item::widgets(QGridLayout* layout, int row)
 	vec_layout->setColumnStretch(3, 1);
 	vec_layout->setColumnStretch(5, 1);
 
-	layout->addWidget(new QLabel(m_title), row, 0, 1, 3);
-	layout->addLayout(vec_layout, row + 1, 0, 1, 2);
+	layout->addWidget(new QLabel(m_title), row, 1, 1, 3);
+	layout->addLayout(vec_layout, row + 1, 1, 1, 2);
 	this->add_binding_button(layout, row + 1);
 
 	children().push_back(m_x_edit);
@@ -279,7 +279,7 @@ int color_item_editor_item::widgets(QGridLayout* layout, int row)
 	QObject::connect(m_picker, SIGNAL(color_changed(const QColor&)), this, SLOT(color_changed(const QColor&)));
 	QObject::connect(m_picker, SIGNAL(binding_changed(bool)), this, SLOT(binding_button_toggled(bool)));
 
-	layout->addWidget(m_picker, row, 0, 1, 3);
+	layout->addWidget(m_picker, row, 1, 1, 3);
 
 	children().push_back(m_picker);
 	visible(visible());
@@ -340,7 +340,7 @@ int enum_item_editor_item::widgets(QGridLayout * layout, int row)
 
 	m_group->button(m_value)->setChecked(true);
 
-	layout->addLayout(grp_layout, row, 0, 1, 2);
+	layout->addLayout(grp_layout, row, 1, 1, 2);
 	QObject::connect(m_group, SIGNAL(buttonToggled(int, bool)), this, SLOT(group_buttonToggled(int, bool)));
 
 	visible(visible());

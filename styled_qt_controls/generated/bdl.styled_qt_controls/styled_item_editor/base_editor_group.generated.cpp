@@ -62,7 +62,7 @@ void bdl::styled_qt_controls::base_editor_group::qt_static_metacall(QObject *_o,
 }
 
 const QMetaObject bdl::styled_qt_controls::base_editor_group::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__base_editor_group.data,
+    { &util::i_settings_provider::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__base_editor_group.data,
       qt_meta_data_bdl__styled_qt_controls__base_editor_group,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
@@ -77,12 +77,12 @@ void *bdl::styled_qt_controls::base_editor_group::qt_metacast(const char *_clnam
     if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__base_editor_group.stringdata0))
         return static_cast<void*>(const_cast< base_editor_group*>(this));
-    return QObject::qt_metacast(_clname);
+    return util::i_settings_provider::qt_metacast(_clname);
 }
 
 int bdl::styled_qt_controls::base_editor_group::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QObject::qt_metacall(_c, _id, _a);
+    _id = util::i_settings_provider::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     return _id;

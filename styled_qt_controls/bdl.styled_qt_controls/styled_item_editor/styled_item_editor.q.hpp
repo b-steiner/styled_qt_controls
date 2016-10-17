@@ -22,6 +22,7 @@
 #include "../styled_qt_controls.hpp"
 #include "base_editor_group.q.hpp"
 #include "../styled_controls/vertical_scroll_area.q.hpp"
+#include "../util/settings/i_settings_provider.q.hpp"
 
 BEGIN_BDL_SQTC
 
@@ -38,6 +39,8 @@ class BDL_SQTC_EXPORT styled_item_editor : public vertical_scroll_area
 	PROPERTY0(QList<base_editor_group*>, groups);
 	PROPERTY0(QGridLayout*, layout);
 	PROPERTY0(bool, editing);
+
+	PROPERTY0(util::settings_group*, settings);
 
 public:
 	/*! \brief Initializes a new instance of the styled_item_editor class
@@ -73,6 +76,9 @@ public:
 	/*! \brief Ends an editing operation and performs the visual update for all changes in this operation.mo
 	*/
 	void end_edit();
+
+	void save_settings();
+	void restore_settings();
 
 private:
 	void groups_changed();
