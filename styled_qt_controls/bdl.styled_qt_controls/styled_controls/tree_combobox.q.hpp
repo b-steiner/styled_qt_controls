@@ -34,7 +34,7 @@ BEGIN_BDL_SQTC
 		Q_OBJECT;
 
 		//! Stores the selected index
-		PROPERTY2(QModelIndex, selected_index, GET_CONST_REF_PT, SET_PT);
+		PROPERTY1(QModelIndex, selected_index, GET_CONST_REF_PT);
 		//! Stores the tree_view
 		PROPERTY1(styled_tree_view*, tree_view, protected: GET);
 
@@ -75,6 +75,8 @@ BEGIN_BDL_SQTC
 		void setExpanded(const QModelIndex& index, bool expand);
 
 	protected:
+		virtual void selected_index(const QModelIndex& index);
+
 		//! See QFrame
 		virtual void paintEvent(QPaintEvent *pe);
 		//! See QFrame
