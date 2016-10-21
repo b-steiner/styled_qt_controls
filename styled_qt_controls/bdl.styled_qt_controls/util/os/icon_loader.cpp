@@ -20,6 +20,7 @@
 #include <bdl.styled_qt_controls\styled_qt_controls.hpp>
 #include "icon_loader.hpp"
 
+#include <unordered_map>
 #include <QtWinExtras\QtWinExtras>
 
 #include <Windows.h>
@@ -31,7 +32,7 @@
 
 using namespace bdl::styled_qt_controls::util;
 
-QIcon icon_loader::load_fileicon(const QFileInfo& info)
+QIcon icon_loader::load_fileicon(const QFileInfo& info, QList<icon_size_type> sizes)
 {
 	QIcon icon;
 
@@ -44,11 +45,12 @@ QIcon icon_loader::load_fileicon(const QFileInfo& info)
 
 	HIMAGELIST* imageList;
 
-	int iconSizes[] = { SHIL_SMALL, SHIL_LARGE, SHIL_EXTRALARGE, SHIL_JUMBO };
+	std::unordered_map<icon_size_type, int> iconSizes = { { icon_size_type::size16, SHIL_SMALL }, { icon_size_type::size32, SHIL_LARGE },
+	{ icon_size_type::size48, SHIL_EXTRALARGE},{ icon_size_type::size128, SHIL_JUMBO } };
 
-	for (int iconSize : iconSizes)
+	for (auto iconSize : sizes)
 	{
-		HRESULT hResult = SHGetImageList(iconSize, IID_IImageList, (void**)&imageList);
+		HRESULT hResult = SHGetImageList(iconSizes[iconSize], IID_IImageList, (void**)&imageList);
 
 		if (hResult == S_OK)
 		{

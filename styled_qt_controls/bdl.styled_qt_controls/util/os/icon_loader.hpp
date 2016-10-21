@@ -26,6 +26,7 @@ BEGIN_BDL_SQTC
 namespace util
 {
 	enum class default_icon_type { error, warning, info, question };
+	enum class icon_size_type { size16, size32, size48, size128 };
 
 	/*! \brief Loads file icons from the operating system
 		*
@@ -41,7 +42,7 @@ namespace util
 			* \param info QFileInfo of the file
 			* \returns The loaded icon
 			*/
-		static QIcon load_fileicon(const QFileInfo& info);
+		static QIcon load_fileicon(const QFileInfo& info, QList<icon_size_type> sizes = { icon_size_type::size16, icon_size_type::size32, icon_size_type::size48, icon_size_type::size128 });
 
 		/*! \brief Converts a qt icon into a win32 icon
 		 *
