@@ -103,7 +103,7 @@
 	inline type& operator&= (type& a, const type& b) { a = a & b; return a; } \
 	inline bool flag_contains(type flags, type flag) { return !(static_cast<int>(flags & flag) == 0); }
 
-#define ISQTYPE(INSTANCE, TYPE) (INSTANCE->inherits(TYPE::staticMetaObject.className()))
+#define ISQTYPE(INSTANCE, TYPE) ((INSTANCE)->inherits(TYPE::staticMetaObject.className()))
 
 #include "util\properties.hpp"
 #include "util\property_extension.hpp"

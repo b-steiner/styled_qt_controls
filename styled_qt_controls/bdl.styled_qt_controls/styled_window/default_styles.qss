@@ -229,3 +229,10 @@ QSlider::handle
 	image: url(:/images/slider_handle.png);
 	margin: 0px -4px -7px -4px;
 }
+
+QToolTip
+{
+	background: solid @normal;
+	color: @font;
+	border: 1px solid @border;
+}
