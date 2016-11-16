@@ -45,7 +45,7 @@ void numeric_line_edit::value(double val)
 {
 	int p = pow(10, m_visible_decimal_places);
 
-	if (abs(value() - val) > (1.0 / (double)p))
+	//if (abs(value() - val) >= (0.5 / (double)p))
 	{
 		double v = min(max(val, m_minimum), m_maximum);
 		this->setText(QString::number(round(v * p) / p));
@@ -99,19 +99,17 @@ void numeric_line_edit::mouseMoveEvent(QMouseEvent* event)
 		double change = 0.0;
 		
 		if (m_slow_mode && m_small_tick >= 0.0)
-			change = m_drag_reference_value + x_diff * m_small_tick;
+			change = x_diff * m_small_tick;
 		else if (m_slow_mode)
-			change = m_drag_reference_value + x_diff * (m_tick / 10.0);
+			change = x_diff * (m_tick / 10.0);
 		else
-			change = m_drag_reference_value + x_diff * m_tick;
+			change = x_diff * m_tick;
 
-		value(change);
+		value(m_drag_reference_value + change);
+
 		emit this->textEdited(this->text());
 		emit this->editingFinished();
 		this->selectAll();
-
-		m_drag_reference_value = value();
-		m_mouse_reference_point = event->pos();
 	}
 }
 
@@ -123,7 +121,11 @@ void numeric_line_edit::mouseReleaseEvent(QMouseEvent* event)
 void numeric_line_edit::keyPressEvent(QKeyEvent * event)
 {
 	if (event->key() == Qt::Key_Shift)
+	{
 		m_slow_mode = true;
+		m_drag_reference_value = value();
+		m_mouse_reference_point = this->mapFromGlobal(QCursor::pos());
+	}
 
 	QLineEdit::keyPressEvent(event);
 }
@@ -131,7 +133,11 @@ void numeric_line_edit::keyPressEvent(QKeyEvent * event)
 void numeric_line_edit::keyReleaseEvent(QKeyEvent * event)
 {
 	if (event->key() == Qt::Key_Shift)
+	{
 		m_slow_mode = false;
+		m_drag_reference_value = value();
+		m_mouse_reference_point = this->mapFromGlobal(QCursor::pos());
+	}
 
 	QLineEdit::keyReleaseEvent(event);
 }
