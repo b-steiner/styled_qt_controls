@@ -264,7 +264,7 @@ void vector3_item_editor_item::z_textEdited(const QString& text)
 //Color
 
 color_item_editor_item::color_item_editor_item(const QString& title, QColor initial_value, std::function<void(QColor)> value_changed_func,
-					   /*bool show_binding_button,*/ bool is_bound, std::function<void(bool)> binding_changed_func)
+					    bool is_bound, std::function<void(bool)> binding_changed_func)
 	: base_item_editor_item(false, is_bound, binding_changed_func),
 	m_title(title), m_value(initial_value), m_value_changed_func(value_changed_func), m_picker(nullptr)
 { }
@@ -276,6 +276,7 @@ int color_item_editor_item::widgets(QGridLayout* layout, int row)
 
 	m_picker = new styled_color_picker(m_title);
 	m_picker->color(m_value);
+	m_picker->is_bound(m_is_bound);
 	QObject::connect(m_picker, SIGNAL(color_changed(const QColor&)), this, SLOT(color_changed(const QColor&)));
 	QObject::connect(m_picker, SIGNAL(binding_changed(bool)), this, SLOT(binding_button_toggled(bool)));
 
@@ -301,6 +302,13 @@ void color_item_editor_item::color_changed(const QColor& color)
 {
 	m_value = color;
 	m_value_changed_func(m_value);
+}
+void color_item_editor_item::set_binding(bool is_bound)
+{
+	if (m_picker != nullptr)
+	{
+		m_picker->is_bound(is_bound);
+	}
 }
 
 

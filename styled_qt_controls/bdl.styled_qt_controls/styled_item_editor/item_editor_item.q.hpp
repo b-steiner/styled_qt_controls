@@ -76,7 +76,7 @@ public:
 	 *
 	 * \param is_bound The new binding state
 	 */
-	void set_binding(bool is_bound);
+	virtual void set_binding(bool is_bound);
 
 private slots:
 	void binding_button_toggled(bool value);
@@ -322,6 +322,11 @@ public:
 	/*! \brief Called when the widget is deleted
 	*/
 	virtual void notify_widget_deleted();
+	/*! \brief Sets the binding state
+	 *
+	 * \param is_bound The new binding state
+	 */
+	virtual void set_binding(bool is_bound);
 
 private slots:
 	void color_changed(const QColor& color);
