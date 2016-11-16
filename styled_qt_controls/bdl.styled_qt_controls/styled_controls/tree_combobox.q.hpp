@@ -75,6 +75,10 @@ BEGIN_BDL_SQTC
 		void setExpanded(const QModelIndex& index, bool expand);
 
 	protected:
+		/*! \brief Selectes an index from the model
+		 *
+		 * \param index The index that should be selected
+		 */
 		virtual void selected_index(const QModelIndex& index);
 
 		//! See QFrame

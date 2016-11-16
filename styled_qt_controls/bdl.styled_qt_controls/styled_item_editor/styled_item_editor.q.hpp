@@ -77,7 +77,13 @@ public:
 	*/
 	void end_edit();
 
+	/*! \brief Saves the internal state of the displayed groups
+	 *
+	 * These settings can be restored by the restore_settings method.
+	 */
 	void save_settings();
+	/*! \brief Restores the internal state of the displayed groups previousely stored by save_settings
+	*/
 	void restore_settings();
 
 private:

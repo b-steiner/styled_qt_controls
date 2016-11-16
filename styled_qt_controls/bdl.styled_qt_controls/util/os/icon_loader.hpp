@@ -40,6 +40,7 @@ namespace util
 		/*! \brief Loads an icon for a specific file
 			*
 			* \param info QFileInfo of the file
+			* \param sizes A list of sizes that should be loaded into the icon
 			* \returns The loaded icon
 			*/
 		static QIcon load_fileicon(const QFileInfo& info, QList<icon_size_type> sizes = { icon_size_type::size16, icon_size_type::size32, icon_size_type::size48, icon_size_type::size128 });
