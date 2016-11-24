@@ -606,7 +606,7 @@ bool styled_window::eventFilter(QObject *obj, QEvent *ev)
 			auto s = m_part_window_widget->sizeHint();
 			if (s.isValid())
 			{
-				qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
+				//qDebug() << "Adjust: " << m_part_window_widget->sizeHint();
 				resize(s);
 			}
 		}

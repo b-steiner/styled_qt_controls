@@ -71,3 +71,14 @@ void styled_widget::leaveEvent(QEvent * event)
 	style()->unpolish(this);
 	style()->polish(this);
 }
+
+void styled_widget::dragEnterEvent(QDragEnterEvent * event)
+{
+	emit dragEnter(event);
+	QWidget::dragEnterEvent(event);
+}
+void styled_widget::dropEvent(QDropEvent * event)
+{
+	emit drop(event);
+	QWidget::dropEvent(event);
+}

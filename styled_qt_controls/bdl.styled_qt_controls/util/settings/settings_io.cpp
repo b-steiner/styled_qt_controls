@@ -49,7 +49,7 @@ void settings_io::save(QString path, settings_group* group)
 	QDir dir(path + "/..");
 	bool done = dir.mkpath(dir.absolutePath());
 
-	qDebug() << "Writing settings to " << path.toUtf8().data();
+	//qDebug() << "Writing settings to " << path.toUtf8().data();
 
 	QFile settingFile(path);
 	if (!settingFile.open(QIODevice::WriteOnly))
