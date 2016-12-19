@@ -27,6 +27,7 @@ using namespace bdl::sample_application;
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int iCmdShow)
 {
 	QApplication app(__argc, __argv);
+	QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
 	app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
 
 	auto* window = new main_window();

@@ -236,3 +236,37 @@ QToolTip
 	color: @font;
 	border: 1px solid @border;
 }
+
+QComboBox
+{
+	color: @font;
+	border: 1px solid @border;
+	background: solid @dark;
+	min-height: 18px;
+}
+
+QComboBox::drop-down
+{
+	width: 20px;
+	background: solid @normal;
+	border: none;
+	border-left: 1px solid @border;
+}
+QComboBox::drop-down:hover:!on
+{
+	background: solid @light;
+}
+QComboBox::drop-down:on
+{
+	background: solid @dark;
+}
+
+QComboBox::down-arrow
+{
+	image: url(:/images/expand.png);
+}
+
+QComboBox QAbstractItemView
+{
+	selection-background-color: @selection;
+}

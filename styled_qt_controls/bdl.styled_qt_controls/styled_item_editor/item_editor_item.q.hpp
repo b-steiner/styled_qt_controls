@@ -358,7 +358,7 @@ public:
 	* \param value_changed_func A function that is called when the value changes
 	* \param items A list of string-value pairs that represent the available options
 	*/
-	enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, items_list_type items);
+	enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, const items_list_type& items);
 	/*! \brief Releases all data associated with an instance of the enum_item_editor_item class
 	*/
 	virtual ~enum_item_editor_item();
@@ -378,4 +378,55 @@ public:
 private slots:
 	void group_buttonToggled(int id, bool checked);
 };
+
+
+/*! \brief A editor item for drop-down selection
+*
+* \author bdl
+*
+* Displays a drop-down selection menu
+*/
+class BDL_SQTC_EXPORT combobox_editor_item : public base_item_editor_item
+{
+	Q_OBJECT;
+
+	PROPERTY0(std::function<void(int)>, value_changed_func);
+	//! Stores the currently selected value of the item
+	PROPERTY2(int, value, GET_CONST_REF, SET_PT);
+	PROPERTY0(QComboBox*, box);
+	//! Stores the title of the item
+	PROPERTY1(QString, title, GET_CONST_REF);
+
+	typedef QList<QPair<int, QString>> items_list_type;
+	PROPERTY0(items_list_type, items);
+
+public:
+	/*! \brief Initializes a new instance of the combobox_editor_item class
+	*
+	* \param initial_value The selected value when the widget gets displayed
+	* \param value_changed_func A function that is called when the value changes
+	* \param items A list of string-value pairs that represent the available options
+	*/
+	combobox_editor_item(const QString& title, int initial_value, std::function<void(int)> value_changed_func, const items_list_type& items,
+						 bool show_binding_button = false, bool is_bound = false, std::function<void(bool)> binding_changed_func = [](bool) {});
+	/*! \brief Releases all data associated with an instance of the enum_item_editor_item class
+	*/
+	virtual ~combobox_editor_item();
+
+	/*! \brief Creates the widgets for this editor item
+	*
+	* \param layout The layout to which the widgets should be added
+	* \param row the row in which the items should be added
+	*
+	* \returns The number of rows this item consumes
+	*/
+	virtual int widgets(QGridLayout* layout, int row);
+	/*! \brief Called when the widget is deleted
+	*/
+	virtual void notify_widget_deleted();
+
+private slots:
+	void box_activated(int idx);
+};
+
 END_BDL_SQTC

@@ -27,7 +27,7 @@
 using namespace bdl::styled_qt_controls;
 
 base_item_editor_item::base_item_editor_item(bool show_binding_button, bool is_bound, std::function<void(bool)> binding_changed_func)
-	: m_show_binding_button(show_binding_button), m_binding_changed_func(binding_changed_func), m_is_bound(is_bound), m_binding_button(nullptr)
+	: m_show_binding_button(show_binding_button), m_binding_changed_func(binding_changed_func), m_is_bound(is_bound), m_binding_button(nullptr), m_visible(true)
 { }
 base_item_editor_item::~base_item_editor_item() { }
 
@@ -314,7 +314,7 @@ void color_item_editor_item::set_binding(bool is_bound)
 
 //Enum
 
-enum_item_editor_item::enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, items_list_type items)
+enum_item_editor_item::enum_item_editor_item(int initial_value, std::function<void(int)> value_changed_func, const items_list_type& items)
 	: base_item_editor_item(false, false, [](bool) {}), m_value(initial_value), m_items(items), m_group(nullptr), m_value_changed_func(value_changed_func)
 { }
 enum_item_editor_item::~enum_item_editor_item() { }
@@ -361,6 +361,8 @@ void enum_item_editor_item::notify_widget_deleted()
 }
 void enum_item_editor_item::value(const int& value)
 {
+	m_value = value;
+
 	if (m_group != nullptr)
 		m_group->button(value)->setChecked(true);
 }
@@ -372,4 +374,96 @@ void enum_item_editor_item::group_buttonToggled(int id, bool checked)
 		m_value = id;
 		m_value_changed_func(m_value);
 	}
+}
+
+//Combobox
+
+combobox_editor_item::combobox_editor_item(const QString& title, int initial_value, std::function<void(int)> value_changed_func, const items_list_type& items,
+										   bool show_binding_button, bool is_bound, std::function<void(bool)> binding_changed_func)
+	: base_item_editor_item(show_binding_button, is_bound, binding_changed_func), m_title(title), m_value(initial_value), m_items(items),
+	  m_box(nullptr), m_value_changed_func(value_changed_func)
+{ }
+combobox_editor_item::~combobox_editor_item() { }
+
+int combobox_editor_item::widgets(QGridLayout * layout, int row)
+{
+	children().clear();
+
+	m_box = new QComboBox();
+	//m_box->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+	for (auto& i : m_items)
+	{
+		m_box->addItem(i.second, QVariant(i.first));
+	}
+
+	auto lbl = new QLabel(m_title);
+	layout->addWidget(lbl, row, 1);
+	layout->addWidget(m_box, row, 2);
+	children().push_back(lbl);
+	children().push_back(m_box);
+
+	this->add_binding_button(layout, row);
+
+	QObject::connect(m_box, SIGNAL(activated(int)), this, SLOT(box_activated(int)));
+	visible(visible());
+	value(m_value);
+
+	return 1;
+
+	/*m_group = new QButtonGroup();
+	QHBoxLayout* grp_layout = new QHBoxLayout();
+	grp_layout->setContentsMargins(0, 0, 0, 0);
+	grp_layout->setSpacing(0);
+
+	bool first = true;
+
+	for (auto& i : m_items)
+	{
+		auto btn = new styled_pushbutton(i.second);
+		btn->setCheckable(true);
+		m_group->addButton(btn, i.first);
+		grp_layout->addWidget(btn);
+
+		if (first)
+			btn->setObjectName("part_eiei_firstbutton");
+		else
+			btn->setObjectName("part_eiei_notfirstbutton");
+
+		first = false;
+		children().push_back(btn);
+	}
+
+	m_group->button(m_value)->setChecked(true);
+
+	layout->addLayout(grp_layout, row, 1, 1, 2);
+	QObject::connect(m_group, SIGNAL(buttonToggled(int, bool)), this, SLOT(group_buttonToggled(int, bool)));
+
+	visible(visible());
+
+	return 1;*/
+}
+void combobox_editor_item::notify_widget_deleted()
+{
+	m_box = nullptr;
+}
+void combobox_editor_item::value(const int& value)
+{
+	m_value = value;
+
+	if (m_box != nullptr)
+	{
+		int idx = 0;
+		while (m_items[idx].first != value && idx < m_items.size())
+			idx++;
+
+		if (idx < m_items.size())
+			m_box->setCurrentIndex(idx);
+	}
+}
+
+void combobox_editor_item::box_activated(int idx)
+{
+	m_value = m_items[idx].first;
+	m_value_changed_func(m_value);
 }

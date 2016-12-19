@@ -36,7 +36,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	dw1->add_item(new styled_dock_item("Simple Controls", create_simple_control_widget()));
 	auto cw2_item = new styled_dock_item("More complex controls", create_combined_control_widget());
 	dw1->add_item(cw2_item);
-	dw1->select(cw2_item);
+	//dw1->select(cw2_item);
 
 	main_splitter->addWidget(dw1);
 	main_splitter->addWidget(dw2);
@@ -197,6 +197,16 @@ QWidget* main_window::create_simple_control_widget()
 	scw_layout->addWidget(m_scw, row, 1);
 	row++;
 
+	l = new styled_label("ComboBox");
+	auto cbx = new QComboBox();
+	cbx->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	cbx->addItem("One");
+	cbx->addItem("Two");
+	cbx->addItem("Three");
+	scw_layout->addWidget(l, row, 0);
+	scw_layout->addWidget(cbx, row, 1);
+	row++;
+
 	m_scw->title_widget(new QLabel(" Open to change state"));
 	QWidget* cw_content_widget = new QWidget();
 	cw_content_widget->setObjectName("simple_cw_content");
@@ -302,6 +312,8 @@ QWidget* main_window::create_item_editor_widget()
 	group2->add_item(new vector3_item_editor_item("Vector3", 1, 2, 3, [](float, float, float) { qDebug() << "Vector3 changed"; }));
 	group2->add_item(new color_item_editor_item("Color", QColor::fromRgb(255, 128, 0), [](QColor) { qDebug() << "Color changed"; }, true, [](bool) { qDebug() << "Binding changed"; }));
 	group2->add_item(new enum_item_editor_item(1, [](int) { qDebug() << "Enum changed"; }, { {0, "First"}, {1, "Second"}, {2, "Third"} }));
+	group2->add_item(new combobox_editor_item("Combobox", 2, [](int value) { qDebug() << "Combobox selection = " << value; }, { {1, "One"}, { 2, "Two"}, {3, "Three"} },
+											  true, false, [](bool) { qDebug() << "Binding changed"; }));
 	editor->add_group(group2);
 
 	auto group3 = new item_editor_group("Group 3");
