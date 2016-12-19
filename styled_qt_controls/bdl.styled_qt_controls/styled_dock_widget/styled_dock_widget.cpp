@@ -978,8 +978,8 @@ settings_group* styled_dock_widget::save_settings()
 			item_group->values()["idx"] = QString::number(idx);
 			sgroup->add_group(item_group);
 		}
-		else
-			qDebug() << "styled_dock_widget: Item not derived from i_settings_provider, no settings saved";
+		//else
+		//	qDebug() << "styled_dock_widget: Item not derived from i_settings_provider, no settings saved";
 
 		idx++;
 	}

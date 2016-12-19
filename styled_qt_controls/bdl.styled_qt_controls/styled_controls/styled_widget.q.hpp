@@ -60,6 +60,10 @@ signals:
 	void keyPressed(QKeyEvent* event);
 	//! See QWidget
 	void mouseDoubleClick(QMouseEvent* event);
+	//! See QWidget
+	void dragEnter(QDragEnterEvent* event);
+	//! See QWidget
+	void drop(QDropEvent * event);
 
 protected:
 	//! See QWidget
@@ -77,6 +81,11 @@ protected:
 	virtual void enterEvent(QEvent * event);
 	//! See QWidget
 	virtual void leaveEvent(QEvent * event);
+
+	//! See QWidget
+	virtual void dragEnterEvent(QDragEnterEvent * event);
+	//! See QWidget
+	virtual void dropEvent(QDropEvent * event);
 };
 
 END_BDL_SQTC
