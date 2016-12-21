@@ -454,7 +454,7 @@ void combobox_editor_item::value(const int& value)
 	if (m_box != nullptr)
 	{
 		int idx = 0;
-		while (m_items[idx].first != value && idx < m_items.size())
+		while (idx < m_items.size() && m_items[idx].first != value)
 			idx++;
 
 		if (idx < m_items.size())
