@@ -25,9 +25,9 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
-item_editor_group::item_editor_group(const QString& title, bool show_enable_button, bool enabled_state, std::function<void(bool)> enabled_changed_func, QMenu* additional_options)
+item_editor_group::item_editor_group(const QString& title, const QString& storage_key, bool show_enable_button, bool enabled_state, std::function<void(bool)> enabled_changed_func, QMenu* additional_options)
 	: m_title(title), m_show_enable_button(show_enable_button), m_is_expanded(false), m_widget(nullptr), m_additional_options(additional_options),
-	m_enabled_changed_func(enabled_changed_func), m_enabled_state(enabled_state), m_enabled_box(nullptr)
+	m_enabled_changed_func(enabled_changed_func), m_enabled_state(enabled_state), m_enabled_box(nullptr), m_storage_key(storage_key)
 { }
 item_editor_group::~item_editor_group()
 {
@@ -181,4 +181,31 @@ void item_editor_group::enabled_state(const bool& value)
 void item_editor_group::additional_options(QMenu* const & value)
 {
 	m_additional_options = value;
+}
+
+settings_group* item_editor_group::save_settings()
+{
+	if (m_storage_key != "")
+	{
+		auto group = new settings_group(m_storage_key);
+
+		if (m_collapse_widget != nullptr)
+			group->values()["is_collapsed"] = m_collapse_widget->is_collapsed() ? "True" : "False";
+		return group;
+	}
+
+	return nullptr;
+}
+void item_editor_group::load_settings(settings_group* group)
+{
+	if (m_storage_key != "")
+	{
+		auto grp = group->groups().find(m_storage_key);
+		if (grp != group->groups().end())
+		{
+			//Restore values
+			if (m_collapse_widget != nullptr && grp.value()->values().contains("is_collapsed"))
+				m_collapse_widget->is_collapsed(grp.value()->values()["is_collapsed"] == "True");
+		}
+	}
 }

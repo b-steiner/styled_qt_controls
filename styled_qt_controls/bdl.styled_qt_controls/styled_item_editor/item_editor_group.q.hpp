@@ -51,6 +51,8 @@ class BDL_SQTC_EXPORT item_editor_group : public base_editor_group
 	//! Stores a function that is called when the enabled checkbox is toggled
 	PROPERTY1(std::function<void(bool)>, enabled_changed_func, SET);
 
+	PROPERTY2(QString, storage_key, GET_CONST_REF, SET);
+
 public:
 	/*! \brief Initializes a new instance of the item_editor_group class
 	 *
@@ -60,7 +62,7 @@ public:
 	 * \param enabled_changed_func A function that gets called when the enabled button is toggled
 	 * \param additional_options A menu containing additional option actions
 	 */
-	item_editor_group(const QString& title, bool show_enable_button = false, bool enabled_state = false, std::function<void(bool)> enabled_changed_func = [](bool) {},
+	item_editor_group(const QString& title, const QString& storage_key = "", bool show_enable_button = false, bool enabled_state = false, std::function<void(bool)> enabled_changed_func = [](bool) {},
 					  QMenu* additional_options = nullptr);
 	/*! \brief Releases all data associated with an instance of the item_editor_group class
 	 */
@@ -89,6 +91,9 @@ public:
 	* \param idx Index of the item
 	*/
 	void remove_item(int idx);
+
+	virtual util::settings_group* save_settings();
+	virtual void load_settings(util::settings_group* group);
 
 protected:
 	/*! \brief Returns the top-level widget for this groups
