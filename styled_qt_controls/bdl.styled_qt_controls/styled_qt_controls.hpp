@@ -38,7 +38,7 @@
 #include <QtCore\QTimer>
 
 #include <QtGui\QColor>
-#include <QtGui\5.7.0\QtGui\qpa\qplatformnativeinterface.h>
+#include <QtGui\5.8.0\QtGui\qpa\qplatformnativeinterface.h>
 #include <QtGui\QPainter>
 #include <QtGui\QPaintEvent>
 #include <QtGui\QDrag>
