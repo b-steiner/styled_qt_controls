@@ -13,3 +13,6 @@ ipch
 /doc/doxygen_error.log
 /doc/styled_qt_controls
 temp
+*.db-wal
+*.db
+*.db-shm
