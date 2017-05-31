@@ -112,8 +112,8 @@ void styled_collapse_widget::content_widget(QWidget* const & widget)
 
 	if (m_content_widget != nullptr)
 	{
-		((QGridLayout*)this->layout())->addWidget(widget, 1, 0);
 		m_content_widget->setVisible(m_collapse_button->isChecked());
+		((QGridLayout*)this->layout())->addWidget(m_content_widget, 1, 0);
 	}
 }
 
