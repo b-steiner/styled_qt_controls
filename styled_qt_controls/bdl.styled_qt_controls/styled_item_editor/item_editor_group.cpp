@@ -40,7 +40,6 @@ i_settings_provider* item_editor_group::widget()
 	m_widget = top_level_widget();
 		
 	m_collapse_widget = new styled_collapse_widget();
-	m_collapse_widget->is_collapsed(true);
 
 	//Title
 	QWidget* title_widget = new QWidget();
