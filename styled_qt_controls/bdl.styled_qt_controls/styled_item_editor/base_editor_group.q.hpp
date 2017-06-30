@@ -48,7 +48,19 @@ public:
 	 */
 	virtual util::i_settings_provider* widget() = 0;
 
+	/*! \brief Saves the settings of this group
+	 *
+	 * \returns A settings group containing all the settings.
+	 *
+	 * Has to be implemented if a derived class wants to store settings
+	 */
 	virtual util::settings_group* save_settings() { return nullptr; }
+	/*! \brief Loads settings for this group
+	*
+	* \param group A settings group containing all the settings.
+	*
+	* Has to be implemented if a derived class wants to store settings
+	*/
 	virtual void load_settings(util::settings_group* group) { }
 };
 
