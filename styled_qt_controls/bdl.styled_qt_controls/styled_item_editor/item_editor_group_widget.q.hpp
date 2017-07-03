@@ -27,7 +27,7 @@ BEGIN_BDL_SQTC
  *
  * \author bdl
  */
-class item_editor_group_widget : public util::i_settings_provider
+class BDL_SQTC_EXPORT item_editor_group_widget : public util::i_settings_provider
 {
 	Q_OBJECT;
 
