@@ -211,6 +211,11 @@ QPushButton:focus
 	outline-style: solid;
 	outline-color: @selection_border;
 }
+QPushButton::menu-indicator
+{
+	subcontrol-position: right center;
+	left: -3px;
+}
 
 
 QSlider
