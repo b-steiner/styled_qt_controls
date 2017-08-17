@@ -38,7 +38,7 @@
 #include <QtCore\QTimer>
 
 #include <QtGui\QColor>
-#include <QtGui\5.8.0\QtGui\qpa\qplatformnativeinterface.h>
+#include <QtGui\5.9.1\QtGui\qpa\qplatformnativeinterface.h>
 #include <QtGui\QPainter>
 #include <QtGui\QPaintEvent>
 #include <QtGui\QDrag>
@@ -69,13 +69,23 @@
 
 #include <QtXml\QDomDocument>
 
-#pragma comment(lib, "Qt5Core.lib")
-#pragma comment(lib, "Qt5Gui.lib")
-#pragma comment(lib, "Qt5Xml.lib")
-#pragma comment(lib, "Qt5Widgets.lib")
-#pragma comment(lib, "Qt5WinExtras.lib")
-#pragma comment(lib, "Shlwapi.lib")
-#pragma comment(lib, "Winmm.lib")
+#if _DEBUG
+	#pragma comment(lib, "Qt5Cored.lib")
+	#pragma comment(lib, "Qt5Guid.lib")
+	#pragma comment(lib, "Qt5Xmld.lib")
+	#pragma comment(lib, "Qt5Widgetsd.lib")
+	#pragma comment(lib, "Qt5WinExtrasd.lib")
+	#pragma comment(lib, "Shlwapi.lib")
+	#pragma comment(lib, "Winmm.lib")
+#else
+	#pragma comment(lib, "Qt5Core.lib")
+	#pragma comment(lib, "Qt5Gui.lib")
+	#pragma comment(lib, "Qt5Xml.lib")
+	#pragma comment(lib, "Qt5Widgets.lib")
+	#pragma comment(lib, "Qt5WinExtras.lib")
+	#pragma comment(lib, "Shlwapi.lib")
+	#pragma comment(lib, "Winmm.lib")
+#endif
 
 #ifndef BDL_SQTC_BUILD
 #	if _DEBUG
