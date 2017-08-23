@@ -185,7 +185,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 				{
 					if (wp.showCmd == SW_MAXIMIZE)
 					{
-						window->m_part_window_widget->setGeometry(8, 8, rect.right - 16, rect.bottom - 16);
+						window->m_part_window_widget->setGeometry(8+8, 8+31, rect.right - 16, rect.bottom - 16);
 
 						if (window->m_type == window_type::normal && flag_contains(window->flags(), window_flags::show_maximize))
 						{
@@ -199,7 +199,7 @@ LRESULT CALLBACK styled_window::wnd_prc(HWND hWnd, UINT message, WPARAM wParam, 
 					}
 					else
 					{
-						window->m_part_window_widget->setGeometry(0, 0, rect.right, rect.bottom);
+						window->m_part_window_widget->setGeometry(8, 31, rect.right, rect.bottom);
 
 						if (window->m_type == window_type::normal && flag_contains(window->flags(), window_flags::show_maximize))
 						{
