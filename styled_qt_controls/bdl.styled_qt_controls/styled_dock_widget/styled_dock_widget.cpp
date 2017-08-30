@@ -265,6 +265,8 @@ void styled_dock_widget::select(int idx)
 	if (idx != -1)
 		item = m_items[idx];
 
+	bool same_item_reselect = (item == m_selected_item);
+
 	if (m_selected_item != nullptr)
 	{
 		m_tabbar_widgets[m_selected_item]->selected(false);
@@ -289,7 +291,8 @@ void styled_dock_widget::select(int idx)
 			items_changed();
 		}
 
-		emit item->selected();
+		if (!same_item_reselect)
+			emit item->selected();
 	}
 
 	if (m_selected_item != nullptr)

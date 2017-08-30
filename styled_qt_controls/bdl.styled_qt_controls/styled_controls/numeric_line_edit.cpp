@@ -108,7 +108,7 @@ void numeric_line_edit::mouseMoveEvent(QMouseEvent* event)
 		value(m_drag_reference_value + change);
 
 		emit this->textEdited(this->text());
-		emit this->editingFinished();
+		//emit this->editingFinished();
 		this->selectAll();
 	}
 }
