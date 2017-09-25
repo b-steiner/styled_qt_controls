@@ -36,6 +36,9 @@ namespace util
 		PROPERTY0(bool, blender_save_in_progress);
 		PROPERTY0(QString, root_directory);
 
+		PROPERTY0(QSet<QString>, exclude_files);
+		PROPERTY0(QMutex, exclude_file_mutex);
+
 	public:
 		/*! \brief Initializes a new instance of the file_system_watcher class
 			*
@@ -45,6 +48,9 @@ namespace util
 		/*! \brief Releases all data associated with an instance of the file_system_watcher class
 			*/
 		virtual ~file_system_watcher();
+
+		void add_excluded_file(const QString& file);
+		void remove_excluded_file(const QString& file);
 
 	protected:
 		/*! Run method of this thread

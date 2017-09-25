@@ -25,6 +25,21 @@ using namespace bdl::styled_qt_controls::util;
 file_system_watcher::file_system_watcher(QString root_directory) : m_root_directory(root_directory), m_blender_save_in_progress(false) { }
 file_system_watcher::~file_system_watcher() { }
 
+void file_system_watcher::add_excluded_file(const QString & file)
+{
+	m_exclude_file_mutex.lock();
+	m_exclude_files.insert(file);
+	m_exclude_file_mutex.unlock();
+}
+
+void file_system_watcher::remove_excluded_file(const QString & file)
+{
+	m_exclude_file_mutex.lock();
+	m_exclude_files.remove(file);
+	m_exclude_file_mutex.unlock();
+	emit modified(file);
+}
+
 void file_system_watcher::run()
 {
 	wchar_t nameBuffer[256];
@@ -57,9 +72,12 @@ void file_system_watcher::run()
 			&lpBytesReturned,
 			NULL, NULL);
 
+		m_exclude_file_mutex.lock();
+
 		if (result == TRUE && lpBytesReturned > 0)
 		{
 			FILE_NOTIFY_INFORMATION* currentInfo = fileInfoBuffer;
+			
 
 			while (currentInfo != nullptr)
 			{
@@ -68,50 +86,53 @@ void file_system_watcher::run()
 				QFileInfo fullPathInfo(fullPath);
 				fullPath = fullPathInfo.absoluteFilePath();
 
-				switch (currentInfo->Action)
+				if (!m_exclude_files.contains(fullPath))
 				{
-				case FILE_ACTION_ADDED:
-					if (fullPathInfo.suffix() == "blend@") //Supress add when blender rename in progress
-						m_blender_save_in_progress = true;
-					else
-						emit added(fullPath);
-					break;
-				case FILE_ACTION_REMOVED:
-					if (!m_blender_save_in_progress)
-						emit deleted(fullPath);
-					break;
-				case FILE_ACTION_MODIFIED:
-				{
-					if (!m_blender_save_in_progress)
+					switch (currentInfo->Action)
 					{
-						//Only for files -> check what we have
-						wchar_t pathBuffer[512];
-						int length = fullPath.toWCharArray(pathBuffer);
-						pathBuffer[length] = '\0';
-						DWORD attributes = GetFileAttributes(pathBuffer);
-						if ((attributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
-						{
-							emit modified(fullPath);
-						}
-					}
-					break;
-				}
-				case FILE_ACTION_RENAMED_OLD_NAME:
-					oldRenamePath = fullPath;
-					break;
-				case FILE_ACTION_RENAMED_NEW_NAME:
-					if (!m_blender_save_in_progress)
-						emit renamed(oldRenamePath, fullPath);
-					else
+					case FILE_ACTION_ADDED:
+						if (fullPathInfo.suffix() == "blend@") //Supress add when blender rename in progress
+							m_blender_save_in_progress = true;
+						else
+							emit added(fullPath);
+						break;
+					case FILE_ACTION_REMOVED:
+						if (!m_blender_save_in_progress)
+							emit deleted(fullPath);
+						break;
+					case FILE_ACTION_MODIFIED:
 					{
-						QFileInfo old(oldRenamePath);
-						if (old.suffix() == "blend@" && fullPathInfo.suffix() == "blend")
+						if (!m_blender_save_in_progress)
 						{
-							m_blender_save_in_progress = false;
-							emit modified(fullPath);
+							//Only for files -> check what we have
+							wchar_t pathBuffer[512];
+							int length = fullPath.toWCharArray(pathBuffer);
+							pathBuffer[length] = '\0';
+							DWORD attributes = GetFileAttributes(pathBuffer);
+							if ((attributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
+							{
+								emit modified(fullPath);
+							}
 						}
+						break;
 					}
-					break;
+					case FILE_ACTION_RENAMED_OLD_NAME:
+						oldRenamePath = fullPath;
+						break;
+					case FILE_ACTION_RENAMED_NEW_NAME:
+						if (!m_blender_save_in_progress)
+							emit renamed(oldRenamePath, fullPath);
+						else
+						{
+							QFileInfo old(oldRenamePath);
+							if (old.suffix() == "blend@" && fullPathInfo.suffix() == "blend")
+							{
+								m_blender_save_in_progress = false;
+								emit modified(fullPath);
+							}
+						}
+						break;
+					}
 				}
 
 				if (currentInfo->NextEntryOffset != 0)
@@ -120,6 +141,8 @@ void file_system_watcher::run()
 					currentInfo = nullptr;
 			}
 		}
+
+		m_exclude_file_mutex.unlock();
 	}
 
 	delete[] fileInfoBuffer;

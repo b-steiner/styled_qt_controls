@@ -36,6 +36,7 @@
 #include <QtCore\QThread>
 #include <QtCore\QMimeData>
 #include <QtCore\QTimer>
+#include <QtCore\QMutex>
 
 #include <QtGui\QColor>
 #include <QtGui\5.9.1\QtGui\qpa\qplatformnativeinterface.h>
