@@ -890,9 +890,9 @@ void styled_dock_widget::application_focus_changed(QWidget* old_widget, QWidget*
 		qDebug() << "Focus: none";*/
 }
 
-void styled_dock_widget::item_title_changed(bdl::styled_qt_controls::styled_dock_item*)
+void styled_dock_widget::item_title_changed(bdl::styled_qt_controls::styled_dock_item* item)
 {
-	items_changed();
+	m_tabbar_widgets[item]->findChild<styled_label*>("part_sdw_tabtext")->setText(item->title());
 }
 
 
