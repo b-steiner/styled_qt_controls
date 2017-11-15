@@ -22,15 +22,13 @@
 
 #include "../util/os/icon_loader.hpp"
 #include "../util/style_loader.hpp"
+#include "styled_window_style.hpp"
 #include <WinUser.h>
 
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
 
-//DEBUG
-#include <QtWidgets\qmainwindow.h>
-//DEBUG
 
 QHash<HWND, styled_window*> styled_window::m_all_windows;
 QHash<QWidget*, styled_window*> styled_window::m_widget_to_window;
@@ -255,6 +253,7 @@ void styled_window::initialize_widget()
 	loader.append_file(":/styled_controls/styled_collapse_widget.qss");
 	loader.append_file(":/styled_controls/clearable_line_edit.qss");
 	m_part_window_widget->setStyleSheet(loader.style_string());
+	m_part_window_widget->setStyle(new styled_window_style());
 
 	SetWindowLong((HWND)m_part_window_widget->winId(), GWL_STYLE, WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
 	QWindow* thisWindow = m_part_window_widget->windowHandle();

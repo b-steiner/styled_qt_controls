@@ -99,12 +99,14 @@ QToolButton:pressed
 	border-bottom: none;
 }
 
+
 QToolButton::menu-indicator
 {
     subcontrol-position: center right;
 	image: url(:/images/expand.png);
 	padding-right: 2px;
 }
+
 
 QToolButton::menu-button
 {
@@ -123,4 +125,10 @@ QToolButton::menu-button:pressed
 {
 	border: none;
 	border-left: 1px solid @border;
+}
+
+QToolBarExtension {
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
 }

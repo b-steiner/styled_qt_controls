@@ -70,6 +70,7 @@
 #include <QtWidgets\QToolBar>
 #include <QtWidgets\QToolButton>
 #include <QtWidgets\QMainWindow>
+#include <QtWidgets\QProxyStyle>
 
 #include <QtXml\QDomDocument>
 

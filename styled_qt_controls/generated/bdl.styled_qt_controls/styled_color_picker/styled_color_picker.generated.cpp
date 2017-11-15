@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'styled_color_picker.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'styled_color_picker.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -138,7 +138,7 @@ void bdl::styled_qt_controls::styled_color_picker::qt_static_metacall(QObject *_
         case 9: _t->recent_list_double_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 10: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         case 11: { bool _r = _t->eventFilter((*reinterpret_cast< QObject*(*)>(_a[1])),(*reinterpret_cast< QEvent*(*)>(_a[2])));
-            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -163,7 +163,7 @@ void bdl::styled_qt_controls::styled_color_picker::qt_static_metacall(QObject *_
 
 const QMetaObject bdl::styled_qt_controls::styled_color_picker::staticMetaObject = {
     { &styled_collapse_widget::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_color_picker.data,
-      qt_meta_data_bdl__styled_qt_controls__styled_color_picker,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__styled_color_picker,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -174,7 +174,7 @@ const QMetaObject *bdl::styled_qt_controls::styled_color_picker::metaObject() co
 
 void *bdl::styled_qt_controls::styled_color_picker::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__styled_color_picker.stringdata0))
         return static_cast<void*>(const_cast< styled_color_picker*>(this));
     return styled_collapse_widget::qt_metacast(_clname);
@@ -200,14 +200,14 @@ int bdl::styled_qt_controls::styled_color_picker::qt_metacall(QMetaObject::Call 
 // SIGNAL 0
 void bdl::styled_qt_controls::styled_color_picker::color_changed(const QColor & _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void bdl::styled_qt_controls::styled_color_picker::binding_changed(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

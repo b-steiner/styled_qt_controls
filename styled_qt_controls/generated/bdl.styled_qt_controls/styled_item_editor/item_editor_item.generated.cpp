@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'item_editor_item.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'item_editor_item.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -79,7 +79,7 @@ void bdl::styled_qt_controls::base_item_editor_item::qt_static_metacall(QObject 
 
 const QMetaObject bdl::styled_qt_controls::base_item_editor_item::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__base_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__base_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__base_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -90,7 +90,7 @@ const QMetaObject *bdl::styled_qt_controls::base_item_editor_item::metaObject() 
 
 void *bdl::styled_qt_controls::base_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__base_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< base_item_editor_item*>(this));
     return QObject::qt_metacast(_clname);
@@ -170,7 +170,7 @@ void bdl::styled_qt_controls::string_item_editor_item::qt_static_metacall(QObjec
 
 const QMetaObject bdl::styled_qt_controls::string_item_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__string_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__string_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__string_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -181,7 +181,7 @@ const QMetaObject *bdl::styled_qt_controls::string_item_editor_item::metaObject(
 
 void *bdl::styled_qt_controls::string_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__string_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< string_item_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);
@@ -261,7 +261,7 @@ void bdl::styled_qt_controls::float_item_editor_item::qt_static_metacall(QObject
 
 const QMetaObject bdl::styled_qt_controls::float_item_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__float_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__float_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__float_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -272,7 +272,7 @@ const QMetaObject *bdl::styled_qt_controls::float_item_editor_item::metaObject()
 
 void *bdl::styled_qt_controls::float_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__float_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< float_item_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);
@@ -361,7 +361,7 @@ void bdl::styled_qt_controls::vector3_item_editor_item::qt_static_metacall(QObje
 
 const QMetaObject bdl::styled_qt_controls::vector3_item_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__vector3_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__vector3_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__vector3_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -372,7 +372,7 @@ const QMetaObject *bdl::styled_qt_controls::vector3_item_editor_item::metaObject
 
 void *bdl::styled_qt_controls::vector3_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__vector3_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< vector3_item_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);
@@ -452,7 +452,7 @@ void bdl::styled_qt_controls::color_item_editor_item::qt_static_metacall(QObject
 
 const QMetaObject bdl::styled_qt_controls::color_item_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__color_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__color_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__color_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -463,7 +463,7 @@ const QMetaObject *bdl::styled_qt_controls::color_item_editor_item::metaObject()
 
 void *bdl::styled_qt_controls::color_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__color_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< color_item_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);
@@ -544,7 +544,7 @@ void bdl::styled_qt_controls::enum_item_editor_item::qt_static_metacall(QObject 
 
 const QMetaObject bdl::styled_qt_controls::enum_item_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__enum_item_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__enum_item_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__enum_item_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -555,7 +555,7 @@ const QMetaObject *bdl::styled_qt_controls::enum_item_editor_item::metaObject() 
 
 void *bdl::styled_qt_controls::enum_item_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__enum_item_editor_item.stringdata0))
         return static_cast<void*>(const_cast< enum_item_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);
@@ -635,7 +635,7 @@ void bdl::styled_qt_controls::combobox_editor_item::qt_static_metacall(QObject *
 
 const QMetaObject bdl::styled_qt_controls::combobox_editor_item::staticMetaObject = {
     { &base_item_editor_item::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__combobox_editor_item.data,
-      qt_meta_data_bdl__styled_qt_controls__combobox_editor_item,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__combobox_editor_item,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -646,7 +646,7 @@ const QMetaObject *bdl::styled_qt_controls::combobox_editor_item::metaObject() c
 
 void *bdl::styled_qt_controls::combobox_editor_item::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__combobox_editor_item.stringdata0))
         return static_cast<void*>(const_cast< combobox_editor_item*>(this));
     return base_item_editor_item::qt_metacast(_clname);

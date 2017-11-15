@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'styled_path_widget.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'styled_path_widget.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -143,7 +143,7 @@ void bdl::styled_qt_controls::styled_path_widget::qt_static_metacall(QObject *_o
 
 const QMetaObject bdl::styled_qt_controls::styled_path_widget::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_path_widget.data,
-      qt_meta_data_bdl__styled_qt_controls__styled_path_widget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__styled_path_widget,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -154,7 +154,7 @@ const QMetaObject *bdl::styled_qt_controls::styled_path_widget::metaObject() con
 
 void *bdl::styled_qt_controls::styled_path_widget::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__styled_path_widget.stringdata0))
         return static_cast<void*>(const_cast< styled_path_widget*>(this));
     return QWidget::qt_metacast(_clname);
@@ -180,7 +180,7 @@ int bdl::styled_qt_controls::styled_path_widget::qt_metacall(QMetaObject::Call _
 // SIGNAL 0
 void bdl::styled_qt_controls::styled_path_widget::item_selected(bdl::styled_qt_controls::styled_path_widget_item * _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

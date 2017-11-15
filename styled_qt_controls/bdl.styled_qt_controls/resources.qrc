@@ -70,5 +70,6 @@
 	<file>images/remove.png</file>
   <file>images/additional_options.png</file>
   <file>images/slider_handle.png</file>
+  <file>images/toolbar_overflow_hor.png</file>
 </qresource>														
 </RCC>								

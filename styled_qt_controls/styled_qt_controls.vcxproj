@@ -162,6 +162,7 @@
     <ClCompile Include="bdl.styled_qt_controls\styled_path_widget\styled_path_widget_layout.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_dialog.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window.cpp"/>
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window_style.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\util\os\icon_loader.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\util\os\file_system_watcher.cpp"/>
     <ClCompile Include="bdl.styled_qt_controls\util\os\os_sound.cpp"/>
@@ -215,6 +216,7 @@
     <ClInclude Include="bdl.styled_qt_controls\styled_qt_controls.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window.q.hpp"/>
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window_style.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\util\os\icon_loader.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\util\os\file_system_watcher.q.hpp"/>
     <ClInclude Include="bdl.styled_qt_controls\util\os\os_sound.hpp"/>

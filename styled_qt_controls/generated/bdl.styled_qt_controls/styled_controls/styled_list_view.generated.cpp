@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'styled_list_view.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'styled_list_view.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -65,7 +65,7 @@ void bdl::styled_qt_controls::styled_list_view::qt_static_metacall(QObject *_o, 
 
 const QMetaObject bdl::styled_qt_controls::styled_list_view::staticMetaObject = {
     { &QListView::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_list_view.data,
-      qt_meta_data_bdl__styled_qt_controls__styled_list_view,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__styled_list_view,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -76,7 +76,7 @@ const QMetaObject *bdl::styled_qt_controls::styled_list_view::metaObject() const
 
 void *bdl::styled_qt_controls::styled_list_view::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__styled_list_view.stringdata0))
         return static_cast<void*>(const_cast< styled_list_view*>(this));
     return QListView::qt_metacast(_clname);
@@ -85,8 +85,6 @@ void *bdl::styled_qt_controls::styled_list_view::qt_metacast(const char *_clname
 int bdl::styled_qt_controls::styled_list_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QListView::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
     return _id;
 }
 QT_WARNING_POP

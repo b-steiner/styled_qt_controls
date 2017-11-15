@@ -62,6 +62,7 @@
     <ClCompile Include="bdl.styled_qt_controls\util\os\os_sound.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group_widget.q.cpp" />
     <ClCompile Include="bdl.styled_qt_controls\styled_dock_widget\base_widget_factory.cpp" />
+    <ClCompile Include="bdl.styled_qt_controls\styled_window\styled_window_style.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_dialog.q.hpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="bdl.styled_qt_controls\util\os\os_sound.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_item_editor\item_editor_group_widget.q.hpp" />
     <ClInclude Include="bdl.styled_qt_controls\styled_dock_widget\base_widget_factory.q.hpp" />
+    <ClInclude Include="bdl.styled_qt_controls\styled_window\styled_window_style.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="bdl.styled_qt_controls\resources.qrc" />

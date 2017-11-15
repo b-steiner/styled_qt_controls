@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'numeric_line_edit.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'numeric_line_edit.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -79,7 +79,7 @@ void bdl::styled_qt_controls::numeric_line_edit::qt_static_metacall(QObject *_o,
 
 const QMetaObject bdl::styled_qt_controls::numeric_line_edit::staticMetaObject = {
     { &QLineEdit::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__numeric_line_edit.data,
-      qt_meta_data_bdl__styled_qt_controls__numeric_line_edit,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__numeric_line_edit,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -90,7 +90,7 @@ const QMetaObject *bdl::styled_qt_controls::numeric_line_edit::metaObject() cons
 
 void *bdl::styled_qt_controls::numeric_line_edit::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__numeric_line_edit.stringdata0))
         return static_cast<void*>(const_cast< numeric_line_edit*>(this));
     return QLineEdit::qt_metacast(_clname);
