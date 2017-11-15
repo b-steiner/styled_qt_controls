@@ -94,7 +94,7 @@ public:
 	PROPERTY0(QPushButton*, part_maximize_button);
 	PROPERTY0(QGridLayout*, titlebar_layout);
 	PROPERTY0(styled_label*, part_icon);
-	PROPERTY0(styled_widget*, client_widget);
+	PROPERTY0(QWidget*, client_widget);
 	PROPERTY0(QVector<styled_widget*>, border_widgets);
 
 	PROPERTY0(QTimer, system_menu_timer);
@@ -103,6 +103,8 @@ public:
 	PROPERTY1(styled_frame*, part_window_widget, protected: GET);
 	//! Stores the menubar
 	PROPERTY1(QMenuBar*, menubar, GET);
+
+	PROPERTY1(QMainWindow*, main_window_widget, GET);
 
 public:
 	/*! \brief Initializes a new instance of the styled_window class
@@ -190,7 +192,7 @@ public:
 		*
 		* \returns A pointer to the client widget
 		*/
-	virtual styled_widget* client_widget() const;
+	virtual QWidget* client_widget() const;
 
 	/*! \brief Sets the window icon
 	 *

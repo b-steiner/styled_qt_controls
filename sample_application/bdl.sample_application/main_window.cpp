@@ -71,6 +71,52 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	auto about_action = help_menu->addAction("About");
 	QObject::connect(about_action, &QAction::triggered, this, &main_window::about_action_triggered);
 
+	QToolBar* toolbar = this->main_window_widget()->addToolBar("TEST");
+	toolbar->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	toolbar->addAction("Action 1");
+	auto act2 = toolbar->addAction("Action 2");
+	act2->setEnabled(false);
+	toolbar->addSeparator();
+	toolbar->addAction("Action 3");
+	
+	auto menu_button = new QToolButton();
+	menu_button->setText("InstantPopup");
+	QMenu* toolbar_menu = new QMenu(this->part_window_widget());
+	toolbar_menu->addAction("TB Menu Action 1");
+	toolbar_menu->addAction("TB Menu Action 2");
+	toolbar_menu->addSeparator();
+	toolbar_menu->addAction("TB Menu Action 3");
+	menu_button->setMenu(toolbar_menu);
+	menu_button->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+	toolbar->addWidget(menu_button);
+
+	auto menu_button2 = new QToolButton();
+	menu_button2->setText("MenuButtonPopup");
+	QMenu* toolbar_menu2 = new QMenu(this->part_window_widget());
+	toolbar_menu2->addAction("TB Menu Action 1");
+	toolbar_menu2->addAction("TB Menu Action 2");
+	toolbar_menu2->addSeparator();
+	toolbar_menu2->addAction("TB Menu Action 3");
+	menu_button2->setMenu(toolbar_menu2);
+	menu_button2->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
+	toolbar->addWidget(menu_button2);
+
+	auto menu_button3 = new QToolButton();
+	menu_button3->setText("DelayedPopup");
+	QMenu* toolbar_menu3 = new QMenu(this->part_window_widget());
+	toolbar_menu3->addAction("TB Menu Action 1");
+	toolbar_menu3->addAction("TB Menu Action 2");
+	toolbar_menu3->addSeparator();
+	toolbar_menu3->addAction("TB Menu Action 3");
+	menu_button3->setMenu(toolbar_menu3);
+	menu_button3->setPopupMode(QToolButton::ToolButtonPopupMode::DelayedPopup);
+	toolbar->addWidget(menu_button3);
+
+	auto toolbar_textbox = new QLineEdit("default text");
+	toolbar_textbox->setFixedWidth(100);
+	toolbar->addWidget(toolbar_textbox);
+
+
 	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
 	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));
 	this->resize(QSize(1280, 768));
@@ -303,7 +349,7 @@ QWidget* main_window::create_item_editor_widget()
 	add_opt_menu->addAction("Action 3");
 
 	styled_item_editor* editor = new styled_item_editor();
-	auto group1 = new item_editor_group("Group 1", true, add_opt_menu);
+	auto group1 = new item_editor_group("Group 1", "", true, add_opt_menu);
 	group1->add_item(new string_item_editor_item("String", "Initial Value", [](const QString&) { qDebug() << "Text changed"; }, true, true, [](bool) { qDebug() << "Binding changed"; }));
 	group1->add_item(new float_item_editor_item("Float", 0.5, [](float) { qDebug() << "Float changed"; }, true, false, [](bool) { qDebug() << "Binding changed"; }, 4, 0.1f, -10.0f, 10.0f));
 	editor->add_group(group1);
@@ -414,8 +460,9 @@ QStandardItem* main_window::load_fs_item(QFileInfo file, int depth)
 		{
 			QDir dir(file.canonicalFilePath());
 			auto list = dir.entryInfoList(QDir::AllEntries | QDir::NoDot | QDir::NoDotDot, QDir::DirsFirst | QDir::Name);
-			for (auto d : list)
-				item->appendRow(load_fs_item(d, depth+1));
+			//for (auto d : list)
+			for (int i = 0; i < min(5, list.size()); i++)
+				item->appendRow(load_fs_item(list[i], depth+1));
 		}
 	}
 	else

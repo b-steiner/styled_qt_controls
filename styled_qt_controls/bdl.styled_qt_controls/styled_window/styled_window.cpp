@@ -27,6 +27,11 @@
 using namespace bdl::styled_qt_controls;
 using namespace bdl::styled_qt_controls::util;
 
+
+//DEBUG
+#include <QtWidgets\qmainwindow.h>
+//DEBUG
+
 QHash<HWND, styled_window*> styled_window::m_all_windows;
 QHash<QWidget*, styled_window*> styled_window::m_widget_to_window;
 
@@ -243,9 +248,9 @@ void styled_window::initialize_widget()
 	m_part_window_widget->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
 	m_part_window_widget->installEventFilter(this);
 	m_part_window_widget->setObjectName("part_window_widget");
-	style_loader loader(":/styled_window/styled_window.qss");
+	style_loader loader(":/styled_window/default_styles.qss");
+	loader.append_file(":/styled_window/styled_window.qss");
 	loader.append_file(":/styled_window/default_menu_style.qss");
-	loader.append_file(":/styled_window/default_styles.qss");
 	loader.append_file(":/styled_window/default_view_style.qss");
 	loader.append_file(":/styled_controls/styled_collapse_widget.qss");
 	loader.append_file(":/styled_controls/clearable_line_edit.qss");
@@ -318,13 +323,17 @@ void styled_window::initialize_widget()
 	m_client_widget = new styled_widget();
 	m_client_widget->setObjectName("part_client_widget");
 
+	m_main_window_widget = new QMainWindow();
+	m_main_window_widget->setCentralWidget(m_client_widget);
+	m_main_window_widget->setMinimumSize(100, 100);
+
 	QGridLayout* layout = new QGridLayout();
 	layout->setContentsMargins(0, 0, 0, 0);
 	layout->setSpacing(0);
 	layout->setColumnStretch(1, 1);
 	layout->setRowStretch(2, 1);
 
-	layout->addWidget(m_client_widget, 2, 1);
+	layout->addWidget(m_main_window_widget, 2, 1);
 
 	layout->addWidget(part_nw_widget, 0, 0);
 	layout->addWidget(part_titlebar_widget, 0, 1, 2, 1);
@@ -450,7 +459,7 @@ void styled_window::focus()
 	this->m_part_window_widget->setFocus();
 }
 
-styled_widget* styled_window::client_widget() const
+QWidget* styled_window::client_widget() const
 {
 	return m_client_widget;
 }

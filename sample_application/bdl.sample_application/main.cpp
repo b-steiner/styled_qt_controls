@@ -21,6 +21,8 @@
 
 #include "main_window.q.hpp"
 
+#include <QtWidgets\qmainwindow.h>
+
 using namespace bdl::styled_qt_controls;
 using namespace bdl::sample_application;
 

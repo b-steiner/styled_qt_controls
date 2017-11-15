@@ -67,6 +67,9 @@
 #include <QtWidgets\QCheckbox>
 #include <QtWidgets\QMessagebox>
 #include <QtWidgets\QComboBox>
+#include <QtWidgets\QToolBar>
+#include <QtWidgets\QToolButton>
+#include <QtWidgets\QMainWindow>
 
 #include <QtXml\QDomDocument>
 

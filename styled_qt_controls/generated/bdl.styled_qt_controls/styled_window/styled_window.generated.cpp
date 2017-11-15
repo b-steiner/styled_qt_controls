@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'styled_window.q.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'styled_window.q.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.8.0. It"
+#error "This file was generated using the moc from 5.9.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -226,7 +226,7 @@ void bdl::styled_qt_controls::styled_window::qt_static_metacall(QObject *_o, QMe
 
 const QMetaObject bdl::styled_qt_controls::styled_window::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_bdl__styled_qt_controls__styled_window.data,
-      qt_meta_data_bdl__styled_qt_controls__styled_window,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bdl__styled_qt_controls__styled_window,  qt_static_metacall, nullptr, nullptr}
 };
 
 
@@ -237,7 +237,7 @@ const QMetaObject *bdl::styled_qt_controls::styled_window::metaObject() const
 
 void *bdl::styled_qt_controls::styled_window::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_bdl__styled_qt_controls__styled_window.stringdata0))
         return static_cast<void*>(const_cast< styled_window*>(this));
     return QObject::qt_metacast(_clname);
@@ -263,39 +263,39 @@ int bdl::styled_qt_controls::styled_window::qt_metacall(QMetaObject::Call _c, in
 // SIGNAL 0
 void bdl::styled_qt_controls::styled_window::closing(bool & _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void bdl::styled_qt_controls::styled_window::closed()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
 void bdl::styled_qt_controls::styled_window::frameless_changed(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void bdl::styled_qt_controls::styled_window::moved()
 {
-    QMetaObject::activate(this, &staticMetaObject, 3, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 
 // SIGNAL 4
 void bdl::styled_qt_controls::styled_window::move_started()
 {
-    QMetaObject::activate(this, &staticMetaObject, 4, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }
 
 // SIGNAL 5
 void bdl::styled_qt_controls::styled_window::move_ended()
 {
-    QMetaObject::activate(this, &staticMetaObject, 5, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

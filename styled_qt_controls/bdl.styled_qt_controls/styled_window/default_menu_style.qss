@@ -49,3 +49,78 @@ QMenuBar::item:pressed
 	border: 1px solid @border;
 	border-bottom: none;
 }
+
+
+
+QToolBar
+{
+	background-color: @normal;
+	border: none;
+}
+QToolBar::separator
+{
+	background-color: blue;
+	border: none;
+	border-left: 1px solid @border;
+	border-right: 1px solid @light;
+	margin: 2px 3px 3px 3px;
+	min-width: 0px;
+}
+QToolBar::handle
+{
+	color: red;
+}
+
+QToolButton
+{
+	color: @font;
+	padding: 2px;
+	padding-right: 10px;
+	border: 1px solid transparent;
+}
+QToolButton[popupMode="1"]
+{
+	padding-right: 16px;
+}
+
+QToolButton:disabled
+{
+	color: @font_inactive;
+}
+QToolButton:hover
+{
+	background-color: @light;
+	border: 1px solid @border;
+}
+QToolButton:pressed
+{
+	background-color: @dark;
+	border: 1px solid @border;
+	border-bottom: none;
+}
+
+QToolButton::menu-indicator
+{
+    subcontrol-position: center right;
+	image: url(:/images/expand.png);
+	padding-right: 2px;
+}
+
+QToolButton::menu-button
+{
+	width: 16px;
+	outline: none;
+	background: transparent;
+	border: none;
+	border-left: 1px solid transparent;
+}
+QToolButton::menu-button:hover
+{
+	border: none;
+	border-left: 1px solid @border;
+}
+QToolButton::menu-button:pressed
+{
+	border: none;
+	border-left: 1px solid @border;
+}
