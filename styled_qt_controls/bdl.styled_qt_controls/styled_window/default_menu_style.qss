@@ -57,14 +57,21 @@ QToolBar
 	background-color: @normal;
 	border: none;
 }
-QToolBar::separator
+QToolBar::separator:horizontal
 {
-	background-color: blue;
 	border: none;
 	border-left: 1px solid @border;
 	border-right: 1px solid @light;
 	margin: 2px 3px 3px 3px;
 	min-width: 0px;
+}
+QToolBar::separator:vertical
+{
+	border: none;
+	border-top: 1px solid @border;
+	border-bottom: 1px solid @light;
+	margin: 3px 3px 3px 3px;
+	min-height: 0px;
 }
 QToolBar::handle
 {

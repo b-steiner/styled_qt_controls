@@ -72,7 +72,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	QObject::connect(about_action, &QAction::triggered, this, &main_window::about_action_triggered);
 
 	QToolBar* toolbar = this->main_window_widget()->addToolBar("TEST");
-	toolbar->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	toolbar->addAction("Action 1");
 	auto act2 = toolbar->addAction("Action 2");
 	act2->setEnabled(false);
@@ -116,6 +116,9 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	toolbar_textbox->setFixedWidth(100);
 	toolbar->addWidget(toolbar_textbox);
 
+	toolbar->addSeparator();
+	toolbar->addAction("Action 4");
+	toolbar->addAction("Action 5");
 
 	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
 	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));
