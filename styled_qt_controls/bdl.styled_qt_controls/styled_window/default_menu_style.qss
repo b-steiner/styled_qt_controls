@@ -82,9 +82,13 @@ QToolButton
 {
 	color: @font;
 	padding: 2px;
-	padding-right: 10px;
 	border: 1px solid transparent;
 }
+QToolButton[popupMode="2"]
+{
+	padding-right: 10px;
+}
+
 QToolButton[popupMode="1"]
 {
 	padding-right: 16px;
@@ -107,11 +111,21 @@ QToolButton:pressed
 }
 
 
-QToolButton::menu-indicator
+QToolButton[popupMode="2"]::menu-indicator
 {
     subcontrol-position: center right;
 	image: url(:/images/expand.png);
 	padding-right: 2px;
+}
+QToolButton[popupMode="1"]::menu-indicator
+{
+    subcontrol-position: center right;
+	image: url(:/images/expand.png);
+	padding-right: 2px;
+}
+QToolButton[popupMode="0"]::menu-indicator
+{
+	image: none;
 }
 
 
