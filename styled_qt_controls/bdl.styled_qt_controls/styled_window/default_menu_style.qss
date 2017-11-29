@@ -92,6 +92,11 @@ QToolButton[toolButtonStyle="0"]
 	padding-bottom: -4px;
 	border: 1px solid transparent;
 }
+QToolButton:checked
+{
+	background: solid @dark;
+	border: 1px solid @border;
+}
 
 
 QToolButton[popupMode="2"]

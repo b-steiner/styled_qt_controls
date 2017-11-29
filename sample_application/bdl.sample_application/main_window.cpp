@@ -121,8 +121,13 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	toolbar->addWidget(toolbar_textbox);
 
 	toolbar->addSeparator();
-	toolbar->addAction("Action 4");
-	toolbar->addAction("Action 5");
+	auto ch_action1 = toolbar->addAction("Check 1");
+	auto ch_action2 = toolbar->addAction("Check 2");
+	auto ch_action3 = toolbar->addAction("Check 3");
+	ch_action1->setCheckable(true);
+	ch_action1->setChecked(true);
+	ch_action2->setCheckable(true);
+	ch_action3->setCheckable(true);
 
 	auto img_toolbar = m_main_window_widget->addToolBar("image toolbar");
 	img_toolbar->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonIconOnly);
