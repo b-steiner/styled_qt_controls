@@ -92,6 +92,17 @@ QToolButton[toolButtonStyle="0"]
 	padding-bottom: -4px;
 	border: 1px solid transparent;
 }
+QToolButton:hover
+{
+	background-color: @light;
+	border: 1px solid @border;
+}
+QToolButton:pressed
+{
+	background-color: @dark;
+	border: 1px solid @border;
+	border-bottom: none;
+}
 QToolButton:checked
 {
 	background: solid @dark;
@@ -112,17 +123,6 @@ QToolButton[popupMode="1"]
 QToolButton:disabled
 {
 	color: @font_inactive;
-}
-QToolButton:hover
-{
-	background-color: @light;
-	border: 1px solid @border;
-}
-QToolButton:pressed
-{
-	background-color: @dark;
-	border: 1px solid @border;
-	border-bottom: none;
 }
 
 
