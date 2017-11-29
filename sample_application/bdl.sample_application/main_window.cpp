@@ -72,6 +72,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	QObject::connect(about_action, &QAction::triggered, this, &main_window::about_action_triggered);
 
 	QToolBar* toolbar = this->main_window_widget()->addToolBar("TEST");
+	toolbar->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
 	toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	toolbar->addAction("Action 1");
 	auto act2 = toolbar->addAction("Action 2");
@@ -81,6 +82,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	
 	auto menu_button = new QToolButton();
 	menu_button->setText("InstantPopup");
+	menu_button->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
 	QMenu* toolbar_menu = new QMenu(this->part_window_widget());
 	toolbar_menu->addAction("TB Menu Action 1");
 	toolbar_menu->addAction("TB Menu Action 2");
@@ -92,6 +94,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 	auto menu_button2 = new QToolButton();
 	menu_button2->setText("MenuButtonPopup");
+	menu_button2->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
 	QMenu* toolbar_menu2 = new QMenu(this->part_window_widget());
 	toolbar_menu2->addAction("TB Menu Action 1");
 	toolbar_menu2->addAction("TB Menu Action 2");
@@ -103,6 +106,7 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 
 	auto menu_button3 = new QToolButton();
 	menu_button3->setText("DelayedPopup");
+	menu_button3->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
 	QMenu* toolbar_menu3 = new QMenu(this->part_window_widget());
 	toolbar_menu3->addAction("TB Menu Action 1");
 	toolbar_menu3->addAction("TB Menu Action 2");
@@ -119,6 +123,10 @@ main_window::main_window() : styled_window("bdl::styled_qt_controls::sample_app"
 	toolbar->addSeparator();
 	toolbar->addAction("Action 4");
 	toolbar->addAction("Action 5");
+
+	auto img_toolbar = m_main_window_widget->addToolBar("image toolbar");
+	img_toolbar->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonIconOnly);
+	img_toolbar->addAction(QIcon(":/images/green_smiley.png"), "");
 
 	this->icon(QPixmap(":/images/sqtc_icon_titlebar.png"));
 	this->taskbar_icon(QIcon(":/images/sqtc_icon.ico"));

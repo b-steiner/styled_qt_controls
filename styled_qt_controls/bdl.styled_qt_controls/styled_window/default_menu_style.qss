@@ -84,6 +84,16 @@ QToolButton
 	padding: 2px;
 	border: 1px solid transparent;
 }
+QToolButton[toolButtonStyle="0"]
+{
+	color: @font;
+	padding: -3px;
+	padding-right: -4px;
+	padding-bottom: -4px;
+	border: 1px solid transparent;
+}
+
+
 QToolButton[popupMode="2"]
 {
 	padding-right: 10px;
